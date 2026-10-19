@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryPersistenceLibraryPErl</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryPersistenceLibraryPErl</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+        
+        <!--
+        -->
+        <module>../allbinary_src/cache/AllBinaryCacheLibraryErlM</module>
+        <module>../allbinary_src/PermutationsJavaLibraryErlM</module>
+        <module>../allbinary_src/logic/BasePreloaderFileJavaLibraryErlM</module>
+        <module>../allbinary_src/logic/data/file/FileJavaLibraryErlM</module>
+        <module>../allbinary_src/logic/data/file/FileJ2SEJavaLibraryErlM</module>
+        <module>../allbinary_src/data/DataJavaLibraryErlM</module>
+        <module>../allbinary_src/logic/data/file/FileUnamedJavaLibraryErlM</module>
+        <module>../allbinary_src/logic/data/file/FileAdvancedJavaLibraryErlM</module>
+        <module>../allbinary_src/PreLoaderJavaLibraryErlM</module>
+        <module>../allbinary_src/FileInitInfoJavaLibraryErlM</module>
+        <module>../allbinary_src/PreLoaderFileJavaLibraryErlM</module>
+        <module>../allbinary_src/PreLoaderLicenseJavaLibraryErlM</module>
+        <module>../j2me/PCResourceLibraryErlM</module>
+        <module>../j2me/ProgressJ2MEJavaLibraryErlM</module>
+        <module>../allbinary_src/licensing/ClientInfoBaseJavaLibraryErlM</module>
+        <module>../allbinary_src/licensing/RemoteXmlRpcJavaLibraryErlM</module>
+        <module>../allbinary_src/licensing/LicenseClientJavaLibraryErlM</module>
+
+        <!--
+        <module>../allbinary_src/PreLoaderLicenseJavaLibraryErlM</module>
+        -->
+    </modules>
+
+</project>
+

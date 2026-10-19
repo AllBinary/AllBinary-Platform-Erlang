@@ -1,0 +1,34 @@
+%
+% AllBinary Open License Version 1
+% Copyright (c) 2006 AllBinary
+% 
+% By agreeing to this license you and any business entity you represent are
+% legally bound to the AllBinary Open License Version 1 legal agreement.
+% 
+% You may obtain the AllBinary Open License Version 1 legal agreement from
+% AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+% 
+% Created By: Travis Berthelot
+%  
+% Generated Code Do Not Modify
+% package org.allbinary.media.graphics.geography.pathfinding
+% import org.allbinary.media.graphics.geography.map.GeographicMapCellPosition
+
+-module('PathFindingNodeCostInfoFactoryInterface').
+-compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
+% Java interface
+
+'$handle_undefined_function'(Function, Arguments) ->
+    apply('PathFindingNodeCostInfoFactoryBaseInterface', Function, Arguments).
+
+
+% throws Exception
+getInstance(This, ComingFromGeographicMapCellPosition, GeographicMapCellPosition, CostFromStart, CostToEnd) when is_integer(CostFromStart), is_integer(CostToEnd) ->
+    erlang:error({abstract_method, getInstance}).
+
+getInstance(This, ComingFromGeographicMapCellPosition, GeographicMapCellPosition) ->
+    erlang:error({abstract_method, getInstance}).
+
+getTotalCost(This, ComingFromGeographicMapCellPosition, GeographicMapCellPosition) ->
+    erlang:error({abstract_method, getTotalCost}).
+

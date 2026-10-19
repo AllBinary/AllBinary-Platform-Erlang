@@ -1,0 +1,94 @@
+%
+% AllBinary Open License Version 1
+% Copyright (c) 2011 AllBinary
+% 
+% By agreeing to this license you and any business entity you represent are
+% legally bound to the AllBinary Open License Version 1 legal agreement.
+% 
+% You may obtain the AllBinary Open License Version 1 legal agreement from
+% AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+% 
+% Created By: Travis Berthelot
+%  
+% Generated Code Do Not Modify
+% package org.allbinary.media.image.comparison.motion
+% import org.allbinary.util.BasicArrayList
+% import org.allbinary.util.BasicArrayListD
+% import org.allbinary.logic.StdUtil
+% import org.allbinary.logic.communication.log.LogUtil
+% import org.allbinary.logic.util.event.AllBinaryEventObject
+% import org.allbinary.logic.util.event.handler.BasicEventHandler
+% import org.allbinary.media.image.comparison.ImageComparisonResult
+% import org.allbinary.media.image.comparison.ImageComparisonResultsEvent
+% import org.allbinary.media.image.comparison.ImageComparisonResultsListener
+% import org.allbinary.string.CommonLabels
+% import org.allbinary.string.CommonStrings
+% import org.allbinary.time.TimeDelayHelper
+
+-module('MotionRectanglesWorker').
+-compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
+% implements ImageComparisonResultsListener
+
+'$handle_undefined_function'(Function, Arguments) ->
+    apply('BasicEventHandler', Function, Arguments).
+
+init_fields(This) ->
+    put({This, logUtil}, 'LogUtil':getInstance()),
+    put({This, commonStrings}, 'CommonStrings':getInstance()),
+    put({This, imageComparisonInfoVector}, 'BasicArrayListD':new()),
+    put({This, motionRectangleConstraintsInterface}, undefined),
+    put({This, index}, 0),
+    put({This, running}, false),
+    ok.
+
+
+new(MotionRectangleConstraintsInterface) ->
+    This = make_ref(),
+    put({This, '$class'}, ?MODULE),
+    init(This, MotionRectangleConstraintsInterface),
+    This.
+
+init(This, MotionRectangleConstraintsInterface) ->
+    'BasicEventHandler':init(This),
+    init_fields(This),
+        put({This, motionRectangleConstraintsInterface}, MotionRectangleConstraintsInterface).
+
+onImageComparisonResultsEvent(This, ImageComparisonResultsEvent) ->
+        (get({get({This, imageComparisonInfoVector}), '$class'})):add(get({This, imageComparisonInfoVector}), ImageComparisonResultsEvent),
+        (get({This, '$class'})):run(This).
+
+onEvent(This, AllBinaryEventObject) ->
+        (get({This, '$class'})):onImageComparisonResultsEvent(This, AllBinaryEventObject).
+
+isRunning(This) ->
+        get({This, running}).
+
+setRunning(This, Running) when is_boolean(Running) ->
+        put({This, running}, Running).
+
+run(This) ->
+        try
+            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'RUN'})),
+            (get({This, '$class'})):setRunning(This, true),
+            TimeHelper = 'TimeDelayHelper':new(1000),
+            (get({TimeHelper, '$class'})):setStartTimeTNT(TimeHelper),
+            ImageComparisonResultsEvent = (get({get({This, imageComparisonInfoVector}), '$class'})):get(get({This, imageComparisonInfoVector}), 0),
+            ImageComparisonInfo = (get({ImageComparisonResultsEvent, '$class'})):getImageComparisonResult(ImageComparisonResultsEvent),
+            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({ImageComparisonInfo, '$class'})):toString(ImageComparisonInfo), This, get({get({This, commonStrings}), 'RUN'})),
+            AllMotionRectangles = 'AllMotionRectangles':new(ImageComparisonInfo),
+            (fun(Target_N67045) -> (get({Target_N67045, '$class'})):add(Target_N67045, 'MotionRectanglesResultsFrameCacheable':new(AllMotionRectangles, (get({ImageComparisonInfo, '$class'})):getFrameTwo(ImageComparisonInfo))) end)('AllMotionRectanglesResultsCacheSingleton':getInstance()),
+            ConsolidatedMotionRectangles = 'ConsolidateMotionRectangles':new(AllMotionRectangles),
+            (fun(Target_N67172) -> (get({Target_N67172, '$class'})):add(Target_N67172, 'MotionRectanglesResultsFrameCacheable':new(ConsolidatedMotionRectangles, (get({ImageComparisonInfo, '$class'})):getFrameTwo(ImageComparisonInfo))) end)('ConsolidatedMotionRectanglesResultsCacheSingleton':getInstance()),
+            ConstrainedMotionRectangles = 'ConstrainedMotionRectangles':new(get({This, motionRectangleConstraintsInterface}), ConsolidatedMotionRectangles),
+            (get({ConstrainedMotionRectangles, '$class'})):applyMotionRectangleConstraints(ConstrainedMotionRectangles, ConsolidatedMotionRectangles),
+            (fun(Target_N67341) -> (get({Target_N67341, '$class'})):add(Target_N67341, 'MotionRectanglesResultsFrameCacheable':new(ConstrainedMotionRectangles, (get({ImageComparisonInfo, '$class'})):getFrameTwo(ImageComparisonInfo))) end)('ConstrainedMotionRectanglesResultsCacheSingleton':getInstance()),
+            (get({This, '$class'})):fireEvent(This, 'MotionRectanglesResultsEvent':new(This, (get({ImageComparisonInfo, '$class'})):getFrameTwo(ImageComparisonInfo), ConstrainedMotionRectangles)),
+            (get({get({This, imageComparisonInfoVector}), '$class'})):remove(get({This, imageComparisonInfoVector}), ImageComparisonResultsEvent),
+            put({This, index}, get({This, index}) + 1),
+            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({'CommonLabels':getInstance(), 'ELAPSED'}) + (get({TimeHelper, '$class'})):getElapsedTNT(TimeHelper)), This, get({get({This, commonStrings}), 'RUN'})),
+            (get({This, '$class'})):setRunning(This, false),
+            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'END'}), This, get({get({This, commonStrings}), 'RUN'}))
+        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({get({This, commonStrings}), 'RUN'}), E)
+        end.
+

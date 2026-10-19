@@ -1,0 +1,57 @@
+%
+% AllBinary Open License Version 1
+% Copyright (c) 2011 AllBinary
+% 
+% By agreeing to this license you and any business entity you represent are
+% legally bound to the AllBinary Open License Version 1 legal agreement.
+% 
+% You may obtain the AllBinary Open License Version 1 legal agreement from
+% AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+% 
+% Created By: Travis Berthelot
+%  
+% Generated Code Do Not Modify
+% package views.business.context.modules.storefront.generator
+% import org.allbinary.logic.communication.log.LogUtil
+% import org.allbinary.logic.visual.transform.info.TransformInfoData
+% import org.allbinary.logic.visual.transform.info.TransformInfoHttpInterface
+% import org.allbinary.logic.visual.transform.info.TransformInfoInterface
+% import org.allbinary.logic.visual.transform.info.TransformInfosData
+% import org.allbinary.string.CommonSeps
+
+-module('PreviewGeneratorStoreFrontContextView').
+-compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
+
+'$handle_undefined_function'(Function, Arguments) ->
+    apply('GeneratorStoreFrontContextView', Function, Arguments).
+
+init_fields(This) ->
+    put({This, logUtil}, 'LogUtil':getInstance()),
+    ok.
+
+
+new(TransformInfoInterface) ->
+    This = make_ref(),
+    put({This, '$class'}, ?MODULE),
+    init(This, TransformInfoInterface),
+    This.
+
+init(This, TransformInfoInterface) ->
+        'GeneratorStoreFrontContextView':init(This, TransformInfoInterface),
+        init_fields(This).
+
+% throws Exception
+view(This) ->
+        try
+            HttpTransformInfoInterface = (get({This, '$class'})):getTransformInfoInterface(This),
+            (fun(Target_N66012) -> (get({Target_N66012, '$class'})):put(Target_N66012, get({'TransformInfoData':getInstance(), 'PARTIAL'}), (get({'CommonSeps':getInstance(), 'SPACE'}) + get({'TransformInfosData':getInstance(), 'PREVIEW'}))) end)((get({HttpTransformInfoInterface, '$class'})):getPropertiesHashMap(HttpTransformInfoInterface)),
+            (get({This, '$class'})):view(This, get({'TransformInfosData':getInstance(), 'PREVIEW'}))
+        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'TAGHELPERERROR'})) of
+                true ->
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "view()", E);
+                false -> ok
+            end,
+            erlang:error(E)
+        end.
+

@@ -1,0 +1,44 @@
+%
+% AllBinary Open License Version 1
+% Copyright (c) 2011 AllBinary
+% 
+% By agreeing to this license you and any business entity you represent are
+% legally bound to the AllBinary Open License Version 1 legal agreement.
+% 
+% You may obtain the AllBinary Open License Version 1 legal agreement from
+% AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+% 
+% Created By: Travis Berthelot
+%  
+% Generated Code Do Not Modify
+% package org.allbinary.game.ag.layer.pickup.points
+
+-module('PointsResources').
+-compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
+-on_load(static_init/0).
+
+static_init() ->
+    put({?MODULE, 'SINGLETON'}, 'PointsResources':new()),
+    ok.
+
+init_fields(This) ->
+    put({This, 'RESOURCE'}, "points_drop_20_by_20.png"),
+    put({This, 'RESOURCE_2'}, "points_2_drop_20_by_20.png"),
+    put({This, 'RESOURCE_3'}, "points_3_drop_20_by_20.png"),
+    put({This, 'RESOURCE_4'}, "points_4_drop_20_by_20.png"),
+    ok.
+
+
+new() ->
+    This = make_ref(),
+    put({This, '$class'}, ?MODULE),
+    init(This),
+    This.
+
+init(This) ->
+    init_fields(This),
+        ok.
+
+getInstance() ->
+        get({'PointsResources', 'SINGLETON'}).
+

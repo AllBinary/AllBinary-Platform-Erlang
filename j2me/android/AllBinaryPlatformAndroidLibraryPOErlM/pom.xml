@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryPlatformAndroidLibraryPOMErl</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryPlatformAndroidLibraryPOMErl</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+
+
+    <modules>
+
+        <module>../../../j2me/AndroidBaseJavaLibraryErlM</module>
+        <module>../../../j2me/input/platform/android/GameInputAndroidBaseJavaLibraryErlM</module>
+        <module>../../../j2me/android/AndroidThroughAPI4JavaLibraryErlM</module>
+        <module>../../../j2me/android/AndroidAPI5AndUpJavaLibraryErlM</module>
+        <module>../../../j2me/android/AndroidAPI16UpTo19JavaLibraryErlM</module>        
+        <module>../../../j2me/android/AndroidAPI19UpTo29JavaLibraryErlM</module>
+        
+        <module>../../../j2me/input/android/MotionInputAndroidJavaLibraryErlM</module>
+        <module>../../../j2me/input/android/MotionInputAPI5AndUpAndroidJavaLibraryErlM</module>
+        <module>../../../j2me/input/android/MotionInputThroughAPI4AndroidJavaLibraryErlM</module>
+        
+<!--        <module>../j2me/input/android/MotionInputAndroidxAPI21OnUpDynamicJavaLibraryErlM</module>-->
+        <module>../../../j2me/input/android/MotionInputAndroidDynamicJavaLibraryErlM</module>
+
+        <module>../../../j2me/android/AndroidAPI3AndUpJavaLibraryErlM</module>
+        <module>../../../j2me/FullScreenAndroidJavaLibraryErlM</module>
+        
+                
+        <module>../../../j2me/AndroidToJ2MELibraryErlM</module>
+                
+    </modules>
+
+</project>
+

@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary.business</groupId>
+    <artifactId>BlisketJavaLibraryPErl</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>BlisketJavaLibraryPErl</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+    
+    <modules>
+
+        <!--
+        <module>../../j2me/AllBinaryJ2MELibraryP</module>
+        -->
+        <!--
+        <module>../data/DataJavaLibraryErlM</module>
+        -->
+
+        <module>../licensing/TestServiceClientInfoJavaLibraryErlM</module>        
+
+        <module>../data/DataTableInterfacesErlM</module>
+        
+        <module>../QueueJavaLibraryErlM</module>
+        
+        <!--
+        <module>../TokenizerJavaLibraryErlM</module>
+        -->
+
+        <module>../logging/LogConfigTypeFreeblisketJavaLibraryErlM</module>
+
+        <module>../JavaUtilLibraryErlM</module>
+        <module>../NullInitInfoJavaLibraryErlM</module>        
+        <module>../InitInfoJavaLibraryErlM</module>
+        <module>../PreLoaderHttpJavaLibraryErlM</module>
+        
+        <module>../TagsBaseJavaLibraryErlM</module>
+        <module>../CustomLoaderJavaLibraryErlM</module>
+        
+        <!--
+        <module>../logic/data/file/FileJ2SEJavaLibraryErlM</module>
+        <module>../logic/data/file/FileJavaLibraryErlM</module>
+        -->
+
+        <module>../data/SQLAllBinaryJavaLibraryErlM</module>
+
+        <!--
+        <module>../licensing/FileLicenseInitInfoJavaLibraryErlM</module>
+        -->
+
+        <module>../DocumentObjectModelJavaLibraryErlM</module>
+
+        <module>../VisualStyleJavaLibraryErlM</module>
+
+        <module>../ConfigurationJavaLibraryErlM</module>
+
+        <module>../VisualTransformBaseJavaLibraryErlM</module>
+
+        <module>../CategoryBaseJavaLibraryErlM</module>
+        <module>../CategoryJavaLibraryErlM</module>
+
+        <module>../UserJavaLibraryErlM</module>
+
+        <module>../PaymentGatewayBaseJavaLibraryErlM</module>
+
+        <module>../data/vo/EntitiesBlisketVOJavaLibraryErlM</module>
+        <module>../PaymentGatewayJavaLibraryErlM</module>
+        <module>../data/vo/EntitiesOrderHistoryVOJavaLibraryErlM</module>
+        <module>../data/vo/EntityPaymentGatewayVOJavaLibraryErlM</module>
+        <module>../data/vo/EntityStoreFrontVOJavaLibraryErlM</module>
+
+        <module>../data/EntitiesBlisketBaseInterfacesJavaLibraryErlM</module>
+        <module>../data/EntitiesBlisketBaseJavaLibraryErlM</module>
+        
+        <module>../data/EntitiesAdvertisementBaseJavaLibraryErlM</module>
+        <module>../data/EntityOrderHistoryJavaLibraryErlM</module>
+        <module>../data/EntityPaymentGatewayJavaLibraryErlM</module>
+        <module>../data/EntityVisualTransformJavaLibraryErlM</module>
+        <module>../data/EntityUserJavaLibraryErlM</module>
+        <module>../data/EntityWorkflowJavaLibraryErlM</module>
+
+        <module>../SMTPConfigurationJavaLibraryErlM</module>
+        <module>../SMTPBaseJavaLibraryErlM</module>
+
+        <module>../VisualTransformJavaLibraryErlM</module>
+
+        <module>../../replace_these_stub_projects/allbinary_src/YourRuntimeEnvironmentJavaLibraryErlM</module>
+        <module>../GatewayJavaLibraryErlM</module>
+        
+        <module>../WorkflowBaseJavaLibraryErlM</module>
+        <module>../WorkflowJavaLibraryErlM</module>
+
+        <module>../IdGeneratorUsingFilesJavaLibraryErlM</module>
+        <module>../BlisketPreVOJavaLibraryErlM</module>
+
+        <!-- 
+        EntitiesOrderHistoryVOJavaLibrary
+        UserJavaLibrary
+        -->
+        
+        <module>../BlisketVOJavaLibraryErlM</module>
+
+        <module>../UserCommerceJavaLibraryErlM</module>
+
+        <module>../CustomizerValidatorsJavaLibraryErlM</module>
+
+        <!-- 
+        AllBinaryCacheForShiftOneJavaLibrary
+        AllBinaryJSECacheJavaLibrary
+        ColorJavaLibrary
+        ImageJavaLibrary
+        -->
+        
+        <module>../logic/data/file/FileMediaJ2SEJavaLibraryErlM</module>
+        <module>../BlisketBaseJavaLibraryErlM</module>
+
+        <module>../logging/LoggingGAEAllErlM</module>
+        <module>../BlisketJavaLibraryErlM</module>
+        
+    </modules>
+
+</project>
+

@@ -1,0 +1,56 @@
+% 
+% AllBinary Open License Version 1 
+% Copyright (c) 2022 AllBinary 
+%  
+% By agreeing to this license you and any business entity you represent are 
+% legally bound to the AllBinary Open License Version 1 legal agreement. 
+%  
+% You may obtain the AllBinary Open License Version 1 legal agreement from 
+% AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+%  
+% Created By: Travis Berthelot 
+%   
+% Generated Code Do Not Modify
+% package org.allbinary.media.image
+% import javax.microedition.lcdui.Image
+
+-module('ImageJ2MEScaleUtil').
+-compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
+-on_load(static_init/0).
+
+static_init() ->
+    put({?MODULE, instance}, 'ImageJ2MEScaleUtil':new()),
+    ok.
+
+init_fields(This) ->
+    ok.
+
+
+getInstance() ->
+        get({'ImageJ2MEScaleUtil', instance}).
+
+new() ->
+    This = make_ref(),
+    put({This, '$class'}, ?MODULE),
+    init(This),
+    This.
+
+init(This) ->
+    init_fields(This),
+        ok.
+
+% throws Exception
+scaleArray(This, Images, Width, Height) when (is_tuple(Images) orelse Images =:= undefined), is_integer(Width), is_integer(Height) ->
+        ScaledImages = array:new(array:size(Images), {default, undefined}),
+        put({local, index}, array:size(Images)),
+        (fun Loop() -> case (begin put({local, index}, get({local, index}) - 1), get({local, index}) end >= 0) of true ->
+            array:set(get({local, index}), (get({This, '$class'})):scale(This, array:get(get({local, index}), Images), Width, Height), ScaledImages),
+            Loop();
+        false -> ok end end)(),
+        ScaledImages.
+
+% throws Exception
+scale(This, Image, Width, Height) when is_integer(Width), is_integer(Height) ->
+        ScaledImage = (fun(Target_N66118) -> (get({Target_N66118, '$class'})):createImageWH(Target_N66118, Image, Width, Height, true) end)('ImageCopyUtil':getInstance()),
+        ScaledImage.
+

@@ -1,0 +1,62 @@
+%
+% AllBinary Open License Version 1
+% Copyright (c) 2011 AllBinary
+% 
+% By agreeing to this license you and any business entity you represent are
+% legally bound to the AllBinary Open License Version 1 legal agreement.
+% 
+% You may obtain the AllBinary Open License Version 1 legal agreement from
+% AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+% 
+% Created By: Travis Berthelot
+%  
+% Generated Code Do Not Modify
+% package org.allbinary.logic.control.contraints.display.browser
+% import org.w3c.dom.Node
+
+-module('DisplayInBrowserContraints').
+-compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
+% implements DisplayInBrowserContraintsInterface
+
+init_fields(This) ->
+    put({This, frameable}, false),
+    put({This, mountable}, false),
+    put({This, quickFrameable}, false),
+    put({This, mountedLink}, undefined),
+    ok.
+
+
+new(Node) ->
+    This = make_ref(),
+    put({This, '$class'}, ?MODULE),
+    init(This, Node),
+    This.
+
+init(This, Node) ->
+    init_fields(This),
+        ok.
+
+isMountable(This) ->
+        get({This, mountable}).
+
+setMountable(This, Mountable) when is_boolean(Mountable) ->
+        put({This, mountable}, Mountable).
+
+isFrameable(This) ->
+        get({This, frameable}).
+
+setFrameable(This, Frameable) when is_boolean(Frameable) ->
+        put({This, frameable}, Frameable).
+
+isQuickFrameable(This) ->
+        get({This, quickFrameable}).
+
+setQuickFrameable(This, QuickFrameable) when is_boolean(QuickFrameable) ->
+        put({This, quickFrameable}, QuickFrameable).
+
+getMountedLink(This) ->
+        get({This, mountedLink}).
+
+setMountedLink(This, MountedLink) when (is_list(MountedLink) orelse MountedLink =:= undefined) ->
+        put({This, mountedLink}, MountedLink).
+

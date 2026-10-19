@@ -1,0 +1,101 @@
+%
+% AllBinary Open License Version 1
+% Copyright (c) 2011 AllBinary
+% 
+% By agreeing to this license you and any business entity you represent are
+% legally bound to the AllBinary Open License Version 1 legal agreement.
+% 
+% You may obtain the AllBinary Open License Version 1 legal agreement from
+% AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+% 
+% Created By: Travis Berthelot
+%  
+% Generated Code Do Not Modify
+% package org.allbinary.logic.system.os.windows
+% import org.allbinary.logic.communication.log.LogUtil
+% import org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory
+% import org.allbinary.logic.communication.log.config.type.LogConfigTypes
+% import org.allbinary.logic.system.os.GenericOperatingSystem
+% import org.allbinary.logic.system.os.NoOperatingSystem
+% import org.allbinary.logic.system.os.OperatingSystems
+% import org.allbinary.logic.system.os.SystemProperties
+% import org.allbinary.string.CommonStrings
+
+-module('WindowsOperatingSystemFactory').
+-compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
+-on_load(static_init/0).
+
+static_init() ->
+    put({?MODULE, instance}, 'WindowsOperatingSystemFactory':new()),
+    ok.
+
+init_fields(This) ->
+    put({This, logUtil}, 'LogUtil':getInstance()),
+    ok.
+
+
+getInstance() ->
+        get({'WindowsOperatingSystemFactory', instance}).
+
+new() ->
+    This = make_ref(),
+    put({This, '$class'}, ?MODULE),
+    init(This),
+    This.
+
+init(This) ->
+    init_fields(This),
+        ok.
+
+getOperatingSystemInstance(This) ->
+        try
+            OperatingSystems = 'OperatingSystems':getInstance(),
+            OsName = (fun(Target_N66139) -> (get({Target_N66139, '$class'})):getName(Target_N66139) end)('SystemProperties':getInstance()),
+            put({local, operatingSystemInterface}, undefined),
+            case ((get({OsName, '$class'})):compareTo(OsName, get({OperatingSystems, 'WINDOWS_NT'})) =:= 0) of
+                true ->
+                put({local, operatingSystemInterface}, 'WindowsOS':new());
+                false ->
+                case ((get({OsName, '$class'})):compareTo(OsName, get({OperatingSystems, 'WINDOWS_10'})) =:= 0) of
+                true ->
+                put({local, operatingSystemInterface}, 'WindowsOS':new());
+                false ->
+                case ((get({OsName, '$class'})):compareTo(OsName, get({OperatingSystems, 'WINDOWS_11'})) =:= 0) of
+                true ->
+                put({local, operatingSystemInterface}, 'WindowsOS':new());
+                false ->
+                case ((get({OsName, '$class'})):compareTo(OsName, get({OperatingSystems, 'WINDOWS2000'})) =:= 0) of
+                true ->
+                put({local, operatingSystemInterface}, 'WindowsOS':new());
+                false ->
+                case ((get({OsName, '$class'})):compareTo(OsName, get({OperatingSystems, 'WINDOWS_XP'})) =:= 0) of
+                true ->
+                put({local, operatingSystemInterface}, 'WindowsOS':new());
+                false ->
+                case ((get({OsName, '$class'})):compareTo(OsName, get({OperatingSystems, 'WINDOWS_VISTA'})) =:= 0) of
+                true ->
+                put({local, operatingSystemInterface}, 'WindowsOS':new());
+                false ->
+                case (get({OperatingSystems, '$class'})):isUnknownSpecificOSAllowed(OperatingSystems) of
+                    true ->
+                    put({local, operatingSystemInterface}, 'WindowsOS':new());
+                    false ->
+                    erlang:error({'Exception', lists:concat(["Specific Windows OS Not Supported: ", OsName])})
+                end
+            end
+            end
+            end
+            end
+            end
+            end,
+            get({local, operatingSystemInterface})
+        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+            case (get({get({'LogConfigTypes', 'LOGGING'}), '$class'})):contains(get({'LogConfigTypes', 'LOGGING'}), get({'LogConfigTypeFactory':getInstance(), 'FACTORYERROR'})) of
+                true ->
+                CommonStrings = 'CommonStrings':getInstance(),
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({CommonStrings, 'EXCEPTION'}), This, get({CommonStrings, 'GET_INSTANCE'}), E);
+                false -> ok
+            end,
+            get({'NoOperatingSystem', 'NO_OPERATING_SYSTEM'})
+        end.
+
