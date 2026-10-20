@@ -42,7 +42,7 @@
         
         <!-- Several Move to PostPlatforms -->
         
-        <module>../../media/sound/MusicJ2MEJavaLibraryErlM</module>
+        <!--<module>../../media/sound/MusicJ2MEJavaLibraryErlM</module>-->
         <module>../../media/sound/NullMusicAndroidJavaLibraryErlM</module>
         <module>../../media/sound/MusicAndroidJavaLibraryErlM</module>
 

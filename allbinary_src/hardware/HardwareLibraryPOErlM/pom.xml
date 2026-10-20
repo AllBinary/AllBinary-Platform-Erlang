@@ -44,7 +44,7 @@
         
         <module>../PersonalComputerSystemJavaLibraryErlM</module>
         <module>../PersonalComputerOperatingSystemsJavaLibraryErlM</module>
-        <module>../PersonalComputerHardwareJavaLibraryErlM</module>
+        <!--<module>../PersonalComputerHardwareJavaLibraryErlM</module>-->
         
     </modules>
 
