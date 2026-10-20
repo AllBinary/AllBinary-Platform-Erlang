@@ -34,10 +34,10 @@ init_fields(This) ->
 new(GameKeyEventList, RemovalGameKeyEventList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameKeyEventList, RemovalGameKeyEventList),
+    '$init'(This, GameKeyEventList, RemovalGameKeyEventList),
     This.
 
-init(This, GameKeyEventList, RemovalGameKeyEventList) ->
+'$init'(This, GameKeyEventList, RemovalGameKeyEventList) ->
     init_fields(This),
         put({This, gameKeyEventList}, GameKeyEventList),
         put({This, removalGameKeyEventList}, RemovalGameKeyEventList),

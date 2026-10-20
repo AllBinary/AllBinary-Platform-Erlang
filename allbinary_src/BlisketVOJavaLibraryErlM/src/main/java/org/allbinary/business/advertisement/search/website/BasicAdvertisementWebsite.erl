@@ -25,10 +25,10 @@ init_fields(This) ->
 new(WebsiteId) when (is_list(WebsiteId) orelse WebsiteId =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, WebsiteId),
+    '$init'(This, WebsiteId),
     This.
 
-init(This, WebsiteId) when (is_list(WebsiteId) orelse WebsiteId =:= undefined) ->
+'$init'(This, WebsiteId) when (is_list(WebsiteId) orelse WebsiteId =:= undefined) ->
     init_fields(This),
         put({This, websiteId}, WebsiteId).
 

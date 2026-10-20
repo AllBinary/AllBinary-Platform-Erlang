@@ -60,11 +60,11 @@ init_fields(This) ->
 new(KeyActionScriptInputInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, KeyActionScriptInputInterface),
+    '$init'(This, KeyActionScriptInputInterface),
     This.
 
-init(This, KeyActionScriptInputInterface) ->
-    'JPanel':init(This),
+'$init'(This, KeyActionScriptInputInterface) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         (get({This, '$class'})):initComponents(This),

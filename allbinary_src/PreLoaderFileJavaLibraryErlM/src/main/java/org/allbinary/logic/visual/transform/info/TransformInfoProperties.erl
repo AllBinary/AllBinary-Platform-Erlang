@@ -29,10 +29,10 @@ init_fields(This) ->
 new(Name, Label, Description, ObjectFileName, ObjectConfigFileName, TemplateFileName) when (is_list(Name) orelse Name =:= undefined), (is_list(Label) orelse Label =:= undefined), (is_list(Description) orelse Description =:= undefined), (is_list(ObjectFileName) orelse ObjectFileName =:= undefined), (is_list(ObjectConfigFileName) orelse ObjectConfigFileName =:= undefined), (is_list(TemplateFileName) orelse TemplateFileName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Label, Description, ObjectFileName, ObjectConfigFileName, TemplateFileName),
+    '$init'(This, Name, Label, Description, ObjectFileName, ObjectConfigFileName, TemplateFileName),
     This.
 
-init(This, Name, Label, Description, ObjectFileName, ObjectConfigFileName, TemplateFileName) when (is_list(Name) orelse Name =:= undefined), (is_list(Label) orelse Label =:= undefined), (is_list(Description) orelse Description =:= undefined), (is_list(ObjectFileName) orelse ObjectFileName =:= undefined), (is_list(ObjectConfigFileName) orelse ObjectConfigFileName =:= undefined), (is_list(TemplateFileName) orelse TemplateFileName =:= undefined) ->
+'$init'(This, Name, Label, Description, ObjectFileName, ObjectConfigFileName, TemplateFileName) when (is_list(Name) orelse Name =:= undefined), (is_list(Label) orelse Label =:= undefined), (is_list(Description) orelse Description =:= undefined), (is_list(ObjectFileName) orelse ObjectFileName =:= undefined), (is_list(ObjectConfigFileName) orelse ObjectConfigFileName =:= undefined), (is_list(TemplateFileName) orelse TemplateFileName =:= undefined) ->
     init_fields(This),
         put({This, name}, Name),
         put({This, label}, Label),

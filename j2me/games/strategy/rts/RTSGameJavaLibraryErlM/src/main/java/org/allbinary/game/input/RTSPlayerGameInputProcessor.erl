@@ -27,11 +27,11 @@ init_fields(This) ->
 new(RtsPlayerGameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RtsPlayerGameInput),
+    '$init'(This, RtsPlayerGameInput),
     This.
 
-init(This, RtsPlayerGameInput) ->
-    'GameInputProcessor':init(This),
+'$init'(This, RtsPlayerGameInput) ->
+    'GameInputProcessor':'$init'(This),
     init_fields(This),
         put({This, rtsPlayerGameInput}, RtsPlayerGameInput).
 

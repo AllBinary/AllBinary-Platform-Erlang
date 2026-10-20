@@ -45,11 +45,11 @@ init_fields(This) ->
 new(Activity) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Activity),
+    '$init'(This, Activity),
     This.
 
-init(This, Activity) ->
-        'VirtualKeyboard':init(This),
+'$init'(This, Activity) ->
+        'VirtualKeyboard':'$init'(This),
         init_fields(This),
         put({This, activity}, Activity),
         put({This, showVirtualKeyboardRunnable}, 'ShowVirtualKeyboardRunnable':new(get({This, activity}))),

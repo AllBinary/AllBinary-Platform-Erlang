@@ -38,10 +38,10 @@ init_fields(This) ->
 new(StoreFrontInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreFrontInterface),
+    '$init'(This, StoreFrontInterface),
     This.
 
-init(This, StoreFrontInterface) ->
+'$init'(This, StoreFrontInterface) ->
     init_fields(This),
         put({This, subTotalMoney}, 'Money':new()),
         put({This, shippingCostMoney}, 'Money':new()),

@@ -40,22 +40,22 @@ init_fields(This) ->
 new(CategoryFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryFactoryInterface),
+    '$init'(This, CategoryFactoryInterface),
     This.
 
-init(This, CategoryFactoryInterface) ->
-        'AbSqlBean':init(This, 'InventoryDbInitInfo':new()),
+'$init'(This, CategoryFactoryInterface) ->
+        'AbSqlBean':'$init'(This, 'InventoryDbInitInfo':new()),
         init_fields(This),
         (get({This, '$class'})):setTableName(This, get({This, tableName})).
 
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbSqlBean':init(This, 'InventoryDbInitInfo':new()),
+'$init'(This) ->
+        'AbSqlBean':'$init'(This, 'InventoryDbInitInfo':new()),
         init_fields(This),
         (get({This, '$class'})):setTableName(This, get({This, tableName})).
 

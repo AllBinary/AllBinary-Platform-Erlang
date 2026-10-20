@@ -47,10 +47,10 @@ init_fields(This) ->
 new(PartInterfaceArray, DropSize, StartIndex, CountedTotalStringColor, CountedPartsBorder) when (is_tuple(PartInterfaceArray) orelse PartInterfaceArray =:= undefined), is_integer(DropSize), is_integer(StartIndex), is_integer(CountedTotalStringColor), is_integer(CountedPartsBorder) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PartInterfaceArray, DropSize, StartIndex, CountedTotalStringColor, CountedPartsBorder),
+    '$init'(This, PartInterfaceArray, DropSize, StartIndex, CountedTotalStringColor, CountedPartsBorder),
     This.
 
-init(This, PartInterfaceArray, DropSize, StartIndex, CountedTotalStringColor, CountedPartsBorder) when (is_tuple(PartInterfaceArray) orelse PartInterfaceArray =:= undefined), is_integer(DropSize), is_integer(StartIndex), is_integer(CountedTotalStringColor), is_integer(CountedPartsBorder) ->
+'$init'(This, PartInterfaceArray, DropSize, StartIndex, CountedTotalStringColor, CountedPartsBorder) when (is_tuple(PartInterfaceArray) orelse PartInterfaceArray =:= undefined), is_integer(DropSize), is_integer(StartIndex), is_integer(CountedTotalStringColor), is_integer(CountedPartsBorder) ->
     init_fields(This),
         put({This, partInterfaceArray}, PartInterfaceArray),
         put({This, startIndex}, StartIndex),

@@ -33,20 +33,20 @@ init_fields(This) ->
 new(Label, Node) when (is_list(Label) orelse Label =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, Node),
+    '$init'(This, Label, Node),
     This.
 
-init(This, Label, Node) when (is_list(Label) orelse Label =:= undefined) ->
-        'ProfileActionScriptItem':init(This, Label, Node).
+'$init'(This, Label, Node) when (is_list(Label) orelse Label =:= undefined) ->
+        'ProfileActionScriptItem':'$init'(This, Label, Node).
 
 new(Label) when (is_list(Label) orelse Label =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label),
+    '$init'(This, Label),
     This.
 
-init(This, Label) when (is_list(Label) orelse Label =:= undefined) ->
-        'ProfileActionScriptItem':init(This, Label).
+'$init'(This, Label) when (is_list(Label) orelse Label =:= undefined) ->
+        'ProfileActionScriptItem':'$init'(This, Label).
 
 actionPerformed(This, ActionEvent) ->
         'ProfileActionScriptItem':actionPerformed(This, ActionEvent),

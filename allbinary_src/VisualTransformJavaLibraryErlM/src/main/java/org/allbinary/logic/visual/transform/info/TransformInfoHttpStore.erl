@@ -38,11 +38,11 @@ init_fields(This) ->
 new(PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PropertiesHashMap, PageContext),
+    '$init'(This, PropertiesHashMap, PageContext),
     This.
 
-init(This, PropertiesHashMap, PageContext) ->
-        'TransformInfoHttp':init(This, PropertiesHashMap, PageContext, true),
+'$init'(This, PropertiesHashMap, PageContext) ->
+        'TransformInfoHttp':'$init'(This, PropertiesHashMap, PageContext, true),
         init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
             true ->
@@ -53,16 +53,16 @@ init(This, PropertiesHashMap, PageContext) ->
 new(DatabaseHashMap, PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DatabaseHashMap, PropertiesHashMap, PageContext),
+    '$init'(This, DatabaseHashMap, PropertiesHashMap, PageContext),
     This;
 new(StoreFrontInterface, PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreFrontInterface, PropertiesHashMap, PageContext),
+    '$init'(This, StoreFrontInterface, PropertiesHashMap, PageContext),
     This.
 
-init(This, DatabaseHashMap, PropertiesHashMap, PageContext) ->
-        'TransformInfoHttp':init(This, DatabaseHashMap, PropertiesHashMap, PageContext),
+'$init'(This, DatabaseHashMap, PropertiesHashMap, PageContext) ->
+        'TransformInfoHttp':'$init'(This, DatabaseHashMap, PropertiesHashMap, PageContext),
         init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
             true ->
@@ -75,8 +75,8 @@ init(This, DatabaseHashMap, PropertiesHashMap, PageContext) ->
             false -> ok
         end,
         (get({This, '$class'})):setStoreName(This, (get({DatabaseHashMap, '$class'})):get(DatabaseHashMap, get({'StoreFrontData':getInstance(), 'NAME'})));
-init(This, StoreFrontInterface, PropertiesHashMap, PageContext) ->
-        'TransformInfoHttp':init(This, PropertiesHashMap, PageContext),
+'$init'(This, StoreFrontInterface, PropertiesHashMap, PageContext) ->
+        'TransformInfoHttp':'$init'(This, PropertiesHashMap, PageContext),
         init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
             true ->

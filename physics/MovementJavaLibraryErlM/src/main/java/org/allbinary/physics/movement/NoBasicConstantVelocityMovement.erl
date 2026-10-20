@@ -29,11 +29,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'BasicConstantVelocityMovement':init(This, get({'BasicDecimal', 'ZERO_BIGDECIMAL'}), 'BasicVelocityProperties':new()).
+'$init'(This) ->
+        'BasicConstantVelocityMovement':'$init'(This, get({'BasicDecimal', 'ZERO_BIGDECIMAL'}), 'BasicVelocityProperties':new()).
 
 % throws Exception
 process(This, Layer) ->

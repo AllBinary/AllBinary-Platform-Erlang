@@ -26,11 +26,11 @@ init_fields(This) ->
 new(Before, Name, Value, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(Value) orelse Value =:= undefined), (is_list(After) orelse After =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Before, Name, Value, After),
+    '$init'(This, Before, Name, Value, After),
     This.
 
-init(This, Before, Name, Value, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(Value) orelse Value =:= undefined), (is_list(After) orelse After =:= undefined) ->
-        'HtmlLengthInput':init(This, Before, get({'HtmlInputData':getInstance(), 'PASSWORD'}), Name, Value, After),
+'$init'(This, Before, Name, Value, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(Value) orelse Value =:= undefined), (is_list(After) orelse After =:= undefined) ->
+        'HtmlLengthInput':'$init'(This, Before, get({'HtmlInputData':getInstance(), 'PASSWORD'}), Name, Value, After),
         (get({This, '$class'})):setSize(This, 32),
         (get({This, '$class'})):setMaxLength(This, 128).
 

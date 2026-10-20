@@ -33,11 +33,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbSqlBean':init(This, 'LogDbInitInfo':new()),
+'$init'(This) ->
+        'AbSqlBean':'$init'(This, 'LogDbInitInfo':new()),
         init_fields(This),
         (get({This, '$class'})):setTableName(This, get({This, tableName})).
 

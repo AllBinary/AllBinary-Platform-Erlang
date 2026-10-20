@@ -33,10 +33,10 @@ init_fields(This) ->
 new(CommandFormInputProcessor, Command) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CommandFormInputProcessor, Command),
+    '$init'(This, CommandFormInputProcessor, Command),
     This.
 
-init(This, CommandFormInputProcessor, Command) ->
+'$init'(This, CommandFormInputProcessor, Command) ->
     init_fields(This),
         put({This, commandFormInputProcessor}, CommandFormInputProcessor),
         put({This, command}, Command).

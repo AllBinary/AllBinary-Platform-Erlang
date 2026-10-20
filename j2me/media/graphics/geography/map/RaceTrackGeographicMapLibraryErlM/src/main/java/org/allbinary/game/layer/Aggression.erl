@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Ram, Projectile, Drops) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Ram, Projectile, Drops),
+    '$init'(This, Ram, Projectile, Drops),
     This.
 
-init(This, Ram, Projectile, Drops) ->
+'$init'(This, Ram, Projectile, Drops) ->
     init_fields(This),
         (get({This, '$class'})):setRam(This, Ram),
         (get({This, '$class'})):setProjectile(This, Projectile),

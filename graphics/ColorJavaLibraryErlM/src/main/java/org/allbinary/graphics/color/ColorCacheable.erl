@@ -28,10 +28,10 @@ init_fields(This) ->
 new(Key) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Key),
+    '$init'(This, Key),
     This.
 
-init(This, Key) ->
+'$init'(This, Key) ->
     init_fields(This),
         put({This, key}, Key),
         put({This, color}, 'Color':new((get({(Key), '$class'})):intValue((Key)))).

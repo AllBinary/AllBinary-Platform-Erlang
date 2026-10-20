@@ -34,15 +34,15 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
             true ->
@@ -97,7 +97,7 @@ init(This, Node) ->
             false ->
             put({This, mappedName}, (fun(Target_N68051) -> (get({Target_N68051, '$class'})):getName(Target_N68051) end)((get({This, '$class'})):getTransformInfoInterface(This)))
         end;
-init(This, TransformInfoInterface) ->
+'$init'(This, TransformInfoInterface) ->
     init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         put({This, mappedName}, (get({TransformInfoInterface, '$class'})):getName(TransformInfoInterface)).
@@ -106,19 +106,19 @@ init(This, TransformInfoInterface) ->
 new(Name, MappedName) when (is_list(Name) orelse Name =:= undefined), (is_list(MappedName) orelse MappedName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, MappedName),
+    '$init'(This, Name, MappedName),
     This;
 new(TransformInfoInterface, MappedName) when (is_list(MappedName) orelse MappedName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, MappedName),
+    '$init'(This, TransformInfoInterface, MappedName),
     This.
 
-init(This, Name, MappedName) when (is_list(Name) orelse Name =:= undefined), (is_list(MappedName) orelse MappedName =:= undefined) ->
+'$init'(This, Name, MappedName) when (is_list(Name) orelse Name =:= undefined), (is_list(MappedName) orelse MappedName =:= undefined) ->
     init_fields(This),
         put({This, transformInfoInterface}, 'TransformInfo':new(Name)),
         put({This, mappedName}, MappedName);
-init(This, TransformInfoInterface, MappedName) when (is_list(MappedName) orelse MappedName =:= undefined) ->
+'$init'(This, TransformInfoInterface, MappedName) when (is_list(MappedName) orelse MappedName =:= undefined) ->
     init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         put({This, mappedName}, MappedName).

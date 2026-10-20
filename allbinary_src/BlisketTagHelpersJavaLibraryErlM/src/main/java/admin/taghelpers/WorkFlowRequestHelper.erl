@@ -39,11 +39,11 @@ init_fields(This) ->
 new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, PageContext),
+    '$init'(This, HashMap, PageContext),
     This.
 
-init(This, HashMap, PageContext) ->
-    'ModifyTable':init(This),
+'$init'(This, HashMap, PageContext) ->
+    'ModifyTable':'$init'(This),
     init_fields(This),
         put({This, workFlowInterface}, (fun(Target_N66070) -> (get({Target_N66070, '$class'})):getInstance(Target_N66070, get({This, abeClientInformation}), HashMap, PageContext) end)('NewWorkFlowFactory':getInstance())).
 

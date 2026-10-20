@@ -49,10 +49,10 @@ getNullInstance() ->
 new(OwnerLayerInterface, CountedIndex) when is_integer(CountedIndex) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OwnerLayerInterface, CountedIndex),
+    '$init'(This, OwnerLayerInterface, CountedIndex),
     This.
 
-init(This, OwnerLayerInterface, CountedIndex) when is_integer(CountedIndex) ->
+'$init'(This, OwnerLayerInterface, CountedIndex) when is_integer(CountedIndex) ->
     init_fields(This),
         put({This, ownerLayerInterface}, OwnerLayerInterface),
         put({This, countedIndex}, CountedIndex).

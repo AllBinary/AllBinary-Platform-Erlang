@@ -32,10 +32,10 @@ init_fields(This) ->
 new(KeyAsString) when (is_list(KeyAsString) orelse KeyAsString =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, KeyAsString),
+    '$init'(This, KeyAsString),
     This.
 
-init(This, KeyAsString) when (is_list(KeyAsString) orelse KeyAsString =:= undefined) ->
+'$init'(This, KeyAsString) when (is_list(KeyAsString) orelse KeyAsString =:= undefined) ->
     init_fields(This),
         put({local, key}, get({'NullUtil':getInstance(), 'NULL_BYTE_ARRAY'})),
         try

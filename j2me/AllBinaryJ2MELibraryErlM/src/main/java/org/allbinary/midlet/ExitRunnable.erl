@@ -33,10 +33,10 @@ init_fields(This) ->
 new(Midlet, Processor, IsProgress) when is_boolean(IsProgress) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Midlet, Processor, IsProgress),
+    '$init'(This, Midlet, Processor, IsProgress),
     This.
 
-init(This, Midlet, Processor, IsProgress) when is_boolean(IsProgress) ->
+'$init'(This, Midlet, Processor, IsProgress) when is_boolean(IsProgress) ->
     init_fields(This),
         put({This, midlet}, Midlet),
         put({This, isProgress}, IsProgress),

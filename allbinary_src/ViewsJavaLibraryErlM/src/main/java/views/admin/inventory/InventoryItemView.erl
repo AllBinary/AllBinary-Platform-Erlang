@@ -66,11 +66,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'HttpStoreComponentView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'HttpStoreComponentView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, request}, (fun(Target_N66869) -> (get({Target_N66869, '$class'})):getRequest(Target_N66869) end)((get({This, '$class'})):getPageContext(This))),
         (get({This, '$class'})):getFormData(This).
@@ -78,11 +78,11 @@ init(This, TransformInfoInterface) ->
 new(TransformInfoInterface, Empty) when (is_list(Empty) orelse Empty =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, Empty),
+    '$init'(This, TransformInfoInterface, Empty),
     This.
 
-init(This, TransformInfoInterface, Empty) when (is_list(Empty) orelse Empty =:= undefined) ->
-        'HttpStoreComponentView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface, Empty) when (is_list(Empty) orelse Empty =:= undefined) ->
+        'HttpStoreComponentView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, request}, (fun(Target_N67004) -> (get({Target_N67004, '$class'})):getRequest(Target_N67004) end)((get({This, '$class'})):getPageContext(This))).
 

@@ -24,10 +24,10 @@ init_fields(This) ->
 new(Activity, RootViewId) when is_integer(RootViewId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Activity, RootViewId),
+    '$init'(This, Activity, RootViewId),
     This.
 
-init(This, Activity, RootViewId) when is_integer(RootViewId) ->
+'$init'(This, Activity, RootViewId) when is_integer(RootViewId) ->
     init_fields(This),
         put({This, activity}, Activity),
         put({This, rootViewId}, RootViewId).

@@ -26,10 +26,10 @@ init_fields(This) ->
 new(Vendor, Type) when (is_list(Vendor) orelse Vendor =:= undefined), (is_list(Type) orelse Type =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Vendor, Type),
+    '$init'(This, Vendor, Type),
     This.
 
-init(This, Vendor, Type) when (is_list(Vendor) orelse Vendor =:= undefined), (is_list(Type) orelse Type =:= undefined) ->
+'$init'(This, Vendor, Type) when (is_list(Vendor) orelse Vendor =:= undefined), (is_list(Type) orelse Type =:= undefined) ->
     init_fields(This),
         put({This, vendor}, Vendor),
         put({This, type}, Type).

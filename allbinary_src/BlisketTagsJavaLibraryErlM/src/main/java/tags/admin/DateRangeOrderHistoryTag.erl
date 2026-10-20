@@ -32,11 +32,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'StoreValidationTransformTag':init(This),
+'$init'(This) ->
+        'StoreValidationTransformTag':'$init'(This),
         init_fields(This).
 
 setStatus(This, Value) when (is_list(Value) orelse Value =:= undefined) ->

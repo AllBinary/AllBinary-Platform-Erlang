@@ -42,11 +42,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbSqlBean':init(This, 'StaticPagesDbInitInfo':new()),
+'$init'(This) ->
+        'AbSqlBean':'$init'(This, 'StaticPagesDbInitInfo':new()),
         init_fields(This),
         (get({This, '$class'})):setTableName(This, get({This, 'TABLENAME'})).
 

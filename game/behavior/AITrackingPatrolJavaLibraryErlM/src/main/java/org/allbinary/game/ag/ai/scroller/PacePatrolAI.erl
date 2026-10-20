@@ -47,11 +47,11 @@ init_fields(This) ->
 new(Hashtable, OwnerLayerInterface, GameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Hashtable, OwnerLayerInterface, GameInput),
+    '$init'(This, Hashtable, OwnerLayerInterface, GameInput),
     This.
 
-init(This, Hashtable, OwnerLayerInterface, GameInput) ->
-        'BasePatrolAI':init(This, Hashtable, OwnerLayerInterface, GameInput),
+'$init'(This, Hashtable, OwnerLayerInterface, GameInput) ->
+        'BasePatrolAI':'$init'(This, Hashtable, OwnerLayerInterface, GameInput),
         init_fields(This),
         (fun(Target_N66223) -> (get({Target_N66223, '$class'})):addListenerInterface(Target_N66223, This) end)('TrackingEventHandler':getInstance()),
         put({This, trackingList}, 'BasicArrayListD':new()).

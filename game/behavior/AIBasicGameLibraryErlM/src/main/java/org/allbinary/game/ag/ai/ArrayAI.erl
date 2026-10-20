@@ -32,11 +32,11 @@ init_fields(This) ->
 new(ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput) when (is_tuple(ArtificialIntelligenceInterface) orelse ArtificialIntelligenceInterface =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
+    '$init'(This, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
     This.
 
-init(This, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput) when (is_tuple(ArtificialIntelligenceInterface) orelse ArtificialIntelligenceInterface =:= undefined) ->
-        'BasicAI':init(This, OwnerLayerInterface, GameInput),
+'$init'(This, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput) when (is_tuple(ArtificialIntelligenceInterface) orelse ArtificialIntelligenceInterface =:= undefined) ->
+        'BasicAI':'$init'(This, OwnerLayerInterface, GameInput),
         init_fields(This),
         put({This, artificialIntelligenceInterfaceArray}, ArtificialIntelligenceInterface).
 

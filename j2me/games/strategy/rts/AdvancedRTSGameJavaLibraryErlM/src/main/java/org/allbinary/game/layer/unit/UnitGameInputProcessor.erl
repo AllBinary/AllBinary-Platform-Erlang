@@ -28,11 +28,11 @@ init_fields(This) ->
 new(UnitLayer) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UnitLayer),
+    '$init'(This, UnitLayer),
     This.
 
-init(This, UnitLayer) ->
-    'GameInputProcessor':init(This),
+'$init'(This, UnitLayer) ->
+    'GameInputProcessor':'$init'(This),
     init_fields(This),
         put({This, unitLayer}, UnitLayer).
 

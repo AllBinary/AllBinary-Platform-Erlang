@@ -50,10 +50,10 @@ init_fields(This) ->
 new(Basket) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Basket),
+    '$init'(This, Basket),
     This.
 
-init(This, Basket) ->
+'$init'(This, Basket) ->
     init_fields(This),
         put({This, basket}, Basket),
         put({This, id}, undefined),
@@ -62,10 +62,10 @@ init(This, Basket) ->
 new(StoreName, Basket, Id, ShippingType, Special, PaymentMethod) when (is_list(StoreName) orelse StoreName =:= undefined), (is_list(Id) orelse Id =:= undefined), (is_list(ShippingType) orelse ShippingType =:= undefined), (is_list(Special) orelse Special =:= undefined), (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreName, Basket, Id, ShippingType, Special, PaymentMethod),
+    '$init'(This, StoreName, Basket, Id, ShippingType, Special, PaymentMethod),
     This.
 
-init(This, StoreName, Basket, Id, ShippingType, Special, PaymentMethod) when (is_list(StoreName) orelse StoreName =:= undefined), (is_list(Id) orelse Id =:= undefined), (is_list(ShippingType) orelse ShippingType =:= undefined), (is_list(Special) orelse Special =:= undefined), (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
+'$init'(This, StoreName, Basket, Id, ShippingType, Special, PaymentMethod) when (is_list(StoreName) orelse StoreName =:= undefined), (is_list(Id) orelse Id =:= undefined), (is_list(ShippingType) orelse ShippingType =:= undefined), (is_list(Special) orelse Special =:= undefined), (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
     init_fields(This),
         put({This, storeName}, StoreName),
         put({This, basket}, Basket),

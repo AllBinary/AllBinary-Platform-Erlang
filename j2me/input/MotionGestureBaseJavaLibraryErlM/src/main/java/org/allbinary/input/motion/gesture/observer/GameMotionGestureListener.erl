@@ -39,10 +39,10 @@ init_fields(This) ->
 new(Signed) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Signed),
+    '$init'(This, Signed),
     This.
 
-init(This, Signed) ->
+'$init'(This, Signed) ->
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, signed}, Signed).

@@ -42,11 +42,11 @@ createStraightMultiProjectileWeaponPart(AnimationInterface, WeaponLayerCircularS
 new(AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, Total, WeaponProperties, ScoreableInterface, RelativeRelationship) when is_integer(Total) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, Total, WeaponProperties, ScoreableInterface, RelativeRelationship),
+    '$init'(This, AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, Total, WeaponProperties, ScoreableInterface, RelativeRelationship),
     This.
 
-init(This, AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, Total, WeaponProperties, ScoreableInterface, RelativeRelationship) when is_integer(Total) ->
-        'BasicWeaponPart':init(This, AnimationInterface, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship),
+'$init'(This, AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, Total, WeaponProperties, ScoreableInterface, RelativeRelationship) when is_integer(Total) ->
+        'BasicWeaponPart':'$init'(This, AnimationInterface, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship),
         init_fields(This),
         put({This, total}, Total),
         put({This, weaponLayerCircularStaticPool}, WeaponLayerCircularStaticPool).

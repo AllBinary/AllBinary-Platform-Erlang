@@ -144,11 +144,11 @@ init_fields(This) ->
 new(ClientInformationFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInformationFactory),
+    '$init'(This, ClientInformationFactory),
     This.
 
-init(This, ClientInformationFactory) ->
-        'ProgressMidlet':init(This, ClientInformationFactory),
+'$init'(This, ClientInformationFactory) ->
+        'ProgressMidlet':'$init'(This, ClientInformationFactory),
         init_fields(This),
         (fun(Target_N69607) -> (get({Target_N69607, '$class'})):initWithRange(Target_N69607, 16#291, 6) end)('SmallIntegerSingletonFactory':getInstance()),
         put({This, loadGameForm}, 'CommandForm':getNullCommandForm()),

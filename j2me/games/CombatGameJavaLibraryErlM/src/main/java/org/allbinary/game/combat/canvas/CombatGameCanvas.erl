@@ -46,11 +46,11 @@ init_fields(This) ->
 new(CmdListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered) when is_boolean(Buffered) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CmdListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered),
+    '$init'(This, CmdListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered),
     This.
 
-init(This, CmdListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered) when is_boolean(Buffered) ->
-        'AllBinaryGameCanvas':init(This, CmdListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered).
+'$init'(This, CmdListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered) when is_boolean(Buffered) ->
+        'AllBinaryGameCanvas':'$init'(This, CmdListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered).
 
 'CombatGameCanvas_init'(This) ->
         (fun(Target_N66382) -> (get({Target_N66382, '$class'})):init(Target_N66382, This) end)('DestroyEventCircularStaticPool':getInstance()),

@@ -25,10 +25,10 @@ init_fields(This) ->
 new(Width, Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Width, Height),
+    '$init'(This, Width, Height),
     This.
 
-init(This, Width, Height) ->
+'$init'(This, Width, Height) ->
     init_fields(This),
         (get({This, '$class'})):setWidth(This, Width),
         (get({This, '$class'})):setHeight(This, Height).

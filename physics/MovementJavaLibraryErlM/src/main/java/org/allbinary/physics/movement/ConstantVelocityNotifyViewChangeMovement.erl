@@ -35,11 +35,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'Movement':init(This),
+'$init'(This) ->
+    'Movement':'$init'(This),
     init_fields(This),
         put({This, speedBasicDecimal}, get({'BasicDecimal', 'ZERO_BIGDECIMAL'})),
         put({This, basicVelocityProperties}, 'BasicVelocityProperties':new()).

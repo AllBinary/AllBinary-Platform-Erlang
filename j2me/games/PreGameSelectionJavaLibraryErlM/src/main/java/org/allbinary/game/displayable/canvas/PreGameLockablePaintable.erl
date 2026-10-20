@@ -34,11 +34,11 @@ init_fields(This) ->
 new(PaintableForm, LockedIndex) when is_integer(LockedIndex) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PaintableForm, LockedIndex),
+    '$init'(This, PaintableForm, LockedIndex),
     This.
 
-init(This, PaintableForm, LockedIndex) when is_integer(LockedIndex) ->
-        'LockablePaintable':init(This, LockedIndex),
+'$init'(This, PaintableForm, LockedIndex) when is_integer(LockedIndex) ->
+        'LockablePaintable':'$init'(This, LockedIndex),
         init_fields(This),
         put({This, paintableForm}, PaintableForm),
         put({This, halfWidth}, ((fun(Target_N65931) -> (get({Target_N65931, '$class'})):getWidth(Target_N65931) end)((fun(Target_N65938) -> (get({Target_N65938, '$class'})):getWithKey(Target_N65938, get({'LockedResources':getInstance(), 'LOCKED_DEMO_GAME_FEATURE_RESOURCE'})) end)('GameFeatureImageCacheFactory':getInstance())) / 2)).

@@ -22,11 +22,11 @@ init_fields(This) ->
 new(Title, Items, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined) ->
-    'CustomScreen':init(This),
+'$init'(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined) ->
+    'CustomScreen':'$init'(This),
     init_fields(This),
         ok.
 

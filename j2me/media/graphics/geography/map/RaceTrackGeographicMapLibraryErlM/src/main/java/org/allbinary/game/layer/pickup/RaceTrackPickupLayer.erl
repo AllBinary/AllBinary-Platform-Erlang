@@ -42,11 +42,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'PickupLayer':init(This, get({'RaceTrackPickupLayer', 'NAME'}), get({'RemoteInfo', 'REMOTE_INFO'}), 0, get({'CountedPickedUpLayerInterfaceFactory', 'NULL_COUNTED_PICKUP_LAYER_FACTORY'}), (fun(Target_N65979) -> (get({Target_N65979, '$class'})):getInstance(Target_N65979, 0) end)('NullAnimationFactory':getFactoryInstance()), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 0, 0), 'TileLayerPositionIntoViewPosition':new()),
+'$init'(This) ->
+        'PickupLayer':'$init'(This, get({'RaceTrackPickupLayer', 'NAME'}), get({'RemoteInfo', 'REMOTE_INFO'}), 0, get({'CountedPickedUpLayerInterfaceFactory', 'NULL_COUNTED_PICKUP_LAYER_FACTORY'}), (fun(Target_N65979) -> (get({Target_N65979, '$class'})):getInstance(Target_N65979, 0) end)('NullAnimationFactory':getFactoryInstance()), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 0, 0), 'TileLayerPositionIntoViewPosition':new()),
         init_fields(This).
 
 setTiledLayer(This, TiledLayer) ->

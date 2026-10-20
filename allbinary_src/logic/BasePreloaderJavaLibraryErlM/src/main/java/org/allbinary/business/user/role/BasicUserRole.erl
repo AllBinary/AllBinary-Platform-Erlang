@@ -37,19 +37,19 @@ init_fields(This) ->
 new(ARole, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout) when (is_list(ARole) orelse ARole =:= undefined), is_integer(A_int_RoleId), is_integer(ASessionTimeout), is_integer(ASessionInactivityTimeout) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ARole, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout),
+    '$init'(This, ARole, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout),
     This.
 
-init(This, ARole, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout) when (is_list(ARole) orelse ARole =:= undefined), is_integer(A_int_RoleId), is_integer(ASessionTimeout), is_integer(ASessionInactivityTimeout) ->
-        init(This, ARole, ARole, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout).
+'$init'(This, ARole, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout) when (is_list(ARole) orelse ARole =:= undefined), is_integer(A_int_RoleId), is_integer(ASessionTimeout), is_integer(ASessionInactivityTimeout) ->
+        '$init'(This, ARole, ARole, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout).
 
 new(ARole, ADisplayValue, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout) when (is_list(ARole) orelse ARole =:= undefined), (is_list(ADisplayValue) orelse ADisplayValue =:= undefined), is_integer(A_int_RoleId), is_integer(ASessionTimeout), is_integer(ASessionInactivityTimeout) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ARole, ADisplayValue, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout),
+    '$init'(This, ARole, ADisplayValue, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout),
     This.
 
-init(This, ARole, ADisplayValue, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout) when (is_list(ARole) orelse ARole =:= undefined), (is_list(ADisplayValue) orelse ADisplayValue =:= undefined), is_integer(A_int_RoleId), is_integer(ASessionTimeout), is_integer(ASessionInactivityTimeout) ->
+'$init'(This, ARole, ADisplayValue, A_int_RoleId, ASessionTimeout, ASessionInactivityTimeout) when (is_list(ARole) orelse ARole =:= undefined), (is_list(ADisplayValue) orelse ADisplayValue =:= undefined), is_integer(A_int_RoleId), is_integer(ASessionTimeout), is_integer(ASessionInactivityTimeout) ->
     init_fields(This),
         put({This, m_int_RoleId}, A_int_RoleId),
         put({This, role}, ARole),

@@ -40,10 +40,10 @@ init_fields(This) ->
 new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, PageContext),
+    '$init'(This, HashMap, PageContext),
     This.
 
-init(This, HashMap, PageContext) ->
+'$init'(This, HashMap, PageContext) ->
     init_fields(This),
         put({This, componentInterface}, (fun(Target_N66145) -> (get({Target_N66145, '$class'})):getInstance(Target_N66145, get({This, abeClientInformation}), HashMap, PageContext) end)('TransformFactory':getInstance())).
 

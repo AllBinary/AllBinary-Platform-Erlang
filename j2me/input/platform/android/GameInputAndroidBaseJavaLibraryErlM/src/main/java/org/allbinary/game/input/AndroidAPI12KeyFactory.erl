@@ -29,11 +29,11 @@ getAPI12Instance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'AndroidAPI9KeyFactory':init(This),
+'$init'(This) ->
+    'AndroidAPI9KeyFactory':'$init'(This),
     init_fields(This),
         put({This, 'KEYCODE_BUTTON_1'}, 'AndroidGameKey':new(get({'KeyEvent', 'KEYCODE_BUTTON_1'}), "BUTTON 1")),
         put({This, 'KEYCODE_BUTTON_10'}, 'AndroidGameKey':new(get({'KeyEvent', 'KEYCODE_BUTTON_10'}), "BUTTON 10")),

@@ -25,10 +25,10 @@ init_fields(This) ->
 new(Runnable) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Runnable),
+    '$init'(This, Runnable),
     This.
 
-init(This, Runnable) ->
+'$init'(This, Runnable) ->
     init_fields(This),
         put({This, runnable}, Runnable).
 

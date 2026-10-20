@@ -34,11 +34,11 @@ init_fields(This) ->
 new(GameKeyEventList, GameCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameKeyEventList, GameCanvas),
+    '$init'(This, GameKeyEventList, GameCanvas),
     This.
 
-init(This, GameKeyEventList, GameCanvas) ->
-        'BasicMenuInputProcessor':init(This, GameKeyEventList, (-1), GameCanvas).
+'$init'(This, GameKeyEventList, GameCanvas) ->
+        'BasicMenuInputProcessor':'$init'(This, GameKeyEventList, (-1), GameCanvas).
 
 % throws Exception
 processInputList(This) ->

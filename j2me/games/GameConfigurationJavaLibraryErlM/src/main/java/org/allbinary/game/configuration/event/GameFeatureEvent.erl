@@ -28,11 +28,11 @@ init_fields(This) ->
 new(AnyType, WhatChanged) when (is_list(WhatChanged) orelse WhatChanged =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType, WhatChanged),
+    '$init'(This, AnyType, WhatChanged),
     This.
 
-init(This, AnyType, WhatChanged) when (is_list(WhatChanged) orelse WhatChanged =:= undefined) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType, WhatChanged) when (is_list(WhatChanged) orelse WhatChanged =:= undefined) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This),
         put({This, whatChanged}, WhatChanged).
 

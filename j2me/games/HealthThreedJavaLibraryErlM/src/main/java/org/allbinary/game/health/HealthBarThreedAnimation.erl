@@ -41,11 +41,11 @@ init_fields(This) ->
 new(LayerInterface, Location) when is_integer(Location) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerInterface, Location),
+    '$init'(This, LayerInterface, Location),
     This.
 
-init(This, LayerInterface, Location) when is_integer(Location) ->
-        'HealthBarAnimation':init(This, LayerInterface, Location),
+'$init'(This, LayerInterface, Location) when is_integer(Location) ->
+        'HealthBarAnimation':'$init'(This, LayerInterface, Location),
         init_fields(This),
         put({This, basicColor}, get({get({This, basicColorFactory}), 'GREEN'})),
         put({This, colorP}, (get({get({This, basicColor}), '$class'})):intValue(get({This, basicColor}))),

@@ -31,11 +31,11 @@ init_fields(This) ->
 new(SpeedBasicDecimal) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SpeedBasicDecimal),
+    '$init'(This, SpeedBasicDecimal),
     This.
 
-init(This, SpeedBasicDecimal) ->
-        'BasicConstantVelocityMovement':init(This, SpeedBasicDecimal, 'VelocityProperties':new(trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)), trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)))),
+'$init'(This, SpeedBasicDecimal) ->
+        'BasicConstantVelocityMovement':'$init'(This, SpeedBasicDecimal, 'VelocityProperties':new(trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)), trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)))),
         init_fields(This).
 
 % throws Exception

@@ -29,11 +29,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'PersistentInputMapping':init(This, get({'GamePersistanceStrings':getInstance(), 'DEFAULT_INPUT_MAPPING_RECORD_ID'})),
+'$init'(This) ->
+        'PersistentInputMapping':'$init'(This, get({'GamePersistanceStrings':getInstance(), 'DEFAULT_INPUT_MAPPING_RECORD_ID'})),
         InputToGameKeyMapping = (get({This, '$class'})):getInputMapping(This),
         PcKeyFactory = 'PCKeyFactory':getInstance(),
         GameKeyFactory = 'GameKeyFactory':getInstance(),

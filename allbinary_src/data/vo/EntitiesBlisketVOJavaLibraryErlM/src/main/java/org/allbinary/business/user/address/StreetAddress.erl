@@ -46,35 +46,35 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         ok.
 
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(StreetAddress) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StreetAddress),
+    '$init'(This, StreetAddress),
     This;
 new(Request) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Request),
+    '$init'(This, Request),
     This;
 new(Address) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Address),
+    '$init'(This, Address),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         NameNode = 'DomSearchHelper':getNode(get({'StreetAddressData', 'NAME'}), (get({Node, '$class'})):getChildNodes(Node)),
         put({This, name}, 'DomNodeHelper':getTextNodeValue(NameNode)),
@@ -89,7 +89,7 @@ init(This, Node) ->
         CountryNode = 'DomSearchHelper':getNode(get({'StreetAddressData', 'COUNTRY'}), (get({Node, '$class'})):getChildNodes(Node)),
         put({This, country}, 'DomNodeHelper':getTextNodeValue(CountryNode)),
         (get({This, '$class'})):log(This);
-init(This, StreetAddress) ->
+'$init'(This, StreetAddress) ->
     init_fields(This),
         put({This, id}, (get({StreetAddress, '$class'})):getId(StreetAddress)),
         put({This, name}, (get({StreetAddress, '$class'})):getName(StreetAddress)),
@@ -100,7 +100,7 @@ init(This, StreetAddress) ->
         put({This, country}, (get({StreetAddress, '$class'})):getCountry(StreetAddress)),
         put({This, isDefault}, (get({StreetAddress, '$class'})):isDefault(StreetAddress)),
         (get({This, '$class'})):log(This);
-init(This, Request) ->
+'$init'(This, Request) ->
     init_fields(This),
         (get({This, '$class'})):setId(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'ID'}))),
         (get({This, '$class'})):setName(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'NAME'}))),
@@ -110,7 +110,7 @@ init(This, Request) ->
         (get({This, '$class'})):setCode(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'CODE'}))),
         (get({This, '$class'})):setCountry(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'COUNTRY'}))),
         (get({This, '$class'})):log(This);
-init(This, Address) ->
+'$init'(This, Address) ->
     init_fields(This),
         put({This, id}, (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'ID'}))),
         put({This, name}, (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'NAME'}))),
@@ -133,10 +133,10 @@ init(This, Address) ->
 new(Name, Street, City, State, Code, Country) when (is_list(Name) orelse Name =:= undefined), (is_list(Street) orelse Street =:= undefined), (is_list(City) orelse City =:= undefined), (is_list(State) orelse State =:= undefined), (is_list(Code) orelse Code =:= undefined), (is_list(Country) orelse Country =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Street, City, State, Code, Country),
+    '$init'(This, Name, Street, City, State, Code, Country),
     This.
 
-init(This, Name, Street, City, State, Code, Country) when (is_list(Name) orelse Name =:= undefined), (is_list(Street) orelse Street =:= undefined), (is_list(City) orelse City =:= undefined), (is_list(State) orelse State =:= undefined), (is_list(Code) orelse Code =:= undefined), (is_list(Country) orelse Country =:= undefined) ->
+'$init'(This, Name, Street, City, State, Code, Country) when (is_list(Name) orelse Name =:= undefined), (is_list(Street) orelse Street =:= undefined), (is_list(City) orelse City =:= undefined), (is_list(State) orelse State =:= undefined), (is_list(Code) orelse Code =:= undefined), (is_list(Country) orelse Country =:= undefined) ->
     init_fields(This),
         put({This, name}, Name),
         put({This, street}, Street),

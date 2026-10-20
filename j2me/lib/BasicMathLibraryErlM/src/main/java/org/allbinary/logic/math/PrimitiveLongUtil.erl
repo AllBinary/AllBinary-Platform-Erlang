@@ -44,10 +44,10 @@ createPowerOfTen(PowerOfTen) when is_integer(PowerOfTen) ->
 new(PowerOfTen, Unused) when is_integer(PowerOfTen) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PowerOfTen, Unused),
+    '$init'(This, PowerOfTen, Unused),
     This.
 
-init(This, PowerOfTen, Unused) when is_integer(PowerOfTen) ->
+'$init'(This, PowerOfTen, Unused) when is_integer(PowerOfTen) ->
     init_fields(This),
         put({This, maxDigits}, (fun(Target_N66299) -> (get({Target_N66299, '$class'})):getTotalDigits(Target_N66299, PowerOfTen) end)('MathUtil':getInstance())),
         put({This, powerOfTen}, PowerOfTen),

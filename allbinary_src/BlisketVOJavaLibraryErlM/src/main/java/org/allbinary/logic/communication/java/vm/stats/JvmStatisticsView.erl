@@ -32,11 +32,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'JvmStatisticsMapping':init(This).
+'$init'(This) ->
+        'JvmStatisticsMapping':'$init'(This).
 
 % throws Exception
 toXmlNode(This, Document) ->

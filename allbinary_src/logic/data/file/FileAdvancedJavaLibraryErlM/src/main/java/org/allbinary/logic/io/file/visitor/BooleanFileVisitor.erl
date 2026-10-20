@@ -31,10 +31,10 @@ init_fields(This) ->
 new(FilterStringBasicArrayList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FilterStringBasicArrayList),
+    '$init'(This, FilterStringBasicArrayList),
     This.
 
-init(This, FilterStringBasicArrayList) ->
+'$init'(This, FilterStringBasicArrayList) ->
     init_fields(This),
         (get({This, '$class'})):setFilterStringBasicArrayList(This, FilterStringBasicArrayList),
         'PreLogUtil':put(lists:concat(["Filter BasicArrayList: ", (fun(Target_N65905) -> (get({Target_N65905, '$class'})):toString(Target_N65905) end)((get({This, '$class'})):getFilterStringBasicArrayList(This))]), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})).

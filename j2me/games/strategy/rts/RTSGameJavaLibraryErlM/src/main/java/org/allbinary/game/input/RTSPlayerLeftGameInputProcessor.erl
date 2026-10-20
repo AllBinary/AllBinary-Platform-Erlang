@@ -28,11 +28,11 @@ init_fields(This) ->
 new(RtsPlayerGameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RtsPlayerGameInput),
+    '$init'(This, RtsPlayerGameInput),
     This.
 
-init(This, RtsPlayerGameInput) ->
-        'RTSPlayerGameInputProcessor':init(This, RtsPlayerGameInput).
+'$init'(This, RtsPlayerGameInput) ->
+        'RTSPlayerGameInputProcessor':'$init'(This, RtsPlayerGameInput).
 
 % throws Exception
 processEvent(This, AllbinaryLayerManager, GameKeyEvent) ->

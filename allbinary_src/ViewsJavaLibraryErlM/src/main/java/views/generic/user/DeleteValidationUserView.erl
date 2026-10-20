@@ -40,11 +40,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'UserView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'UserView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         HttpServletRequest = (fun(Target_N66063) -> (get({Target_N66063, '$class'})):getRequest(Target_N66063) end)((get({This, '$class'})):getPageContext(This)),
         HashMap = (fun(Target_N66118) -> (get({Target_N66118, '$class'})):toHashMap(Target_N66118) end)('RequestParams':new(HttpServletRequest)),

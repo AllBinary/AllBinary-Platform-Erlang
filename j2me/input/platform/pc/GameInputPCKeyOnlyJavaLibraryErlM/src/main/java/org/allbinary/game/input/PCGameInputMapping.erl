@@ -29,11 +29,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'PersistentInputMapping':init(This, get({'GamePersistanceStrings':getInstance(), 'SAVED_INPUT_CONFIGURATION_RECORD_ID'})).
+'$init'(This) ->
+        'PersistentInputMapping':'$init'(This, get({'GamePersistanceStrings':getInstance(), 'SAVED_INPUT_CONFIGURATION_RECORD_ID'})).
 
 % throws Exception
 init(This, AbeClientInformation) ->

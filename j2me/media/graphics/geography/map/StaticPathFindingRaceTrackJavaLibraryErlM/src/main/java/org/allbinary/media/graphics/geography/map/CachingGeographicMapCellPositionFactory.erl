@@ -28,11 +28,11 @@ init_fields(This) ->
 new(GeographicMapInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GeographicMapInterface),
+    '$init'(This, GeographicMapInterface),
     This.
 
-init(This, GeographicMapInterface) ->
-        'BasicGeographicMapCellPositionFactory':init(This, GeographicMapInterface).
+'$init'(This, GeographicMapInterface) ->
+        'BasicGeographicMapCellPositionFactory':'$init'(This, GeographicMapInterface).
 
 % throws Exception
 createInstance(This, I_column, I_row, Width, Height) when is_integer(I_column), is_integer(I_row), is_integer(Width), is_integer(Height) ->

@@ -40,11 +40,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbSqlBean':init(This, 'UserDbInitInfo':new()),
+'$init'(This) ->
+        'AbSqlBean':'$init'(This, 'UserDbInitInfo':new()),
         init_fields(This),
         put({This, tableData}, (fun(Target_N66076) -> (get({Target_N66076, '$class'})):toString(Target_N66076) end)((fun(Target_N66083) -> (get({Target_N66083, '$class'})):append(Target_N66083, get({get({This, sqlStrings}), 'END'})) end)((fun(Target_N66090) -> (get({Target_N66090, '$class'})):append(Target_N66090, get({This, 'NAME'})) end)((fun(Target_N66097) -> (get({Target_N66097, '$class'})):append(Target_N66097, get({get({This, sqlStrings}), 'PRIMARY_KEY'})) end)((fun(Target_N66109) -> (get({Target_N66109, '$class'})):append(Target_N66109, get({get({This, sqlTypeStrings}), 'MAX_BIG_INT_UNSIGNED_NOT_NULL'})) end)((fun(Target_N66116) -> (get({Target_N66116, '$class'})):append(Target_N66116, get({This, 'VALUE'})) end)((fun(Target_N66123) -> (get({Target_N66123, '$class'})):append(Target_N66123, get({get({This, sqlTypeStrings}), 'MAX_CHAR_COLUMN_NOT_NULL'})) end)((fun(Target_N66130) -> (get({Target_N66130, '$class'})):append(Target_N66130, get({This, 'NAME'})) end)((fun(Target_N66137) -> (get({Target_N66137, '$class'})):append(Target_N66137, get({get({This, sqlStrings}), 'START'})) end)((fun(Target_N66144) -> (get({Target_N66144, '$class'})):append(Target_N66144, get({This, tableName})) end)((fun(Target_N66151) -> (get({Target_N66151, '$class'})):append(Target_N66151, get({get({This, sqlStrings}), 'CREATE_TABLE'})) end)('StringMaker':new())))))))))))),
         'AbSqlBean':setTableName(This, get({This, tableName})).

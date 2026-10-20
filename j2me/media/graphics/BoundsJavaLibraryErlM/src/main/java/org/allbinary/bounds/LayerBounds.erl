@@ -33,10 +33,10 @@ init_fields(This) ->
 new(Rectangle) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Rectangle),
+    '$init'(This, Rectangle),
     This.
 
-init(This, Rectangle) ->
+'$init'(This, Rectangle) ->
     init_fields(This),
         put({This, rectangle}, Rectangle).
 

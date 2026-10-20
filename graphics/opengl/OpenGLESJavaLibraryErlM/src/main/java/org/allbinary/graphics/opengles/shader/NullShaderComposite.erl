@@ -40,10 +40,10 @@ getInstance() ->
 new(RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor, DisableProgramShaderOpenGLProcessor) when (is_list(RequiresOpenGLVersion) orelse RequiresOpenGLVersion =:= undefined), (is_tuple(ShaderArray) orelse ShaderArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor, DisableProgramShaderOpenGLProcessor),
+    '$init'(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor, DisableProgramShaderOpenGLProcessor),
     This.
 
-init(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor, DisableProgramShaderOpenGLProcessor) when (is_list(RequiresOpenGLVersion) orelse RequiresOpenGLVersion =:= undefined), (is_tuple(ShaderArray) orelse ShaderArray =:= undefined) ->
-        'ShaderComposite':init(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor, DisableProgramShaderOpenGLProcessor),
+'$init'(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor, DisableProgramShaderOpenGLProcessor) when (is_list(RequiresOpenGLVersion) orelse RequiresOpenGLVersion =:= undefined), (is_tuple(ShaderArray) orelse ShaderArray =:= undefined) ->
+        'ShaderComposite':'$init'(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor, DisableProgramShaderOpenGLProcessor),
         put({This, useProgramShaderOpenGLProcessor}, 'NullOpenGLProcessorFactory':getInstance()).
 

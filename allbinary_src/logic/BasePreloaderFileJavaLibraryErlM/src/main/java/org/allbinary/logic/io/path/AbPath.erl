@@ -51,10 +51,10 @@ createAbPath() ->
 new(APath, Name) when (is_list(APath) orelse APath =:= undefined), (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, APath, Name),
+    '$init'(This, APath, Name),
     This.
 
-init(This, APath, Name) when (is_list(APath) orelse APath =:= undefined), (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, APath, Name) when (is_list(APath) orelse APath =:= undefined), (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         StringValidationUtil = 'StringValidationUtil':getInstance(),
         case (not (get({StringValidationUtil, '$class'})):isEmpty(StringValidationUtil, APath)) of

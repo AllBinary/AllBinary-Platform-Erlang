@@ -44,11 +44,11 @@ init_fields(This) ->
 new(PrependString, Max, Location, Direction, BufferZone, BasicColor) when (is_list(PrependString) orelse PrependString =:= undefined), is_integer(Max), is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PrependString, Max, Location, Direction, BufferZone, BasicColor),
+    '$init'(This, PrependString, Max, Location, Direction, BufferZone, BasicColor),
     This.
 
-init(This, PrependString, Max, Location, Direction, BufferZone, BasicColor) when (is_list(PrependString) orelse PrependString =:= undefined), is_integer(Max), is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
-        'BasicHud':init(This, Location, Direction, BufferZone, BasicColor),
+'$init'(This, PrependString, Max, Location, Direction, BufferZone, BasicColor) when (is_list(PrependString) orelse PrependString =:= undefined), is_integer(Max), is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
+        'BasicHud':'$init'(This, Location, Direction, BufferZone, BasicColor),
         init_fields(This),
         put({This, prependString}, PrependString),
         put({This, 'PREPEND_STRING'}, (get({PrependString, '$class'})):toCharArray(PrependString)),

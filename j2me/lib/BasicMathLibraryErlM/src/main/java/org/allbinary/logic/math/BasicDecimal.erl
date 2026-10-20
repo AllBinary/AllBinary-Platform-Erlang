@@ -35,10 +35,10 @@ createBigDecimal(BigDecimal) ->
 new(Units) when is_integer(Units) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Units),
+    '$init'(This, Units),
     This.
 
-init(This, Units) when is_integer(Units) ->
+'$init'(This, Units) when is_integer(Units) ->
     init_fields(This),
         put({This, units}, Units),
         (get({This, '$class'})):updateScaled(This).

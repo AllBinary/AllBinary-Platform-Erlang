@@ -37,15 +37,15 @@ init_fields(This) ->
 new(AbeClientInformation, File) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, File),
+    '$init'(This, AbeClientInformation, File),
     This;
 new(AbeClientInformation, Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, Document),
+    '$init'(This, AbeClientInformation, Document),
     This.
 
-init(This, AbeClientInformation, File) ->
+'$init'(This, AbeClientInformation, File) ->
     init_fields(This),
         (get({This, '$class'})):setHashMap(This, 'HashMap':new()),
         Bytes = array:new(100000, {default, 0}),
@@ -65,7 +65,7 @@ init(This, AbeClientInformation, File) ->
             end, lists:seq(0, (get({NameNodeList, '$class'})):getLength(NameNodeList) - 1));
             false -> ok
         end;
-init(This, AbeClientInformation, Document) ->
+'$init'(This, AbeClientInformation, Document) ->
     init_fields(This),
         (get({This, '$class'})):setHashMap(This, 'HashMap':new()),
         NameNodeList = (get({Document, '$class'})):getElementsByTagName(Document, get({'InputAutomationModuleData', 'NAME'})),
@@ -79,10 +79,10 @@ init(This, AbeClientInformation, Document) ->
 new(InputAutomationModuleConfigurationList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputAutomationModuleConfigurationList),
+    '$init'(This, InputAutomationModuleConfigurationList),
     This.
 
-init(This, InputAutomationModuleConfigurationList) ->
+'$init'(This, InputAutomationModuleConfigurationList) ->
     init_fields(This),
         (get({This, '$class'})):setHashMap(This, 'HashMap':new()),
         Size = (get({InputAutomationModuleConfigurationList, '$class'})):size(InputAutomationModuleConfigurationList),
@@ -95,10 +95,10 @@ init(This, InputAutomationModuleConfigurationList) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({This, '$class'})):setHashMap(This, 'HashMap':new()).
 

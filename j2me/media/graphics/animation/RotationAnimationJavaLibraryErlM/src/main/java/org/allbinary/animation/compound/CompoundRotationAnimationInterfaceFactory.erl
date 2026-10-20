@@ -31,11 +31,11 @@ init_fields(This) ->
 new(BasicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory) when (is_tuple(BasicAnimationInterfaceFactoryInterfaceArray) orelse BasicAnimationInterfaceFactoryInterfaceArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory),
+    '$init'(This, BasicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory),
     This.
 
-init(This, BasicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory) when (is_tuple(BasicAnimationInterfaceFactoryInterfaceArray) orelse BasicAnimationInterfaceFactoryInterfaceArray =:= undefined) ->
-        'CompoundAnimationInterfaceFactory':init(This, BasicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory),
+'$init'(This, BasicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory) when (is_tuple(BasicAnimationInterfaceFactoryInterfaceArray) orelse BasicAnimationInterfaceFactoryInterfaceArray =:= undefined) ->
+        'CompoundAnimationInterfaceFactory':'$init'(This, BasicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory),
         case (AnimationBehaviorFactory =:= 'AnimationBehaviorFactory':getInstance()) of
             true ->
             'ForcedLogUtil':log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", This);

@@ -32,11 +32,11 @@ init_fields(This) ->
 new(Title, Items, FormPaintableFactory, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, Items, FormPaintableFactory, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Title, Items, FormPaintableFactory, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Title, Items, FormPaintableFactory, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined) ->
-        'ScrollCurrentSelectionForm':init(This, Title, Items, FormPaintableFactory, 0, 3, false, BackgroundBasicColor, ForegroundBasicColor).
+'$init'(This, Title, Items, FormPaintableFactory, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined) ->
+        'ScrollCurrentSelectionForm':'$init'(This, Title, Items, FormPaintableFactory, 0, 3, false, BackgroundBasicColor, ForegroundBasicColor).
 
 % throws Exception
 init(This, Rectangle) ->

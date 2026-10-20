@@ -34,10 +34,10 @@ init_fields(This) ->
 new(Point, TypesAllowedList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Point, TypesAllowedList),
+    '$init'(This, Point, TypesAllowedList),
     This.
 
-init(This, Point, TypesAllowedList) ->
+'$init'(This, Point, TypesAllowedList) ->
     init_fields(This),
         put({This, x}, (get({Point, '$class'})):getX(Point)),
         put({This, y}, (get({Point, '$class'})):getY(Point)),

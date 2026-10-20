@@ -36,11 +36,11 @@ init_fields(This) ->
 new(Image, AnimationBehaviorFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, AnimationBehaviorFactory),
+    '$init'(This, Image, AnimationBehaviorFactory),
     This.
 
-init(This, Image, AnimationBehaviorFactory) ->
-        'BaseImageAnimationFactory':init(This, Image, 'PrimitiveIntUtil':getArrayInstance(), 0, 0, 0, 0, AnimationBehaviorFactory),
+'$init'(This, Image, AnimationBehaviorFactory) ->
+        'BaseImageAnimationFactory':'$init'(This, Image, 'PrimitiveIntUtil':getArrayInstance(), 0, 0, 0, 0, AnimationBehaviorFactory),
         init_fields(This),
         case (get({This, lastImage}) =/= get({'NullImage', 'NULL_IMAGE'})) of
             true ->

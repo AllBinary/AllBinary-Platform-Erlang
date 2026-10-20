@@ -82,11 +82,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'JFrame':init(This),
+'$init'(This) ->
+    'JFrame':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):initComponents(This),
         CommonPhoneStrings = 'CommonPhoneStrings':getInstance(),

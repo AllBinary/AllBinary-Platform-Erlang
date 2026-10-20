@@ -52,11 +52,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'BaseGameInputMotionEventProcessor':init(This),
+'$init'(This) ->
+    'BaseGameInputMotionEventProcessor':'$init'(This),
     init_fields(This),
         Size = get({'GameInputMotionInfoAPI5':getInstance(), 'MAX_POINTERS'}),
         put({This, motionRecognizerArray}, array:new(Size, {default, undefined})),

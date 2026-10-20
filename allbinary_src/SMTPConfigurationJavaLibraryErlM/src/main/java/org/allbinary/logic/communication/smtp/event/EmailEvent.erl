@@ -32,11 +32,11 @@ init_fields(This) ->
 new(EmailEventHandler, UserEmailEventNameData, EmailInfo, Attempts) when is_integer(Attempts) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, EmailEventHandler, UserEmailEventNameData, EmailInfo, Attempts),
+    '$init'(This, EmailEventHandler, UserEmailEventNameData, EmailInfo, Attempts),
     This.
 
-init(This, EmailEventHandler, UserEmailEventNameData, EmailInfo, Attempts) when is_integer(Attempts) ->
-        'EventObject':init(This, EmailEventHandler),
+'$init'(This, EmailEventHandler, UserEmailEventNameData, EmailInfo, Attempts) when is_integer(Attempts) ->
+        'EventObject':'$init'(This, EmailEventHandler),
         init_fields(This),
         put({This, userEmailEventNameData}, UserEmailEventNameData),
         put({This, emailInfo}, EmailInfo).

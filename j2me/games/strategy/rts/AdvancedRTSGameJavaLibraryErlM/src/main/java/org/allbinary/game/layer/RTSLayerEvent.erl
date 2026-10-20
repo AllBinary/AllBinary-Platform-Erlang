@@ -28,11 +28,11 @@ init_fields(This) ->
 new(RtsLayer) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RtsLayer),
+    '$init'(This, RtsLayer),
     This.
 
-init(This, RtsLayer) ->
-        'AllBinaryEventObject':init(This, RtsLayer),
+'$init'(This, RtsLayer) ->
+        'AllBinaryEventObject':'$init'(This, RtsLayer),
         init_fields(This).
 
 toString(This) ->

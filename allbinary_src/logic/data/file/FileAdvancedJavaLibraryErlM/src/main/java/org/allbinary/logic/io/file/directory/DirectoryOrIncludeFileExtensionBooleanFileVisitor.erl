@@ -30,22 +30,22 @@ init_fields(This) ->
 new(FilterStringBasicArrayList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FilterStringBasicArrayList),
+    '$init'(This, FilterStringBasicArrayList),
     This.
 
-init(This, FilterStringBasicArrayList) ->
-        'IncludeFileExtensionsBooleanFileVisitor':init(This, FilterStringBasicArrayList),
+'$init'(This, FilterStringBasicArrayList) ->
+        'IncludeFileExtensionsBooleanFileVisitor':'$init'(This, FilterStringBasicArrayList),
         init_fields(This),
         put({This, includesString}, undefined).
 
 new(FilterStringBasicArrayList, IncludesString) when (is_list(IncludesString) orelse IncludesString =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FilterStringBasicArrayList, IncludesString),
+    '$init'(This, FilterStringBasicArrayList, IncludesString),
     This.
 
-init(This, FilterStringBasicArrayList, IncludesString) when (is_list(IncludesString) orelse IncludesString =:= undefined) ->
-        'IncludeFileExtensionsBooleanFileVisitor':init(This, FilterStringBasicArrayList),
+'$init'(This, FilterStringBasicArrayList, IncludesString) when (is_list(IncludesString) orelse IncludesString =:= undefined) ->
+        'IncludeFileExtensionsBooleanFileVisitor':'$init'(This, FilterStringBasicArrayList),
         init_fields(This),
         put({This, includesString}, IncludesString).
 

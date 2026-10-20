@@ -31,11 +31,11 @@ init_fields(This) ->
 new(NumberOfEnemiesLeft, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput) when is_integer(NumberOfEnemiesLeft), (is_tuple(ArtificialIntelligenceInterface) orelse ArtificialIntelligenceInterface =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, NumberOfEnemiesLeft, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
+    '$init'(This, NumberOfEnemiesLeft, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
     This.
 
-init(This, NumberOfEnemiesLeft, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput) when is_integer(NumberOfEnemiesLeft), (is_tuple(ArtificialIntelligenceInterface) orelse ArtificialIntelligenceInterface =:= undefined) ->
-        'SequenceAI':init(This, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
+'$init'(This, NumberOfEnemiesLeft, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput) when is_integer(NumberOfEnemiesLeft), (is_tuple(ArtificialIntelligenceInterface) orelse ArtificialIntelligenceInterface =:= undefined) ->
+        'SequenceAI':'$init'(This, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
         init_fields(This),
         put({This, numberOfLayersLeft}, NumberOfEnemiesLeft).
 

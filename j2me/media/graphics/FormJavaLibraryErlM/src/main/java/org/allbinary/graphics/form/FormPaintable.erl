@@ -29,11 +29,11 @@ init_fields(This) ->
 new(Form) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Form),
+    '$init'(This, Form),
     This.
 
-init(This, Form) ->
-    'Paintable':init(This),
+'$init'(This, Form) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, form}, Form).
 

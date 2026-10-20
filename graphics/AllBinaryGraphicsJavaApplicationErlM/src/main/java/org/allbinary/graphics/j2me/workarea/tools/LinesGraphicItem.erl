@@ -67,10 +67,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, points}, 'Points':new()),
         try
@@ -83,10 +83,10 @@ init(This) ->
 new(LinesNode) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LinesNode),
+    '$init'(This, LinesNode),
     This.
 
-init(This, LinesNode) ->
+'$init'(This, LinesNode) ->
     init_fields(This),
         put({This, points}, 'Points':new()),
         (get({This, '$class'})):init(This),

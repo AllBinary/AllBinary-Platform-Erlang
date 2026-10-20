@@ -33,11 +33,11 @@ init_fields(This) ->
 new(FileItemFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FileItemFactory),
+    '$init'(This, FileItemFactory),
     This.
 
-init(This, FileItemFactory) ->
-        'FileUpload':init(This, FileItemFactory).
+'$init'(This, FileItemFactory) ->
+        'FileUpload':'$init'(This, FileItemFactory).
 
 % throws FileUploadException, IOException
 getItemIterator(This, Request) ->

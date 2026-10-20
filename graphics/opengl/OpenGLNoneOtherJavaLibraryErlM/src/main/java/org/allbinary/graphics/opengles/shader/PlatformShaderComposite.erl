@@ -28,9 +28,9 @@ init_fields(This) ->
 new(RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor) when (is_list(RequiresOpenGLVersion) orelse RequiresOpenGLVersion =:= undefined), (is_tuple(ShaderArray) orelse ShaderArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor),
+    '$init'(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor),
     This.
 
-init(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor) when (is_list(RequiresOpenGLVersion) orelse RequiresOpenGLVersion =:= undefined), (is_tuple(ShaderArray) orelse ShaderArray =:= undefined) ->
-        'ShaderComposite':init(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor, 'NullOpenGLProcessorFactory':getInstance()).
+'$init'(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor) when (is_list(RequiresOpenGLVersion) orelse RequiresOpenGLVersion =:= undefined), (is_tuple(ShaderArray) orelse ShaderArray =:= undefined) ->
+        'ShaderComposite':'$init'(This, RequiresOpenGLVersion, ShaderArray, CompositeShaderUpdater, ShaderInitializer, ModelViewProjection, ColorOpenGLProcessor, VertexOpenGLProcessor, 'NullOpenGLProcessorFactory':getInstance()).
 

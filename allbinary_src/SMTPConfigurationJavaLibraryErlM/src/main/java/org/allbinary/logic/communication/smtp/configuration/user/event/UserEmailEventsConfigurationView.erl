@@ -38,15 +38,15 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(UserEmailEventsConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UserEmailEventsConfigurationInterface),
+    '$init'(This, UserEmailEventsConfigurationInterface),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         put({This, userEmailEventsConfigurationInterface}, 'UserEmailEventsConfiguration':new()),
         ChildNodeList = (get({Node, '$class'})):getChildNodes(Node),
@@ -57,7 +57,7 @@ init(This, Node) ->
             UserEmailEventConfigurationView = 'UserEmailEventConfigurationView':new(UserEmailConfigurationNode),
             (get({get({This, userEmailEventsConfigurationInterface}), '$class'})):addUserEmailEventConfiguration(get({This, userEmailEventsConfigurationInterface}), (get({UserEmailEventConfigurationView, '$class'})):getUserEmailEventConfigurationInterface(UserEmailEventConfigurationView))
         end, lists:seq(0, Size - 1));
-init(This, UserEmailEventsConfigurationInterface) ->
+'$init'(This, UserEmailEventsConfigurationInterface) ->
     init_fields(This),
         put({This, userEmailEventsConfigurationInterface}, UserEmailEventsConfigurationInterface).
 

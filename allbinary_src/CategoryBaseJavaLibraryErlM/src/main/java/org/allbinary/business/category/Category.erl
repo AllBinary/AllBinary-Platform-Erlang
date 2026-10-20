@@ -53,10 +53,10 @@ init_fields(This) ->
 new(CategoryPropertiesFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryPropertiesFactoryInterface),
+    '$init'(This, CategoryPropertiesFactoryInterface),
     This.
 
-init(This, CategoryPropertiesFactoryInterface) ->
+'$init'(This, CategoryPropertiesFactoryInterface) ->
     init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'CATEGORY'})) of
             true ->
@@ -70,10 +70,10 @@ init(This, CategoryPropertiesFactoryInterface) ->
 new(CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryPropertiesFactoryInterface, Level),
+    '$init'(This, CategoryPropertiesFactoryInterface, Level),
     This.
 
-init(This, CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
+'$init'(This, CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
     init_fields(This),
         put({This, categoryPropertiesInterface}, (get({CategoryPropertiesFactoryInterface, '$class'})):getInstance(CategoryPropertiesFactoryInterface)),
         put({This, categoryHierarchyInterface}, 'CategoryHierarchy':new(This, This, Level)),
@@ -82,10 +82,10 @@ init(This, CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
 new(RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
+    '$init'(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
     This.
 
-init(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface) ->
+'$init'(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface) ->
     init_fields(This),
         put({This, categoryPropertiesInterface}, (get({CategoryPropertiesFactoryInterface, '$class'})):getInstance(CategoryPropertiesFactoryInterface)),
         put({This, categoryHierarchyInterface}, 'CategoryHierarchy':new(RootCategoryInterface, ParentCategoryInterface)),

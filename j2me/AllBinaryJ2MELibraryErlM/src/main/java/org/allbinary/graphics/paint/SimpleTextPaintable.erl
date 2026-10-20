@@ -43,11 +43,11 @@ init_fields(This) ->
 new(Text, BasicColor) when (is_list(Text) orelse Text =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Text, BasicColor),
+    '$init'(This, Text, BasicColor),
     This.
 
-init(This, Text, BasicColor) when (is_list(Text) orelse Text =:= undefined) ->
-    'Paintable':init(This),
+'$init'(This, Text, BasicColor) when (is_list(Text) orelse Text =:= undefined) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, text}, Text),
         put({This, basicColor}, BasicColor).

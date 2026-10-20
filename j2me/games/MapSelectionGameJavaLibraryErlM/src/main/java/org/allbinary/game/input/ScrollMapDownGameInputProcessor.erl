@@ -28,11 +28,11 @@ init_fields(This) ->
 new(ScrollMapPlayerGameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ScrollMapPlayerGameInput),
+    '$init'(This, ScrollMapPlayerGameInput),
     This.
 
-init(This, ScrollMapPlayerGameInput) ->
-        'ScrollMapGameInputProcessor':init(This, ScrollMapPlayerGameInput).
+'$init'(This, ScrollMapPlayerGameInput) ->
+        'ScrollMapGameInputProcessor':'$init'(This, ScrollMapPlayerGameInput).
 
 % throws Exception
 processEvent(This, AllbinaryLayerManager, GameKeyEvent) ->

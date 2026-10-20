@@ -30,16 +30,16 @@ init_fields(This) ->
 new(Msg, ClassName, Method) when (is_list(Msg) orelse Msg =:= undefined), (is_list(ClassName) orelse ClassName =:= undefined), (is_list(Method) orelse Method =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Msg, ClassName, Method),
+    '$init'(This, Msg, ClassName, Method),
     This;
 new(Msg, Obj, Method) when (is_list(Msg) orelse Msg =:= undefined), (is_list(Method) orelse Method =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Msg, Obj, Method),
+    '$init'(This, Msg, Obj, Method),
     This.
 
-init(This, Msg, ClassName, Method) when (is_list(Msg) orelse Msg =:= undefined), (is_list(ClassName) orelse ClassName =:= undefined), (is_list(Method) orelse Method =:= undefined) ->
-        'Exception':init(This, Msg),
+'$init'(This, Msg, ClassName, Method) when (is_list(Msg) orelse Msg =:= undefined), (is_list(ClassName) orelse ClassName =:= undefined), (is_list(Method) orelse Method =:= undefined) ->
+        'Exception':'$init'(This, Msg),
         init_fields(This),
         try
             (get({get({This, guiLog}), '$class'})):showDialog(get({This, guiLog}), Msg),
@@ -47,8 +47,8 @@ init(This, Msg, ClassName, Method) when (is_list(Msg) orelse Msg =:= undefined),
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
             ok
         end;
-init(This, Msg, Obj, Method) when (is_list(Msg) orelse Msg =:= undefined), (is_list(Method) orelse Method =:= undefined) ->
-        'Exception':init(This, Msg),
+'$init'(This, Msg, Obj, Method) when (is_list(Msg) orelse Msg =:= undefined), (is_list(Method) orelse Method =:= undefined) ->
+        'Exception':'$init'(This, Msg),
         init_fields(This),
         try
             (get({get({This, guiLog}), '$class'})):showDialog(get({This, guiLog}), Msg),

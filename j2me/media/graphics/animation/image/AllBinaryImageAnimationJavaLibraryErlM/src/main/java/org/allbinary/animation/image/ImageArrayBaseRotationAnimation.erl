@@ -43,11 +43,11 @@ init_fields(This) ->
 new(OriginalImageArray, AngleInfo, AnimationBehavior) when (is_tuple(OriginalImageArray) orelse OriginalImageArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OriginalImageArray, AngleInfo, AnimationBehavior),
+    '$init'(This, OriginalImageArray, AngleInfo, AnimationBehavior),
     This.
 
-init(This, OriginalImageArray, AngleInfo, AnimationBehavior) when (is_tuple(OriginalImageArray) orelse OriginalImageArray =:= undefined) ->
-        'RotationAnimation':init(This, AngleInfo, 'CircularIndexUtil':createInstance((360 / (fun(Target_N66130) -> (get({Target_N66130, '$class'})):getAngleIncrement(Target_N66130) end)((get({AngleInfo, '$class'})):getAngleIncrementInfo(AngleInfo)))), AnimationBehavior),
+'$init'(This, OriginalImageArray, AngleInfo, AnimationBehavior) when (is_tuple(OriginalImageArray) orelse OriginalImageArray =:= undefined) ->
+        'RotationAnimation':'$init'(This, AngleInfo, 'CircularIndexUtil':createInstance((360 / (fun(Target_N66130) -> (get({Target_N66130, '$class'})):getAngleIncrement(Target_N66130) end)((get({AngleInfo, '$class'})):getAngleIncrementInfo(AngleInfo)))), AnimationBehavior),
         init_fields(This),
         put({This, originalImageArray}, OriginalImageArray),
         (get({This, '$class'})):setImageArray(This, (get({get({This, imageModifierUtil}), '$class'})):getImageArray(get({This, imageModifierUtil}), OriginalImageArray)),

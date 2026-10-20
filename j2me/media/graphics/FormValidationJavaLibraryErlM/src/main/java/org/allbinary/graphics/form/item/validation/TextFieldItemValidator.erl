@@ -36,11 +36,11 @@ init_fields(This) ->
 new(TextFieldItem, Min, Max, AllowOnEmpty) when is_integer(Min), is_integer(Max), is_boolean(AllowOnEmpty) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TextFieldItem, Min, Max, AllowOnEmpty),
+    '$init'(This, TextFieldItem, Min, Max, AllowOnEmpty),
     This.
 
-init(This, TextFieldItem, Min, Max, AllowOnEmpty) when is_integer(Min), is_integer(Max), is_boolean(AllowOnEmpty) ->
-    'ValidatorBase':init(This),
+'$init'(This, TextFieldItem, Min, Max, AllowOnEmpty) when is_integer(Min), is_integer(Max), is_boolean(AllowOnEmpty) ->
+    'ValidatorBase':'$init'(This),
     init_fields(This),
         put({This, textFieldItem}, TextFieldItem),
         put({This, min}, Min),

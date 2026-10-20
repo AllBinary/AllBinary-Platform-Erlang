@@ -34,10 +34,10 @@ init_fields(This) ->
 new(ItemInterface, Vector) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ItemInterface, Vector),
+    '$init'(This, ItemInterface, Vector),
     This.
 
-init(This, ItemInterface, Vector) ->
+'$init'(This, ItemInterface, Vector) ->
     init_fields(This),
         put({This, itemInterface}, ItemInterface),
         put({This, vector}, Vector).

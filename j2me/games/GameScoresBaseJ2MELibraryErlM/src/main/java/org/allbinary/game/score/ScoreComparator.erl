@@ -33,10 +33,10 @@ init_fields(This) ->
 new(IsHighestBest) when is_boolean(IsHighestBest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, IsHighestBest),
+    '$init'(This, IsHighestBest),
     This.
 
-init(This, IsHighestBest) when is_boolean(IsHighestBest) ->
+'$init'(This, IsHighestBest) when is_boolean(IsHighestBest) ->
     init_fields(This),
         put({This, isHighestBest}, IsHighestBest).
 

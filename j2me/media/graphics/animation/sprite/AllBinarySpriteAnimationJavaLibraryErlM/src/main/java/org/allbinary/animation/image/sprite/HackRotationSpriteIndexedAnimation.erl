@@ -36,11 +36,11 @@ init_fields(This) ->
 new(Sprite, Image, AngleInfo, AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Sprite, Image, AngleInfo, AnimationBehavior),
+    '$init'(This, Sprite, Image, AngleInfo, AnimationBehavior),
     This.
 
-init(This, Sprite, Image, AngleInfo, AnimationBehavior) ->
-        'RotationAnimation':init(This, AngleInfo, 'CircularIndexUtil':createInstance((360 / (fun(Target_N65924) -> (get({Target_N65924, '$class'})):getAngleIncrement(Target_N65924) end)((get({AngleInfo, '$class'})):getAngleIncrementInfo(AngleInfo)))), AnimationBehavior),
+'$init'(This, Sprite, Image, AngleInfo, AnimationBehavior) ->
+        'RotationAnimation':'$init'(This, AngleInfo, 'CircularIndexUtil':createInstance((360 / (fun(Target_N65924) -> (get({Target_N65924, '$class'})):getAngleIncrement(Target_N65924) end)((get({AngleInfo, '$class'})):getAngleIncrementInfo(AngleInfo)))), AnimationBehavior),
         init_fields(This),
         put({This, sprite}, Sprite),
         put({This, image}, Image).

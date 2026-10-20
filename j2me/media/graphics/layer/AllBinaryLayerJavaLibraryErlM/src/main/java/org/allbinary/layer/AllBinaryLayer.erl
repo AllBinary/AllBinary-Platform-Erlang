@@ -53,11 +53,11 @@ init_fields(This) ->
 new(Name, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Rectangle, ViewPosition),
+    '$init'(This, Name, Rectangle, ViewPosition),
     This.
 
-init(This, Name, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined) ->
-        'Layer':init(This, (get({Rectangle, '$class'})):getWidth(Rectangle), (get({Rectangle, '$class'})):getHeight(Rectangle)),
+'$init'(This, Name, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined) ->
+        'Layer':'$init'(This, (get({Rectangle, '$class'})):getWidth(Rectangle), (get({Rectangle, '$class'})):getHeight(Rectangle)),
         init_fields(This),
         put({local, localName}, undefined),
         case (Name =:= undefined) of

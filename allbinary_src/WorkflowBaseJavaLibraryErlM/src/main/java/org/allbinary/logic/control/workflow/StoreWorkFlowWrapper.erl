@@ -30,11 +30,11 @@ init_fields(This) ->
 new(AnyType) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType),
+    '$init'(This, AnyType),
     This.
 
-init(This, AnyType) ->
-        'WorkFlowWrapper':init(This, AnyType),
+'$init'(This, AnyType) ->
+        'WorkFlowWrapper':'$init'(This, AnyType),
         init_fields(This).
 
 % throws Exception

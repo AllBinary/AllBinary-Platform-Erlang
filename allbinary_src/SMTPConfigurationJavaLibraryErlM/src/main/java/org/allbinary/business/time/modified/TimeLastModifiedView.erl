@@ -31,18 +31,18 @@ init_fields(This) ->
 new(TimeLastModified) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TimeLastModified),
+    '$init'(This, TimeLastModified),
     This;
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, TimeLastModified) ->
+'$init'(This, TimeLastModified) ->
     init_fields(This),
         (get({This, '$class'})):setTimeLastModified(This, TimeLastModified);
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         (get({This, '$class'})):setTimeLastModified(This, 'TimeLastModified':new('DomNodeHelper':getTextNodeValue(Node))).
 

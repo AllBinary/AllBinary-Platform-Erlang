@@ -38,10 +38,10 @@ init_fields(This) ->
 new(Id, CellWidth, CellHeight, MiniCellWidth, MiniCellHeight, CellTypeIdToGeographicMapCellTypeArray, MapArray) when is_integer(CellWidth), is_integer(CellHeight), is_integer(MiniCellWidth), is_integer(MiniCellHeight), (is_tuple(CellTypeIdToGeographicMapCellTypeArray) orelse CellTypeIdToGeographicMapCellTypeArray =:= undefined), (is_tuple(MapArray) orelse MapArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Id, CellWidth, CellHeight, MiniCellWidth, MiniCellHeight, CellTypeIdToGeographicMapCellTypeArray, MapArray),
+    '$init'(This, Id, CellWidth, CellHeight, MiniCellWidth, MiniCellHeight, CellTypeIdToGeographicMapCellTypeArray, MapArray),
     This.
 
-init(This, Id, CellWidth, CellHeight, MiniCellWidth, MiniCellHeight, CellTypeIdToGeographicMapCellTypeArray, MapArray) when is_integer(CellWidth), is_integer(CellHeight), is_integer(MiniCellWidth), is_integer(MiniCellHeight), (is_tuple(CellTypeIdToGeographicMapCellTypeArray) orelse CellTypeIdToGeographicMapCellTypeArray =:= undefined), (is_tuple(MapArray) orelse MapArray =:= undefined) ->
+'$init'(This, Id, CellWidth, CellHeight, MiniCellWidth, MiniCellHeight, CellTypeIdToGeographicMapCellTypeArray, MapArray) when is_integer(CellWidth), is_integer(CellHeight), is_integer(MiniCellWidth), is_integer(MiniCellHeight), (is_tuple(CellTypeIdToGeographicMapCellTypeArray) orelse CellTypeIdToGeographicMapCellTypeArray =:= undefined), (is_tuple(MapArray) orelse MapArray =:= undefined) ->
     init_fields(This),
         put({This, id}, Id),
         put({This, cellWidth}, CellWidth),

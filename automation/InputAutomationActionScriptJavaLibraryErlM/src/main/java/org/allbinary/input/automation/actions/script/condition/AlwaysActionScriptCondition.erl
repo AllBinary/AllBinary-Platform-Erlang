@@ -44,11 +44,11 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
-        'BasicProfileActionScriptCondition':init(This, get({'AlwaysActionScriptCondition', 'NAME'}), Node),
+'$init'(This, Node) ->
+        'BasicProfileActionScriptCondition':'$init'(This, get({'AlwaysActionScriptCondition', 'NAME'}), Node),
         init_fields(This),
         ActionNode = 'DomSearchHelper':getNode(get({'AlwaysActionScriptConditionData', 'NAME'}), (get({Node, '$class'})):getChildNodes(Node)),
         case (ActionNode =/= undefined) of
@@ -72,11 +72,11 @@ init(This, Node) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'BasicProfileActionScriptCondition':init(This, get({'AlwaysActionScriptCondition', 'NAME'})),
+'$init'(This) ->
+        'BasicProfileActionScriptCondition':'$init'(This, get({'AlwaysActionScriptCondition', 'NAME'})),
         init_fields(This),
         (get({This, '$class'})):init(This).
 

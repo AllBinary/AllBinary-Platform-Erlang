@@ -33,21 +33,21 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'CssElementView':init(This),
+'$init'(This) ->
+        'CssElementView':'$init'(This),
         init_fields(This).
 
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
-        'CssElementView':init(This, Node),
+'$init'(This, Node) ->
+        'CssElementView':'$init'(This, Node),
         init_fields(This).
 
 isValid(This) ->

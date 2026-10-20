@@ -32,11 +32,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'JDialog':init(This),
+'$init'(This) ->
+        'JDialog':'$init'(This),
         init_fields(This),
         (get({This, '$class'})):initComponents(This),
         (fun(Target_N65804) -> (get({Target_N65804, '$class'})):setMultiSelectionEnabled(Target_N65804, true) end)((get({This, '$class'})):getJFileChooser1(This)).
@@ -44,11 +44,11 @@ init(This) ->
 new(Parent, Modal) when is_boolean(Modal) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Parent, Modal),
+    '$init'(This, Parent, Modal),
     This.
 
-init(This, Parent, Modal) when is_boolean(Modal) ->
-        'JDialog':init(This, Parent, Modal),
+'$init'(This, Parent, Modal) when is_boolean(Modal) ->
+        'JDialog':'$init'(This, Parent, Modal),
         init_fields(This),
         (get({This, '$class'})):initComponents(This),
         (fun(Target_N65899) -> (get({Target_N65899, '$class'})):setMultiSelectionEnabled(Target_N65899, true) end)((get({This, '$class'})):getJFileChooser1(This)).

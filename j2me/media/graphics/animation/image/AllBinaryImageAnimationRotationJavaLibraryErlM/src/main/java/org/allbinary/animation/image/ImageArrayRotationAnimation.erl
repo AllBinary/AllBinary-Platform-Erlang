@@ -35,11 +35,11 @@ createAnimation(AnyType, AnimationBehavior) ->
 new(ImageArray, AngleInfo, TotalAngle, AnimationBehavior) when (is_tuple(ImageArray) orelse ImageArray =:= undefined), is_integer(TotalAngle) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageArray, AngleInfo, TotalAngle, AnimationBehavior),
+    '$init'(This, ImageArray, AngleInfo, TotalAngle, AnimationBehavior),
     This.
 
-init(This, ImageArray, AngleInfo, TotalAngle, AnimationBehavior) when (is_tuple(ImageArray) orelse ImageArray =:= undefined), is_integer(TotalAngle) ->
-        'ImageArrayBaseRotationAnimation':init(This, ImageArray, AngleInfo, AnimationBehavior),
+'$init'(This, ImageArray, AngleInfo, TotalAngle, AnimationBehavior) when (is_tuple(ImageArray) orelse ImageArray =:= undefined), is_integer(TotalAngle) ->
+        'ImageArrayBaseRotationAnimation':'$init'(This, ImageArray, AngleInfo, AnimationBehavior),
         init_fields(This),
         (get({This, '$class'})):init(This, ImageArray, AngleInfo, TotalAngle).
 

@@ -29,10 +29,10 @@ init_fields(This) ->
 new(Point, Width, Height) when is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Point, Width, Height),
+    '$init'(This, Point, Width, Height),
     This.
 
-init(This, Point, Width, Height) when is_integer(Width), is_integer(Height) ->
+'$init'(This, Point, Width, Height) when is_integer(Width), is_integer(Height) ->
     init_fields(This),
         put({This, point}, Point),
         put({This, width}, Width),

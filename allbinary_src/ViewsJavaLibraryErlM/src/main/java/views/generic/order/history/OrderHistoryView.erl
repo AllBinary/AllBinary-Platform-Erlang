@@ -49,11 +49,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'HttpStoreComponentView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'HttpStoreComponentView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, request}, (fun(Target_N66395) -> (get({Target_N66395, '$class'})):getRequest(Target_N66395) end)((get({This, '$class'})):getPageContext(This))),
         put({This, preprocessing}, (get({get({This, request}), '$class'})):getParameter(get({This, request}), get({'OrderHistoryData', 'PREPROCESSINGNAME'}))),

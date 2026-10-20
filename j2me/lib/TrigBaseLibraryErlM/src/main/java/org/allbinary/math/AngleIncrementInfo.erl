@@ -40,10 +40,10 @@ init_fields(This) ->
 new(AngleIncrement) when is_integer(AngleIncrement) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AngleIncrement),
+    '$init'(This, AngleIncrement),
     This.
 
-init(This, AngleIncrement) when is_integer(AngleIncrement) ->
+'$init'(This, AngleIncrement) when is_integer(AngleIncrement) ->
     init_fields(This),
         put({This, angleIncrement}, AngleIncrement),
         AngleFactory = 'AngleFactory':getInstance(),

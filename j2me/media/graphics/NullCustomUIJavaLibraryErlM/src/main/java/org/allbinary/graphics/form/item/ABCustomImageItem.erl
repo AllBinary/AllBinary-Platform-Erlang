@@ -18,11 +18,11 @@ init_fields(This) ->
 new(Label, Image, Layout, AltText, BasicColor, YOffset) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined), is_integer(YOffset) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, Image, Layout, AltText, BasicColor, YOffset),
+    '$init'(This, Label, Image, Layout, AltText, BasicColor, YOffset),
     This.
 
-init(This, Label, Image, Layout, AltText, BasicColor, YOffset) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined), is_integer(YOffset) ->
-        'ABCustomItem':init(This, Label, BasicColor, BasicColor),
+'$init'(This, Label, Image, Layout, AltText, BasicColor, YOffset) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined), is_integer(YOffset) ->
+        'ABCustomItem':'$init'(This, Label, BasicColor, BasicColor),
         init_fields(This).
 
 getImage(This) ->

@@ -38,11 +38,11 @@ init_fields(This) ->
 new(Image, BasicColorArray, Width, Height, AnimationBehaviorFactory) when (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined), is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, BasicColorArray, Width, Height, AnimationBehaviorFactory),
+    '$init'(This, Image, BasicColorArray, Width, Height, AnimationBehaviorFactory),
     This.
 
-init(This, Image, BasicColorArray, Width, Height, AnimationBehaviorFactory) when (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined), is_integer(Width), is_integer(Height) ->
-        'BaseImageAnimationFactory':init(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, 0, 0, AnimationBehaviorFactory),
+'$init'(This, Image, BasicColorArray, Width, Height, AnimationBehaviorFactory) when (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined), is_integer(Width), is_integer(Height) ->
+        'BaseImageAnimationFactory':'$init'(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, 0, 0, AnimationBehaviorFactory),
         init_fields(This),
         put({This, basicColorArray}, BasicColorArray).
 

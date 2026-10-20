@@ -42,11 +42,11 @@ init_fields(This) ->
 new(ClientInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInfo),
+    '$init'(This, ClientInfo),
     This.
 
-init(This, ClientInfo) ->
-        'XmlRpcAbeClient':init(This, ClientInfo, "LicServ.getLicense"),
+'$init'(This, ClientInfo) ->
+        'XmlRpcAbeClient':'$init'(This, ClientInfo, "LicServ.getLicense"),
         init_fields(This).
 
 % throws Exception

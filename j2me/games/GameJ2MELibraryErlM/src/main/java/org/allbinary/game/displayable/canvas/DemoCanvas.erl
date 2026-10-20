@@ -176,11 +176,11 @@ init_fields(This) ->
 new(AbeClientInformation, CommandListener, HighScoresFactoryInterface, Paintable, OverlayPaintable, GameInitializationInterfaceFactoryInterface, IsContinue) when is_boolean(IsContinue) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, CommandListener, HighScoresFactoryInterface, Paintable, OverlayPaintable, GameInitializationInterfaceFactoryInterface, IsContinue),
+    '$init'(This, AbeClientInformation, CommandListener, HighScoresFactoryInterface, Paintable, OverlayPaintable, GameInitializationInterfaceFactoryInterface, IsContinue),
     This.
 
-init(This, AbeClientInformation, CommandListener, HighScoresFactoryInterface, Paintable, OverlayPaintable, GameInitializationInterfaceFactoryInterface, IsContinue) when is_boolean(IsContinue) ->
-        'RunnableCanvas':init(This, CommandListener, get({'CurrentDisplayableFactory':getInstance(), 'DEFAULT_CHILD_NAME_LIST'}), true),
+'$init'(This, AbeClientInformation, CommandListener, HighScoresFactoryInterface, Paintable, OverlayPaintable, GameInitializationInterfaceFactoryInterface, IsContinue) when is_boolean(IsContinue) ->
+        'RunnableCanvas':'$init'(This, CommandListener, get({'CurrentDisplayableFactory':getInstance(), 'DEFAULT_CHILD_NAME_LIST'}), true),
         init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation),
         (get({This, '$class'})):setWait(This, get({'NullWaitGameRunnable':getInstance(), 'WAIT'})),

@@ -28,18 +28,18 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'CssPropertyView':init(This, get({'FontFamilyData':getInstance(), 'VALUE'})).
+'$init'(This) ->
+        'CssPropertyView':'$init'(This, get({'FontFamilyData':getInstance(), 'VALUE'})).
 
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
-        'CssPropertyView':init(This, Node).
+'$init'(This, Node) ->
+        'CssPropertyView':'$init'(This, Node).
 

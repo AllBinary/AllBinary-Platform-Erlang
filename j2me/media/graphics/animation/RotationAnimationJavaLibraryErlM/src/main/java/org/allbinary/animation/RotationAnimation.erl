@@ -38,11 +38,11 @@ init_fields(This) ->
 new(AngleInfo, CircularIndexUtil, AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AngleInfo, CircularIndexUtil, AnimationBehavior),
+    '$init'(This, AngleInfo, CircularIndexUtil, AnimationBehavior),
     This.
 
-init(This, AngleInfo, CircularIndexUtil, AnimationBehavior) ->
-        'IndexedAnimation':init(This, AnimationBehavior),
+'$init'(This, AngleInfo, CircularIndexUtil, AnimationBehavior) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior),
         init_fields(This),
         put({This, angleInfo}, AngleInfo),
         put({This, circularIndexUtil}, CircularIndexUtil).

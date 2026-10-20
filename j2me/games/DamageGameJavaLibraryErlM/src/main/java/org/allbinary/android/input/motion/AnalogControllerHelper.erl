@@ -31,10 +31,10 @@ init_fields(This) ->
 new(ReduceTimeFactor) when is_integer(ReduceTimeFactor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ReduceTimeFactor),
+    '$init'(This, ReduceTimeFactor),
     This.
 
-init(This, ReduceTimeFactor) when is_integer(ReduceTimeFactor) ->
+'$init'(This, ReduceTimeFactor) when is_integer(ReduceTimeFactor) ->
     init_fields(This),
         put({This, reduceTimeFactor}, ReduceTimeFactor).
 

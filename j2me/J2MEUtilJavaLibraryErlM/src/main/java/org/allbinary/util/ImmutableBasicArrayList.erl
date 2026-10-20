@@ -28,11 +28,11 @@ init_fields(This) ->
 new(Name, Size) when (is_list(Name) orelse Name =:= undefined), is_integer(Size) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Size),
+    '$init'(This, Name, Size),
     This.
 
-init(This, Name, Size) when (is_list(Name) orelse Name =:= undefined), is_integer(Size) ->
-        'BasicArrayListS':init(This, Size),
+'$init'(This, Name, Size) when (is_list(Name) orelse Name =:= undefined), is_integer(Size) ->
+        'BasicArrayListS':'$init'(This, Size),
         init_fields(This),
         put({This, name}, Name).
 

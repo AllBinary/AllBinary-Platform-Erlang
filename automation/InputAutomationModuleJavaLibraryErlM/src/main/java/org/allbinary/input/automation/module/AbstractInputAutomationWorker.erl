@@ -41,10 +41,10 @@ init_fields(This) ->
 new(InputAutomationActionInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputAutomationActionInterface),
+    '$init'(This, InputAutomationActionInterface),
     This.
 
-init(This, InputAutomationActionInterface) ->
+'$init'(This, InputAutomationActionInterface) ->
     init_fields(This),
         ok.
 

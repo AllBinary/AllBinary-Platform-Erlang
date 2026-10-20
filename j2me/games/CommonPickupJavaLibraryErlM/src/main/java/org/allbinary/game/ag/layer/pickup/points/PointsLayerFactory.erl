@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Points) when is_integer(Points) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Points),
+    '$init'(This, Points),
     This.
 
-init(This, Points) when is_integer(Points) ->
+'$init'(This, Points) when is_integer(Points) ->
     init_fields(This),
         put({This, points}, Points).
 

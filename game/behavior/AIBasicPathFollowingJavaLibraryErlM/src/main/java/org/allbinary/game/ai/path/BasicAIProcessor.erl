@@ -38,10 +38,10 @@ init_fields(This) ->
 new(Name, GeographicMapCellHistory, GeographicMapCellPathHistoryInfo, ChosenPathList, AngleInfo, Seed) when (is_list(Name) orelse Name =:= undefined), is_integer(Seed) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, GeographicMapCellHistory, GeographicMapCellPathHistoryInfo, ChosenPathList, AngleInfo, Seed),
+    '$init'(This, Name, GeographicMapCellHistory, GeographicMapCellPathHistoryInfo, ChosenPathList, AngleInfo, Seed),
     This.
 
-init(This, Name, GeographicMapCellHistory, GeographicMapCellPathHistoryInfo, ChosenPathList, AngleInfo, Seed) when (is_list(Name) orelse Name =:= undefined), is_integer(Seed) ->
+'$init'(This, Name, GeographicMapCellHistory, GeographicMapCellPathHistoryInfo, ChosenPathList, AngleInfo, Seed) when (is_list(Name) orelse Name =:= undefined), is_integer(Seed) ->
     init_fields(This),
         put({This, name}, Name),
         put({This, geographicMapCellHistory}, GeographicMapCellHistory),

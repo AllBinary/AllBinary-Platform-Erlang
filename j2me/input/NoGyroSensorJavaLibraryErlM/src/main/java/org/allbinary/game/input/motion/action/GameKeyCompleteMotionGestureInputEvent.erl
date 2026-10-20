@@ -35,11 +35,11 @@ init_fields(This) ->
 new(Name, MotionGestureInput, InputToGameKeyMapping) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, MotionGestureInput, InputToGameKeyMapping),
+    '$init'(This, Name, MotionGestureInput, InputToGameKeyMapping),
     This.
 
-init(This, Name, MotionGestureInput, InputToGameKeyMapping) when (is_list(Name) orelse Name =:= undefined) ->
-        'CompleteMotionGestureInputEvent':init(This, Name, MotionGestureInput),
+'$init'(This, Name, MotionGestureInput, InputToGameKeyMapping) when (is_list(Name) orelse Name =:= undefined) ->
+        'CompleteMotionGestureInputEvent':'$init'(This, Name, MotionGestureInput),
         init_fields(This).
 
 getSourceId(This) ->

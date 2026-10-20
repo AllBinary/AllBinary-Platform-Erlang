@@ -41,11 +41,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'BasicLayerProcessor':init(This),
+'$init'(This) ->
+    'BasicLayerProcessor':'$init'(This),
     init_fields(This),
         ok.
 

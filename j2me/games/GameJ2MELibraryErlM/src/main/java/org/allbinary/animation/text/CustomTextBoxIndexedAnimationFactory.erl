@@ -38,10 +38,10 @@ init_fields(This) ->
 new(FontSize, MaxLength) when is_integer(FontSize), is_integer(MaxLength) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FontSize, MaxLength),
+    '$init'(This, FontSize, MaxLength),
     This.
 
-init(This, FontSize, MaxLength) when is_integer(FontSize), is_integer(MaxLength) ->
+'$init'(This, FontSize, MaxLength) when is_integer(FontSize), is_integer(MaxLength) ->
     init_fields(This),
         put({This, scaleProperties}, 'ScaleProperties':new()),
         put({get({This, scaleProperties}), scaleHeight}, FontSize),

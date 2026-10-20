@@ -247,11 +247,11 @@ init_fields(This) ->
 new(CommandListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered) when is_boolean(Buffered) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CommandListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered),
+    '$init'(This, CommandListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered),
     This.
 
-init(This, CommandListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered) when is_boolean(Buffered) ->
-        'RunnableCanvas':init(This, CommandListener, get({'CanvasStrings':getInstance(), 'EMPTY_CHILD_NAME_LIST'}), true),
+'$init'(This, CommandListener, GameLayerManager, HighScoresFactoryInterface, GameInitializationInterfaceFactoryInterface, Buffered) when is_boolean(Buffered) ->
+        'RunnableCanvas':'$init'(This, CommandListener, get({'CanvasStrings':getInstance(), 'EMPTY_CHILD_NAME_LIST'}), true),
         init_fields(This),
         put({This, highScoresHelper}, (get({HighScoresFactoryInterface, '$class'})):createHighScoresHelper(HighScoresFactoryInterface)),
         put({This, gameInitializationInterfaceFactoryInterface}, GameInitializationInterfaceFactoryInterface),

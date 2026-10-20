@@ -53,11 +53,11 @@ init_fields(This) ->
 new(Label, Img, Layout, AltText, BasicColor, RtsInterface) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, Img, Layout, AltText, BasicColor, RtsInterface),
+    '$init'(This, Label, Img, Layout, AltText, BasicColor, RtsInterface),
     This.
 
-init(This, Label, Img, Layout, AltText, BasicColor, RtsInterface) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
-        'ABCustomImageItem':init(This, Label, Img, Layout, AltText, BasicColor, 0),
+'$init'(This, Label, Img, Layout, AltText, BasicColor, RtsInterface) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
+        'ABCustomImageItem':'$init'(This, Label, Img, Layout, AltText, BasicColor, 0),
         init_fields(This),
         put({This, rtsInterface}, RtsInterface),
         (get({This, '$class'})):update(This).

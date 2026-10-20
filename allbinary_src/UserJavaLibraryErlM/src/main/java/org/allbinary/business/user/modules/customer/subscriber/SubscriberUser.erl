@@ -31,22 +31,22 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'User':init(This),
+'$init'(This) ->
+        'User':'$init'(This),
         init_fields(This),
         put({This, subscription}, 'Subscription':new()).
 
 new(UserHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UserHashMap),
+    '$init'(This, UserHashMap),
     This.
 
-init(This, UserHashMap) ->
-        'User':init(This, UserHashMap),
+'$init'(This, UserHashMap) ->
+        'User':'$init'(This, UserHashMap),
         init_fields(This),
         put({This, subscription}, 'Subscription':new()).
 

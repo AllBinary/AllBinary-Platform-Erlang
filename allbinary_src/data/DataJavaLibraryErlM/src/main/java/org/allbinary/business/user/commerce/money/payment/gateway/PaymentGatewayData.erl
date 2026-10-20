@@ -60,10 +60,10 @@ init_fields(This) ->
 new(Value) when (is_list(Value) orelse Value =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Value),
+    '$init'(This, Value),
     This.
 
-init(This, Value) when (is_list(Value) orelse Value =:= undefined) ->
+'$init'(This, Value) when (is_list(Value) orelse Value =:= undefined) ->
     init_fields(This),
         put({This, key}, Value).
 

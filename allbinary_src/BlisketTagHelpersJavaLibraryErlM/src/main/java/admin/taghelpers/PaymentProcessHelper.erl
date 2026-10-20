@@ -32,11 +32,11 @@ init_fields(This) ->
 new(PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PropertiesHashMap, PageContext),
+    '$init'(This, PropertiesHashMap, PageContext),
     This.
 
-init(This, PropertiesHashMap, PageContext) ->
-    'TagHelper':init(This),
+'$init'(This, PropertiesHashMap, PageContext) ->
+    'TagHelper':'$init'(This),
     init_fields(This),
         TransformInfoInterface = 'TransformInfoHttpFactory':getInstance(PropertiesHashMap, PageContext),
         put({This, paymentProcessorComponent}, 'PaymentProcessorComponent':new(TransformInfoInterface)).

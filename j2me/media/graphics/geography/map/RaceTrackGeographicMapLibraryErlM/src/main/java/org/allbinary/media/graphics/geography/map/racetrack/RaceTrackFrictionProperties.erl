@@ -26,10 +26,10 @@ init_fields(This) ->
 new(RoadFriction, GroundFriction) when is_integer(RoadFriction), is_integer(GroundFriction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RoadFriction, GroundFriction),
+    '$init'(This, RoadFriction, GroundFriction),
     This.
 
-init(This, RoadFriction, GroundFriction) when is_integer(RoadFriction), is_integer(GroundFriction) ->
+'$init'(This, RoadFriction, GroundFriction) when is_integer(RoadFriction), is_integer(GroundFriction) ->
     init_fields(This),
         put({This, 'ROAD_FRICTION_NOMINATOR'}, ('FrictionData':getFrictionDenominator() - RoadFriction)),
         put({This, 'GROUND_FRICTION_NOMINATOR'}, ('FrictionData':getFrictionDenominator() - GroundFriction)).

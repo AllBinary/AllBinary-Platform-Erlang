@@ -32,11 +32,11 @@ init_fields(This) ->
 new(SpeedBasicDecimal, CustomGravity) when is_integer(CustomGravity) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SpeedBasicDecimal, CustomGravity),
+    '$init'(This, SpeedBasicDecimal, CustomGravity),
     This.
 
-init(This, SpeedBasicDecimal, CustomGravity) when is_integer(CustomGravity) ->
-        'BasicConstantVelocityMovement':init(This, SpeedBasicDecimal, 'VelocityProperties':new(trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)), trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)))),
+'$init'(This, SpeedBasicDecimal, CustomGravity) when is_integer(CustomGravity) ->
+        'BasicConstantVelocityMovement':'$init'(This, SpeedBasicDecimal, 'VelocityProperties':new(trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)), trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)))),
         init_fields(This),
         put({This, customGravity}, CustomGravity).
 

@@ -34,11 +34,11 @@ init_fields(This) ->
 new(AnimationInterface, OverlayAnimationInterface, CaptionDx, CaptionDy, Dx, Dy) when is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, OverlayAnimationInterface, CaptionDx, CaptionDy, Dx, Dy),
+    '$init'(This, AnimationInterface, OverlayAnimationInterface, CaptionDx, CaptionDy, Dx, Dy),
     This.
 
-init(This, AnimationInterface, OverlayAnimationInterface, CaptionDx, CaptionDy, Dx, Dy) when is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy) ->
-    'Animation':init(This),
+'$init'(This, AnimationInterface, OverlayAnimationInterface, CaptionDx, CaptionDy, Dx, Dy) when is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy) ->
+    'Animation':'$init'(This),
     init_fields(This),
         put({This, animationInterface}, AnimationInterface),
         put({This, overlayAnimationInterface}, OverlayAnimationInterface),

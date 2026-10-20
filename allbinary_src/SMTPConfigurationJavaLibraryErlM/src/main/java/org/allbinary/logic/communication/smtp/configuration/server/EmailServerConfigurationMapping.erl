@@ -30,10 +30,10 @@ init_fields(This) ->
 new(EmailServerConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, EmailServerConfigurationInterface),
+    '$init'(This, EmailServerConfigurationInterface),
     This.
 
-init(This, EmailServerConfigurationInterface) ->
+'$init'(This, EmailServerConfigurationInterface) ->
     init_fields(This),
         put({This, emailServerConfigurationInterface}, EmailServerConfigurationInterface).
 

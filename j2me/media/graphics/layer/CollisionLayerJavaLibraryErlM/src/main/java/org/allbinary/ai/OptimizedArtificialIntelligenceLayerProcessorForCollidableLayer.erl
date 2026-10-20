@@ -30,11 +30,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'LayerProcessor':init(This, 'OptimizedArtificialIntelligenceLayerManager':new()).
+'$init'(This) ->
+        'LayerProcessor':'$init'(This, 'OptimizedArtificialIntelligenceLayerManager':new()).
 
 % throws Exception
 processAt(This, AllBinaryLayerManager, LayerInterface, Index) when is_integer(Index) ->

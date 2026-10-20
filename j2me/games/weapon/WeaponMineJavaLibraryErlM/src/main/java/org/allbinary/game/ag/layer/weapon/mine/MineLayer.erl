@@ -43,11 +43,11 @@ init_fields(This) ->
 new(ViewPosition) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ViewPosition),
+    '$init'(This, ViewPosition),
     This.
 
-init(This, ViewPosition) ->
-        'SimpleWeaponLayer':init(This, get({'MineLayer', 'NAME'}), get({'RemoteInfo', 'REMOTE_INFO'}), (-1), (fun(Target_N66031) -> (get({Target_N66031, '$class'})):getMovmentInstance(Target_N66031) end)('NoMovementFactory':getInstance()), (fun(Target_N66055) -> (get({Target_N66055, '$class'})):getInstance(Target_N66055, 0) end)((fun(Target_N66062) -> (get({Target_N66062, '$class'})):get(Target_N66062, get({'MineWeaponResources':getInstance(), 'RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance())), 'SimpleWeaponLayer':createDestroyed(), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 10, 10), ViewPosition),
+'$init'(This, ViewPosition) ->
+        'SimpleWeaponLayer':'$init'(This, get({'MineLayer', 'NAME'}), get({'RemoteInfo', 'REMOTE_INFO'}), (-1), (fun(Target_N66031) -> (get({Target_N66031, '$class'})):getMovmentInstance(Target_N66031) end)('NoMovementFactory':getInstance()), (fun(Target_N66055) -> (get({Target_N66055, '$class'})):getInstance(Target_N66055, 0) end)((fun(Target_N66062) -> (get({Target_N66062, '$class'})):get(Target_N66062, get({'MineWeaponResources':getInstance(), 'RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance())), 'SimpleWeaponLayer':createDestroyed(), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 10, 10), ViewPosition),
         init_fields(This).
 
 initXYZ(This, X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->

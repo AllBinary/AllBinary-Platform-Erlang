@@ -29,9 +29,9 @@ init_fields(This) ->
 new(File) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, File),
+    '$init'(This, File),
     This.
 
-init(This, File) ->
-        'AbFileInputStream':init(This, 'AbFileNativeUtil':get(File)).
+'$init'(This, File) ->
+        'AbFileInputStream':'$init'(This, 'AbFileNativeUtil':get(File)).
 

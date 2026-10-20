@@ -27,11 +27,11 @@ init_fields(This) ->
 new(APath) when (is_list(APath) orelse APath =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, APath),
+    '$init'(This, APath),
     This.
 
-init(This, APath) when (is_list(APath) orelse APath =:= undefined) ->
-        'AbPath':init(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
+'$init'(This, APath) when (is_list(APath) orelse APath =:= undefined) ->
+        'AbPath':'$init'(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
         PathData = 'AbPathData':getInstance(),
         AbPathUtil = 'PathUtil':getInstance(),
         put({This, schema}, (get({This, '$class'})):getSchema(This, APath)),

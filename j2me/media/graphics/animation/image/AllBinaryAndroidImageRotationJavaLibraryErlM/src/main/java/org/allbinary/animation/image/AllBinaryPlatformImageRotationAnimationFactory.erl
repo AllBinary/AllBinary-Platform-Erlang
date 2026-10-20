@@ -28,9 +28,9 @@ init_fields(This) ->
 new(Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement), is_boolean(ResizeCanvasForRotation) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation),
+    '$init'(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation),
     This.
 
-init(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement), is_boolean(ResizeCanvasForRotation) ->
-        'AllBinaryAndroidImageRotationAnimationFactory':init(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation).
+'$init'(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement), is_boolean(ResizeCanvasForRotation) ->
+        'AllBinaryAndroidImageRotationAnimationFactory':'$init'(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation).
 

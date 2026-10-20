@@ -49,11 +49,11 @@ init_fields(This) ->
 new(AnimationInterface, HealthInterface, Location, Direction) when is_integer(Location), is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, HealthInterface, Location, Direction),
+    '$init'(This, AnimationInterface, HealthInterface, Location, Direction),
     This.
 
-init(This, AnimationInterface, HealthInterface, Location, Direction) when is_integer(Location), is_integer(Direction) ->
-        'BasicHud':init(This, Location, Direction, 2, get({'BasicColorFactory':getInstance(), 'WHITE'})),
+'$init'(This, AnimationInterface, HealthInterface, Location, Direction) when is_integer(Location), is_integer(Direction) ->
+        'BasicHud':'$init'(This, Location, Direction, 2, get({'BasicColorFactory':getInstance(), 'WHITE'})),
         init_fields(This),
         put({This, animationInterface}, AnimationInterface),
         put({This, healthInterface}, HealthInterface),

@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Name, GameKey) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, GameKey),
+    '$init'(This, Name, GameKey),
     This.
 
-init(This, Name, GameKey) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name, GameKey) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, Name),
         (get({This, '$class'})):setGameKey(This, GameKey).

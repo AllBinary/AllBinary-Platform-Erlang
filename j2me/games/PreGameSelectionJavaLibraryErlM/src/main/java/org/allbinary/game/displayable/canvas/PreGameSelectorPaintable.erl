@@ -34,11 +34,11 @@ init_fields(This) ->
 new(Title, PreGameScrollSelectionForm) when (is_list(Title) orelse Title =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, PreGameScrollSelectionForm),
+    '$init'(This, Title, PreGameScrollSelectionForm),
     This.
 
-init(This, Title, PreGameScrollSelectionForm) when (is_list(Title) orelse Title =:= undefined) ->
-    'InitUpdatePaintable':init(This),
+'$init'(This, Title, PreGameScrollSelectionForm) when (is_list(Title) orelse Title =:= undefined) ->
+    'InitUpdatePaintable':'$init'(This),
     init_fields(This),
         put({This, title}, Title),
         DisplayInfo = 'DisplayInfoSingleton':getInstance(),

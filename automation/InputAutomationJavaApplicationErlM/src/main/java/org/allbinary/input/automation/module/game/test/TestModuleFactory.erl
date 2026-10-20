@@ -37,11 +37,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbstractInputAutomationFactory':init(This, get({'TestModuleFactory', 'NAME'}), 'BlankModuleConfigurationJPanel':new()),
+'$init'(This) ->
+        'AbstractInputAutomationFactory':'$init'(This, get({'TestModuleFactory', 'NAME'}), 'BlankModuleConfigurationJPanel':new()),
         init_fields(This).
 
 getName(This) ->

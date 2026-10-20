@@ -32,11 +32,11 @@ init_fields(This) ->
 new(MidletActivity, ProgressCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MidletActivity, ProgressCanvas),
+    '$init'(This, MidletActivity, ProgressCanvas),
     This.
 
-init(This, MidletActivity, ProgressCanvas) ->
-    'ARunnable':init(This),
+'$init'(This, MidletActivity, ProgressCanvas) ->
+    'ARunnable':'$init'(This),
     init_fields(This),
         MidletActivity2 = MidletActivity,
         put({This, midletActivity}, MidletActivity2),

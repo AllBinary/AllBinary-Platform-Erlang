@@ -37,10 +37,10 @@ init_fields(This) ->
 new(DownloadableItem) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DownloadableItem),
+    '$init'(This, DownloadableItem),
     This.
 
-init(This, DownloadableItem) ->
+'$init'(This, DownloadableItem) ->
     init_fields(This),
         put({This, downloadableItem}, DownloadableItem).
 

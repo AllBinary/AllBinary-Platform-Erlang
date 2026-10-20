@@ -34,9 +34,9 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'TouchButtonResource':init(This, "/touch_button_reverse_64_by_64.png", "/touch_button_reverse_hint_64_by_64.png").
+'$init'(This) ->
+        'TouchButtonResource':'$init'(This, "/touch_button_reverse_64_by_64.png", "/touch_button_reverse_hint_64_by_64.png").
 

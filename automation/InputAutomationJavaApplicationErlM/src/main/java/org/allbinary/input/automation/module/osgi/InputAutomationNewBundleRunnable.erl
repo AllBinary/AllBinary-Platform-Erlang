@@ -60,10 +60,10 @@ init_fields(This) ->
 new(InputAutomationBundleActivator) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputAutomationBundleActivator),
+    '$init'(This, InputAutomationBundleActivator),
     This.
 
-init(This, InputAutomationBundleActivator) ->
+'$init'(This, InputAutomationBundleActivator) ->
     init_fields(This),
         put({This, inputAutomationBundleActivator}, InputAutomationBundleActivator),
         put({This, fileBasicArrayList}, 'BasicArrayListD':new()).

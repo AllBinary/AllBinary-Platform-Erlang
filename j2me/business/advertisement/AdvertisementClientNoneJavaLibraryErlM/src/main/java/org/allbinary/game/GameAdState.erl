@@ -32,11 +32,11 @@ init_fields(This) ->
 new(AdConfiguration) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AdConfiguration),
+    '$init'(This, AdConfiguration),
     This.
 
-init(This, AdConfiguration) ->
-        'GameAdStateBase':init(This, AdConfiguration),
+'$init'(This, AdConfiguration) ->
+        'GameAdStateBase':'$init'(This, AdConfiguration),
         (fun(Target_N65777) -> (get({Target_N65777, '$class'})):addListenerInterface(Target_N65777, This) end)('VirtualKeyboardEventHandler':getInstance()).
 
 % throws Exception

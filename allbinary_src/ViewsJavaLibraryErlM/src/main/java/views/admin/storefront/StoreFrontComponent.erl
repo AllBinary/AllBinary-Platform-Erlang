@@ -34,11 +34,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'HttpStoreComponentView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'HttpStoreComponentView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, newStoreFrontInterface}, 'StoreFront':new((fun(Target_N65945) -> (get({Target_N65945, '$class'})):getRequest(Target_N65945) end)((get({This, '$class'})):getPageContext(This)))),
         case ((get({get({This, newStoreFrontInterface}), '$class'})):getName(get({This, newStoreFrontInterface})) =:= undefined) of

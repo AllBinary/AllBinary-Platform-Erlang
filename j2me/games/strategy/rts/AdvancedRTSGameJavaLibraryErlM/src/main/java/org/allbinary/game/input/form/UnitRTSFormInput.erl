@@ -60,11 +60,11 @@ init_fields(This) ->
 new(GroupInterface) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GroupInterface),
+    '$init'(This, GroupInterface),
     This.
 
-init(This, GroupInterface) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined) ->
-        'RTSFormInput':init(This, GroupInterface),
+'$init'(This, GroupInterface) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined) ->
+        'RTSFormInput':'$init'(This, GroupInterface),
         init_fields(This),
         SmallIntegerSingletonFactory = 'SmallIntegerSingletonFactory':getInstance(),
         BasicColorFactory = 'BasicColorFactory':getInstance(),

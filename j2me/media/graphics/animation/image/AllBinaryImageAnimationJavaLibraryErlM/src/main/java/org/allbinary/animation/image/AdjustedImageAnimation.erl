@@ -31,11 +31,11 @@ init_fields(This) ->
 new(Image, Dx, Dy, AnimationBehavior) when is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, Dx, Dy, AnimationBehavior),
+    '$init'(This, Image, Dx, Dy, AnimationBehavior),
     This.
 
-init(This, Image, Dx, Dy, AnimationBehavior) when is_integer(Dx), is_integer(Dy) ->
-        'ImageAnimation':init(This, Image, AnimationBehavior),
+'$init'(This, Image, Dx, Dy, AnimationBehavior) when is_integer(Dx), is_integer(Dy) ->
+        'ImageAnimation':'$init'(This, Image, AnimationBehavior),
         init_fields(This),
         (get({This, '$class'})):init(This, Dx, Dy).
 

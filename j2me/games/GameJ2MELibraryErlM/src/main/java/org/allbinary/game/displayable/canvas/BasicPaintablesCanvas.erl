@@ -34,11 +34,11 @@ init_fields(This) ->
 new(CmdListener, Name, AllBinaryGameLayerManager, PaintableArray) when (is_list(Name) orelse Name =:= undefined), (is_tuple(PaintableArray) orelse PaintableArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CmdListener, Name, AllBinaryGameLayerManager, PaintableArray),
+    '$init'(This, CmdListener, Name, AllBinaryGameLayerManager, PaintableArray),
     This.
 
-init(This, CmdListener, Name, AllBinaryGameLayerManager, PaintableArray) when (is_list(Name) orelse Name =:= undefined), (is_tuple(PaintableArray) orelse PaintableArray =:= undefined) ->
-        'GameCommandCanvas':init(This, CmdListener, Name, (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)),
+'$init'(This, CmdListener, Name, AllBinaryGameLayerManager, PaintableArray) when (is_list(Name) orelse Name =:= undefined), (is_tuple(PaintableArray) orelse PaintableArray =:= undefined) ->
+        'GameCommandCanvas':'$init'(This, CmdListener, Name, (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)),
         init_fields(This),
         put({This, paintableArray}, PaintableArray),
         put({This, colorFillPaintable}, (fun(Target_N65952) -> (get({Target_N65952, '$class'})):getInstance(Target_N65952, (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), false) end)('ColorFillPaintableFactory':getInstance())).

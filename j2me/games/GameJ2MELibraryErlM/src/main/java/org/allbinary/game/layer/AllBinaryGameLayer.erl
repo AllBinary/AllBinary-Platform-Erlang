@@ -57,11 +57,11 @@ init_fields(This) ->
 new(Name, LayerInfo, ViewPosition) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, LayerInfo, ViewPosition),
+    '$init'(This, Name, LayerInfo, ViewPosition),
     This.
 
-init(This, Name, LayerInfo, ViewPosition) when (is_list(Name) orelse Name =:= undefined) ->
-        'AllBinaryLayer':init(This, Name, LayerInfo, ViewPosition),
+'$init'(This, Name, LayerInfo, ViewPosition) when (is_list(Name) orelse Name =:= undefined) ->
+        'AllBinaryLayer':'$init'(This, Name, LayerInfo, ViewPosition),
         init_fields(This).
 
 % throws Exception

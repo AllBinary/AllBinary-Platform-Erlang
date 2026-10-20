@@ -34,11 +34,11 @@ init_fields(This) ->
 new(DataId, TiledLayer, MapTwoDArray, DebugColor) when (is_tuple(MapTwoDArray) orelse MapTwoDArray =:= undefined), is_integer(DebugColor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DataId, TiledLayer, MapTwoDArray, DebugColor),
+    '$init'(This, DataId, TiledLayer, MapTwoDArray, DebugColor),
     This.
 
-init(This, DataId, TiledLayer, MapTwoDArray, DebugColor) when (is_tuple(MapTwoDArray) orelse MapTwoDArray =:= undefined), is_integer(DebugColor) ->
-        'AllBinaryTiledLayer':init(This, DataId, (get({TiledLayer, '$class'})):getWidth(TiledLayer), (get({TiledLayer, '$class'})):getHeight(TiledLayer), (get({TiledLayer, '$class'})):getCellWidth(TiledLayer), (get({TiledLayer, '$class'})):getCellHeight(TiledLayer)),
+'$init'(This, DataId, TiledLayer, MapTwoDArray, DebugColor) when (is_tuple(MapTwoDArray) orelse MapTwoDArray =:= undefined), is_integer(DebugColor) ->
+        'AllBinaryTiledLayer':'$init'(This, DataId, (get({TiledLayer, '$class'})):getWidth(TiledLayer), (get({TiledLayer, '$class'})):getHeight(TiledLayer), (get({TiledLayer, '$class'})):getCellWidth(TiledLayer), (get({TiledLayer, '$class'})):getCellHeight(TiledLayer)),
         init_fields(This),
         put({This, tiledLayerP}, TiledLayer),
         put({This, debugColor}, DebugColor),

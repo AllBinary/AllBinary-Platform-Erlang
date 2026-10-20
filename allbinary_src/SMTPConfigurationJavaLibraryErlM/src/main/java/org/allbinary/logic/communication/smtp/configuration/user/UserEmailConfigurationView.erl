@@ -39,15 +39,15 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(UserEmailConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UserEmailConfigurationInterface),
+    '$init'(This, UserEmailConfigurationInterface),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'EMAILLOGGING'})) of
             true ->
@@ -59,7 +59,7 @@ init(This, Node) ->
         UserEmailEventsConfigurationNode = 'DomSearchHelper':getNodeNoThrow(get({'UserEmailEventsConfigurationData', 'NAME'}), ChildNodeList),
         UserEmailEventsConfigurationView = 'UserEmailEventsConfigurationView':new(UserEmailEventsConfigurationNode),
         (get({get({This, userEmailConfigurationInterface}), '$class'})):setUserEmailEventsConfigurationInterface(get({This, userEmailConfigurationInterface}), (get({UserEmailEventsConfigurationView, '$class'})):getUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationView));
-init(This, UserEmailConfigurationInterface) ->
+'$init'(This, UserEmailConfigurationInterface) ->
     init_fields(This),
         put({This, userEmailConfigurationInterface}, UserEmailConfigurationInterface).
 

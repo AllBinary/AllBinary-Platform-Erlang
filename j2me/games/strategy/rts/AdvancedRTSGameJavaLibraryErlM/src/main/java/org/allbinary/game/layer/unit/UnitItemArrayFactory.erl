@@ -49,10 +49,10 @@ init_fields(This) ->
 new(Resources) when (is_tuple(Resources) orelse Resources =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Resources),
+    '$init'(This, Resources),
     This.
 
-init(This, Resources) when (is_tuple(Resources) orelse Resources =:= undefined) ->
+'$init'(This, Resources) when (is_tuple(Resources) orelse Resources =:= undefined) ->
     init_fields(This),
         put({This, resources}, Resources).
 

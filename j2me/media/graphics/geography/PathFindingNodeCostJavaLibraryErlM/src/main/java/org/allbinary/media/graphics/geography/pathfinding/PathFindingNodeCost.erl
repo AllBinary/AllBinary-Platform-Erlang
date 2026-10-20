@@ -38,11 +38,11 @@ init_fields(This) ->
 new(Parent, GeographicMapCellPosition, PathFindingNodeCostInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Parent, GeographicMapCellPosition, PathFindingNodeCostInfo),
+    '$init'(This, Parent, GeographicMapCellPosition, PathFindingNodeCostInfo),
     This.
 
-init(This, Parent, GeographicMapCellPosition, PathFindingNodeCostInfo) ->
-        'PathFindingNode':init(This, Parent, GeographicMapCellPosition),
+'$init'(This, Parent, GeographicMapCellPosition, PathFindingNodeCostInfo) ->
+        'PathFindingNode':'$init'(This, Parent, GeographicMapCellPosition),
         init_fields(This),
         put({This, pathFindingNodeCostInfoP}, PathFindingNodeCostInfo),
         case (get({This, geographicMapCellPosition}) =:= undefined) of

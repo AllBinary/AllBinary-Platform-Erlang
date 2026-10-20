@@ -40,11 +40,11 @@ init_fields(This) ->
 new(Image, Dx, Dy, TotalFrames, AnimationBehavior) when is_integer(Dx), is_integer(Dy), is_integer(TotalFrames) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, Dx, Dy, TotalFrames, AnimationBehavior),
+    '$init'(This, Image, Dx, Dy, TotalFrames, AnimationBehavior),
     This.
 
-init(This, Image, Dx, Dy, TotalFrames, AnimationBehavior) when is_integer(Dx), is_integer(Dy), is_integer(TotalFrames) ->
-        'IndexedAnimation':init(This, AnimationBehavior),
+'$init'(This, Image, Dx, Dy, TotalFrames, AnimationBehavior) when is_integer(Dx), is_integer(Dy), is_integer(TotalFrames) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior),
         init_fields(This),
         put({This, image}, Image),
         put({This, dx}, Dx),

@@ -29,9 +29,9 @@ init_fields(This) ->
 new(BundleContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BundleContext),
+    '$init'(This, BundleContext),
     This.
 
-init(This, BundleContext) ->
-        'InputAutomationServiceConsumer':init(This, (get({'InputAutomationRobotServiceInterface', '$class'})):getName('InputAutomationRobotServiceInterface'), BundleContext, 'InputAutomationRobotOSGIServiceVisitor':new()).
+'$init'(This, BundleContext) ->
+        'InputAutomationServiceConsumer':'$init'(This, (get({'InputAutomationRobotServiceInterface', '$class'})):getName('InputAutomationRobotServiceInterface'), BundleContext, 'InputAutomationRobotOSGIServiceVisitor':new()).
 

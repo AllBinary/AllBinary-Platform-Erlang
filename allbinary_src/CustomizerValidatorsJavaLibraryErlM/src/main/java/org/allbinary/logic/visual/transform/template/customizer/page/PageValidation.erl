@@ -40,32 +40,32 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'Validation':init(This),
+'$init'(This) ->
+    'Validation':'$init'(This),
     init_fields(This),
         put({This, title}, 'TitleValidation':new()).
 
 new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Document),
+    '$init'(This, Document),
     This;
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, Document) ->
-    'Validation':init(This),
+'$init'(This, Document) ->
+    'Validation':'$init'(This),
     init_fields(This),
         Node = 'DomSearchHelper':getNode(get({'TitleData':getInstance(), 'NAME'}), (get({Document, '$class'})):getElementsByTagName(Document, get({'PageData':getInstance(), 'NAME'}))),
         put({This, title}, 'TitleValidation':new(Node));
-init(This, HashMap) ->
-    'Validation':init(This),
+'$init'(This, HashMap) ->
+    'Validation':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):getFormData(This, HashMap).
 

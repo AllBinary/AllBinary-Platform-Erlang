@@ -28,10 +28,10 @@ init_fields(This) ->
 new(ABasicUserRole, AUserFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ABasicUserRole, AUserFactoryInterface),
+    '$init'(This, ABasicUserRole, AUserFactoryInterface),
     This.
 
-init(This, ABasicUserRole, AUserFactoryInterface) ->
+'$init'(This, ABasicUserRole, AUserFactoryInterface) ->
     init_fields(This),
         put({This, basicUserRole}, ABasicUserRole),
         put({This, userFactoryInterface}, AUserFactoryInterface).

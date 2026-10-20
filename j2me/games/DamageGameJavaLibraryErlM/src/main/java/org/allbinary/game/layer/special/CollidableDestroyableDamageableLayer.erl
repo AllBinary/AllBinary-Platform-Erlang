@@ -81,11 +81,11 @@ getNullInstance() ->
 new(GroupInterface, Name, LayerInfo, ViewPosition) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GroupInterface, Name, LayerInfo, ViewPosition),
+    '$init'(This, GroupInterface, Name, LayerInfo, ViewPosition),
     This.
 
-init(This, GroupInterface, Name, LayerInfo, ViewPosition) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(Name) orelse Name =:= undefined) ->
-        'CollidableCompositeLayer':init(This, Name, LayerInfo, ViewPosition, 'CollidableNeverCollideBehaviorFactory':getInstance()),
+'$init'(This, GroupInterface, Name, LayerInfo, ViewPosition) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(Name) orelse Name =:= undefined) ->
+        'CollidableCompositeLayer':'$init'(This, Name, LayerInfo, ViewPosition, 'CollidableNeverCollideBehaviorFactory':getInstance()),
         init_fields(This),
         put({This, initWidth}, (get({LayerInfo, '$class'})):getWidth(LayerInfo)),
         put({This, initHeight}, (get({LayerInfo, '$class'})):getHeight(LayerInfo)),

@@ -33,10 +33,10 @@ init_fields(This) ->
 new(Point, ColorDelta) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Point, ColorDelta),
+    '$init'(This, Point, ColorDelta),
     This.
 
-init(This, Point, ColorDelta) ->
+'$init'(This, Point, ColorDelta) ->
     init_fields(This),
         (get({This, '$class'})):setPoint(This, Point),
         (get({This, '$class'})):setColorDelta(This, ColorDelta),

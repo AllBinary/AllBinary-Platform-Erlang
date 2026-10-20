@@ -36,11 +36,11 @@ createFactory() ->
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
-        'BaseResourceAnimationInterfaceFactoryInterfaceFactory':init(This, Name, (fun(Target_N65878) -> (get({Target_N65878, '$class'})):createHashtable(Target_N65878) end)('StdUtil':getInstance()), (fun(Target_N65902) -> (get({Target_N65902, '$class'})):createHashtable(Target_N65902) end)('StdUtil':getInstance()), (fun(Target_N65926) -> (get({Target_N65926, '$class'})):createHashtable(Target_N65926) end)('StdUtil':getInstance())).
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+        'BaseResourceAnimationInterfaceFactoryInterfaceFactory':'$init'(This, Name, (fun(Target_N65878) -> (get({Target_N65878, '$class'})):createHashtable(Target_N65878) end)('StdUtil':getInstance()), (fun(Target_N65902) -> (get({Target_N65902, '$class'})):createHashtable(Target_N65902) end)('StdUtil':getInstance()), (fun(Target_N65926) -> (get({Target_N65926, '$class'})):createHashtable(Target_N65926) end)('StdUtil':getInstance())).
 
 % throws Exception
 init(This, Level) when is_integer(Level) ->

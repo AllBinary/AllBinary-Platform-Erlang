@@ -53,11 +53,11 @@ init_fields(This) ->
 new(TransformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface),
+    '$init'(This, TransformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface),
     This.
 
-init(This, TransformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface) ->
-        'AbSqlBean':init(This, 'UserDbInitInfo':new()),
+'$init'(This, TransformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface) ->
+        'AbSqlBean':'$init'(This, 'UserDbInitInfo':new()),
         init_fields(This),
         (get({This, '$class'})):setTableName(This, get({This, tableName})),
         put({This, transformInfoObjectConfigGeneratorFactoryInterface}, TransformInfoObjectConfigGeneratorFactoryInterface),

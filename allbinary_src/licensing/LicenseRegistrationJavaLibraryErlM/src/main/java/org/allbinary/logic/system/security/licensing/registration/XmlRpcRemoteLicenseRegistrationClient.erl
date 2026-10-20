@@ -41,11 +41,11 @@ init_fields(This) ->
 new(ClientInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInfo),
+    '$init'(This, ClientInfo),
     This.
 
-init(This, ClientInfo) ->
-        'XmlRpcAbeClient':init(This, ClientInfo, "LicenseRegistrationServer.process"),
+'$init'(This, ClientInfo) ->
+        'XmlRpcAbeClient':'$init'(This, ClientInfo, "LicenseRegistrationServer.process"),
         init_fields(This),
         (get({This, '$class'})):setServer(This, 0).
 

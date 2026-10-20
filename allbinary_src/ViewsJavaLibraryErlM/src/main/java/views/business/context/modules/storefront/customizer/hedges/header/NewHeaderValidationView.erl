@@ -37,11 +37,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'TopBarView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'TopBarView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, heading}, 'HeadingValidation':new()).
 

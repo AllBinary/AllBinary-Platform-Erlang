@@ -41,11 +41,11 @@ init_fields(This) ->
 new(Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory) when (is_list(Name) orelse Name =:= undefined), (is_tuple(CellTypeIdToGeographicMapCellType) orelse CellTypeIdToGeographicMapCellType =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory),
+    '$init'(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory),
     This.
 
-init(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory) when (is_list(Name) orelse Name =:= undefined), (is_tuple(CellTypeIdToGeographicMapCellType) orelse CellTypeIdToGeographicMapCellType =:= undefined) ->
-        'SimpleGeographicMap':init(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor),
+'$init'(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory) when (is_list(Name) orelse Name =:= undefined), (is_tuple(CellTypeIdToGeographicMapCellType) orelse CellTypeIdToGeographicMapCellType =:= undefined) ->
+        'SimpleGeographicMap':'$init'(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor),
         init_fields(This),
         put({This, geographicMapCellPositionFactoryInterface}, GeographicMapCellPositionFactoryInterface),
         put({This, geographicMapCellPositionFactory}, (get({GeographicMapCellPositionBaseFactory, '$class'})):getInstance(GeographicMapCellPositionBaseFactory, This)),

@@ -34,11 +34,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'Scoreable':init(This, 0).
+'$init'(This) ->
+        'Scoreable':'$init'(This, 0).
 
 addPoints(This, Points) when is_integer(Points) ->
         ok.

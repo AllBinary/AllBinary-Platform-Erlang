@@ -34,11 +34,11 @@ init_fields(This) ->
 new(Name, Path, LastFrame) when (is_list(Name) orelse Name =:= undefined), (is_list(Path) orelse Path =:= undefined), is_integer(LastFrame) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Path, LastFrame),
+    '$init'(This, Name, Path, LastFrame),
     This.
 
-init(This, Name, Path, LastFrame) when (is_list(Name) orelse Name =:= undefined), (is_list(Path) orelse Path =:= undefined), is_integer(LastFrame) ->
-        'GenericProfileDataWorkerType':init(This, Name),
+'$init'(This, Name, Path, LastFrame) when (is_list(Name) orelse Name =:= undefined), (is_list(Path) orelse Path =:= undefined), is_integer(LastFrame) ->
+        'GenericProfileDataWorkerType':'$init'(This, Name),
         init_fields(This),
         (get({This, '$class'})):setPath(This, Path),
         (get({This, '$class'})):setLastFrame(This, LastFrame).

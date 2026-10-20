@@ -37,10 +37,10 @@ init_fields(This) ->
 new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Document),
+    '$init'(This, Document),
     This.
 
-init(This, Document) ->
+'$init'(This, Document) ->
     init_fields(This),
         WorkAreaNodeList = (get({Document, '$class'})):getElementsByTagName(Document, get({?MODULE, 'WORKAREA'})),
         case (WorkAreaNodeList =/= undefined) of

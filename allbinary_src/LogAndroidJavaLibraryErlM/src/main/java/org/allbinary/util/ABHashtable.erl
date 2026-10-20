@@ -27,18 +27,18 @@ init_fields(This) ->
 new(InitialCapacity) when is_integer(InitialCapacity) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InitialCapacity),
+    '$init'(This, InitialCapacity),
     This.
 
-init(This, InitialCapacity) when is_integer(InitialCapacity) ->
-        'Hashtable':init(This, InitialCapacity).
+'$init'(This, InitialCapacity) when is_integer(InitialCapacity) ->
+        'Hashtable':'$init'(This, InitialCapacity).
 
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'Hashtable':init(This).
+'$init'(This) ->
+        'Hashtable':'$init'(This).
 

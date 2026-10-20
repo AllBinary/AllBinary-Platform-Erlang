@@ -74,11 +74,11 @@ init_fields(This) ->
 new(OwnerLayerInterface, ArtificialIntelligenceInterface, GameInput, Visitor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OwnerLayerInterface, ArtificialIntelligenceInterface, GameInput, Visitor),
+    '$init'(This, OwnerLayerInterface, ArtificialIntelligenceInterface, GameInput, Visitor),
     This.
 
-init(This, OwnerLayerInterface, ArtificialIntelligenceInterface, GameInput, Visitor) ->
-        'BasicAI':init(This, OwnerLayerInterface, GameInput),
+'$init'(This, OwnerLayerInterface, ArtificialIntelligenceInterface, GameInput, Visitor) ->
+        'BasicAI':'$init'(This, OwnerLayerInterface, GameInput),
         init_fields(This),
         put({This, aiVistor}, Visitor),
         put({This, artificialIntelligenceInterface}, ArtificialIntelligenceInterface),

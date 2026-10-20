@@ -32,11 +32,11 @@ init_fields(This) ->
 new(Collidable) when is_boolean(Collidable) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Collidable),
+    '$init'(This, Collidable),
     This.
 
-init(This, Collidable) when is_boolean(Collidable) ->
-        'CollidableDestroyableDamageableBehavior':init(This, Collidable).
+'$init'(This, Collidable) when is_boolean(Collidable) ->
+        'CollidableDestroyableDamageableBehavior':'$init'(This, Collidable).
 
 % throws Exception
 collide(This, OwnerLayer, CollidableInterfaceCompositeInterface) ->

@@ -26,10 +26,10 @@ init_fields(This) ->
 new(LayerType, Width, Height) when is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerType, Width, Height),
+    '$init'(This, LayerType, Width, Height),
     This.
 
-init(This, LayerType, Width, Height) when is_integer(Width), is_integer(Height) ->
+'$init'(This, LayerType, Width, Height) when is_integer(Width), is_integer(Height) ->
     init_fields(This),
         put({This, layerType}, LayerType),
         put({This, width}, Width),

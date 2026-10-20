@@ -35,11 +35,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'InputAutomationModuleServiceFactory':init(This),
+'$init'(This) ->
+    'InputAutomationModuleServiceFactory':'$init'(This),
     init_fields(This),
         try
             InputAutomationModuleInterfaceArray = array:new(1, {default, undefined}),

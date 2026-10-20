@@ -29,10 +29,10 @@ init_fields(This) ->
 new(ThemeInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ThemeInterface),
+    '$init'(This, ThemeInterface),
     This.
 
-init(This, ThemeInterface) ->
+'$init'(This, ThemeInterface) ->
     init_fields(This),
         put({This, themeInterface}, ThemeInterface).
 

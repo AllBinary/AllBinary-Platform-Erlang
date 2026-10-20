@@ -27,10 +27,10 @@ init_fields(This) ->
 new(List, CommandAction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, List, CommandAction),
+    '$init'(This, List, CommandAction),
     This.
 
-init(This, List, CommandAction) ->
+'$init'(This, List, CommandAction) ->
     init_fields(This),
         put({This, list}, List),
         put({This, motionGestureAction}, CommandAction).

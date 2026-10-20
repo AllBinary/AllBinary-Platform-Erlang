@@ -35,10 +35,10 @@ init_fields(This) ->
 new(StoreFrontInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreFrontInterface),
+    '$init'(This, StoreFrontInterface),
     This.
 
-init(This, StoreFrontInterface) ->
+'$init'(This, StoreFrontInterface) ->
     init_fields(This),
         put({This, totalInventorySaleValueMoney}, 'Money':new()),
         InventoryEntityInterface = (fun(Target_N66041) -> (get({Target_N66041, '$class'})):getInventoryEntityInstance(Target_N66041) end)('InventoryEntityFactory':getInstance()),

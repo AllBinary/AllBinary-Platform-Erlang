@@ -62,10 +62,10 @@ init_fields(This) ->
 new(ClientInfo, RemoteMethod) when (is_list(RemoteMethod) orelse RemoteMethod =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInfo, RemoteMethod),
+    '$init'(This, ClientInfo, RemoteMethod),
     This.
 
-init(This, ClientInfo, RemoteMethod) when (is_list(RemoteMethod) orelse RemoteMethod =:= undefined) ->
+'$init'(This, ClientInfo, RemoteMethod) when (is_list(RemoteMethod) orelse RemoteMethod =:= undefined) ->
     init_fields(This),
         put({This, remoteMethod}, RemoteMethod),
         put({This, clientInfo}, ClientInfo),

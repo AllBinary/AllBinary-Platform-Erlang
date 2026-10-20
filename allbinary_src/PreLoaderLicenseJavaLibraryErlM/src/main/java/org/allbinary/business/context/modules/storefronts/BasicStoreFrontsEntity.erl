@@ -34,11 +34,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'InitSql':init(This, 'UserDbInitInfo':new()),
+'$init'(This) ->
+        'InitSql':'$init'(This, 'UserDbInitInfo':new()),
         init_fields(This),
         (get({This, '$class'})):setTable(This, get({This, tableName})).
 

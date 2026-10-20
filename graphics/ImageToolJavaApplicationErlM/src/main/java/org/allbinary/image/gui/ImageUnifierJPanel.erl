@@ -77,11 +77,11 @@ init_fields(This) ->
 new(ImageProcessorInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageProcessorInput),
+    '$init'(This, ImageProcessorInput),
     This.
 
-init(This, ImageProcessorInput) ->
-    'JPanel':init(This),
+'$init'(This, ImageProcessorInput) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):initComponents(This),
         (get({This, '$class'})):setImageProcessorInput(This, ImageProcessorInput).

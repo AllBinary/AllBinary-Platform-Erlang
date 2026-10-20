@@ -29,10 +29,10 @@ init_fields(This) ->
 new(BasicColorArray) when (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicColorArray),
+    '$init'(This, BasicColorArray),
     This.
 
-init(This, BasicColorArray) when (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined) ->
+'$init'(This, BasicColorArray) when (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined) ->
     init_fields(This),
         put({This, basicColorArray}, BasicColorArray),
         put({This, circularIndexUtil}, 'CircularIndexUtil':createInstance(array:size(get({This, basicColorArray})))).

@@ -32,11 +32,11 @@ init_fields(This) ->
 new(RemoteInfo, ParentLayer, GroupInterface, RootName, Name, AnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(RootName) orelse RootName =:= undefined), (is_list(Name) orelse Name =:= undefined), is_integer(X), is_integer(Y) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RemoteInfo, ParentLayer, GroupInterface, RootName, Name, AnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y),
+    '$init'(This, RemoteInfo, ParentLayer, GroupInterface, RootName, Name, AnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y),
     This.
 
-init(This, RemoteInfo, ParentLayer, GroupInterface, RootName, Name, AnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(RootName) orelse RootName =:= undefined), (is_list(Name) orelse Name =:= undefined), is_integer(X), is_integer(Y) ->
-        'WaypointLayer':init(This, RemoteInfo, ParentLayer, GroupInterface, RootName, Name, AnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y).
+'$init'(This, RemoteInfo, ParentLayer, GroupInterface, RootName, Name, AnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(RootName) orelse RootName =:= undefined), (is_list(Name) orelse Name =:= undefined), is_integer(X), is_integer(Y) ->
+        'WaypointLayer':'$init'(This, RemoteInfo, ParentLayer, GroupInterface, RootName, Name, AnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y).
 
 createHudPaintable(This) ->
         RtsLayerHudPaintable = 'WaypointInfoHudPaintableSingleton':getInstance(),

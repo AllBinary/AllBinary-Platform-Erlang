@@ -26,9 +26,9 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbeClientInformation':init(This, "InputAutomationTool", "0.0.1", "InputAutomationTool 0.0.1", "IA").
+'$init'(This) ->
+        'AbeClientInformation':'$init'(This, "InputAutomationTool", "0.0.1", "InputAutomationTool 0.0.1", "IA").
 

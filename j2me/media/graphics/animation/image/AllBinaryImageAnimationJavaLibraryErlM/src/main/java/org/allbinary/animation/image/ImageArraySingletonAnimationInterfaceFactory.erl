@@ -32,9 +32,9 @@ init_fields(This) ->
 new(ImageArray) when (is_tuple(ImageArray) orelse ImageArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageArray),
+    '$init'(This, ImageArray),
     This.
 
-init(This, ImageArray) when (is_tuple(ImageArray) orelse ImageArray =:= undefined) ->
-        'SingletonAnimationInterfaceFactory':init(This, 'ImageArrayAnimation':new(ImageArray, 'AnimationBehavior':getInstance())).
+'$init'(This, ImageArray) when (is_tuple(ImageArray) orelse ImageArray =:= undefined) ->
+        'SingletonAnimationInterfaceFactory':'$init'(This, 'ImageArrayAnimation':new(ImageArray, 'AnimationBehavior':getInstance())).
 

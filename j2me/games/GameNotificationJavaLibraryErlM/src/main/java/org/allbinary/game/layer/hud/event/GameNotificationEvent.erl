@@ -34,11 +34,11 @@ init_fields(This) ->
 new(AnyType, String, Seconds, BasicColor, Permanent) when (is_list(String) orelse String =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType, String, Seconds, BasicColor, Permanent),
+    '$init'(This, AnyType, String, Seconds, BasicColor, Permanent),
     This.
 
-init(This, AnyType, String, Seconds, BasicColor, Permanent) when (is_list(String) orelse String =:= undefined) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType, String, Seconds, BasicColor, Permanent) when (is_list(String) orelse String =:= undefined) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This),
         (get({This, '$class'})):setString(This, String),
         put({This, seconds}, Seconds),

@@ -38,11 +38,11 @@ init_fields(This) ->
 new(PlayerInputId) when is_integer(PlayerInputId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PlayerInputId),
+    '$init'(This, PlayerInputId),
     This.
 
-init(This, PlayerInputId) when is_integer(PlayerInputId) ->
-        'AllBinaryGameLayer':init(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 0, 0), 'StaticViewPosition':new(0, 0, 0)),
+'$init'(This, PlayerInputId) when is_integer(PlayerInputId) ->
+        'AllBinaryGameLayer':'$init'(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 0, 0), 'StaticViewPosition':new(0, 0, 0)),
         init_fields(This),
         put({This, playerGameInput}, 'PlayerGameInput':new((get({This, '$class'})):getGameKeyEventList(This), 'BasicArrayListD':new(), PlayerInputId)),
         CanvasStrings = 'CanvasStrings':getInstance(),

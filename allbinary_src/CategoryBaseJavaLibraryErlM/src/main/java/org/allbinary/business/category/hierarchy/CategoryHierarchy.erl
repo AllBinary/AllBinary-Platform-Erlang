@@ -31,10 +31,10 @@ init_fields(This) ->
 new(RootCategoryInterface, ParentCategoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RootCategoryInterface, ParentCategoryInterface),
+    '$init'(This, RootCategoryInterface, ParentCategoryInterface),
     This.
 
-init(This, RootCategoryInterface, ParentCategoryInterface) ->
+'$init'(This, RootCategoryInterface, ParentCategoryInterface) ->
     init_fields(This),
         put({This, level}, 0),
         (get({This, '$class'})):setRoot(This, RootCategoryInterface),
@@ -43,20 +43,20 @@ init(This, RootCategoryInterface, ParentCategoryInterface) ->
 new(RootCategoryInterface, ParentCategoryInterface, Level) when is_integer(Level) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RootCategoryInterface, ParentCategoryInterface, Level),
+    '$init'(This, RootCategoryInterface, ParentCategoryInterface, Level),
     This;
 new(RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesHashMap),
+    '$init'(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesHashMap),
     This.
 
-init(This, RootCategoryInterface, ParentCategoryInterface, Level) when is_integer(Level) ->
+'$init'(This, RootCategoryInterface, ParentCategoryInterface, Level) when is_integer(Level) ->
     init_fields(This),
         put({This, level}, Level),
         (get({This, '$class'})):setRoot(This, RootCategoryInterface),
         (get({This, '$class'})):setParent(This, ParentCategoryInterface);
-init(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesHashMap) ->
+'$init'(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesHashMap) ->
     init_fields(This),
         LevelString = (fun(Target_N66105) -> (get({Target_N66105, '$class'})):getNonNull(Target_N66105, (get({CategoryPropertiesHashMap, '$class'})):get(CategoryPropertiesHashMap, get({'CategoryData':getInstance(), 'LEVEL'}))) end)('StringUtil':getInstance()),
         put({This, level}, (fun(Target_N66221) -> (get({Target_N66221, '$class'})):intValue(Target_N66221) end)(allbinary_java:to_string(LevelString))),

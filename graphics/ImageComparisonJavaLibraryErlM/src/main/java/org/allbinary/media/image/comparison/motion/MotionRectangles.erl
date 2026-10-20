@@ -30,10 +30,10 @@ init_fields(This) ->
 new(Name, ImageComparisonResult) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, ImageComparisonResult),
+    '$init'(This, Name, ImageComparisonResult),
     This.
 
-init(This, Name, ImageComparisonResult) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name, ImageComparisonResult) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         put({This, name}, Name),
         (get({This, '$class'})):setImageComparisonResult(This, ImageComparisonResult),

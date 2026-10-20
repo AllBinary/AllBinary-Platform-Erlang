@@ -38,11 +38,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'HighScoresBase':init(This),
+'$init'(This) ->
+    'HighScoresBase':'$init'(This),
     init_fields(This),
         ok.
 

@@ -41,15 +41,15 @@ init_fields(This) ->
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This;
 new(HttpServletRequest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HttpServletRequest),
+    '$init'(This, HttpServletRequest),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         StringUtil = 'StringUtil':getInstance(),
         put({This, httpUserAgent}, (get({StringUtil, '$class'})):getNonNull(StringUtil, (get({HashMap, '$class'})):get(HashMap, get({get({This, abeHttpRequestInfoData}), 'HTTP_USER_AGENT'})))),
@@ -58,7 +58,7 @@ init(This, HashMap) ->
         put({This, remoteHostByAddr}, (get({StringUtil, '$class'})):getNonNull(StringUtil, (get({HashMap, '$class'})):get(HashMap, get({get({This, abeHttpRequestInfoData}), 'REMOTE_HOST_BY_ADDRESS'})))),
         put({This, remotePort}, (get({StringUtil, '$class'})):getNonNull(StringUtil, (get({HashMap, '$class'})):get(HashMap, get({get({This, abeHttpRequestInfoData}), 'REMOTE_PORT'})))),
         put({This, requestedFilePath}, (get({StringUtil, '$class'})):getNonNull(StringUtil, (get({HashMap, '$class'})):get(HashMap, get({get({This, abeHttpRequestInfoData}), 'REQUEST_FILE_PATH'}))));
-init(This, HttpServletRequest) ->
+'$init'(This, HttpServletRequest) ->
     init_fields(This),
         StringUtil = 'StringUtil':getInstance(),
         put({This, httpUserAgent}, get({StringUtil, 'EMPTY_STRING'})),

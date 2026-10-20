@@ -34,11 +34,11 @@ init_fields(This) ->
 new(DatabaseConnectionInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DatabaseConnectionInfoInterface),
+    '$init'(This, DatabaseConnectionInfoInterface),
     This.
 
-init(This, DatabaseConnectionInfoInterface) ->
-        'AbSqlBasic':init(This, DatabaseConnectionInfoInterface),
+'$init'(This, DatabaseConnectionInfoInterface) ->
+        'AbSqlBasic':'$init'(This, DatabaseConnectionInfoInterface),
         init_fields(This).
 
 setTableName(This, TableName) when (is_list(TableName) orelse TableName =:= undefined) ->

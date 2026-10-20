@@ -52,11 +52,11 @@ init_fields(This) ->
 new(WorkAreaName) when (is_list(WorkAreaName) orelse WorkAreaName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, WorkAreaName),
+    '$init'(This, WorkAreaName),
     This.
 
-init(This, WorkAreaName) when (is_list(WorkAreaName) orelse WorkAreaName =:= undefined) ->
-    'JPanel':init(This),
+'$init'(This, WorkAreaName) when (is_list(WorkAreaName) orelse WorkAreaName =:= undefined) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):initComponents(This),
         put({This, rootTreeNode}, 'DefaultMutableTreeNode':new(WorkAreaName)),

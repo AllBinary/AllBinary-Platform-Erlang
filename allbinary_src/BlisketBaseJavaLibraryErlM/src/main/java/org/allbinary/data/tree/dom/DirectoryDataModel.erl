@@ -38,10 +38,10 @@ init_fields(This) ->
 new(File) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, File),
+    '$init'(This, File),
     This.
 
-init(This, File) ->
+'$init'(This, File) ->
     init_fields(This),
         put({This, fileBasicArrayList}, (fun(Target_N66042) -> (get({Target_N66042, '$class'})):search(Target_N66042, File) end)('Directory':getInstance())),
         put({This, transformDocumentInterface}, 'TransformDocumentFactory':getInstance()).

@@ -52,11 +52,11 @@ createAnimation(AnimationInterfaceArray, BasicColorArray, DxArray, DyArray, Y, W
 new(AnimationInterfaceArray, BasicColorArray, DxArray, DyArray, Y, Width, AnimationBehavior) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined), (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined), (is_tuple(DxArray) orelse DxArray =:= undefined), (is_tuple(DyArray) orelse DyArray =:= undefined), is_integer(Y), is_integer(Width) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterfaceArray, BasicColorArray, DxArray, DyArray, Y, Width, AnimationBehavior),
+    '$init'(This, AnimationInterfaceArray, BasicColorArray, DxArray, DyArray, Y, Width, AnimationBehavior),
     This.
 
-init(This, AnimationInterfaceArray, BasicColorArray, DxArray, DyArray, Y, Width, AnimationBehavior) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined), (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined), (is_tuple(DxArray) orelse DxArray =:= undefined), (is_tuple(DyArray) orelse DyArray =:= undefined), is_integer(Y), is_integer(Width) ->
-        'SpecialAnimation':init(This, AnimationBehavior),
+'$init'(This, AnimationInterfaceArray, BasicColorArray, DxArray, DyArray, Y, Width, AnimationBehavior) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined), (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined), (is_tuple(DxArray) orelse DxArray =:= undefined), (is_tuple(DyArray) orelse DyArray =:= undefined), is_integer(Y), is_integer(Width) ->
+        'SpecialAnimation':'$init'(This, AnimationBehavior),
         init_fields(This),
         put({This, lastFrameStartTime}, (get({get({This, systemWrapper}), '$class'})):currentTimeMillis(get({This, systemWrapper}))),
         put({This, animationInterfaceArray}, AnimationInterfaceArray),

@@ -28,11 +28,11 @@ init_fields(This) ->
 new(AnyType) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType),
+    '$init'(This, AnyType),
     This.
 
-init(This, AnyType) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This).
 
 setBasicColorP(This, BasicColor) ->

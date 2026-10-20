@@ -31,11 +31,11 @@ init_fields(This) ->
 new(PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PropertiesHashMap, PageContext),
+    '$init'(This, PropertiesHashMap, PageContext),
     This.
 
-init(This, PropertiesHashMap, PageContext) ->
-        'BasicWorkFlow':init(This, PropertiesHashMap, PageContext).
+'$init'(This, PropertiesHashMap, PageContext) ->
+        'BasicWorkFlow':'$init'(This, PropertiesHashMap, PageContext).
 
 % throws Exception
 getStoreName(This) ->

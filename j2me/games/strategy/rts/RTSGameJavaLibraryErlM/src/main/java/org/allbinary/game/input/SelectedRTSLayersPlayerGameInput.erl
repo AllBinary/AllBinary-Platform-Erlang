@@ -64,11 +64,11 @@ init_fields(This) ->
 new(TowerInfoPaintable, RtsPlayerLayerInterface, List, PlayerInputId, SelectRTSLayerVisitorFactoryInterface) when is_integer(PlayerInputId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TowerInfoPaintable, RtsPlayerLayerInterface, List, PlayerInputId, SelectRTSLayerVisitorFactoryInterface),
+    '$init'(This, TowerInfoPaintable, RtsPlayerLayerInterface, List, PlayerInputId, SelectRTSLayerVisitorFactoryInterface),
     This.
 
-init(This, TowerInfoPaintable, RtsPlayerLayerInterface, List, PlayerInputId, SelectRTSLayerVisitorFactoryInterface) when is_integer(PlayerInputId) ->
-        'PlayerGameInput':init(This, List, 'BasicArrayListD':new(), PlayerInputId),
+'$init'(This, TowerInfoPaintable, RtsPlayerLayerInterface, List, PlayerInputId, SelectRTSLayerVisitorFactoryInterface) when is_integer(PlayerInputId) ->
+        'PlayerGameInput':'$init'(This, List, 'BasicArrayListD':new(), PlayerInputId),
         init_fields(This),
         (get({This, '$class'})):initInputProcessors(This),
         put({This, rtsPlayerLayerInterface}, RtsPlayerLayerInterface),

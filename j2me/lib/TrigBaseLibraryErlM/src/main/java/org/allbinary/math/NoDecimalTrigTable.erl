@@ -45,10 +45,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         TOTAL_ANGLE = trunc(get({'AngleFactory':getInstance(), 'TOTAL_ANGLE'})),
         MAX_VALUE = (trunc(get({'Integer', 'MAX_VALUE'}))),

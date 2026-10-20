@@ -27,11 +27,11 @@ init_fields(This) ->
 new(IsCollidable) when is_boolean(IsCollidable) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, IsCollidable),
+    '$init'(This, IsCollidable),
     This.
 
-init(This, IsCollidable) when is_boolean(IsCollidable) ->
-        'CollidableBaseBehavior':init(This, IsCollidable).
+'$init'(This, IsCollidable) when is_boolean(IsCollidable) ->
+        'CollidableBaseBehavior':'$init'(This, IsCollidable).
 
 isCollision(This, OwnerLayer, AllbinaryCollidableLayer) ->
         false.

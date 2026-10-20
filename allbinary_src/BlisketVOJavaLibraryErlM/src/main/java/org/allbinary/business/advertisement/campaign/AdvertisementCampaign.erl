@@ -29,10 +29,10 @@ init_fields(This) ->
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         put({This, hashMap}, HashMap).
 

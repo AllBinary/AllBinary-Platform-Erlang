@@ -68,10 +68,10 @@ init_fields(This) ->
 new(TransformInfoInterface, CssStyleValidation, CategoryThemePath) when (is_list(CategoryThemePath) orelse CategoryThemePath =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, CssStyleValidation, CategoryThemePath),
+    '$init'(This, TransformInfoInterface, CssStyleValidation, CategoryThemePath),
     This.
 
-init(This, TransformInfoInterface, CssStyleValidation, CategoryThemePath) when (is_list(CategoryThemePath) orelse CategoryThemePath =:= undefined) ->
+'$init'(This, TransformInfoInterface, CssStyleValidation, CategoryThemePath) when (is_list(CategoryThemePath) orelse CategoryThemePath =:= undefined) ->
     init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         PathData = 'AbPathData':getInstance(),
@@ -84,15 +84,15 @@ init(This, TransformInfoInterface, CssStyleValidation, CategoryThemePath) when (
 new(TransformInfoInterface, HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, HashMap),
+    '$init'(This, TransformInfoInterface, HashMap),
     This;
 new(StoreThemeCategoryInterface, Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreThemeCategoryInterface, Node),
+    '$init'(This, StoreThemeCategoryInterface, Node),
     This.
 
-init(This, TransformInfoInterface, HashMap) ->
+'$init'(This, TransformInfoInterface, HashMap) ->
     init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         CategoryThemeAbPath = 'AbPath':new((get({HashMap, '$class'})):get(HashMap, get({'ThemeData':getInstance(), 'PATH'})), get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
@@ -113,7 +113,7 @@ init(This, TransformInfoInterface, HashMap) ->
             false -> ok
         end,
         (get({This, '$class'})):init(This);
-init(This, StoreThemeCategoryInterface, Node) ->
+'$init'(This, StoreThemeCategoryInterface, Node) ->
     init_fields(This),
         put({This, transformInfoInterface}, (get({StoreThemeCategoryInterface, '$class'})):getTransformInfoInterface(StoreThemeCategoryInterface)),
         put({This, categoryAbPath}, (get({StoreThemeCategoryInterface, '$class'})):getPath(StoreThemeCategoryInterface)),

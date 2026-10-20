@@ -25,10 +25,10 @@ init_fields(This) ->
 new(InputAutomationModuleConfiguration) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputAutomationModuleConfiguration),
+    '$init'(This, InputAutomationModuleConfiguration),
     This.
 
-init(This, InputAutomationModuleConfiguration) ->
+'$init'(This, InputAutomationModuleConfiguration) ->
     init_fields(This),
         (get({This, '$class'})):setInputAutomationModuleConfiguration(This, InputAutomationModuleConfiguration).
 

@@ -27,9 +27,9 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'DefaultFileItemFactory':init(This).
+'$init'(This) ->
+        'DefaultFileItemFactory':'$init'(This).
 

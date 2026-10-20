@@ -52,11 +52,11 @@ init_fields(This) ->
 new(GenericProfileActionJPanel, Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GenericProfileActionJPanel, Node),
+    '$init'(This, GenericProfileActionJPanel, Node),
     This.
 
-init(This, GenericProfileActionJPanel, Node) ->
-        'DefaultMutableTreeNode':init(This, get({'GenericProfileActionScript', 'NAME'})),
+'$init'(This, GenericProfileActionJPanel, Node) ->
+        'DefaultMutableTreeNode':'$init'(This, get({'GenericProfileActionScript', 'NAME'})),
         init_fields(This),
         put({This, genericProfileActionJPanel}, GenericProfileActionJPanel),
         (get({This, '$class'})):setProfileActionConditionInterfaceVector(This, 'BasicArrayListD':new()),
@@ -79,11 +79,11 @@ init(This, GenericProfileActionJPanel, Node) ->
 new(GenericProfileActionJPanel) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GenericProfileActionJPanel),
+    '$init'(This, GenericProfileActionJPanel),
     This.
 
-init(This, GenericProfileActionJPanel) ->
-    'DefaultMutableTreeNode':init(This),
+'$init'(This, GenericProfileActionJPanel) ->
+    'DefaultMutableTreeNode':'$init'(This),
     init_fields(This),
         put({This, genericProfileActionJPanel}, GenericProfileActionJPanel),
         (get({This, '$class'})):setProfileActionConditionInterfaceVector(This, 'BasicArrayListD':new()).

@@ -31,11 +31,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'LayerProcessor':init(This, 'OptimizedAllBinaryCollisionLayerManager':new()).
+'$init'(This) ->
+        'LayerProcessor':'$init'(This, 'OptimizedAllBinaryCollisionLayerManager':new()).
 
 % throws Exception
 processAt(This, AllBinaryLayerManager, LayerInterface, StartIndex) when is_integer(StartIndex) ->

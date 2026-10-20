@@ -39,11 +39,11 @@ init_fields(This) ->
 new(CaptionAnimation, CaptionDx, CaptionDy, Dx, Dy) when is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CaptionAnimation, CaptionDx, CaptionDy, Dx, Dy),
+    '$init'(This, CaptionAnimation, CaptionDx, CaptionDy, Dx, Dy),
     This.
 
-init(This, CaptionAnimation, CaptionDx, CaptionDy, Dx, Dy) when is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy) ->
-    'CaptionAnimationHelperBase':init(This),
+'$init'(This, CaptionAnimation, CaptionDx, CaptionDy, Dx, Dy) when is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy) ->
+    'CaptionAnimationHelperBase':'$init'(This),
     init_fields(This),
         put({This, captionAnimation}, 'CaptionAnimation':new(CaptionAnimation, get({This, textAnimation}), CaptionDx, CaptionDy, Dx, Dy)).
 

@@ -30,11 +30,11 @@ init_fields(This) ->
 new(Size) when is_integer(Size) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Size),
+    '$init'(This, Size),
     This.
 
-init(This, Size) when is_integer(Size) ->
-        'BasicArrayList':init(This, get({'NullUtil':getInstance(), 'NULL_OBJECT_ARRAY'})),
+'$init'(This, Size) when is_integer(Size) ->
+        'BasicArrayList':'$init'(This, get({'NullUtil':getInstance(), 'NULL_OBJECT_ARRAY'})),
         case (Size < 0) of
             true ->
             erlang:error({'IllegalArgumentException', (fun(Target_N65769) -> (get({Target_N65769, '$class'})):toString(Target_N65769) end)((fun(Target_N65776) -> (get({Target_N65776, '$class'})):appendint(Target_N65776, Size) end)((fun(Target_N65783) -> (get({Target_N65783, '$class'})):append(Target_N65783, "Init Size Exception: ") end)('StringMaker':new())))});

@@ -55,10 +55,10 @@ init_fields(This) ->
 new(GenericProfileActionsJPanel, Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GenericProfileActionsJPanel, Name),
+    '$init'(This, GenericProfileActionsJPanel, Name),
     This.
 
-init(This, GenericProfileActionsJPanel, Name) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, GenericProfileActionsJPanel, Name) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, Name),
         (get({This, '$class'})):init(This, GenericProfileActionsJPanel),
@@ -67,20 +67,20 @@ init(This, GenericProfileActionsJPanel, Name) when (is_list(Name) orelse Name =:
 new(GenericProfileActionsJPanel, AbPath, Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GenericProfileActionsJPanel, AbPath, Name),
+    '$init'(This, GenericProfileActionsJPanel, AbPath, Name),
     This;
 new(GenericProfileActionsJPanel, FileInputStream, Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GenericProfileActionsJPanel, FileInputStream, Name),
+    '$init'(This, GenericProfileActionsJPanel, FileInputStream, Name),
     This.
 
-init(This, GenericProfileActionsJPanel, AbPath, Name) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, GenericProfileActionsJPanel, AbPath, Name) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, Name),
         (get({This, '$class'})):init(This, GenericProfileActionsJPanel),
         (get({This, '$class'})):load(This);
-init(This, GenericProfileActionsJPanel, FileInputStream, Name) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, GenericProfileActionsJPanel, FileInputStream, Name) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, Name),
         (get({This, '$class'})):init(This, GenericProfileActionsJPanel),

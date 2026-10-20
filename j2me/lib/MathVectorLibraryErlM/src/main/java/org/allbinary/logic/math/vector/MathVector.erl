@@ -28,10 +28,10 @@ init_fields(This) ->
 new(MagnitudeBasicDecimal, Direction) when is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MagnitudeBasicDecimal, Direction),
+    '$init'(This, MagnitudeBasicDecimal, Direction),
     This.
 
-init(This, MagnitudeBasicDecimal, Direction) when is_integer(Direction) ->
+'$init'(This, MagnitudeBasicDecimal, Direction) when is_integer(Direction) ->
     init_fields(This),
         put({This, magnitudeBasicDecimal}, MagnitudeBasicDecimal),
         put({This, direction}, Direction).

@@ -43,10 +43,10 @@ init_fields(This) ->
 new(ParentTransformInfoInterface, BasicURIResolver) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ParentTransformInfoInterface, BasicURIResolver),
+    '$init'(This, ParentTransformInfoInterface, BasicURIResolver),
     This.
 
-init(This, ParentTransformInfoInterface, BasicURIResolver) ->
+'$init'(This, ParentTransformInfoInterface, BasicURIResolver) ->
     init_fields(This),
         put({This, parentTransformInfoInterface}, ParentTransformInfoInterface),
         put({This, basicURIResolver}, BasicURIResolver).

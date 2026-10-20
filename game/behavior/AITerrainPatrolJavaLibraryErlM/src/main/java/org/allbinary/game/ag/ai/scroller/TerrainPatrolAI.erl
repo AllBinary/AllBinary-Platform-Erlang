@@ -40,11 +40,11 @@ init_fields(This) ->
 new(Hashtable, OwnerLayerInterface, GameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Hashtable, OwnerLayerInterface, GameInput),
+    '$init'(This, Hashtable, OwnerLayerInterface, GameInput),
     This.
 
-init(This, Hashtable, OwnerLayerInterface, GameInput) ->
-        'PacePatrolAI':init(This, Hashtable, OwnerLayerInterface, GameInput),
+'$init'(This, Hashtable, OwnerLayerInterface, GameInput) ->
+        'PacePatrolAI':'$init'(This, Hashtable, OwnerLayerInterface, GameInput),
         init_fields(This),
         (fun(Target_N66120) -> (get({Target_N66120, '$class'})):addListener(Target_N66120, get({This, terrainEventListener})) end)('TerrainEventHandler':getInstance(OwnerLayerInterface)),
         (get({get({This, terrainEventListener}), '$class'})):onTerrainEvent(get({This, terrainEventListener}), (fun(Target_N66193) -> (get({Target_N66193, '$class'})):getNext(Target_N66193, get({This, 'CLIFF'})) end)('TerrainEventCircularStaticPool':getInstance())).

@@ -45,11 +45,11 @@ init_fields(This) ->
 new(MotionRectangleConstraintsInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MotionRectangleConstraintsInterface),
+    '$init'(This, MotionRectangleConstraintsInterface),
     This.
 
-init(This, MotionRectangleConstraintsInterface) ->
-    'BasicEventHandler':init(This),
+'$init'(This, MotionRectangleConstraintsInterface) ->
+    'BasicEventHandler':'$init'(This),
     init_fields(This),
         put({This, motionRectangleConstraintsInterface}, MotionRectangleConstraintsInterface).
 

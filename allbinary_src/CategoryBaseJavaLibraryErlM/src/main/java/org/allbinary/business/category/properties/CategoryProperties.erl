@@ -48,26 +48,26 @@ init_fields(This) ->
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This;
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(CategoryPropertiesHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryPropertiesHashMap),
+    '$init'(This, CategoryPropertiesHashMap),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         put({This, category}, Name);
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         put({This, category}, 'CategoryUtil':getNameFromNode(Node));
-init(This, CategoryPropertiesHashMap) ->
+'$init'(This, CategoryPropertiesHashMap) ->
     init_fields(This),
         put({This, category}, allbinary_java:to_string((get({CategoryPropertiesHashMap, '$class'})):get(CategoryPropertiesHashMap, get({'CategoryData':getInstance(), 'NAME'})))).
 

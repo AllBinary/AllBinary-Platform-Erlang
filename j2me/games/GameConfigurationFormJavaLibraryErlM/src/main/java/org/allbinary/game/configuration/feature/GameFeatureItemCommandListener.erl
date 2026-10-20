@@ -37,10 +37,10 @@ init_fields(This) ->
 new(GameOptionsForm) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameOptionsForm),
+    '$init'(This, GameOptionsForm),
     This.
 
-init(This, GameOptionsForm) ->
+'$init'(This, GameOptionsForm) ->
     init_fields(This),
         put({This, gameOptionsForm}, GameOptionsForm).
 

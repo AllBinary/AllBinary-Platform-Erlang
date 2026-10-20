@@ -51,10 +51,10 @@ init_fields(This) ->
 new(StoreFrontInterface, ItemInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreFrontInterface, ItemInterface),
+    '$init'(This, StoreFrontInterface, ItemInterface),
     This.
 
-init(This, StoreFrontInterface, ItemInterface) ->
+'$init'(This, StoreFrontInterface, ItemInterface) ->
     init_fields(This),
         put({This, storeFrontInterface}, StoreFrontInterface),
         put({This, itemInterface}, ItemInterface).

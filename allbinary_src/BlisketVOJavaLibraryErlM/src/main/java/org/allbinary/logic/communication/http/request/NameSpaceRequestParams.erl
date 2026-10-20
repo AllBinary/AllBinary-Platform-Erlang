@@ -46,11 +46,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'RequestParams':init(This),
+'$init'(This) ->
+        'RequestParams':'$init'(This),
         init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'HTTPREQUEST'})) of
             true ->
@@ -61,24 +61,24 @@ init(This) ->
 new(HttpServletRequest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HttpServletRequest),
+    '$init'(This, HttpServletRequest),
     This;
 new(PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PageContext),
+    '$init'(This, PageContext),
     This.
 
-init(This, HttpServletRequest) ->
-        'RequestParams':init(This, HttpServletRequest),
+'$init'(This, HttpServletRequest) ->
+        'RequestParams':'$init'(This, HttpServletRequest),
         init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'HTTPREQUEST'})) of
             true ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Constructing from HttpServletRequest", This, get({get({This, commonStrings}), 'CONSTRUCTOR'}));
             false -> ok
         end;
-init(This, PageContext) ->
-        'RequestParams':init(This, PageContext),
+'$init'(This, PageContext) ->
+        'RequestParams':'$init'(This, PageContext),
         init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'HTTPREQUEST'})) of
             true ->

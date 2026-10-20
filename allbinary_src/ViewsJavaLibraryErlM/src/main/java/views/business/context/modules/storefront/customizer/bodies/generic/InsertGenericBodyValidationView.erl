@@ -40,11 +40,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'GenericBodyCustomizerView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'GenericBodyCustomizerView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         RequestHashMap = (fun(Target_N66125) -> (get({Target_N66125, '$class'})):toHashMap(Target_N66125) end)('RequestParams':new((get({This, '$class'})):getPageContext(This))),
         put({This, body}, 'GenericBodyValidation':new(RequestHashMap)).

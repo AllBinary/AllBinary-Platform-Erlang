@@ -33,21 +33,21 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'FontFamilyView':init(This),
+'$init'(This) ->
+        'FontFamilyView':'$init'(This),
         init_fields(This).
 
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
-        'FontFamilyView':init(This, Node),
+'$init'(This, Node) ->
+        'FontFamilyView':'$init'(This, Node),
         init_fields(This).
 
 % throws Exception

@@ -38,10 +38,10 @@ init_fields(This) ->
 new(GenericProfileActionJPanel, Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GenericProfileActionJPanel, Node),
+    '$init'(This, GenericProfileActionJPanel, Node),
     This.
 
-init(This, GenericProfileActionJPanel, Node) ->
+'$init'(This, GenericProfileActionJPanel, Node) ->
     init_fields(This),
         ActionNameNode = 'DomSearchHelper':getNode(get({'GenericProfileActionData', 'NAME'}), (get({Node, '$class'})):getChildNodes(Node)),
         case (ActionNameNode =/= undefined) of
@@ -55,10 +55,10 @@ init(This, GenericProfileActionJPanel, Node) ->
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         put({This, name}, Name),
         (get({This, '$class'})):setGenericProfileActionScript(This, 'GenericProfileActionScript':new(get({This, genericProfileActionJPanel}))).

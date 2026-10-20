@@ -60,20 +60,20 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         ok.
 
 new(StoreHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreHashMap),
+    '$init'(This, StoreHashMap),
     This.
 
-init(This, StoreHashMap) ->
+'$init'(This, StoreHashMap) ->
     init_fields(This),
         StoreFrontData = 'StoreFrontData':getInstance(),
         put({This, name}, (get({StoreHashMap, '$class'})):get(StoreHashMap, get({StoreFrontData, 'NAME'}))),

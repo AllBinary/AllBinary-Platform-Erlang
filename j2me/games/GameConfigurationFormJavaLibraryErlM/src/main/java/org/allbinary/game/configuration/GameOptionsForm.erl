@@ -51,11 +51,11 @@ init_fields(This) ->
 new(CommandListener, Title, BackgrounBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CommandListener, Title, BackgrounBasicColor, ForegroundBasicColor),
+    '$init'(This, CommandListener, Title, BackgrounBasicColor, ForegroundBasicColor),
     This.
 
-init(This, CommandListener, Title, BackgrounBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined) ->
-        'CommandForm':init(This, CommandListener, Title, BackgrounBasicColor, ForegroundBasicColor),
+'$init'(This, CommandListener, Title, BackgrounBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined) ->
+        'CommandForm':'$init'(This, CommandListener, Title, BackgrounBasicColor, ForegroundBasicColor),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         (get({This, '$class'})):addConfiguration(This),

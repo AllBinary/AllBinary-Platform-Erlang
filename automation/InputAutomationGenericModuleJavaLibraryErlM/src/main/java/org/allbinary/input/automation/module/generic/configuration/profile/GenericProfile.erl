@@ -37,19 +37,19 @@ init_fields(This) ->
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This;
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, Name),
         put({This, vector}, 'BasicArrayListD':new());
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, 'DomNodeHelper':getTextNodeValue(Node)),
         put({This, vector}, 'BasicArrayListD':new()),

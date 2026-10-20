@@ -48,11 +48,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'Validation':init(This),
+'$init'(This) ->
+    'Validation':'$init'(This),
     init_fields(This),
         put({This, isFile}, false),
         put({This, logoAbPath}, undefined),
@@ -61,22 +61,22 @@ init(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, Node) ->
-    'Validation':init(This),
+'$init'(This, Node) ->
+    'Validation':'$init'(This),
     init_fields(This),
         put({This, isFile}, false),
         put({This, logoAbPath}, 'AbPath':new((fun(Target_N66451) -> (get({Target_N66451, '$class'})):getNodeValue(Target_N66451) end)('DomSearchHelper':getNode(get({'LogoData':getInstance(), 'IMAGEPATH'}), (get({Node, '$class'})):getChildNodes(Node))), get({'StringUtil':getInstance(), 'EMPTY_STRING'}))),
         put({This, logoFile}, (fun(Target_N66564) -> (get({Target_N66564, '$class'})):getNodeValue(Target_N66564) end)('DomSearchHelper':getNode(get({'LogoData':getInstance(), 'IMAGEFILENAME'}), (get({Node, '$class'})):getChildNodes(Node))));
-init(This, HashMap) ->
-    'Validation':init(This),
+'$init'(This, HashMap) ->
+    'Validation':'$init'(This),
     init_fields(This),
         put({This, isFile}, true),
         (get({This, '$class'})):getFormData(This, HashMap).

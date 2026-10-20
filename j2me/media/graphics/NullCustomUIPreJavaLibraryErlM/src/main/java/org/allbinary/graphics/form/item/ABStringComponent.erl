@@ -21,10 +21,10 @@ getBackgroundBasicColor(This) ->
 new(BackgroundBasicColor, ForegroundBasicColor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, BackgroundBasicColor, ForegroundBasicColor) ->
+'$init'(This, BackgroundBasicColor, ForegroundBasicColor) ->
     init_fields(This),
         ok.
 

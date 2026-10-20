@@ -25,10 +25,10 @@ init_fields(This) ->
 new(MaxApi, MaxPointers) when is_integer(MaxApi), is_integer(MaxPointers) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MaxApi, MaxPointers),
+    '$init'(This, MaxApi, MaxPointers),
     This.
 
-init(This, MaxApi, MaxPointers) when is_integer(MaxApi), is_integer(MaxPointers) ->
+'$init'(This, MaxApi, MaxPointers) when is_integer(MaxApi), is_integer(MaxPointers) ->
     init_fields(This),
         put({This, 'MAX_API'}, MaxApi),
         put({This, 'MAX_POINTERS'}, MaxPointers).

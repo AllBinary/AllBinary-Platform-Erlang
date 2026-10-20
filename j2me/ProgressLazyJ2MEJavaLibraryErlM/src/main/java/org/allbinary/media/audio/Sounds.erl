@@ -35,10 +35,10 @@ init_fields(This) ->
 new(SoundsFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SoundsFactoryInterface),
+    '$init'(This, SoundsFactoryInterface),
     This.
 
-init(This, SoundsFactoryInterface) ->
+'$init'(This, SoundsFactoryInterface) ->
     init_fields(This),
         put({This, soundsFactoryInterface}, SoundsFactoryInterface).
 

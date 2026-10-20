@@ -55,11 +55,11 @@ init_fields(This) ->
 new(InputMappingInterface, BasicColor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputMappingInterface, BasicColor),
+    '$init'(This, InputMappingInterface, BasicColor),
     This.
 
-init(This, InputMappingInterface, BasicColor) ->
-    'ProcessPaintable':init(This),
+'$init'(This, InputMappingInterface, BasicColor) ->
+    'ProcessPaintable':'$init'(This),
     init_fields(This),
         put({This, inputMappingInterface}, InputMappingInterface),
         (fun(Target_N66467) -> (get({Target_N66467, '$class'})):addListenerInterface(Target_N66467, This) end)('CompleteMotionGestureInputEventHandler':getInstance()),

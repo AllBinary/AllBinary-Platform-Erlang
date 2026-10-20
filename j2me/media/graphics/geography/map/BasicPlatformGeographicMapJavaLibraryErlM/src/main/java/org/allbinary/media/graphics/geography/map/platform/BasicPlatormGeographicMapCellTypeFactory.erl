@@ -38,11 +38,11 @@ init_fields(This) ->
 new(TileTypeToTileIdsMap, MaxTileId) when is_integer(MaxTileId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TileTypeToTileIdsMap, MaxTileId),
+    '$init'(This, TileTypeToTileIdsMap, MaxTileId),
     This.
 
-init(This, TileTypeToTileIdsMap, MaxTileId) when is_integer(MaxTileId) ->
-    'GeographicMapCellTypeFactory':init(This),
+'$init'(This, TileTypeToTileIdsMap, MaxTileId) when is_integer(MaxTileId) ->
+    'GeographicMapCellTypeFactory':'$init'(This),
     init_fields(This),
         CommonStrings = 'CommonStrings':getInstance(),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({CommonStrings, 'START'}), This, get({CommonStrings, 'INIT'})),

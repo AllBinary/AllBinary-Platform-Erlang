@@ -47,10 +47,10 @@ createDXY(Image, Dx, Dy, AnimationBehaviorFactory) when is_integer(Dx), is_integ
 new(Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy), is_integer(AngleIncrement) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory),
+    '$init'(This, Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory),
     This.
 
-init(This, Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy), is_integer(AngleIncrement) ->
+'$init'(This, Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy), is_integer(AngleIncrement) ->
     init_fields(This),
         put({This, animationBehaviorFactory}, AnimationBehaviorFactory),
         TotalAngle = trunc(get({'AngleFactory':getInstance(), 'TOTAL_ANGLE'})),

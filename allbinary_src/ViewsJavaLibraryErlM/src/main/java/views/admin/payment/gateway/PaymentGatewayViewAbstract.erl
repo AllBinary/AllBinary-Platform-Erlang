@@ -32,11 +32,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'TransformInfoHttpComposite':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'TransformInfoHttpComposite':'$init'(This, TransformInfoInterface),
         init_fields(This),
         (get({This, '$class'})):getFormData(This, (fun(Target_N65871) -> (get({Target_N65871, '$class'})):getRequest(Target_N65871) end)((get({This, '$class'})):getPageContext(This))).
 

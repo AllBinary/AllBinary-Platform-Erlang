@@ -37,10 +37,10 @@ init_fields(This) ->
 new(Password) when (is_list(Password) orelse Password =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Password),
+    '$init'(This, Password),
     This.
 
-init(This, Password) when (is_list(Password) orelse Password =:= undefined) ->
+'$init'(This, Password) when (is_list(Password) orelse Password =:= undefined) ->
     init_fields(This),
         put({This, password}, Password).
 

@@ -40,10 +40,10 @@ init_fields(This) ->
 new(BasicURIResolver) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicURIResolver),
+    '$init'(This, BasicURIResolver),
     This.
 
-init(This, BasicURIResolver) ->
+'$init'(This, BasicURIResolver) ->
     init_fields(This),
         put({This, basicURIResolver}, BasicURIResolver).
 

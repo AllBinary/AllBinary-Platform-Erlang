@@ -30,10 +30,10 @@ init_fields(This) ->
 new(FtpConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FtpConfigurationInterface),
+    '$init'(This, FtpConfigurationInterface),
     This.
 
-init(This, FtpConfigurationInterface) ->
+'$init'(This, FtpConfigurationInterface) ->
     init_fields(This),
         put({This, ftpConfigurationInterface}, FtpConfigurationInterface).
 

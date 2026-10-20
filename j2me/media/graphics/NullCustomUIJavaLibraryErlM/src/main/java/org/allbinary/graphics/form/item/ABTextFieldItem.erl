@@ -20,11 +20,11 @@ init_fields(This) ->
 new(Canvas, Visitor, Label, Value, MaxSize, Layout, AltText, Font, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), (is_list(Value) orelse Value =:= undefined), is_integer(MaxSize), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Canvas, Visitor, Label, Value, MaxSize, Layout, AltText, Font, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Canvas, Visitor, Label, Value, MaxSize, Layout, AltText, Font, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Canvas, Visitor, Label, Value, MaxSize, Layout, AltText, Font, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), (is_list(Value) orelse Value =:= undefined), is_integer(MaxSize), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
-        'ABTextItem':init(This, Label, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Canvas, Visitor, Label, Value, MaxSize, Layout, AltText, Font, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), (is_list(Value) orelse Value =:= undefined), is_integer(MaxSize), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
+        'ABTextItem':'$init'(This, Label, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This),
         put({This, font}, Font).
 

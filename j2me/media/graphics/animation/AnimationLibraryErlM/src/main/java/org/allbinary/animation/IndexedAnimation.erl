@@ -33,11 +33,11 @@ init_fields(This) ->
 new(AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationBehavior),
+    '$init'(This, AnimationBehavior),
     This.
 
-init(This, AnimationBehavior) ->
-    'Animation':init(This),
+'$init'(This, AnimationBehavior) ->
+    'Animation':'$init'(This),
     init_fields(This),
         put({This, animationBehaviorP}, AnimationBehavior).
 

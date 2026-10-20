@@ -35,29 +35,29 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'TitleView':init(This),
+'$init'(This) ->
+        'TitleView':'$init'(This),
         init_fields(This).
 
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, Node) ->
-        'TitleView':init(This, Node),
+'$init'(This, Node) ->
+        'TitleView':'$init'(This, Node),
         init_fields(This);
-init(This, HashMap) ->
-        'TitleView':init(This, HashMap),
+'$init'(This, HashMap) ->
+        'TitleView':'$init'(This, HashMap),
         init_fields(This).
 
 

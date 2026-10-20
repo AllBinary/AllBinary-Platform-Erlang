@@ -25,10 +25,10 @@ init_fields(This) ->
 new(CategoryId) when (is_list(CategoryId) orelse CategoryId =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryId),
+    '$init'(This, CategoryId),
     This.
 
-init(This, CategoryId) when (is_list(CategoryId) orelse CategoryId =:= undefined) ->
+'$init'(This, CategoryId) when (is_list(CategoryId) orelse CategoryId =:= undefined) ->
     init_fields(This),
         put({This, categoryId}, CategoryId).
 

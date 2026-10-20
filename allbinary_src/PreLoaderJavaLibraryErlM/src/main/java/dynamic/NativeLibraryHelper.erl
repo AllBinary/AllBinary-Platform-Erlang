@@ -24,10 +24,10 @@ init_fields(This) ->
 new(Library) when (is_list(Library) orelse Library =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Library),
+    '$init'(This, Library),
     This.
 
-init(This, Library) when (is_list(Library) orelse Library =:= undefined) ->
+'$init'(This, Library) when (is_list(Library) orelse Library =:= undefined) ->
     init_fields(This),
         put({This, library}, Library).
 

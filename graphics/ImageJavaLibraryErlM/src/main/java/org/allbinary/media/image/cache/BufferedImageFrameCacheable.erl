@@ -29,10 +29,10 @@ init_fields(This) ->
 new(BufferedImage, Frame) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BufferedImage, Frame),
+    '$init'(This, BufferedImage, Frame),
     This.
 
-init(This, BufferedImage, Frame) ->
+'$init'(This, BufferedImage, Frame) ->
     init_fields(This),
         put({This, frame}, Frame),
         (get({This, '$class'})):setBufferedImage(This, BufferedImage).

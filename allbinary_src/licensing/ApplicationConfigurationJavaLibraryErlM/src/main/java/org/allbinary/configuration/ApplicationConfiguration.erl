@@ -46,10 +46,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         try
             case (fun(Target_N66487) -> (get({Target_N66487, '$class'})):isFile(Target_N66487, get({This, 'FILE'})) end)('FileFactory':getInstance()) of

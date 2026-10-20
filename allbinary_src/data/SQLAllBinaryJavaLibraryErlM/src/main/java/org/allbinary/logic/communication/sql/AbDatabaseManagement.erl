@@ -44,19 +44,19 @@ init_fields(This) ->
 new(DatabaseConnectionInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DatabaseConnectionInfoInterface),
+    '$init'(This, DatabaseConnectionInfoInterface),
     This;
 new(ConnectionInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ConnectionInfo),
+    '$init'(This, ConnectionInfo),
     This.
 
-init(This, DatabaseConnectionInfoInterface) ->
-        'AbSqlBean':init(This, DatabaseConnectionInfoInterface),
+'$init'(This, DatabaseConnectionInfoInterface) ->
+        'AbSqlBean':'$init'(This, DatabaseConnectionInfoInterface),
         init_fields(This);
-init(This, ConnectionInfo) ->
-        'AbSqlBean':init(This, ConnectionInfo),
+'$init'(This, ConnectionInfo) ->
+        'AbSqlBean':'$init'(This, ConnectionInfo),
         init_fields(This).
 
 

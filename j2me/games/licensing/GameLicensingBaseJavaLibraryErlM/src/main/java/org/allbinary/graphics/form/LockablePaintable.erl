@@ -33,11 +33,11 @@ init_fields(This) ->
 new(LockedIndex) when is_integer(LockedIndex) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LockedIndex),
+    '$init'(This, LockedIndex),
     This.
 
-init(This, LockedIndex) when is_integer(LockedIndex) ->
-    'ItemPaintable':init(This),
+'$init'(This, LockedIndex) when is_integer(LockedIndex) ->
+    'ItemPaintable':'$init'(This),
     init_fields(This),
         put({This, lockedIndex}, LockedIndex).
 

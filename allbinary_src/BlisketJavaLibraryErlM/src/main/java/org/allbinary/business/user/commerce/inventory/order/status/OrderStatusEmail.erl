@@ -46,10 +46,10 @@ init_fields(This) ->
 new(AbeClientInformation, OrderHistory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, OrderHistory),
+    '$init'(This, AbeClientInformation, OrderHistory),
     This.
 
-init(This, AbeClientInformation, OrderHistory) ->
+'$init'(This, AbeClientInformation, OrderHistory) ->
     init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation),
         put({This, orderHistory}, OrderHistory),

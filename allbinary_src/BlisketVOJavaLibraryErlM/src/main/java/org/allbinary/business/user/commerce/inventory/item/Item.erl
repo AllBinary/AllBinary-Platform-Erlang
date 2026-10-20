@@ -43,22 +43,22 @@ init_fields(This) ->
 new(ItemHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ItemHashMap),
+    '$init'(This, ItemHashMap),
     This.
 
-init(This, ItemHashMap) ->
-        'BasicItem':init(This, ItemHashMap),
+'$init'(This, ItemHashMap) ->
+        'BasicItem':'$init'(This, ItemHashMap),
         init_fields(This),
         (get({This, '$class'})):setData(This, ItemHashMap).
 
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'BasicItem':init(This),
+'$init'(This) ->
+    'BasicItem':'$init'(This),
     init_fields(This),
         EMPTY = get({'StringUtil':getInstance(), 'EMPTY_STRING'}),
         put({This, group}, EMPTY),

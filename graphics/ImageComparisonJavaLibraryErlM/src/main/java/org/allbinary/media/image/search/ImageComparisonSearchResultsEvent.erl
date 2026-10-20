@@ -28,11 +28,11 @@ init_fields(This) ->
 new(AnyType, ImageComparisonSearch) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType, ImageComparisonSearch),
+    '$init'(This, AnyType, ImageComparisonSearch),
     This.
 
-init(This, AnyType, ImageComparisonSearch) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType, ImageComparisonSearch) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This),
         (get({This, '$class'})):setImageComparisonSearch(This, ImageComparisonSearch).
 

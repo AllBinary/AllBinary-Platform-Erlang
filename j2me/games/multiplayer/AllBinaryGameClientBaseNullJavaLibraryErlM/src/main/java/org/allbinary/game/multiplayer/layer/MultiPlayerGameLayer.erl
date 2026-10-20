@@ -31,11 +31,11 @@ init_fields(This) ->
 new(RemoteInfo, GroupInterface, Name, LayerInfo, ViewPosition) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RemoteInfo, GroupInterface, Name, LayerInfo, ViewPosition),
+    '$init'(This, RemoteInfo, GroupInterface, Name, LayerInfo, ViewPosition),
     This.
 
-init(This, RemoteInfo, GroupInterface, Name, LayerInfo, ViewPosition) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(Name) orelse Name =:= undefined) ->
-        'CollidableDestroyableDamageableLayer':init(This, GroupInterface, Name, LayerInfo, ViewPosition).
+'$init'(This, RemoteInfo, GroupInterface, Name, LayerInfo, ViewPosition) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(Name) orelse Name =:= undefined) ->
+        'CollidableDestroyableDamageableLayer':'$init'(This, GroupInterface, Name, LayerInfo, ViewPosition).
 
 getMultiplayerBehavior(This) ->
         get({'MultiplayerBehavior', 'NULL_MULTIPLAYER_BEHAVIOR'}).

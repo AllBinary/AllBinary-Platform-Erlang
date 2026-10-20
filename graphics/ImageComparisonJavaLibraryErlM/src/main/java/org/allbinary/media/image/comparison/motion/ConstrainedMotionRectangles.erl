@@ -39,11 +39,11 @@ init_fields(This) ->
 new(MotionRectangleConstraintsInterface, MotionRectangles) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MotionRectangleConstraintsInterface, MotionRectangles),
+    '$init'(This, MotionRectangleConstraintsInterface, MotionRectangles),
     This.
 
-init(This, MotionRectangleConstraintsInterface, MotionRectangles) ->
-        'MotionRectangles':init(This, get({'ConstrainedMotionRectangles', 'NAME'}), (get({MotionRectangles, '$class'})):getImageComparisonResult(MotionRectangles)),
+'$init'(This, MotionRectangleConstraintsInterface, MotionRectangles) ->
+        'MotionRectangles':'$init'(This, get({'ConstrainedMotionRectangles', 'NAME'}), (get({MotionRectangles, '$class'})):getImageComparisonResult(MotionRectangles)),
         init_fields(This),
         (get({This, '$class'})):setMotionRectangleConstraintsInterface(This, MotionRectangleConstraintsInterface).
 

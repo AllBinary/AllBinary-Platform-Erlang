@@ -33,11 +33,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'MotionEventProcessor':init(This),
+'$init'(This) ->
+    'MotionEventProcessor':'$init'(This),
     init_fields(This),
         put({This, gameMotionGestureListener}, 'GameMotionGestureListener':new('MotionGestureReceiveInterfaceFactory':getInstance())),
         (get({This, '$class'})):addListener(This).

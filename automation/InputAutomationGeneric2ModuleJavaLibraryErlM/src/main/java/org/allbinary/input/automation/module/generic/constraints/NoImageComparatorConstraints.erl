@@ -30,11 +30,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'ImageComparatorConstraints':init(This, 1),
+'$init'(This) ->
+        'ImageComparatorConstraints':'$init'(This, 1),
         (get({This, '$class'})):setMaxNonMatchingPixelDeltas(This, get({'Integer', 'MAX_VALUE'})).
 
 isColorAllowed(This, Frame, Point, Color) when is_integer(Frame) ->

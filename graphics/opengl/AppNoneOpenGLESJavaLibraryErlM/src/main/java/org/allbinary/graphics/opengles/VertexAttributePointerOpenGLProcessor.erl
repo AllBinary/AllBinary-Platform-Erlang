@@ -36,11 +36,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'ObjectThreedOpenGLProcessor':init(This),
+'$init'(This) ->
+    'ObjectThreedOpenGLProcessor':'$init'(This),
     init_fields(This),
         ok.
 

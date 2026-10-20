@@ -31,11 +31,11 @@ getInstanceD() ->
 new(X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, X, Y, Z),
+    '$init'(This, X, Y, Z),
     This.
 
-init(This, X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
-        'ViewPositionBase':init(This, X, Y, Z),
+'$init'(This, X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
+        'ViewPositionBase':'$init'(This, X, Y, Z),
         init_fields(This).
 
 getX(This) ->

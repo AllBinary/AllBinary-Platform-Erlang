@@ -29,10 +29,10 @@ init_fields(This) ->
 new(TeamName, TeamId) when (is_list(TeamName) orelse TeamName =:= undefined), is_integer(TeamId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TeamName, TeamId),
+    '$init'(This, TeamName, TeamId),
     This.
 
-init(This, TeamName, TeamId) when (is_list(TeamName) orelse TeamName =:= undefined), is_integer(TeamId) ->
+'$init'(This, TeamName, TeamId) when (is_list(TeamName) orelse TeamName =:= undefined), is_integer(TeamId) ->
     init_fields(This),
         put({This, teamId}, TeamId),
         (get({This, '$class'})):setName(This, TeamName).

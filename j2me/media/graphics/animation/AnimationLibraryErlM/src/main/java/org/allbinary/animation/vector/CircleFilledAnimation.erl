@@ -33,11 +33,11 @@ init_fields(This) ->
 new(Width, Height, BasicColor) when is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Width, Height, BasicColor),
+    '$init'(This, Width, Height, BasicColor),
     This.
 
-init(This, Width, Height, BasicColor) when is_integer(Width), is_integer(Height) ->
-        'Animation':init(This),
+'$init'(This, Width, Height, BasicColor) when is_integer(Width), is_integer(Height) ->
+        'Animation':'$init'(This),
         init_fields(This),
         put({This, width}, Width),
         put({This, height}, Height),

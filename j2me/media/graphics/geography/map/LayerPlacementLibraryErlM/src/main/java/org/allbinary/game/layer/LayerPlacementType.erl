@@ -24,10 +24,10 @@ init_fields(This) ->
 new(Type) when is_integer(Type) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Type),
+    '$init'(This, Type),
     This.
 
-init(This, Type) when is_integer(Type) ->
+'$init'(This, Type) when is_integer(Type) ->
     init_fields(This),
         put({This, type}, Type).
 

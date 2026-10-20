@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Parent) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Parent),
+    '$init'(This, Parent),
     This.
 
-init(This, Parent) ->
-        'ClassLoader':init(This, Parent),
+'$init'(This, Parent) ->
+        'ClassLoader':'$init'(This, Parent),
         init_fields(This).
 

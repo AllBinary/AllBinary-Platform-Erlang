@@ -35,11 +35,11 @@ init_fields(This) ->
 new(ClientInformationFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInformationFactory),
+    '$init'(This, ClientInformationFactory),
     This.
 
-init(This, ClientInformationFactory) ->
-        'GameMidlet':init(This, ClientInformationFactory).
+'$init'(This, ClientInformationFactory) ->
+        'GameMidlet':'$init'(This, ClientInformationFactory).
 
 % throws Exception
 isContinue(This) ->

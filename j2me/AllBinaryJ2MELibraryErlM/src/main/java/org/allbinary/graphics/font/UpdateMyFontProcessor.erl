@@ -28,11 +28,11 @@ init_fields(This) ->
 new(KeyValueDrawCharArray) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, KeyValueDrawCharArray),
+    '$init'(This, KeyValueDrawCharArray),
     This.
 
-init(This, KeyValueDrawCharArray) ->
-    'MyFontProcessor':init(This),
+'$init'(This, KeyValueDrawCharArray) ->
+    'MyFontProcessor':'$init'(This),
     init_fields(This),
         put({This, updateMeasurementProcessor}, KeyValueDrawCharArray).
 

@@ -28,11 +28,11 @@ init_fields(This) ->
 new(UserName) when (is_list(UserName) orelse UserName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UserName),
+    '$init'(This, UserName),
     This.
 
-init(This, UserName) when (is_list(UserName) orelse UserName =:= undefined) ->
-        'StreetAddressesEntity':init(This, UserName),
+'$init'(This, UserName) when (is_list(UserName) orelse UserName =:= undefined) ->
+        'StreetAddressesEntity':'$init'(This, UserName),
         init_fields(This),
         (get({This, '$class'})):setTableName(This, get({This, 'TABLENAME'})).
 

@@ -34,11 +34,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'RaceTrackGeographicMapCellTypeFactory':init(This),
+'$init'(This) ->
+    'RaceTrackGeographicMapCellTypeFactory':'$init'(This),
     init_fields(This),
         put({This, 'EMPTY_CELL_TYPE'}, get({'EmptyRaceRaceTrackGeographicMapCellTypeFactory':getInstance(), 'EMPTY_CELL_TYPE'})),
         put({This, 'EASY_CELL_TYPE'}, get({This, 'EMPTY_CELL_TYPE'})),

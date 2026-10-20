@@ -41,10 +41,10 @@ init_fields(This) ->
 new(ParentHelperTag, Page, Command, ParamVector, PageContext) when (is_list(Page) orelse Page =:= undefined), (is_list(Command) orelse Command =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ParentHelperTag, Page, Command, ParamVector, PageContext),
+    '$init'(This, ParentHelperTag, Page, Command, ParamVector, PageContext),
     This.
 
-init(This, ParentHelperTag, Page, Command, ParamVector, PageContext) when (is_list(Page) orelse Page =:= undefined), (is_list(Command) orelse Command =:= undefined) ->
+'$init'(This, ParentHelperTag, Page, Command, ParamVector, PageContext) when (is_list(Page) orelse Page =:= undefined), (is_list(Command) orelse Command =:= undefined) ->
     init_fields(This),
         put({This, pageContext}, PageContext),
         put({This, page}, Page),

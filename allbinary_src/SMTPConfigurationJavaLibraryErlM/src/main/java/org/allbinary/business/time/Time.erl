@@ -24,18 +24,18 @@ init_fields(This) ->
 new(Time) when (is_list(Time) orelse Time =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Time),
+    '$init'(This, Time),
     This;
 new(Time) when is_integer(Time) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Time),
+    '$init'(This, Time),
     This.
 
-init(This, Time) when (is_list(Time) orelse Time =:= undefined) ->
+'$init'(This, Time) when (is_list(Time) orelse Time =:= undefined) ->
     init_fields(This),
         put({This, timeLong}, Time);
-init(This, Time) when is_integer(Time) ->
+'$init'(This, Time) when is_integer(Time) ->
     init_fields(This),
         put({This, timeLong}, Time).
 

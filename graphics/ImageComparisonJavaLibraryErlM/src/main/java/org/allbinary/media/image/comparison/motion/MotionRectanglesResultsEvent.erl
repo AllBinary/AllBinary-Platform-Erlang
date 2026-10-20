@@ -29,11 +29,11 @@ init_fields(This) ->
 new(AnyType, Frame, MotionRectangles) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType, Frame, MotionRectangles),
+    '$init'(This, AnyType, Frame, MotionRectangles),
     This.
 
-init(This, AnyType, Frame, MotionRectangles) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType, Frame, MotionRectangles) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This),
         put({This, frame}, Frame),
         (get({This, '$class'})):setMotionRectangles(This, MotionRectangles).

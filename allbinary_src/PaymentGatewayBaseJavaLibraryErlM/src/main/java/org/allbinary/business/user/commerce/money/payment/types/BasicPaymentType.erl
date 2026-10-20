@@ -37,20 +37,20 @@ init_fields(This) ->
 new(PaymentMethod) when (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PaymentMethod),
+    '$init'(This, PaymentMethod),
     This.
 
-init(This, PaymentMethod) when (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
+'$init'(This, PaymentMethod) when (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):init(This, PaymentMethod).
 
 new(PaymentMethod, PaymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface) when (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PaymentMethod, PaymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface),
+    '$init'(This, PaymentMethod, PaymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface),
     This.
 
-init(This, PaymentMethod, PaymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface) when (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
+'$init'(This, PaymentMethod, PaymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface) when (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):init(This, PaymentMethod),
         put({This, paymentGatewayInterfaceFactoryInterface}, PaymentGatewayInterfaceFactoryInterface),

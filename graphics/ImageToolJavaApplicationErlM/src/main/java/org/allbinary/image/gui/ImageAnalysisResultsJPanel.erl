@@ -56,11 +56,11 @@ init_fields(This) ->
 new(ImageAnalysisResultsArray) when (is_tuple(ImageAnalysisResultsArray) orelse ImageAnalysisResultsArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageAnalysisResultsArray),
+    '$init'(This, ImageAnalysisResultsArray),
     This.
 
-init(This, ImageAnalysisResultsArray) when (is_tuple(ImageAnalysisResultsArray) orelse ImageAnalysisResultsArray =:= undefined) ->
-    'JPanel':init(This),
+'$init'(This, ImageAnalysisResultsArray) when (is_tuple(ImageAnalysisResultsArray) orelse ImageAnalysisResultsArray =:= undefined) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):initComponents(This),
         ImageAnalysisResults = array:get(0, ImageAnalysisResultsArray),

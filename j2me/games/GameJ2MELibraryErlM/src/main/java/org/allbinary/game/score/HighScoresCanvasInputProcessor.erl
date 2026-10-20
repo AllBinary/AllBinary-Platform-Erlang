@@ -33,11 +33,11 @@ init_fields(This) ->
 new(HighScoresCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HighScoresCanvas),
+    '$init'(This, HighScoresCanvas),
     This.
 
-init(This, HighScoresCanvas) ->
-        'PlayerGameInput':init(This, 'BasicArrayListD':new(), 'BasicArrayListD':new(), (-1)),
+'$init'(This, HighScoresCanvas) ->
+        'PlayerGameInput':'$init'(This, 'BasicArrayListD':new(), 'BasicArrayListD':new(), (-1)),
         init_fields(This),
         put({This, highScoresCanvas}, HighScoresCanvas).
 

@@ -41,11 +41,11 @@ init_fields(This) ->
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
-        'BasicPersitance':init(This, Name),
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+        'BasicPersitance':'$init'(This, Name),
         init_fields(This).
 
 % throws Exception

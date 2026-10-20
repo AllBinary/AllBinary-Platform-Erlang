@@ -41,11 +41,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'CssCustomizerView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'CssCustomizerView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         RequestHashMap = (fun(Target_N66215) -> (get({Target_N66215, '$class'})):toHashMap(Target_N66215) end)('NameSpaceRequestParams':new((get({This, '$class'})):getPageContext(This))),
         put({This, styleValidationInterface}, 'CssStyleValidation':new(RequestHashMap)).

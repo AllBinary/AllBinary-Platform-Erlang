@@ -36,10 +36,10 @@ init_fields(This) ->
 new(LikelyhoodIntegerArray, RepeatLikelyhoodIntegerArray, Max, TimeDelayHelper) when (is_tuple(LikelyhoodIntegerArray) orelse LikelyhoodIntegerArray =:= undefined), (is_tuple(RepeatLikelyhoodIntegerArray) orelse RepeatLikelyhoodIntegerArray =:= undefined), is_integer(Max) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LikelyhoodIntegerArray, RepeatLikelyhoodIntegerArray, Max, TimeDelayHelper),
+    '$init'(This, LikelyhoodIntegerArray, RepeatLikelyhoodIntegerArray, Max, TimeDelayHelper),
     This.
 
-init(This, LikelyhoodIntegerArray, RepeatLikelyhoodIntegerArray, Max, TimeDelayHelper) when (is_tuple(LikelyhoodIntegerArray) orelse LikelyhoodIntegerArray =:= undefined), (is_tuple(RepeatLikelyhoodIntegerArray) orelse RepeatLikelyhoodIntegerArray =:= undefined), is_integer(Max) ->
+'$init'(This, LikelyhoodIntegerArray, RepeatLikelyhoodIntegerArray, Max, TimeDelayHelper) when (is_tuple(LikelyhoodIntegerArray) orelse LikelyhoodIntegerArray =:= undefined), (is_tuple(RepeatLikelyhoodIntegerArray) orelse RepeatLikelyhoodIntegerArray =:= undefined), is_integer(Max) ->
     init_fields(This),
         put({This, likelyhoodIntegerArray}, LikelyhoodIntegerArray),
         put({This, repeatLikelyhoodIntegerArray}, RepeatLikelyhoodIntegerArray),

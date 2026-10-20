@@ -35,11 +35,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'Layer':init(This, 0, 0).
+'$init'(This) ->
+        'Layer':'$init'(This, 0, 0).
 
 paint(This, Graphics) ->
         ok.

@@ -27,11 +27,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'TableTag':init(This),
+'$init'(This) ->
+    'TableTag':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):setTagHelperFactory(This, 'LogHelperFactory':new()),
         (get({This, '$class'})):setTagRequestHelperFactory(This, 'LogHelperFactory':new()).

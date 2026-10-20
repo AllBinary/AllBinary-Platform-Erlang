@@ -39,11 +39,11 @@ init_fields(This) ->
 new(PickeUpLayerType, IconLayer, AnimationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PickeUpLayerType, IconLayer, AnimationInterface),
+    '$init'(This, PickeUpLayerType, IconLayer, AnimationInterface),
     This.
 
-init(This, PickeUpLayerType, IconLayer, AnimationInterface) ->
-        'PickedUpLayerInterfaceFactory':init(This, PickeUpLayerType, IconLayer, AnimationInterface),
+'$init'(This, PickeUpLayerType, IconLayer, AnimationInterface) ->
+        'PickedUpLayerInterfaceFactory':'$init'(This, PickeUpLayerType, IconLayer, AnimationInterface),
         init_fields(This),
         List = (fun(Target_N65965) -> (get({Target_N65965, '$class'})):getList(Target_N65965) end)('CountedPickedUpLayerInterfaceFactoryPool':getInstance()),
         put({This, id}, (get({List, '$class'})):size(List)),

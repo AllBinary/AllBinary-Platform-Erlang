@@ -51,11 +51,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'HttpStoreComponentView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'HttpStoreComponentView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, customizersVector}, (fun(Target_N66506) -> (get({Target_N66506, '$class'})):getNames(Target_N66506, (fun(Target_N66531) -> (get({Target_N66531, '$class'})):getStoreName(Target_N66531) end)((get({This, '$class'})):getWeblisketSession(This))) end)('TransformInfoEntityBuilder':getInstance())).
 

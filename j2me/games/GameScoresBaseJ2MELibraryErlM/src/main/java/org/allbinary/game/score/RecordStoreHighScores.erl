@@ -65,11 +65,11 @@ init_fields(This) ->
 new(AbeClientInformation, GameInfo, Name, Heading, ColumnTwoHeading, RecordComparatorInterface) when (is_list(Name) orelse Name =:= undefined), (is_list(Heading) orelse Heading =:= undefined), (is_list(ColumnTwoHeading) orelse ColumnTwoHeading =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, GameInfo, Name, Heading, ColumnTwoHeading, RecordComparatorInterface),
+    '$init'(This, AbeClientInformation, GameInfo, Name, Heading, ColumnTwoHeading, RecordComparatorInterface),
     This.
 
-init(This, AbeClientInformation, GameInfo, Name, Heading, ColumnTwoHeading, RecordComparatorInterface) when (is_list(Name) orelse Name =:= undefined), (is_list(Heading) orelse Heading =:= undefined), (is_list(ColumnTwoHeading) orelse ColumnTwoHeading =:= undefined) ->
-        'HighScores':init(This, Name, Heading, ColumnTwoHeading),
+'$init'(This, AbeClientInformation, GameInfo, Name, Heading, ColumnTwoHeading, RecordComparatorInterface) when (is_list(Name) orelse Name =:= undefined), (is_list(Heading) orelse Heading =:= undefined), (is_list(ColumnTwoHeading) orelse ColumnTwoHeading =:= undefined) ->
+        'HighScores':'$init'(This, Name, Heading, ColumnTwoHeading),
         init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation),
         put({This, gameInfo}, GameInfo),

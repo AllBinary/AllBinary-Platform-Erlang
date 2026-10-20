@@ -37,11 +37,11 @@ init_fields(This) ->
 new(AnimationInterface, LifeInterface, Location, Direction) when is_integer(Location), is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, LifeInterface, Location, Direction),
+    '$init'(This, AnimationInterface, LifeInterface, Location, Direction),
     This.
 
-init(This, AnimationInterface, LifeInterface, Location, Direction) when is_integer(Location), is_integer(Direction) ->
-        'BasicHud':init(This, Location, Direction, 2, get({'BasicColorFactory':getInstance(), 'WHITE'})),
+'$init'(This, AnimationInterface, LifeInterface, Location, Direction) when is_integer(Location), is_integer(Direction) ->
+        'BasicHud':'$init'(This, Location, Direction, 2, get({'BasicColorFactory':getInstance(), 'WHITE'})),
         init_fields(This),
         put({This, lifeInterface}, LifeInterface),
         Size = trunc((fun(Target_N66056) -> (get({Target_N66056, '$class'})):getMaxlives(Target_N66056) end)((get({This, '$class'})):getLifeInterface(This))),

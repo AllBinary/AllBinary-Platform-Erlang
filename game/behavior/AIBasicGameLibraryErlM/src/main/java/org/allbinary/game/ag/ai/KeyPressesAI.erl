@@ -34,11 +34,11 @@ init_fields(This) ->
 new(Hashtable, OwnerLayerInterface, GameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Hashtable, OwnerLayerInterface, GameInput),
+    '$init'(This, Hashtable, OwnerLayerInterface, GameInput),
     This.
 
-init(This, Hashtable, OwnerLayerInterface, GameInput) ->
-        'BasicAI':init(This, OwnerLayerInterface, GameInput),
+'$init'(This, Hashtable, OwnerLayerInterface, GameInput) ->
+        'BasicAI':'$init'(This, OwnerLayerInterface, GameInput),
         init_fields(This),
         put({This, keys}, array:new((get({Hashtable, '$class'})):size(Hashtable), {default, undefined})),
         ObjectArray = (fun(Target_N65922) -> (get({Target_N65922, '$class'})):getKeysAsArray(Target_N65922, Hashtable) end)('HashtableUtil':getInstance()),

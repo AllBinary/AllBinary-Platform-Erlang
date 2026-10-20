@@ -34,11 +34,11 @@ init_fields(This) ->
 new(CombatGameCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CombatGameCanvas),
+    '$init'(This, CombatGameCanvas),
     This.
 
-init(This, CombatGameCanvas) ->
-        'AllBinaryEventObject':init(This, 'DestroyedEventHandler':getInstance()),
+'$init'(This, CombatGameCanvas) ->
+        'AllBinaryEventObject':'$init'(This, 'DestroyedEventHandler':getInstance()),
         init_fields(This),
         (get({This, '$class'})):setAllBinaryGameCanvas(This, CombatGameCanvas).
 

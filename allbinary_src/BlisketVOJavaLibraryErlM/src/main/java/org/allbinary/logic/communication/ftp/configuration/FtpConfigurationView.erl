@@ -32,15 +32,15 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(FtpConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FtpConfigurationInterface),
+    '$init'(This, FtpConfigurationInterface),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         (get({This, '$class'})):setFtpConfigurationInterface(This, 'FtpConfiguration':new()),
         ChileNodeList = (get({Node, '$class'})):getChildNodes(Node),
@@ -52,7 +52,7 @@ init(This, Node) ->
         (fun(Target_N66208) -> (get({Target_N66208, '$class'})):setPassword(Target_N66208, Password) end)((get({This, '$class'})):getFtpConfigurationInterface(This)),
         Path = 'DomNodeHelper':getTextNodeValue(get({'FtpConfigurationData', 'PATH'}), ChileNodeList),
         (fun(Target_N66312) -> (get({Target_N66312, '$class'})):setPath(Target_N66312, Path) end)((get({This, '$class'})):getFtpConfigurationInterface(This));
-init(This, FtpConfigurationInterface) ->
+'$init'(This, FtpConfigurationInterface) ->
     init_fields(This),
         (get({This, '$class'})):setFtpConfigurationInterface(This, FtpConfigurationInterface).
 

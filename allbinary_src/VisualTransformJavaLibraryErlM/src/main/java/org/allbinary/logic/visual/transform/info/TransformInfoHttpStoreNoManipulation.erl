@@ -29,11 +29,11 @@ init_fields(This) ->
 new(PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PropertiesHashMap, PageContext),
+    '$init'(This, PropertiesHashMap, PageContext),
     This.
 
-init(This, PropertiesHashMap, PageContext) ->
-        'TransformInfoHttpStore':init(This, PropertiesHashMap, PageContext).
+'$init'(This, PropertiesHashMap, PageContext) ->
+        'TransformInfoHttpStore':'$init'(This, PropertiesHashMap, PageContext).
 
 % throws Exception
 setObjectConfigFile(This, Value) when (is_list(Value) orelse Value =:= undefined) ->

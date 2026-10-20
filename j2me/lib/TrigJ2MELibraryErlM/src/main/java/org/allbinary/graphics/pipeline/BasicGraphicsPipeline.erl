@@ -31,10 +31,10 @@ init_fields(This) ->
 new(Points) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Points),
+    '$init'(This, Points),
     This.
 
-init(This, Points) ->
+'$init'(This, Points) ->
     init_fields(This),
         put({This, pointBasicArrayList}, Points).
 

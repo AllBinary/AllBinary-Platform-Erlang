@@ -29,11 +29,11 @@ init_fields(This) ->
 new(AnimationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface),
+    '$init'(This, AnimationInterface),
     This.
 
-init(This, AnimationInterface) ->
-    'InitUpdatePaintable':init(This),
+'$init'(This, AnimationInterface) ->
+    'InitUpdatePaintable':'$init'(This),
     init_fields(This),
         put({This, animationInterface}, AnimationInterface).
 

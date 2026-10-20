@@ -34,9 +34,9 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'KeyValuePersistance':init(This, get({'GamePersistanceStrings':getInstance(), 'SAVED_GAME_RECORD_ID'})).
+'$init'(This) ->
+        'KeyValuePersistance':'$init'(This, get({'GamePersistanceStrings':getInstance(), 'SAVED_GAME_RECORD_ID'})).
 

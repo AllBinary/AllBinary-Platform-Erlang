@@ -23,11 +23,11 @@ createQuarter(AnimationBehavior) ->
 new(AngleInfo, CircularIndexUtil, AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AngleInfo, CircularIndexUtil, AnimationBehavior),
+    '$init'(This, AngleInfo, CircularIndexUtil, AnimationBehavior),
     This.
 
-init(This, AngleInfo, CircularIndexUtil, AnimationBehavior) ->
-        'RotationAnimation':init(This, AngleInfo, CircularIndexUtil, AnimationBehavior).
+'$init'(This, AngleInfo, CircularIndexUtil, AnimationBehavior) ->
+        'RotationAnimation':'$init'(This, AngleInfo, CircularIndexUtil, AnimationBehavior).
 
 % throws Exception
 getAnimationSize(This) ->

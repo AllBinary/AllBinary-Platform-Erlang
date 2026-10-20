@@ -39,11 +39,11 @@ init_fields(This) ->
 new(RaceTrackInfo, RaceTrackData, TiledLayer, MiniGeographicMap, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RaceTrackInfo, RaceTrackData, TiledLayer, MiniGeographicMap, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory),
+    '$init'(This, RaceTrackInfo, RaceTrackData, TiledLayer, MiniGeographicMap, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory),
     This.
 
-init(This, RaceTrackInfo, RaceTrackData, TiledLayer, MiniGeographicMap, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory) ->
-        'BasicGeographicMap':init(This, (get({RaceTrackInfo, '$class'})):getId(RaceTrackInfo), (get({RaceTrackInfo, '$class'})):getName(RaceTrackInfo), (get({RaceTrackData, '$class'})):getCellTypeIdToGeographicMapCellTypeArray(RaceTrackData), TiledLayer, (get({RaceTrackInfo, '$class'})):getForegroundBasicColor(RaceTrackInfo), (get({RaceTrackInfo, '$class'})):getBackgroundBasicColor(RaceTrackInfo), GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory),
+'$init'(This, RaceTrackInfo, RaceTrackData, TiledLayer, MiniGeographicMap, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory) ->
+        'BasicGeographicMap':'$init'(This, (get({RaceTrackInfo, '$class'})):getId(RaceTrackInfo), (get({RaceTrackInfo, '$class'})):getName(RaceTrackInfo), (get({RaceTrackData, '$class'})):getCellTypeIdToGeographicMapCellTypeArray(RaceTrackData), TiledLayer, (get({RaceTrackInfo, '$class'})):getForegroundBasicColor(RaceTrackInfo), (get({RaceTrackInfo, '$class'})):getBackgroundBasicColor(RaceTrackInfo), GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory),
         init_fields(This),
         put({This, raceTrackInfo}, RaceTrackInfo),
         put({This, raceTrackData}, RaceTrackData),

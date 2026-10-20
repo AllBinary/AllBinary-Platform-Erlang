@@ -30,10 +30,10 @@ init_fields(This) ->
 new(ContextConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ContextConfigurationInterface),
+    '$init'(This, ContextConfigurationInterface),
     This.
 
-init(This, ContextConfigurationInterface) ->
+'$init'(This, ContextConfigurationInterface) ->
     init_fields(This),
         put({This, contextConfigurationInterface}, ContextConfigurationInterface).
 

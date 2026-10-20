@@ -69,10 +69,10 @@ init_fields(This) ->
 new(DatabaseConnectionInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DatabaseConnectionInfoInterface),
+    '$init'(This, DatabaseConnectionInfoInterface),
     This.
 
-init(This, DatabaseConnectionInfoInterface) ->
+'$init'(This, DatabaseConnectionInfoInterface) ->
     init_fields(This),
         (get({This, '$class'})):setDatabaseConnectionInfoInterface(This, DatabaseConnectionInfoInterface).
 

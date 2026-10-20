@@ -52,15 +52,15 @@ init_fields(This) ->
 new(Payment) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Payment),
+    '$init'(This, Payment),
     This;
 new(Request) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Request),
+    '$init'(This, Request),
     This.
 
-init(This, Payment) ->
+'$init'(This, Payment) ->
     init_fields(This),
         put({This, name}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'NAME'}))),
         put({This, type}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'TYPE'}))),
@@ -85,7 +85,7 @@ init(This, Payment) ->
         put({This, checkType}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'CHECKTYPE'}))),
         put({This, driversLicense}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'DRIVERSLICENSE'}))),
         put({This, magneticInkCheckReader}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'MAGNETICINKCHECKREADER'})));
-init(This, Request) ->
+'$init'(This, Request) ->
     init_fields(This),
         put({This, name}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'NAME'}))),
         put({This, type}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'TYPE'}))),
@@ -106,10 +106,10 @@ init(This, Request) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         ok.
 

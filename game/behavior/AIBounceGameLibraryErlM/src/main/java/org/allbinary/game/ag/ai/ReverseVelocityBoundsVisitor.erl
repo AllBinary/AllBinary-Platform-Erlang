@@ -32,10 +32,10 @@ init_fields(This) ->
 new(LayerInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerInterface),
+    '$init'(This, LayerInterface),
     This.
 
-init(This, LayerInterface) ->
+'$init'(This, LayerInterface) ->
     init_fields(This),
         put({This, layerInterface}, LayerInterface),
         VelocityInterfaceCompositeInterface = LayerInterface,

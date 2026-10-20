@@ -27,11 +27,11 @@ init_fields(This) ->
 new(OutputTypeName, InputOutputTypeName, InputOutputTypeFile, Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName) when (is_list(OutputTypeName) orelse OutputTypeName =:= undefined), (is_list(InputOutputTypeName) orelse InputOutputTypeName =:= undefined), (is_list(InputOutputTypeFile) orelse InputOutputTypeFile =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(ObjectFileName) orelse ObjectFileName =:= undefined), (is_list(ObjectConfigFileName) orelse ObjectConfigFileName =:= undefined), (is_list(TemplateFileName) orelse TemplateFileName =:= undefined), (is_list(DataFileName) orelse DataFileName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OutputTypeName, InputOutputTypeName, InputOutputTypeFile, Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName),
+    '$init'(This, OutputTypeName, InputOutputTypeName, InputOutputTypeFile, Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName),
     This.
 
-init(This, OutputTypeName, InputOutputTypeName, InputOutputTypeFile, Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName) when (is_list(OutputTypeName) orelse OutputTypeName =:= undefined), (is_list(InputOutputTypeName) orelse InputOutputTypeName =:= undefined), (is_list(InputOutputTypeFile) orelse InputOutputTypeFile =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(ObjectFileName) orelse ObjectFileName =:= undefined), (is_list(ObjectConfigFileName) orelse ObjectConfigFileName =:= undefined), (is_list(TemplateFileName) orelse TemplateFileName =:= undefined), (is_list(DataFileName) orelse DataFileName =:= undefined) ->
-    'TransformInfo':init(This),
+'$init'(This, OutputTypeName, InputOutputTypeName, InputOutputTypeFile, Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName) when (is_list(OutputTypeName) orelse OutputTypeName =:= undefined), (is_list(InputOutputTypeName) orelse InputOutputTypeName =:= undefined), (is_list(InputOutputTypeFile) orelse InputOutputTypeFile =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(ObjectFileName) orelse ObjectFileName =:= undefined), (is_list(ObjectConfigFileName) orelse ObjectConfigFileName =:= undefined), (is_list(TemplateFileName) orelse TemplateFileName =:= undefined), (is_list(DataFileName) orelse DataFileName =:= undefined) ->
+    'TransformInfo':'$init'(This),
     init_fields(This),
         ok.
 

@@ -37,11 +37,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'MotionRecognizer':init(This),
+'$init'(This) ->
+    'MotionRecognizer':'$init'(This),
     init_fields(This),
         put({This, id}, allbinary_java:first(get({'GestureOnlyMotionRecognizer', index}), put({'GestureOnlyMotionRecognizer', index}, get({'GestureOnlyMotionRecognizer', index}) + 1))),
         put({This, motionGestureRecognizer}, 'MotionGestureRecognizer':new(get({This, id}))).

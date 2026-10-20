@@ -56,11 +56,11 @@ init_fields(This) ->
 new(GameCanvas, RaceTrackGeographicMapInterfaceFactoryInterface, MapSelectorPaintable, LockedIndex) when is_integer(LockedIndex) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameCanvas, RaceTrackGeographicMapInterfaceFactoryInterface, MapSelectorPaintable, LockedIndex),
+    '$init'(This, GameCanvas, RaceTrackGeographicMapInterfaceFactoryInterface, MapSelectorPaintable, LockedIndex),
     This.
 
-init(This, GameCanvas, RaceTrackGeographicMapInterfaceFactoryInterface, MapSelectorPaintable, LockedIndex) when is_integer(LockedIndex) ->
-    'Processor':init(This),
+'$init'(This, GameCanvas, RaceTrackGeographicMapInterfaceFactoryInterface, MapSelectorPaintable, LockedIndex) when is_integer(LockedIndex) ->
+    'Processor':'$init'(This),
     init_fields(This),
         put({This, gameCanvas}, GameCanvas),
         put({This, raceTrackGeographicMapInterfaceFactoryInterface}, RaceTrackGeographicMapInterfaceFactoryInterface),

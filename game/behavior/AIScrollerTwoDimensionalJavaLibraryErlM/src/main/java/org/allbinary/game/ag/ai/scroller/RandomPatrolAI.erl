@@ -33,11 +33,11 @@ init_fields(This) ->
 new(Hashtable, OwnerLayerInterface, GameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Hashtable, OwnerLayerInterface, GameInput),
+    '$init'(This, Hashtable, OwnerLayerInterface, GameInput),
     This.
 
-init(This, Hashtable, OwnerLayerInterface, GameInput) ->
-        'BasePatrolAI':init(This, Hashtable, OwnerLayerInterface, GameInput),
+'$init'(This, Hashtable, OwnerLayerInterface, GameInput) ->
+        'BasePatrolAI':'$init'(This, Hashtable, OwnerLayerInterface, GameInput),
         init_fields(This),
         (get({This, '$class'})):updateRandomDistance(This).
 

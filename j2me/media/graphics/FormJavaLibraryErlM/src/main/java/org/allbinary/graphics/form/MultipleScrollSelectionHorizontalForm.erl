@@ -41,11 +41,11 @@ createForm(Title, Items, Rectangle, FormType, Border, BackgroundBasicColor, Fore
 new(Title, Items, FormPaintableFactory, Border, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, Items, FormPaintableFactory, Border, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Title, Items, FormPaintableFactory, Border, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Title, Items, FormPaintableFactory, Border, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border) ->
-        'ScrollSelectionForm':init(This, Title, Items, FormPaintableFactory, Border, 3, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Title, Items, FormPaintableFactory, Border, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border) ->
+        'ScrollSelectionForm':'$init'(This, Title, Items, FormPaintableFactory, Border, 3, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This),
         case ('J2MEUtil':isJ2ME() orelse 'J2MEUtil':isHTML()) of
             true ->

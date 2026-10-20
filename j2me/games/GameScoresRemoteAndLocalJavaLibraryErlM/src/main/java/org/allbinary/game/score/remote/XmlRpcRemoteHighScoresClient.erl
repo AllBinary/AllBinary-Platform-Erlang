@@ -40,11 +40,11 @@ init_fields(This) ->
 new(ClientInfo, Page, RemoteMethod) when (is_list(Page) orelse Page =:= undefined), (is_list(RemoteMethod) orelse RemoteMethod =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInfo, Page, RemoteMethod),
+    '$init'(This, ClientInfo, Page, RemoteMethod),
     This.
 
-init(This, ClientInfo, Page, RemoteMethod) when (is_list(Page) orelse Page =:= undefined), (is_list(RemoteMethod) orelse RemoteMethod =:= undefined) ->
-        'XmlRpcAbeClient':init(This, ClientInfo, RemoteMethod),
+'$init'(This, ClientInfo, Page, RemoteMethod) when (is_list(Page) orelse Page =:= undefined), (is_list(RemoteMethod) orelse RemoteMethod =:= undefined) ->
+        'XmlRpcAbeClient':'$init'(This, ClientInfo, RemoteMethod),
         init_fields(This),
         put({This, page}, Page),
         (get({This, '$class'})):setServer(This, 0).

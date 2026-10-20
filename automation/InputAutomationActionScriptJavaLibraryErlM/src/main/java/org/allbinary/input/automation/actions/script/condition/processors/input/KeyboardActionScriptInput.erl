@@ -54,11 +54,11 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
-        'BasicProfileActionScriptInput':init(This, get({'KeyboardActionScriptInput', 'NAME'}), Node),
+'$init'(This, Node) ->
+        'BasicProfileActionScriptInput':'$init'(This, get({'KeyboardActionScriptInput', 'NAME'}), Node),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         ActionNode = 'DomSearchHelper':getNode(get({'KeyboardActionScriptInputData', 'NAME'}), (get({Node, '$class'})):getChildNodes(Node)),
@@ -109,11 +109,11 @@ init(This, Node) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'BasicProfileActionScriptInput':init(This, get({'KeyboardActionScriptInput', 'NAME'})),
+'$init'(This) ->
+        'BasicProfileActionScriptInput':'$init'(This, get({'KeyboardActionScriptInput', 'NAME'})),
         init_fields(This),
         case ((not (get({This, '$class'})):isPress(This)) andalso (not (get({This, '$class'})):isRelease(This))) of
             true ->

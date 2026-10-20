@@ -51,11 +51,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'LayerManagerEventListener':init(This),
+'$init'(This) ->
+    'LayerManagerEventListener':'$init'(This),
     init_fields(This),
         (fun(Target_N66255) -> (get({Target_N66255, '$class'})):addListener(Target_N66255, This) end)('LayerManagerEventHandler':getInstance()).
 

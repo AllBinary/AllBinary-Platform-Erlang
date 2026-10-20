@@ -35,11 +35,11 @@ init_fields(This) ->
 new(Width, Height, OffsetX, OffsetY, BasicColor) when is_integer(Width), is_integer(Height), is_integer(OffsetX), is_integer(OffsetY) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Width, Height, OffsetX, OffsetY, BasicColor),
+    '$init'(This, Width, Height, OffsetX, OffsetY, BasicColor),
     This.
 
-init(This, Width, Height, OffsetX, OffsetY, BasicColor) when is_integer(Width), is_integer(Height), is_integer(OffsetX), is_integer(OffsetY) ->
-    'Animation':init(This),
+'$init'(This, Width, Height, OffsetX, OffsetY, BasicColor) when is_integer(Width), is_integer(Height), is_integer(OffsetX), is_integer(OffsetY) ->
+    'Animation':'$init'(This),
     init_fields(This),
         put({This, width}, Width),
         put({This, height}, Height),

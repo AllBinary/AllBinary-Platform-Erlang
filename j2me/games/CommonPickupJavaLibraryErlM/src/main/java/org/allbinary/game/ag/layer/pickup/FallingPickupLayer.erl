@@ -41,11 +41,11 @@ init_fields(This) ->
 new(RemoteInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RemoteInfo),
+    '$init'(This, RemoteInfo),
     This.
 
-init(This, RemoteInfo) ->
-        'PickupLayer':init(This, get({'FallingPickupLayer', 'NAME'}), RemoteInfo, 0, get({'CountedPickedUpLayerInterfaceFactory', 'NULL_COUNTED_PICKUP_LAYER_FACTORY'}), (fun(Target_N65975) -> (get({Target_N65975, '$class'})):getInstance(Target_N65975, 0) end)('NullAnimationFactory':getFactoryInstance()), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 0, 0), 'ViewPosition':getInstanceD()).
+'$init'(This, RemoteInfo) ->
+        'PickupLayer':'$init'(This, get({'FallingPickupLayer', 'NAME'}), RemoteInfo, 0, get({'CountedPickedUpLayerInterfaceFactory', 'NULL_COUNTED_PICKUP_LAYER_FACTORY'}), (fun(Target_N65975) -> (get({Target_N65975, '$class'})):getInstance(Target_N65975, 0) end)('NullAnimationFactory':getFactoryInstance()), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 0, 0), 'ViewPosition':getInstanceD()).
 
 processTick(This, AllBinaryLayerManager) ->
         (get({This, '$class'})):setPosition(This, get({This, x}), (get({This, y}) + 1), get({This, z})).

@@ -41,11 +41,11 @@ getNullPaintableForm() ->
 new(Title, Items, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined) ->
-        'ABCustomForm':init(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined) ->
+        'ABCustomForm':'$init'(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This),
         (get({This, '$class'})):setSelectedIndex(This, 0).
 

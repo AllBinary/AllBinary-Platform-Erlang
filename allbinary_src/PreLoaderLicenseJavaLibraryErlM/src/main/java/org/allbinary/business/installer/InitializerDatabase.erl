@@ -51,15 +51,15 @@ init_fields(This) ->
 new(AbeClientInformation, Map) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, Map),
+    '$init'(This, AbeClientInformation, Map),
     This;
 new(AbeClientInformation, InitHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, InitHashMap),
+    '$init'(This, AbeClientInformation, InitHashMap),
     This.
 
-init(This, AbeClientInformation, Map) ->
+'$init'(This, AbeClientInformation, Map) ->
     init_fields(This),
         StringBuffer = 'StringMaker':new(),
         HashMap = (fun(Target_N66416) -> (get({Target_N66416, '$class'})):createHashMap(Target_N66416) end)('StdUtil':getInstance()),
@@ -78,7 +78,7 @@ init(This, AbeClientInformation, Map) ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({StringBuffer, '$class'})):toString(StringBuffer), This, "getFormData()")
         end, lists:seq(0, Size - 1)),
         (get({This, '$class'})):getFormData(This, AbeClientInformation, HashMap);
-init(This, AbeClientInformation, InitHashMap) ->
+'$init'(This, AbeClientInformation, InitHashMap) ->
     init_fields(This),
         (get({This, '$class'})):getFormData(This, AbeClientInformation, InitHashMap).
 

@@ -30,10 +30,10 @@ init_fields(This) ->
 new(CostFromStart, CostToGoal) when is_integer(CostFromStart), is_integer(CostToGoal) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CostFromStart, CostToGoal),
+    '$init'(This, CostFromStart, CostToGoal),
     This.
 
-init(This, CostFromStart, CostToGoal) when is_integer(CostFromStart), is_integer(CostToGoal) ->
+'$init'(This, CostFromStart, CostToGoal) when is_integer(CostFromStart), is_integer(CostToGoal) ->
     init_fields(This),
         put({This, costFromStartP}, CostFromStart),
         put({This, costToEndP}, CostToGoal),

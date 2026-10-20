@@ -65,11 +65,11 @@ init_fields(This) ->
 new(GameInputMappingArray, BackgroundBasicColor, BasicColor) when (is_tuple(GameInputMappingArray) orelse GameInputMappingArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameInputMappingArray, BackgroundBasicColor, BasicColor),
+    '$init'(This, GameInputMappingArray, BackgroundBasicColor, BasicColor),
     This.
 
-init(This, GameInputMappingArray, BackgroundBasicColor, BasicColor) when (is_tuple(GameInputMappingArray) orelse GameInputMappingArray =:= undefined) ->
-        'HelpPaintable':init(This, "Input Mapping", BackgroundBasicColor, BasicColor),
+'$init'(This, GameInputMappingArray, BackgroundBasicColor, BasicColor) when (is_tuple(GameInputMappingArray) orelse GameInputMappingArray =:= undefined) ->
+        'HelpPaintable':'$init'(This, "Input Mapping", BackgroundBasicColor, BasicColor),
         init_fields(This),
         put({This, gameInputMappingArray}, GameInputMappingArray),
         (get({This, '$class'})):update(This, get({This, 'NONE'}), get({This, 'NONE'})),

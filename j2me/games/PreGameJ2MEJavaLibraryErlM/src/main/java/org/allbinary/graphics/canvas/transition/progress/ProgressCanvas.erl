@@ -76,11 +76,11 @@ init_fields(This) ->
 new(Title, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Title, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Title, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined) ->
-        'RunnableCanvas':init(This, get({'NullCommandListener', 'NULL_COMMAND_LISTENER'}), get({'CanvasStrings':getInstance(), 'EMPTY_CHILD_NAME_LIST'}), false),
+'$init'(This, Title, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined) ->
+        'RunnableCanvas':'$init'(This, get({'NullCommandListener', 'NULL_COMMAND_LISTENER'}), get({'CanvasStrings':getInstance(), 'EMPTY_CHILD_NAME_LIST'}), false),
         init_fields(This),
         put({This, backgroundBasicColor}, BackgroundBasicColor),
         put({This, gauge}, 'ABCustomGaugeItem':new(get({'StringUtil':getInstance(), 'EMPTY_STRING'}), trunc(get({This, maxValue})), 0, BackgroundBasicColor, ForegroundBasicColor)).

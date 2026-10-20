@@ -47,11 +47,11 @@ init_fields(This) ->
 new(InputProcessorArray) when (is_tuple(InputProcessorArray) orelse InputProcessorArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputProcessorArray),
+    '$init'(This, InputProcessorArray),
     This.
 
-init(This, InputProcessorArray) when (is_tuple(InputProcessorArray) orelse InputProcessorArray =:= undefined) ->
-    'AnalogLocationInputProcessor':init(This),
+'$init'(This, InputProcessorArray) when (is_tuple(InputProcessorArray) orelse InputProcessorArray =:= undefined) ->
+    'AnalogLocationInputProcessor':'$init'(This),
     init_fields(This),
         put({This, inputProcessorArray}, InputProcessorArray),
         try

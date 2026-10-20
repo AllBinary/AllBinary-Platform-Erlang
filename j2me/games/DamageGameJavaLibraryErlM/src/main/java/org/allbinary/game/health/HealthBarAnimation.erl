@@ -35,11 +35,11 @@ init_fields(This) ->
 new(LayerInterface, Location) when is_integer(Location) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerInterface, Location),
+    '$init'(This, LayerInterface, Location),
     This.
 
-init(This, LayerInterface, Location) when is_integer(Location) ->
-    'Animation':init(This),
+'$init'(This, LayerInterface, Location) when is_integer(Location) ->
+    'Animation':'$init'(This),
     init_fields(This),
         put({This, allbinaryLayer}, LayerInterface),
         put({This, location}, Location),

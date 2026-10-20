@@ -54,11 +54,11 @@ init_fields(This) ->
 new(Name, ChildNameList) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, ChildNameList),
+    '$init'(This, Name, ChildNameList),
     This.
 
-init(This, Name, ChildNameList) when (is_list(Name) orelse Name =:= undefined) ->
-    'Canvas':init(This),
+'$init'(This, Name, ChildNameList) when (is_list(Name) orelse Name =:= undefined) ->
+    'Canvas':'$init'(This),
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'CONSTRUCTOR'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         (get({get({This, displayInfo}), '$class'})):update(get({This, displayInfo}), This, get({get({This, canvasStrings}), 'CONSTRUCTOR'})),

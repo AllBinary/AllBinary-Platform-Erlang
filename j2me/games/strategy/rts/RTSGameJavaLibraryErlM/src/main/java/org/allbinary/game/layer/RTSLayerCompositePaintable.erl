@@ -35,11 +35,11 @@ init_fields(This) ->
 new(UpgradableRTSLayerHudPaintable) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UpgradableRTSLayerHudPaintable),
+    '$init'(This, UpgradableRTSLayerHudPaintable),
     This.
 
-init(This, UpgradableRTSLayerHudPaintable) ->
-    'Paintable':init(This),
+'$init'(This, UpgradableRTSLayerHudPaintable) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, upgradableRTSLayerHudPaintable}, UpgradableRTSLayerHudPaintable).
 

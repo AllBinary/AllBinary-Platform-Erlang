@@ -38,10 +38,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         case (fun(Target_N67464) -> (get({Target_N67464, '$class'})):isMultiTouch(Target_N67464) end)('TouchScreenFactory':getInstance()) of
             true ->

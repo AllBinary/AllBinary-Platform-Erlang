@@ -39,11 +39,11 @@ getInstance() ->
 new(PoolName, NumThreads, Priority) when (is_list(PoolName) orelse PoolName =:= undefined), is_integer(NumThreads), is_integer(Priority) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PoolName, NumThreads, Priority),
+    '$init'(This, PoolName, NumThreads, Priority),
     This.
 
-init(This, PoolName, NumThreads, Priority) when (is_list(PoolName) orelse PoolName =:= undefined), is_integer(NumThreads), is_integer(Priority) ->
-        'ThreadPool':init(This, PoolName, NumThreads, Priority),
+'$init'(This, PoolName, NumThreads, Priority) when (is_list(PoolName) orelse PoolName =:= undefined), is_integer(NumThreads), is_integer(Priority) ->
+        'ThreadPool':'$init'(This, PoolName, NumThreads, Priority),
         init_fields(This).
 
 runTask(This, Task) ->

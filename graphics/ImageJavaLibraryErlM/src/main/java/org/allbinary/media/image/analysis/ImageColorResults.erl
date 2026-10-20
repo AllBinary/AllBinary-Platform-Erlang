@@ -25,10 +25,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({This, '$class'})):setColorRange(This, 'ColorRange':new()),
         (fun(Target_N65686) -> (get({Target_N65686, '$class'})):setMaxRed(Target_N65686, (-1)) end)((get({This, '$class'})):getColorRange(This)),

@@ -28,10 +28,10 @@ init_fields(This) ->
 new(CombatGameCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CombatGameCanvas),
+    '$init'(This, CombatGameCanvas),
     This.
 
-init(This, CombatGameCanvas) ->
+'$init'(This, CombatGameCanvas) ->
     init_fields(This),
         put({This, combatGameCanvas}, CombatGameCanvas).
 

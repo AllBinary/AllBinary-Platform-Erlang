@@ -14,9 +14,9 @@ init_fields(This) ->
 new(Code, Message) when is_integer(Code), (is_list(Message) orelse Message =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Code, Message),
+    '$init'(This, Code, Message),
     This.
 
-init(This, Code, Message) when is_integer(Code), (is_list(Message) orelse Message =:= undefined) ->
-        'Exception':init(This, Message).
+'$init'(This, Code, Message) when is_integer(Code), (is_list(Message) orelse Message =:= undefined) ->
+        'Exception':'$init'(This, Message).
 

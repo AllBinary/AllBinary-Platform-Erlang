@@ -35,11 +35,11 @@ init_fields(This) ->
 new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, PageContext),
+    '$init'(This, HashMap, PageContext),
     This.
 
-init(This, HashMap, PageContext) ->
-        'ViewHelper':init(This, HashMap, PageContext),
+'$init'(This, HashMap, PageContext) ->
+        'ViewHelper':'$init'(This, HashMap, PageContext),
         init_fields(This),
         put({This, viewInterface}, (get({This, '$class'})):getViewObject(This)),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'TAGHELPER'})) of

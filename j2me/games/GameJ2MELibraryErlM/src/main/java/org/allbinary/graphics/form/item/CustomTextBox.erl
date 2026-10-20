@@ -43,11 +43,11 @@ init_fields(This) ->
 new(CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), (is_list(Text) orelse Text =:= undefined), is_integer(MaxSize), is_integer(Constraints) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), (is_list(Text) orelse Text =:= undefined), is_integer(MaxSize), is_integer(Constraints) ->
-        'GameCommandCanvas':init(This, CmdListener, Label, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), (is_list(Text) orelse Text =:= undefined), is_integer(MaxSize), is_integer(Constraints) ->
+        'GameCommandCanvas':'$init'(This, CmdListener, Label, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This),
         StringUtil = 'StringUtil':getInstance(),
         TextFieldItem = 'ABTextFieldItem':new(This, 'TextItemVisitor':new(), get({StringUtil, 'EMPTY_STRING'}), get({StringUtil, 'EMPTY_STRING'}), MaxSize, 0, get({StringUtil, 'EMPTY_STRING'}), Font, BackgroundBasicColor, ForegroundBasicColor),

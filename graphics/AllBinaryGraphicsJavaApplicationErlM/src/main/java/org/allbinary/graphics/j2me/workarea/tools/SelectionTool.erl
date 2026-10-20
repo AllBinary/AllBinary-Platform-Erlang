@@ -50,10 +50,10 @@ init_fields(This) ->
 new(CanvasJPanel) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CanvasJPanel),
+    '$init'(This, CanvasJPanel),
     This.
 
-init(This, CanvasJPanel) ->
+'$init'(This, CanvasJPanel) ->
     init_fields(This),
         put({This, canvasJPanel}, CanvasJPanel).
 

@@ -47,22 +47,22 @@ init_fields(This) ->
 new(AbeClientInformation, TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, TransformInfoInterface),
+    '$init'(This, AbeClientInformation, TransformInfoInterface),
     This.
 
-init(This, AbeClientInformation, TransformInfoInterface) ->
-        'TransformInfoObjectConfig':init(This, TransformInfoInterface),
+'$init'(This, AbeClientInformation, TransformInfoInterface) ->
+        'TransformInfoObjectConfig':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation).
 
 new(AbeClientInformation, TransformInfoInterface, Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, TransformInfoInterface, Document),
+    '$init'(This, AbeClientInformation, TransformInfoInterface, Document),
     This.
 
-init(This, AbeClientInformation, TransformInfoInterface, Document) ->
-        'TransformInfoObjectConfig':init(This, TransformInfoInterface, Document),
+'$init'(This, AbeClientInformation, TransformInfoInterface, Document) ->
+        'TransformInfoObjectConfig':'$init'(This, TransformInfoInterface, Document),
         init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation),
         (get({This, '$class'})):setDocument(This, (get({This, '$class'})):generate(This, (get({This, '$class'})):toXmlDoc(This))).
@@ -70,11 +70,11 @@ init(This, AbeClientInformation, TransformInfoInterface, Document) ->
 new(AbeClientInformation, TransformInfoInterface, Name, Type) when (is_list(Name) orelse Name =:= undefined), (is_list(Type) orelse Type =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, TransformInfoInterface, Name, Type),
+    '$init'(This, AbeClientInformation, TransformInfoInterface, Name, Type),
     This.
 
-init(This, AbeClientInformation, TransformInfoInterface, Name, Type) when (is_list(Name) orelse Name =:= undefined), (is_list(Type) orelse Type =:= undefined) ->
-        'TransformInfoObjectConfig':init(This, TransformInfoInterface, Name, Type),
+'$init'(This, AbeClientInformation, TransformInfoInterface, Name, Type) when (is_list(Name) orelse Name =:= undefined), (is_list(Type) orelse Type =:= undefined) ->
+        'TransformInfoObjectConfig':'$init'(This, TransformInfoInterface, Name, Type),
         init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation),
         (get({This, '$class'})):setDocument(This, (get({This, '$class'})):generate(This, (get({This, '$class'})):toXmlDoc(This))).

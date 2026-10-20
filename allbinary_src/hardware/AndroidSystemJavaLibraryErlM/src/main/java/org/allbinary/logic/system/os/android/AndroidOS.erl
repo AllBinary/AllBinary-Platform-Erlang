@@ -35,11 +35,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'GenericOperatingSystem':init(This),
+'$init'(This) ->
+    'GenericOperatingSystem':'$init'(This),
     init_fields(This),
         SDK_VERSION = (fun(Target_N65905) -> (get({Target_N65905, '$class'})):getVersion(Target_N65905) end)('AndroidInfoFactory':getInstance()),
         case (SDK_VERSION > 10) of

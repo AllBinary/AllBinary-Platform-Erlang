@@ -33,11 +33,11 @@ init_fields(This) ->
 new(AbeClientInformation, TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, TransformInfoInterface),
+    '$init'(This, AbeClientInformation, TransformInfoInterface),
     This.
 
-init(This, AbeClientInformation, TransformInfoInterface) ->
-        'BasicTransformer':init(This, AbeClientInformation, TransformInfoInterface),
+'$init'(This, AbeClientInformation, TransformInfoInterface) ->
+        'BasicTransformer':'$init'(This, AbeClientInformation, TransformInfoInterface),
         TransformInfoObjectConfigInterface = (fun(Target_N65917) -> (get({Target_N65917, '$class'})):getInstance(Target_N65917, AbeClientInformation, TransformInfoInterface) end)('TransformInfoObjectConfigAndManipulatorFactory':getInstance()),
         (get({This, '$class'})):setURIResolver(This, 'CustomUriResolver':new((get({TransformInfoObjectConfigInterface, '$class'})):getImportUriPath(TransformInfoObjectConfigInterface), (get({This, '$class'})):getURIResolver(This))).
 

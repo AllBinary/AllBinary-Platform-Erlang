@@ -41,11 +41,11 @@ init_fields(This) ->
 new(GroupInterface, IsPrimaryWaypointCreator, ItemIndex) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), is_boolean(IsPrimaryWaypointCreator), (is_tuple(ItemIndex) orelse ItemIndex =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GroupInterface, IsPrimaryWaypointCreator, ItemIndex),
+    '$init'(This, GroupInterface, IsPrimaryWaypointCreator, ItemIndex),
     This.
 
-init(This, GroupInterface, IsPrimaryWaypointCreator, ItemIndex) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), is_boolean(IsPrimaryWaypointCreator), (is_tuple(ItemIndex) orelse ItemIndex =:= undefined) ->
-        'RTSFormInput':init(This, GroupInterface),
+'$init'(This, GroupInterface, IsPrimaryWaypointCreator, ItemIndex) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), is_boolean(IsPrimaryWaypointCreator), (is_tuple(ItemIndex) orelse ItemIndex =:= undefined) ->
+        'RTSFormInput':'$init'(This, GroupInterface),
         init_fields(This),
         put({This, itemIndex}, ItemIndex),
         put({This, isPrimaryWaypointCreator}, IsPrimaryWaypointCreator),

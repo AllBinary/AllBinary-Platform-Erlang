@@ -60,26 +60,26 @@ init_fields(This) ->
 new(BasketInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasketInterface),
+    '$init'(This, BasketInterface),
     This.
 
-init(This, BasketInterface) ->
-        'Order':init(This, BasketInterface),
+'$init'(This, BasketInterface) ->
+        'Order':'$init'(This, BasketInterface),
         init_fields(This).
 
 new(BasketInterface, OrderHistory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasketInterface, OrderHistory),
+    '$init'(This, BasketInterface, OrderHistory),
     This;
 new(BasketInterface, OrderHistoryHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasketInterface, OrderHistoryHashMap),
+    '$init'(This, BasketInterface, OrderHistoryHashMap),
     This.
 
-init(This, BasketInterface, OrderHistory) ->
-        'Order':init(This, (get({OrderHistory, '$class'})):getStoreName(OrderHistory), BasketInterface, (get({OrderHistory, '$class'})):getId(OrderHistory), (get({OrderHistory, '$class'})):getShippingMethod(OrderHistory), (get({OrderHistory, '$class'})):getSpecial(OrderHistory), (get({OrderHistory, '$class'})):getPaymentMethod(OrderHistory)),
+'$init'(This, BasketInterface, OrderHistory) ->
+        'Order':'$init'(This, (get({OrderHistory, '$class'})):getStoreName(OrderHistory), BasketInterface, (get({OrderHistory, '$class'})):getId(OrderHistory), (get({OrderHistory, '$class'})):getShippingMethod(OrderHistory), (get({OrderHistory, '$class'})):getSpecial(OrderHistory), (get({OrderHistory, '$class'})):getPaymentMethod(OrderHistory)),
         init_fields(This),
         put({This, userName}, (get({OrderHistory, '$class'})):getUserName(OrderHistory)),
         put({This, shippingAddress}, (get({OrderHistory, '$class'})):getShippingAddress(OrderHistory)),
@@ -98,8 +98,8 @@ init(This, BasketInterface, OrderHistory) ->
         'Order':setUserCancelComments(This, (get({OrderHistory, '$class'})):getUserCancelComments(OrderHistory)),
         'Order':setStoreComments(This, (get({OrderHistory, '$class'})):getStoreComments(OrderHistory)),
         'Order':setStoreCancelComments(This, (get({OrderHistory, '$class'})):getStoreCancelComments(OrderHistory));
-init(This, BasketInterface, OrderHistoryHashMap) ->
-        'Order':init(This, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'StoreFrontData':getInstance(), 'NAME'})), BasketInterface, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderData', 'ID'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingMethodData', 'NAME'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'EntryData':getInstance(), 'SPECIAL'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'PaymentData', 'METHOD'}))),
+'$init'(This, BasketInterface, OrderHistoryHashMap) ->
+        'Order':'$init'(This, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'StoreFrontData':getInstance(), 'NAME'})), BasketInterface, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderData', 'ID'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingMethodData', 'NAME'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'EntryData':getInstance(), 'SPECIAL'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'PaymentData', 'METHOD'}))),
         init_fields(This),
         put({This, shippingAddress}, 'StreetAddress':new((get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'NAME'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'STREET'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'CITY'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'STATE'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'CODE'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'COUNTRY'})))),
         put({This, billingAddress}, 'StreetAddress':new((get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'NAME'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'STREET'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'CITY'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'STATE'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'CODE'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'COUNTRY'})))),

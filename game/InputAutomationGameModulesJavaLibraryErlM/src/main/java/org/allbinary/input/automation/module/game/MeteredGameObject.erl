@@ -37,10 +37,10 @@ init_fields(This) ->
 new(BufferedImage, MinX, MaxX, Y) when (is_tuple(BufferedImage) orelse BufferedImage =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BufferedImage, MinX, MaxX, Y),
+    '$init'(This, BufferedImage, MinX, MaxX, Y),
     This.
 
-init(This, BufferedImage, MinX, MaxX, Y) when (is_tuple(BufferedImage) orelse BufferedImage =:= undefined) ->
+'$init'(This, BufferedImage, MinX, MaxX, Y) when (is_tuple(BufferedImage) orelse BufferedImage =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setRatios(This, array:new(array:size(BufferedImage), {default, undefined})),
         (get({This, '$class'})):setMinX(This, MinX),

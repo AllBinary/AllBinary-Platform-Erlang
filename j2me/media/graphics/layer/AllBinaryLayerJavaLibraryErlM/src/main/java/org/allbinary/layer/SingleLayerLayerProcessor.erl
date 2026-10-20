@@ -26,11 +26,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'LayerProcessor':init(This, 'SingleLayerLayerManager':new()).
+'$init'(This) ->
+        'LayerProcessor':'$init'(This, 'SingleLayerLayerManager':new()).
 
 % throws Exception
 process(This, AllBinaryLayerManager) ->

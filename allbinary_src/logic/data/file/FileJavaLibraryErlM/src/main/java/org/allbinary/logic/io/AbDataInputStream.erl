@@ -28,9 +28,9 @@ init_fields(This) ->
 new(Out) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Out),
+    '$init'(This, Out),
     This.
 
-init(This, Out) ->
-        'DataInputStream':init(This, Out).
+'$init'(This, Out) ->
+        'DataInputStream':'$init'(This, Out).
 

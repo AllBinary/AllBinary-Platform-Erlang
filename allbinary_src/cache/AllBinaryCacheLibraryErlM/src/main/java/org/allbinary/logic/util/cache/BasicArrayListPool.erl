@@ -27,11 +27,11 @@ init_fields(This) ->
 new(CacheableInterfaceFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CacheableInterfaceFactoryInterface),
+    '$init'(This, CacheableInterfaceFactoryInterface),
     This.
 
-init(This, CacheableInterfaceFactoryInterface) ->
-        'AbstractArrayListPool':init(This, CacheableInterfaceFactoryInterface).
+'$init'(This, CacheableInterfaceFactoryInterface) ->
+        'AbstractArrayListPool':'$init'(This, CacheableInterfaceFactoryInterface).
 
 clear(This) ->
         (get({get({This, buffers}), '$class'})):clear(get({This, buffers})).

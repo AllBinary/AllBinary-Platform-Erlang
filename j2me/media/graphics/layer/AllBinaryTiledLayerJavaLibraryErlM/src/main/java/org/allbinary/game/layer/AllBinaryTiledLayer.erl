@@ -42,11 +42,11 @@ init_fields(This) ->
 new(DataId, Width, Height, CellWidth, CellHeight) when is_integer(Width), is_integer(Height), is_integer(CellWidth), is_integer(CellHeight) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DataId, Width, Height, CellWidth, CellHeight),
+    '$init'(This, DataId, Width, Height, CellWidth, CellHeight),
     This.
 
-init(This, DataId, Width, Height, CellWidth, CellHeight) when is_integer(Width), is_integer(Height), is_integer(CellWidth), is_integer(CellHeight) ->
-        'Layer':init(This, 0, 0),
+'$init'(This, DataId, Width, Height, CellWidth, CellHeight) when is_integer(Width), is_integer(Height), is_integer(CellWidth), is_integer(CellHeight) ->
+        'Layer':'$init'(This, 0, 0),
         init_fields(This),
         put({This, dataId}, DataId),
         (get({This, '$class'})):setLayerWidth(This, Width),

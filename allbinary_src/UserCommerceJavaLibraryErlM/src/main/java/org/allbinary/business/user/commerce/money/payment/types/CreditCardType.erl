@@ -29,10 +29,10 @@ init_fields(This) ->
 new(CardType) when (is_list(CardType) orelse CardType =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CardType),
+    '$init'(This, CardType),
     This.
 
-init(This, CardType) when (is_list(CardType) orelse CardType =:= undefined) ->
+'$init'(This, CardType) when (is_list(CardType) orelse CardType =:= undefined) ->
     init_fields(This),
         put({This, name}, CardType).
 

@@ -26,10 +26,10 @@ init_fields(This) ->
 new(Name, MaxTime, MaxSize) when (is_list(Name) orelse Name =:= undefined), is_integer(MaxTime), is_integer(MaxSize) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, MaxTime, MaxSize),
+    '$init'(This, Name, MaxTime, MaxSize),
     This.
 
-init(This, Name, MaxTime, MaxSize) when (is_list(Name) orelse Name =:= undefined), is_integer(MaxTime), is_integer(MaxSize) ->
+'$init'(This, Name, MaxTime, MaxSize) when (is_list(Name) orelse Name =:= undefined), is_integer(MaxTime), is_integer(MaxSize) ->
     init_fields(This),
         put({This, name}, Name),
         (get({This, '$class'})):setMaxTime(This, MaxTime),

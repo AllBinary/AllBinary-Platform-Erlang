@@ -30,11 +30,11 @@ init_fields(This) ->
 new(Image, AnimationBehaviorFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, AnimationBehaviorFactory),
+    '$init'(This, Image, AnimationBehaviorFactory),
     This.
 
-init(This, Image, AnimationBehaviorFactory) ->
-        'BaseImageAnimationFactory':init(This, Image, 'PrimitiveIntUtil':getArrayInstance(), (get({Image, '$class'})):getWidth(Image), (get({Image, '$class'})):getHeight(Image), 0, 0, AnimationBehaviorFactory).
+'$init'(This, Image, AnimationBehaviorFactory) ->
+        'BaseImageAnimationFactory':'$init'(This, Image, 'PrimitiveIntUtil':getArrayInstance(), (get({Image, '$class'})):getWidth(Image), (get({Image, '$class'})):getHeight(Image), 0, 0, AnimationBehaviorFactory).
 
 % throws Exception
 getInstance(This, InstanceId) when is_integer(InstanceId) ->

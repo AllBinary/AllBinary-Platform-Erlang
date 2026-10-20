@@ -35,10 +35,10 @@ init_fields(This) ->
 new(ImageArray, Dx, Dy, AnimationBehaviorFactory) when (is_tuple(ImageArray) orelse ImageArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageArray, Dx, Dy, AnimationBehaviorFactory),
+    '$init'(This, ImageArray, Dx, Dy, AnimationBehaviorFactory),
     This.
 
-init(This, ImageArray, Dx, Dy, AnimationBehaviorFactory) when (is_tuple(ImageArray) orelse ImageArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
+'$init'(This, ImageArray, Dx, Dy, AnimationBehaviorFactory) when (is_tuple(ImageArray) orelse ImageArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
     init_fields(This),
         put({This, imageArray}, ImageArray),
         put({This, animationBehaviorFactory}, AnimationBehaviorFactory),

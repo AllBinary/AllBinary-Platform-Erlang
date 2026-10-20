@@ -50,10 +50,10 @@ init_fields(This) ->
 new(MusicServiceClass, SongList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MusicServiceClass, SongList),
+    '$init'(This, MusicServiceClass, SongList),
     This.
 
-init(This, MusicServiceClass, SongList) ->
+'$init'(This, MusicServiceClass, SongList) ->
     init_fields(This),
         put({This, songList}, SongList).
 

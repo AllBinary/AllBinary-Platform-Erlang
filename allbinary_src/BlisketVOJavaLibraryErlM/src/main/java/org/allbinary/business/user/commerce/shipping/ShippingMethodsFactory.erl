@@ -64,10 +64,10 @@ init_fields(This) ->
 new(AbeClientInformation, StoreFrontInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, StoreFrontInterface),
+    '$init'(This, AbeClientInformation, StoreFrontInterface),
     This.
 
-init(This, AbeClientInformation, StoreFrontInterface) ->
+'$init'(This, AbeClientInformation, StoreFrontInterface) ->
     init_fields(This),
         StringBuffer = 'StringMaker':new(),
         Sep = get({'AbPathData':getInstance(), 'SEPARATOR'}),

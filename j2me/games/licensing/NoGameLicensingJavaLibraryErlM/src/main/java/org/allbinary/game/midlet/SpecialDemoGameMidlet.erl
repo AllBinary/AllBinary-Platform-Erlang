@@ -28,11 +28,11 @@ init_fields(This) ->
 new(ClientInformationFactory, LicenseLoadingType, DemoSetupFactory, LicenseCheckRunnableFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInformationFactory, LicenseLoadingType, DemoSetupFactory, LicenseCheckRunnableFactory),
+    '$init'(This, ClientInformationFactory, LicenseLoadingType, DemoSetupFactory, LicenseCheckRunnableFactory),
     This.
 
-init(This, ClientInformationFactory, LicenseLoadingType, DemoSetupFactory, LicenseCheckRunnableFactory) ->
-        'DemoGameMidlet':init(This, ClientInformationFactory).
+'$init'(This, ClientInformationFactory, LicenseLoadingType, DemoSetupFactory, LicenseCheckRunnableFactory) ->
+        'DemoGameMidlet':'$init'(This, ClientInformationFactory).
 
 initView(This) ->
         ok.

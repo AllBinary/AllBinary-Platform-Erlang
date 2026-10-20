@@ -39,11 +39,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'TrueTypeFontUtilBase':init(This, 1),
+'$init'(This) ->
+        'TrueTypeFontUtilBase':'$init'(This, 1),
         init_fields(This).
 
 getAsTextureSize(This, TextureSize) when is_integer(TextureSize) ->

@@ -35,11 +35,11 @@ init_fields(This) ->
 new(Image, AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, AnimationBehavior),
+    '$init'(This, Image, AnimationBehavior),
     This.
 
-init(This, Image, AnimationBehavior) ->
-        'IndexedAnimation':init(This, AnimationBehavior),
+'$init'(This, Image, AnimationBehavior) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior),
         init_fields(This),
         put({This, image}, Image).
 

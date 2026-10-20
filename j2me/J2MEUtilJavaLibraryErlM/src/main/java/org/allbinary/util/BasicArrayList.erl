@@ -26,10 +26,10 @@ init_fields(This) ->
 new(ObjectArray) when (is_tuple(ObjectArray) orelse ObjectArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ObjectArray),
+    '$init'(This, ObjectArray),
     This.
 
-init(This, ObjectArray) when (is_tuple(ObjectArray) orelse ObjectArray =:= undefined) ->
+'$init'(This, ObjectArray) when (is_tuple(ObjectArray) orelse ObjectArray =:= undefined) ->
     init_fields(This),
         put({This, objectArray}, ObjectArray).
 
@@ -72,7 +72,7 @@ removeAt(This, Index) when is_integer(Index) ->
             allbinary_java:array_copy(get({This, objectArray}), (Index + 1), get({This, objectArray}), Index, NumMoved);
             false -> ok
         end,
-        put({This, currentIndex}) end, get({This, objectArray}, array:set(begin put({This, currentIndex}, get({This, currentIndex}) - 1), undefined, get({This, currentIndex}) end, get({This, objectArray}))),
+        put({This, objectArray}, array:set(begin put({This, currentIndex}, get({This, currentIndex}) - 1), get({This, currentIndex}) end, undefined, get({This, objectArray}))),
         OldValue.
 
 remove(This, AnyType) ->
@@ -88,7 +88,7 @@ remove(This, AnyType) ->
                         allbinary_java:array_copy(get({This, objectArray}), (Index + 1), get({This, objectArray}), Index, get({local, numMoved}));
                         false -> ok
                     end,
-                    put({This, currentIndex}) end, get({This, objectArray}, array:set(begin put({This, currentIndex}, get({This, currentIndex}) - 1), undefined, get({This, currentIndex}) end, get({This, objectArray}))),
+                    put({This, objectArray}, array:set(begin put({This, currentIndex}, get({This, currentIndex}) - 1), get({This, currentIndex}) end, undefined, get({This, objectArray}))),
                     throw({'$return', true});
                     false -> ok
                 end
@@ -103,7 +103,7 @@ remove(This, AnyType) ->
                         allbinary_java:array_copy(get({This, objectArray}), (Index + 1), get({This, objectArray}), Index, get({local, numMoved}));
                         false -> ok
                     end,
-                    put({This, currentIndex}) end, get({This, objectArray}, array:set(begin put({This, currentIndex}, get({This, currentIndex}) - 1), undefined, get({This, currentIndex}) end, get({This, objectArray}))),
+                    put({This, objectArray}, array:set(begin put({This, currentIndex}, get({This, currentIndex}) - 1), get({This, currentIndex}) end, undefined, get({This, objectArray}))),
                     throw({'$return', true});
                     false -> ok
                 end

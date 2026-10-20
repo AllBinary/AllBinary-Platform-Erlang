@@ -40,10 +40,10 @@ createType(Name, Type, Cost) when (is_list(Name) orelse Name =:= undefined), is_
 new(Name, Types, Cost) when (is_list(Name) orelse Name =:= undefined), is_integer(Cost) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Types, Cost),
+    '$init'(This, Name, Types, Cost),
     This.
 
-init(This, Name, Types, Cost) when (is_list(Name) orelse Name =:= undefined), is_integer(Cost) ->
+'$init'(This, Name, Types, Cost) when (is_list(Name) orelse Name =:= undefined), is_integer(Cost) ->
     init_fields(This),
         Size = (get({Types, '$class'})):size(Types),
         TypeArray = array:new(Size, {default, 0}),

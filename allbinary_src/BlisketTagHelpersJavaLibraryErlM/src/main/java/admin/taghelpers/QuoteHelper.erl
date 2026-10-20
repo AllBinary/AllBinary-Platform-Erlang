@@ -59,11 +59,11 @@ init_fields(This) ->
 new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, PageContext),
+    '$init'(This, HashMap, PageContext),
     This.
 
-init(This, HashMap, PageContext) ->
-    'BasicTable':init(This),
+'$init'(This, HashMap, PageContext) ->
+    'BasicTable':'$init'(This),
     init_fields(This),
         StoreName = (get({HashMap, '$class'})):get(HashMap, get({'StoreFrontData':getInstance(), 'NAME'})),
         case (StoreName =/= undefined) of

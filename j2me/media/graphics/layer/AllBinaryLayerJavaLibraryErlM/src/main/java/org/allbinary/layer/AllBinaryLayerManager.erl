@@ -32,11 +32,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'LayerManager':init(This, 'LayerManagerNoDebug':getInstance()),
+'$init'(This) ->
+        'LayerManager':'$init'(This, 'LayerManagerNoDebug':getInstance()),
         init_fields(This).
 
 getLayerProcessorArray(This) ->

@@ -45,11 +45,11 @@ init_fields(This) ->
 new(PowerOfTenVelocity, Location, Direction, BasicColor) when is_integer(PowerOfTenVelocity), is_integer(Location), is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PowerOfTenVelocity, Location, Direction, BasicColor),
+    '$init'(This, PowerOfTenVelocity, Location, Direction, BasicColor),
     This.
 
-init(This, PowerOfTenVelocity, Location, Direction, BasicColor) when is_integer(PowerOfTenVelocity), is_integer(Location), is_integer(Direction) ->
-        'BasicHud':init(This, Location, Direction, 2, BasicColor),
+'$init'(This, PowerOfTenVelocity, Location, Direction, BasicColor) when is_integer(PowerOfTenVelocity), is_integer(Location), is_integer(Direction) ->
+        'BasicHud':'$init'(This, Location, Direction, 2, BasicColor),
         init_fields(This),
         put({This, powerOfTenVelocity}, PowerOfTenVelocity),
         put({This, maxVelocity}, PowerOfTenVelocity),

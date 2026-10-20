@@ -35,11 +35,11 @@ init_fields(This) ->
 new(Sleep, InputAutomationActionInterface, ImageComparatorConstraintsInterface, MotionRectangleConstraintsInterface) when is_integer(Sleep) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Sleep, InputAutomationActionInterface, ImageComparatorConstraintsInterface, MotionRectangleConstraintsInterface),
+    '$init'(This, Sleep, InputAutomationActionInterface, ImageComparatorConstraintsInterface, MotionRectangleConstraintsInterface),
     This.
 
-init(This, Sleep, InputAutomationActionInterface, ImageComparatorConstraintsInterface, MotionRectangleConstraintsInterface) when is_integer(Sleep) ->
-        'AbstractInputAutomationWorker':init(This, InputAutomationActionInterface),
+'$init'(This, Sleep, InputAutomationActionInterface, ImageComparatorConstraintsInterface, MotionRectangleConstraintsInterface) when is_integer(Sleep) ->
+        'AbstractInputAutomationWorker':'$init'(This, InputAutomationActionInterface),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "BasicTestAttackWorder", This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, sleep}, Sleep).

@@ -55,11 +55,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'SelectionHudPaintable':init(This),
+'$init'(This) ->
+    'SelectionHudPaintable':'$init'(This),
     init_fields(This),
         NumberStringHudFactory = 'NumberStringHudFactory':getInstance(),
         put({local, productivityHud}, get({NumberStringHudFactory, 'NULL_NUMBER_STRING_HUD'})),

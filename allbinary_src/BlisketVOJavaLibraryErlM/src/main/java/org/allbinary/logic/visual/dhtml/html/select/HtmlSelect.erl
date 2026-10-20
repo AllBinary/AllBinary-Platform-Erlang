@@ -48,11 +48,11 @@ init_fields(This) ->
 new(Before, Size, Name, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Size) orelse Size =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(After) orelse After =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Before, Size, Name, After),
+    '$init'(This, Before, Size, Name, After),
     This.
 
-init(This, Before, Size, Name, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Size) orelse Size =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(After) orelse After =:= undefined) ->
-    'HtmlTag':init(This),
+'$init'(This, Before, Size, Name, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Size) orelse Size =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(After) orelse After =:= undefined) ->
+    'HtmlTag':'$init'(This),
     init_fields(This),
         put({This, before}, Before),
         put({This, size}, Size),

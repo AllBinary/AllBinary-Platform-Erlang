@@ -33,10 +33,10 @@ init_fields(This) ->
 new(Keywords, SearchParams, XslFile, ContentType) when (is_list(Keywords) orelse Keywords =:= undefined), (is_list(XslFile) orelse XslFile =:= undefined), (is_list(ContentType) orelse ContentType =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Keywords, SearchParams, XslFile, ContentType),
+    '$init'(This, Keywords, SearchParams, XslFile, ContentType),
     This.
 
-init(This, Keywords, SearchParams, XslFile, ContentType) when (is_list(Keywords) orelse Keywords =:= undefined), (is_list(XslFile) orelse XslFile =:= undefined), (is_list(ContentType) orelse ContentType =:= undefined) ->
+'$init'(This, Keywords, SearchParams, XslFile, ContentType) when (is_list(Keywords) orelse Keywords =:= undefined), (is_list(XslFile) orelse XslFile =:= undefined), (is_list(ContentType) orelse ContentType =:= undefined) ->
     init_fields(This),
         put({This, keywords}, Keywords),
         put({This, searchParams}, SearchParams),

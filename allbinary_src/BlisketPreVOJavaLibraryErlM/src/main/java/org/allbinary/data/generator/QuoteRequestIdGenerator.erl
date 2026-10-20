@@ -30,11 +30,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'UniqueIdGenerator':init(This),
+'$init'(This) ->
+    'UniqueIdGenerator':'$init'(This),
     init_fields(This),
         StringBuffer = 'StringMaker':new(),
         (get({StringBuffer, '$class'})):append(StringBuffer, (get({get({'QuoteRequestIdGenerator', 'URLGLOBALS'}), '$class'})):getMainPath(get({'QuoteRequestIdGenerator', 'URLGLOBALS'}))),

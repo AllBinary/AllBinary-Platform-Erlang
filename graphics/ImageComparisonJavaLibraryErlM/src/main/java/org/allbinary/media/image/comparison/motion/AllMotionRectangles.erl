@@ -36,11 +36,11 @@ init_fields(This) ->
 new(ImageComparisonResult) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageComparisonResult),
+    '$init'(This, ImageComparisonResult),
     This.
 
-init(This, ImageComparisonResult) ->
-        'MotionRectangles':init(This, get({'AllMotionRectangles', 'NAME'}), ImageComparisonResult),
+'$init'(This, ImageComparisonResult) ->
+        'MotionRectangles':'$init'(This, get({'AllMotionRectangles', 'NAME'}), ImageComparisonResult),
         (get({This, '$class'})):createMotionRectangles(This, ImageComparisonResult).
 
 % throws Exception

@@ -39,11 +39,11 @@ createBasicProjectileWeaponPart(AnimationInterface, WeaponLayerCircularStaticPoo
 new(AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, WeaponProperties, ScoreableInterface, RelativeRelationship) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, WeaponProperties, ScoreableInterface, RelativeRelationship),
+    '$init'(This, AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, WeaponProperties, ScoreableInterface, RelativeRelationship),
     This.
 
-init(This, AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, WeaponProperties, ScoreableInterface, RelativeRelationship) ->
-        'BasicWeaponPart':init(This, AnimationInterface, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship),
+'$init'(This, AnimationInterface, SourceLayerInterface, WeaponLayerCircularStaticPool, WeaponProperties, ScoreableInterface, RelativeRelationship) ->
+        'BasicWeaponPart':'$init'(This, AnimationInterface, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship),
         init_fields(This),
         put({This, weaponLayerCircularStaticPool}, WeaponLayerCircularStaticPool).
 

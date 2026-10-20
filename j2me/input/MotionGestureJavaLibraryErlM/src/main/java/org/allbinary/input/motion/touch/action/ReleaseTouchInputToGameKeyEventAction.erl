@@ -48,11 +48,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'GameKeyCompleteMotionGestureInputEvent':init(This, "Release Action", get({'TouchMotionGestureFactory':getInstance(), 'RELEASED'}), (fun(Target_N66171) -> (get({Target_N66171, '$class'})):getInputMapping(Target_N66171) end)((fun(Target_N66178) -> (get({Target_N66178, '$class'})):getPersistentInputMappingInstance(Target_N66178) end)('PlatformInputMappingFactory':getInstance()))),
+'$init'(This) ->
+        'GameKeyCompleteMotionGestureInputEvent':'$init'(This, "Release Action", get({'TouchMotionGestureFactory':getInstance(), 'RELEASED'}), (fun(Target_N66171) -> (get({Target_N66171, '$class'})):getInputMapping(Target_N66171) end)((fun(Target_N66178) -> (get({Target_N66178, '$class'})):getPersistentInputMappingInstance(Target_N66178) end)('PlatformInputMappingFactory':getInstance()))),
         init_fields(This),
         try
             (get({This, '$class'})):setGameKey(This, get({This, 'NONE'})),

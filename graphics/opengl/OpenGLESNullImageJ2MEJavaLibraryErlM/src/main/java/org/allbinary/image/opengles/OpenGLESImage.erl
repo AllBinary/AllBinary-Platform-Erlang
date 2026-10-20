@@ -45,10 +45,10 @@ init_fields(This) ->
 new(Image, BitmapFactory, TextureFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, BitmapFactory, TextureFactory),
+    '$init'(This, Image, BitmapFactory, TextureFactory),
     This.
 
-init(This, Image, BitmapFactory, TextureFactory) ->
+'$init'(This, Image, BitmapFactory, TextureFactory) ->
     init_fields(This),
         put({This, openGLBitmap}, (get({BitmapFactory, '$class'})):createBitmap(BitmapFactory, Image)),
         put({This, textureFactory}, TextureFactory).

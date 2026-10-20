@@ -31,20 +31,20 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'Exception':init(This),
+'$init'(This) ->
+    'Exception':'$init'(This),
     init_fields(This),
         ok.
 
 new(Msg) when (is_list(Msg) orelse Msg =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Msg),
+    '$init'(This, Msg),
     This.
 
-init(This, Msg) when (is_list(Msg) orelse Msg =:= undefined) ->
-        'Exception':init(This, Msg).
+'$init'(This, Msg) when (is_list(Msg) orelse Msg =:= undefined) ->
+        'Exception':'$init'(This, Msg).
 

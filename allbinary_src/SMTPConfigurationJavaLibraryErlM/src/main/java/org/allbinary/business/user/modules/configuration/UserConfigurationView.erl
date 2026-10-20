@@ -36,15 +36,15 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(UserConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UserConfigurationInterface),
+    '$init'(This, UserConfigurationInterface),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         put({This, userConfigurationInterface}, 'UserConfiguration':new()),
         ChildNodeList = (get({Node, '$class'})):getChildNodes(Node),
@@ -58,7 +58,7 @@ init(This, Node) ->
         TimeLastModifiedNode = 'DomSearchHelper':getNode(get({'EntryData':getInstance(), 'LASTMODIFIED'}), ChildNodeList),
         TimeLastModifiedView = 'TimeLastModifiedView':new(TimeLastModifiedNode),
         (get({get({This, userConfigurationInterface}), '$class'})):setTimeLastModified(get({This, userConfigurationInterface}), (get({TimeLastModifiedView, '$class'})):getTimeLastModified(TimeLastModifiedView));
-init(This, UserConfigurationInterface) ->
+'$init'(This, UserConfigurationInterface) ->
     init_fields(This),
         put({This, userConfigurationInterface}, UserConfigurationInterface).
 

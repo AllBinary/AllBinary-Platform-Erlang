@@ -27,9 +27,9 @@ init_fields(This) ->
 new(GameConfiguration) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameConfiguration),
+    '$init'(This, GameConfiguration),
     This.
 
-init(This, GameConfiguration) ->
-        'Gauge':init(This, (get({GameConfiguration, '$class'})):getName(GameConfiguration), (fun(Target_N65649) -> (get({Target_N65649, '$class'})):booleanValue(Target_N65649) end)((get({GameConfiguration, '$class'})):isModifiable(GameConfiguration)), ((fun(Target_N65677) -> (get({Target_N65677, '$class'})):intValue(Target_N65677) end)((get({GameConfiguration, '$class'})):getMaxValue(GameConfiguration)) - (fun(Target_N65701) -> (get({Target_N65701, '$class'})):intValue(Target_N65701) end)((get({GameConfiguration, '$class'})):getMinValue(GameConfiguration))), ((fun(Target_N65730) -> (get({Target_N65730, '$class'})):intValue(Target_N65730) end)((get({GameConfiguration, '$class'})):getValue(GameConfiguration)) - (fun(Target_N65754) -> (get({Target_N65754, '$class'})):intValue(Target_N65754) end)((get({GameConfiguration, '$class'})):getMinValue(GameConfiguration)))).
+'$init'(This, GameConfiguration) ->
+        'Gauge':'$init'(This, (get({GameConfiguration, '$class'})):getName(GameConfiguration), (fun(Target_N65649) -> (get({Target_N65649, '$class'})):booleanValue(Target_N65649) end)((get({GameConfiguration, '$class'})):isModifiable(GameConfiguration)), ((fun(Target_N65677) -> (get({Target_N65677, '$class'})):intValue(Target_N65677) end)((get({GameConfiguration, '$class'})):getMaxValue(GameConfiguration)) - (fun(Target_N65701) -> (get({Target_N65701, '$class'})):intValue(Target_N65701) end)((get({GameConfiguration, '$class'})):getMinValue(GameConfiguration))), ((fun(Target_N65730) -> (get({Target_N65730, '$class'})):intValue(Target_N65730) end)((get({GameConfiguration, '$class'})):getValue(GameConfiguration)) - (fun(Target_N65754) -> (get({Target_N65754, '$class'})):intValue(Target_N65754) end)((get({GameConfiguration, '$class'})):getMinValue(GameConfiguration)))).
 

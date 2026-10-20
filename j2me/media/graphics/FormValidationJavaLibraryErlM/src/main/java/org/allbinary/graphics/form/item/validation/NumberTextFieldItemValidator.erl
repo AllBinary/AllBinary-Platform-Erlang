@@ -37,11 +37,11 @@ init_fields(This) ->
 new(TextFieldItem, MaxChars, Min, Max) when is_integer(MaxChars), is_integer(Min), is_integer(Max) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TextFieldItem, MaxChars, Min, Max),
+    '$init'(This, TextFieldItem, MaxChars, Min, Max),
     This.
 
-init(This, TextFieldItem, MaxChars, Min, Max) when is_integer(MaxChars), is_integer(Min), is_integer(Max) ->
-    'ValidatorBase':init(This),
+'$init'(This, TextFieldItem, MaxChars, Min, Max) when is_integer(MaxChars), is_integer(Min), is_integer(Max) ->
+    'ValidatorBase':'$init'(This),
     init_fields(This),
         put({This, textFieldItem}, TextFieldItem),
         put({This, min}, Min),

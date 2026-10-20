@@ -29,20 +29,20 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         ok.
 
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         put({This, ftpServer}, (get({HashMap, '$class'})):get(HashMap, get({'FtpConfigurationData', 'SERVER'}))),
         put({This, ftpPath}, (get({HashMap, '$class'})):get(HashMap, get({'FtpConfigurationData', 'PATH'}))),

@@ -32,11 +32,11 @@ init_fields(This) ->
 new(LayerManager, Crud) when (is_list(Crud) orelse Crud =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerManager, Crud),
+    '$init'(This, LayerManager, Crud),
     This.
 
-init(This, LayerManager, Crud) when (is_list(Crud) orelse Crud =:= undefined) ->
-        'AllBinaryEventObject':init(This, LayerManager),
+'$init'(This, LayerManager, Crud) when (is_list(Crud) orelse Crud =:= undefined) ->
+        'AllBinaryEventObject':'$init'(This, LayerManager),
         init_fields(This),
         put({This, crud}, Crud).
 

@@ -34,11 +34,11 @@ init_fields(This) ->
 new(Label, ItemArrayFactoryInterface) when (is_list(Label) orelse Label =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, ItemArrayFactoryInterface),
+    '$init'(This, Label, ItemArrayFactoryInterface),
     This.
 
-init(This, Label, ItemArrayFactoryInterface) when (is_list(Label) orelse Label =:= undefined) ->
-    'RTSLayerFormFactory':init(This),
+'$init'(This, Label, ItemArrayFactoryInterface) when (is_list(Label) orelse Label =:= undefined) ->
+    'RTSLayerFormFactory':'$init'(This),
     init_fields(This),
         put({local, scrollSelectionForm}, 'ScrollSelectionForm':getNullScrollSelectionForm()),
         try

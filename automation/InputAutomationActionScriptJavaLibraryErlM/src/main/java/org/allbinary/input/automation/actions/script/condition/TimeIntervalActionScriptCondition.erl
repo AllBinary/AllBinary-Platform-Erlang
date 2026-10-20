@@ -45,11 +45,11 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
-        'BasicProfileActionScriptCondition':init(This, get({'TimeIntervalActionScriptCondition', 'NAME'}), Node),
+'$init'(This, Node) ->
+        'BasicProfileActionScriptCondition':'$init'(This, get({'TimeIntervalActionScriptCondition', 'NAME'}), Node),
         init_fields(This),
         ActionNode = 'DomSearchHelper':getNode(get({'TimeIntervalActionScriptConditionData', 'NAME'}), (get({Node, '$class'})):getChildNodes(Node)),
         case (ActionNode =/= undefined) of
@@ -73,11 +73,11 @@ init(This, Node) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'BasicProfileActionScriptCondition':init(This, get({'TimeIntervalActionScriptCondition', 'NAME'})),
+'$init'(This) ->
+        'BasicProfileActionScriptCondition':'$init'(This, get({'TimeIntervalActionScriptCondition', 'NAME'})),
         init_fields(This),
         (get({This, '$class'})):setTimeDelayHelper(This, 'TimeDelayHelper':new(0)),
         (get({This, '$class'})):init(This).

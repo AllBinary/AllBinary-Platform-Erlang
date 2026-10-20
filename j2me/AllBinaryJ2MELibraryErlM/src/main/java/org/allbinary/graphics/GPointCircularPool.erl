@@ -28,11 +28,11 @@ init_fields(This) ->
 new(Size) when is_integer(Size) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Size),
+    '$init'(This, Size),
     This.
 
-init(This, Size) when is_integer(Size) ->
-    'BaseCircularPool':init(This),
+'$init'(This, Size) when is_integer(Size) ->
+    'BaseCircularPool':'$init'(This),
     init_fields(This),
         put({This, circularIndexUtil}, 'CircularIndexUtil':createInstance(Size)),
         put({This, 'OBJECT_ARRAY'}, array:new(Size, {default, undefined})),

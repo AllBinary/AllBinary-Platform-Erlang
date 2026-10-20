@@ -31,10 +31,10 @@ init_fields(This) ->
 new(Rgb1, Rgb2) when is_integer(Rgb1), is_integer(Rgb2) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Rgb1, Rgb2),
+    '$init'(This, Rgb1, Rgb2),
     This.
 
-init(This, Rgb1, Rgb2) when is_integer(Rgb1), is_integer(Rgb2) ->
+'$init'(This, Rgb1, Rgb2) when is_integer(Rgb1), is_integer(Rgb2) ->
     init_fields(This),
         (get({This, '$class'})):setRgb1(This, Rgb1),
         (get({This, '$class'})):setRgb2(This, Rgb2),

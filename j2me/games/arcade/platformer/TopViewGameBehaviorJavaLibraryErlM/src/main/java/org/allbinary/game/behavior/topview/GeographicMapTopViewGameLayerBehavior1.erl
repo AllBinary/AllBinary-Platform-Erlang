@@ -42,11 +42,11 @@ init_fields(This) ->
 new(MaxGravityActionIndex, AutoStepBlocks, OffsetY) when is_integer(MaxGravityActionIndex), is_boolean(AutoStepBlocks), is_integer(OffsetY) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MaxGravityActionIndex, AutoStepBlocks, OffsetY),
+    '$init'(This, MaxGravityActionIndex, AutoStepBlocks, OffsetY),
     This.
 
-init(This, MaxGravityActionIndex, AutoStepBlocks, OffsetY) when is_integer(MaxGravityActionIndex), is_boolean(AutoStepBlocks), is_integer(OffsetY) ->
-        'GeographicMapTopViewLayerBehavior':init(This, MaxGravityActionIndex),
+'$init'(This, MaxGravityActionIndex, AutoStepBlocks, OffsetY) when is_integer(MaxGravityActionIndex), is_boolean(AutoStepBlocks), is_integer(OffsetY) ->
+        'GeographicMapTopViewLayerBehavior':'$init'(This, MaxGravityActionIndex),
         init_fields(This),
         put({This, autoStepBlocks}, AutoStepBlocks),
         put({This, offsetY}, OffsetY).

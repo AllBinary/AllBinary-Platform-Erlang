@@ -71,11 +71,11 @@ init_fields(This) ->
 new(GroupInterface, IsUnitProducer) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), is_boolean(IsUnitProducer) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GroupInterface, IsUnitProducer),
+    '$init'(This, GroupInterface, IsUnitProducer),
     This.
 
-init(This, GroupInterface, IsUnitProducer) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), is_boolean(IsUnitProducer) ->
-        'RTSFormInput':init(This, GroupInterface),
+'$init'(This, GroupInterface, IsUnitProducer) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), is_boolean(IsUnitProducer) ->
+        'RTSFormInput':'$init'(This, GroupInterface),
         init_fields(This),
         put({This, isUnitProducer}, IsUnitProducer),
         SmallIntegerSingletonFactory = 'SmallIntegerSingletonFactory':getInstance(),

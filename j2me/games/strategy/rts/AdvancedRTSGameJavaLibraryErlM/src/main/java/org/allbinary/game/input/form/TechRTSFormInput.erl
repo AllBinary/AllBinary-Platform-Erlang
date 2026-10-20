@@ -51,11 +51,11 @@ init_fields(This) ->
 new(GroupInterface) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GroupInterface),
+    '$init'(This, GroupInterface),
     This.
 
-init(This, GroupInterface) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined) ->
-        'RTSFormInput':init(This, GroupInterface),
+'$init'(This, GroupInterface) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined) ->
+        'RTSFormInput':'$init'(This, GroupInterface),
         init_fields(This),
         BasicColorFactory = 'BasicColorFactory':getInstance(),
         put({This, noMoneyGameNotificationEvent}, 'GameNotificationEvent':new(This, get({'RTSGameStrings':getInstance(), 'NO_MONEY'}), (fun(Target_N66576) -> (get({Target_N66576, '$class'})):getAt(Target_N66576, 2) end)('SmallIntegerSingletonFactory':getInstance()), get({BasicColorFactory, 'WHITE'}), get({'BooleanFactory':getInstance(), 'FALSE'}))).

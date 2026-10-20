@@ -28,11 +28,11 @@ init_fields(This) ->
 new(Rectangle) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Rectangle),
+    '$init'(This, Rectangle),
     This.
 
-init(This, Rectangle) ->
-        'AllBinaryEventObject':init(This, Rectangle).
+'$init'(This, Rectangle) ->
+        'AllBinaryEventObject':'$init'(This, Rectangle).
 
 getRectangle(This) ->
         (get({This, '$class'})):getSource(This).

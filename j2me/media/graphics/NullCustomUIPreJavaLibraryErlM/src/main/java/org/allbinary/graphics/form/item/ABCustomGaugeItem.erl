@@ -22,9 +22,9 @@ init_fields(This) ->
 new(Label, MaxValue, InitialValue, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), is_integer(MaxValue), is_integer(InitialValue) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, MaxValue, InitialValue, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Label, MaxValue, InitialValue, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Label, MaxValue, InitialValue, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), is_integer(MaxValue), is_integer(InitialValue) ->
-        'ABCustomItem':init(This, Label, BackgroundBasicColor, ForegroundBasicColor).
+'$init'(This, Label, MaxValue, InitialValue, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), is_integer(MaxValue), is_integer(InitialValue) ->
+        'ABCustomItem':'$init'(This, Label, BackgroundBasicColor, ForegroundBasicColor).
 

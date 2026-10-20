@@ -34,11 +34,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'AllBinarySensor':init(This),
+'$init'(This) ->
+    'AllBinarySensor':'$init'(This),
     init_fields(This),
         ok.
 

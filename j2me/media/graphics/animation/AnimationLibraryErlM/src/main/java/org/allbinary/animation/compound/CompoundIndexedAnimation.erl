@@ -36,11 +36,11 @@ init_fields(This) ->
 new(AnimationInterfaceArray, AnimationBehavior) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterfaceArray, AnimationBehavior),
+    '$init'(This, AnimationInterfaceArray, AnimationBehavior),
     This.
 
-init(This, AnimationInterfaceArray, AnimationBehavior) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined) ->
-        'IndexedAnimation':init(This, AnimationBehavior),
+'$init'(This, AnimationInterfaceArray, AnimationBehavior) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior),
         init_fields(This),
         put({This, animationInterfaceArray}, AnimationInterfaceArray),
         put({This, circularIndexUtil}, 'CircularIndexUtil':createInstance(array:size(get({This, animationInterfaceArray})))).

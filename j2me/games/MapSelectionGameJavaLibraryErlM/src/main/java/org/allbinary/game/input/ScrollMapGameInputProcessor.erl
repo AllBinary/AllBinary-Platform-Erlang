@@ -27,11 +27,11 @@ init_fields(This) ->
 new(ScrollMapPlayerGameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ScrollMapPlayerGameInput),
+    '$init'(This, ScrollMapPlayerGameInput),
     This.
 
-init(This, ScrollMapPlayerGameInput) ->
-    'GameInputProcessor':init(This),
+'$init'(This, ScrollMapPlayerGameInput) ->
+    'GameInputProcessor':'$init'(This),
     init_fields(This),
         put({This, scrollMapPlayerGameInput}, ScrollMapPlayerGameInput).
 

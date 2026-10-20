@@ -50,11 +50,11 @@ initMax(Max) when is_integer(Max) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'BasePathFindingInfoFactory':init(This),
+'$init'(This) ->
+    'BasePathFindingInfoFactory':'$init'(This),
     init_fields(This),
         put({This, pathFindingInfo}, 'PathFindingInfo':new('PathFindingNodeCostInfoFactory':new(get({'PathFindingInfoFactory', 'MAX'})), 'BasicArrayListS':new(1), 'BasicArrayListS':new(1))),
         put({This, pathFinder}, 'PathFinder':new()).

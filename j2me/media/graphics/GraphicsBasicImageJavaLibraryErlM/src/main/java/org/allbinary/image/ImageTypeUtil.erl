@@ -34,10 +34,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({get({This, list}), '$class'})):add(get({This, list}), get({This, 'JPG'})),
         (get({get({This, list}), '$class'})):add(get({This, list}), get({This, 'GIF'})),

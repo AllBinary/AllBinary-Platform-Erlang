@@ -40,11 +40,11 @@ init_fields(This) ->
 new(Id, Name) when is_integer(Id), (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Id, Name),
+    '$init'(This, Id, Name),
     This.
 
-init(This, Id, Name) when is_integer(Id), (is_list(Name) orelse Name =:= undefined) ->
-        'Input':init(This, Id, Name),
+'$init'(This, Id, Name) when is_integer(Id), (is_list(Name) orelse Name =:= undefined) ->
+        'Input':'$init'(This, Id, Name),
         init_fields(This),
         InputFactory = 'InputFactory':getInstance(),
         (get({InputFactory, '$class'})):add(InputFactory, (get({This, '$class'})):getId(This), This).

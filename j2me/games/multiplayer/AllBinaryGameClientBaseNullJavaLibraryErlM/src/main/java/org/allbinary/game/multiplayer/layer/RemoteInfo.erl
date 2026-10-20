@@ -22,10 +22,10 @@ init_fields(This) ->
 new(Username, ActorSessionId, PlayerInputId, Id) when (is_list(Username) orelse Username =:= undefined), is_integer(ActorSessionId), is_integer(PlayerInputId), is_integer(Id) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Username, ActorSessionId, PlayerInputId, Id),
+    '$init'(This, Username, ActorSessionId, PlayerInputId, Id),
     This.
 
-init(This, Username, ActorSessionId, PlayerInputId, Id) when (is_list(Username) orelse Username =:= undefined), is_integer(ActorSessionId), is_integer(PlayerInputId), is_integer(Id) ->
+'$init'(This, Username, ActorSessionId, PlayerInputId, Id) when (is_list(Username) orelse Username =:= undefined), is_integer(ActorSessionId), is_integer(PlayerInputId), is_integer(Id) ->
     init_fields(This),
         ok.
 

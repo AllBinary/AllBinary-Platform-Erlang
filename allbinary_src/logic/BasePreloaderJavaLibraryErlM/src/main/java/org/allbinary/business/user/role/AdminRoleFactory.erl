@@ -44,10 +44,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         BasicUserRoleFactory = 'BasicUserRoleFactory':getInstance(),
         (get({get({This, adminRoles}), '$class'})):add(get({This, adminRoles}), get({BasicUserRoleFactory, 'ADMINISTRATOR'})),

@@ -53,11 +53,11 @@ init_fields(This) ->
 new(OwnerLayer, Sound) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OwnerLayer, Sound),
+    '$init'(This, OwnerLayer, Sound),
     This.
 
-init(This, OwnerLayer, Sound) ->
-        'WaypointBase':init(This, Sound),
+'$init'(This, OwnerLayer, Sound) ->
+        'WaypointBase':'$init'(This, Sound),
         init_fields(This),
         put({This, ownerLayer}, OwnerLayer).
 

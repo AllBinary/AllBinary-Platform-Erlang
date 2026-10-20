@@ -62,10 +62,10 @@ init_fields(This) ->
 new(Location, Direction, BufferZone, BasicColor) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Location, Direction, BufferZone, BasicColor),
+    '$init'(This, Location, Direction, BufferZone, BasicColor),
     This.
 
-init(This, Location, Direction, BufferZone, BasicColor) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
+'$init'(This, Location, Direction, BufferZone, BasicColor) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
     init_fields(This),
         (get({This, '$class'})):setLocation(This, Location),
         (get({This, '$class'})):setDirection(This, Direction),

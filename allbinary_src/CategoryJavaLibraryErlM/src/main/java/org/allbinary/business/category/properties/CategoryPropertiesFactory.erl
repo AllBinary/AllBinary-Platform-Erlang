@@ -30,26 +30,26 @@ init_fields(This) ->
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This;
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(CategoryPropertiesHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryPropertiesHashMap),
+    '$init'(This, CategoryPropertiesHashMap),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         put({This, categoryPropertiesInterface}, 'CategoryProperties':new(Name));
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         put({This, categoryPropertiesInterface}, 'CategoryProperties':new(Node));
-init(This, CategoryPropertiesHashMap) ->
+'$init'(This, CategoryPropertiesHashMap) ->
     init_fields(This),
         put({This, categoryPropertiesInterface}, 'CategoryProperties':new(CategoryPropertiesHashMap)).
 

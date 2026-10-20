@@ -35,10 +35,10 @@ init_fields(This) ->
 new(PathFindingNodeCostInfoFactoryInterface, StartPathFindingNodeList, EndPathFindingNodeList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PathFindingNodeCostInfoFactoryInterface, StartPathFindingNodeList, EndPathFindingNodeList),
+    '$init'(This, PathFindingNodeCostInfoFactoryInterface, StartPathFindingNodeList, EndPathFindingNodeList),
     This.
 
-init(This, PathFindingNodeCostInfoFactoryInterface, StartPathFindingNodeList, EndPathFindingNodeList) ->
+'$init'(This, PathFindingNodeCostInfoFactoryInterface, StartPathFindingNodeList, EndPathFindingNodeList) ->
     init_fields(This),
         put({This, pathFindingNodeCostInfoFactoryInterface}, PathFindingNodeCostInfoFactoryInterface),
         put({This, startPathFindingNodeList}, StartPathFindingNodeList),

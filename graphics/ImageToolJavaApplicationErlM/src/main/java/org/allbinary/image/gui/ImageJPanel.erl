@@ -36,11 +36,11 @@ init_fields(This) ->
 new(BufferedImage) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BufferedImage),
+    '$init'(This, BufferedImage),
     This.
 
-init(This, BufferedImage) ->
-    'JPanel':init(This),
+'$init'(This, BufferedImage) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):initComponents(This),
         put({This, bufferedImage}, BufferedImage),

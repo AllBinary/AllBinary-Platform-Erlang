@@ -29,11 +29,11 @@ init_fields(This) ->
 new(Displayable) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Displayable),
+    '$init'(This, Displayable),
     This.
 
-init(This, Displayable) ->
-    'Processor':init(This),
+'$init'(This, Displayable) ->
+    'Processor':'$init'(This),
     init_fields(This),
         put({This, displayable}, Displayable).
 

@@ -55,11 +55,11 @@ getNullInstance() ->
 new(BackgroundBasicColor, ForegroundBasicColor, GameInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BackgroundBasicColor, ForegroundBasicColor, GameInfo),
+    '$init'(This, BackgroundBasicColor, ForegroundBasicColor, GameInfo),
     This.
 
-init(This, BackgroundBasicColor, ForegroundBasicColor, GameInfo) ->
-    'AllBinaryLayerManager':init(This),
+'$init'(This, BackgroundBasicColor, ForegroundBasicColor, GameInfo) ->
+    'AllBinaryLayerManager':'$init'(This),
     init_fields(This),
         put({This, backgroundBasicColor}, BackgroundBasicColor),
         put({This, foregroundBasicColor}, ForegroundBasicColor),

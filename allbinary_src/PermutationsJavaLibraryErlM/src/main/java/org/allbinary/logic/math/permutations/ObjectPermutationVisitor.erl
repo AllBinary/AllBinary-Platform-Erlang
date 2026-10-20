@@ -21,11 +21,11 @@ init_fields(This) ->
 new(Data) when (is_tuple(Data) orelse Data =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Data),
+    '$init'(This, Data),
     This.
 
-init(This, Data) when (is_tuple(Data) orelse Data =:= undefined) ->
-    'Visitor':init(This),
+'$init'(This, Data) when (is_tuple(Data) orelse Data =:= undefined) ->
+    'Visitor':'$init'(This),
     init_fields(This),
         put({This, data}, Data).
 

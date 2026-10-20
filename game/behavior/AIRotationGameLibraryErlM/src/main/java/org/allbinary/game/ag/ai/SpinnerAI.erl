@@ -33,11 +33,11 @@ init_fields(This) ->
 new(Direction, OwnerLayerInterface, GameInput) when (is_tuple(Direction) orelse Direction =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Direction, OwnerLayerInterface, GameInput),
+    '$init'(This, Direction, OwnerLayerInterface, GameInput),
     This.
 
-init(This, Direction, OwnerLayerInterface, GameInput) when (is_tuple(Direction) orelse Direction =:= undefined) ->
-        'BasicAI':init(This, OwnerLayerInterface, GameInput),
+'$init'(This, Direction, OwnerLayerInterface, GameInput) when (is_tuple(Direction) orelse Direction =:= undefined) ->
+        'BasicAI':'$init'(This, OwnerLayerInterface, GameInput),
         init_fields(This),
         put({This, direction}, Direction).
 

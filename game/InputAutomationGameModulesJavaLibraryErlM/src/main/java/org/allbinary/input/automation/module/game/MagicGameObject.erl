@@ -31,11 +31,11 @@ init_fields(This) ->
 new(BufferedImage, MinX, MaxX, Y) when (is_tuple(BufferedImage) orelse BufferedImage =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BufferedImage, MinX, MaxX, Y),
+    '$init'(This, BufferedImage, MinX, MaxX, Y),
     This.
 
-init(This, BufferedImage, MinX, MaxX, Y) when (is_tuple(BufferedImage) orelse BufferedImage =:= undefined) ->
-        'MeteredGameObject':init(This, BufferedImage, MinX, MaxX, Y),
+'$init'(This, BufferedImage, MinX, MaxX, Y) when (is_tuple(BufferedImage) orelse BufferedImage =:= undefined) ->
+        'MeteredGameObject':'$init'(This, BufferedImage, MinX, MaxX, Y),
         init_fields(This).
 
 toString(This) ->

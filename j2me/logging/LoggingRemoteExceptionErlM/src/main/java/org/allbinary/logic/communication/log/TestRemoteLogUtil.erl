@@ -30,10 +30,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (fun(Target_N65699) -> (get({Target_N65699, '$class'})):init(Target_N65699, (get({get({This, '$class'}), '$class'})):getClassLoader(get({This, '$class'})), get({'TestRemoteLogUtil', 'PATH'})) end)('Globals':getInstance()),
         LogUtil = 'LogUtil':getInstance(),

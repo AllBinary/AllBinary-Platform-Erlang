@@ -32,11 +32,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'AndroidGameStatistics':init(This),
+'$init'(This) ->
+    'AndroidGameStatistics':'$init'(This),
     init_fields(This).
 
 

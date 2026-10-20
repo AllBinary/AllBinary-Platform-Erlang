@@ -42,11 +42,11 @@ init_fields(This) ->
 new(CustomTextBox) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CustomTextBox),
+    '$init'(This, CustomTextBox),
     This.
 
-init(This, CustomTextBox) ->
-        'IndexedAnimation':init(This, 'AnimationBehavior':getInstance()),
+'$init'(This, CustomTextBox) ->
+        'IndexedAnimation':'$init'(This, 'AnimationBehavior':getInstance()),
         init_fields(This),
         put({This, customTextBox}, CustomTextBox).
 

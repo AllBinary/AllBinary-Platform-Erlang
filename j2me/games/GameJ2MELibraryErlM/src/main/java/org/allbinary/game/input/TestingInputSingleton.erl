@@ -48,11 +48,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AllBinaryGameLayer':init(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), get({'RectangleFactory', 'SINGLETON'}), 'ViewPosition':getInstanceD()),
+'$init'(This) ->
+        'AllBinaryGameLayer':'$init'(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), get({'RectangleFactory', 'SINGLETON'}), 'ViewPosition':getInstanceD()),
         init_fields(This),
         'GameInputProcessorUtil':init(get({This, inputProcessorArray})).
 

@@ -37,11 +37,11 @@ init_fields(This) ->
 new(StoreFrontInterface, PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreFrontInterface, PropertiesHashMap, PageContext),
+    '$init'(This, StoreFrontInterface, PropertiesHashMap, PageContext),
     This.
 
-init(This, StoreFrontInterface, PropertiesHashMap, PageContext) ->
-        'AbContext':init(This, PropertiesHashMap, PageContext),
+'$init'(This, StoreFrontInterface, PropertiesHashMap, PageContext) ->
+        'AbContext':'$init'(This, PropertiesHashMap, PageContext),
         init_fields(This),
         put({This, storeFrontInterface}, StoreFrontInterface).
 

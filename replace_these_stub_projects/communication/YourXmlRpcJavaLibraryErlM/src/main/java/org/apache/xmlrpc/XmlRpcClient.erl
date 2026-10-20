@@ -20,10 +20,10 @@ init_fields(This) ->
 new(Url) when (is_list(Url) orelse Url =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Url),
+    '$init'(This, Url),
     This.
 
-init(This, Url) when (is_list(Url) orelse Url =:= undefined) ->
+'$init'(This, Url) when (is_list(Url) orelse Url =:= undefined) ->
     init_fields(This),
         put({This, url}, 'URL':new(Url)).
 

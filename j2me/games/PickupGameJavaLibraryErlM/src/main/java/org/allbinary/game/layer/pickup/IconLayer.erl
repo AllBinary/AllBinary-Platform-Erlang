@@ -40,11 +40,11 @@ init_fields(This) ->
 new(AnimationInterface, Width, Height) when is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, Width, Height),
+    '$init'(This, AnimationInterface, Width, Height),
     This.
 
-init(This, AnimationInterface, Width, Height) when is_integer(Width), is_integer(Height) ->
-        'AllBinaryLayer':init(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), Width, Height), 'ViewPosition':getInstanceD()),
+'$init'(This, AnimationInterface, Width, Height) when is_integer(Width), is_integer(Height) ->
+        'AllBinaryLayer':'$init'(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), Width, Height), 'ViewPosition':getInstanceD()),
         init_fields(This),
         put({This, animationInterface}, AnimationInterface).
 

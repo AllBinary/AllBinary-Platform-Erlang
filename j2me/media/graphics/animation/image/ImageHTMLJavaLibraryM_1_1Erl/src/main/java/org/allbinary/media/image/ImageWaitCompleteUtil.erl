@@ -37,11 +37,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'ImageCompleteUtil':init(This),
+'$init'(This) ->
+    'ImageCompleteUtil':'$init'(This),
     init_fields(This),
         ok.
 

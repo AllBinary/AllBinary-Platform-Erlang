@@ -32,11 +32,11 @@ init_fields(This) ->
 new(Image, AngleInfo, TotalAngle, Dx, Dy, AnimationBehavior) when is_integer(TotalAngle), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, AngleInfo, TotalAngle, Dx, Dy, AnimationBehavior),
+    '$init'(This, Image, AngleInfo, TotalAngle, Dx, Dy, AnimationBehavior),
     This.
 
-init(This, Image, AngleInfo, TotalAngle, Dx, Dy, AnimationBehavior) when is_integer(TotalAngle), is_integer(Dx), is_integer(Dy) ->
-        'ImageBaseRotationAnimation':init(This, Image, AngleInfo, TotalAngle, AnimationBehavior),
+'$init'(This, Image, AngleInfo, TotalAngle, Dx, Dy, AnimationBehavior) when is_integer(TotalAngle), is_integer(Dx), is_integer(Dy) ->
+        'ImageBaseRotationAnimation':'$init'(This, Image, AngleInfo, TotalAngle, AnimationBehavior),
         init_fields(This),
         (get({This, '$class'})):init(This, Dx, Dy).
 

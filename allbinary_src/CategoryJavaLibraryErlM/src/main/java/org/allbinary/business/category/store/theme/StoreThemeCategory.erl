@@ -43,11 +43,11 @@ init_fields(This) ->
 new(TransformInfoInterface, CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, CategoryPropertiesFactoryInterface, Level),
+    '$init'(This, TransformInfoInterface, CategoryPropertiesFactoryInterface, Level),
     This.
 
-init(This, TransformInfoInterface, CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
-        'Category':init(This, CategoryPropertiesFactoryInterface, Level),
+'$init'(This, TransformInfoInterface, CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
+        'Category':'$init'(This, CategoryPropertiesFactoryInterface, Level),
         init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         put({This, themeVector}, 'BasicArrayListD':new()).
@@ -55,22 +55,22 @@ init(This, TransformInfoInterface, CategoryPropertiesFactoryInterface, Level) wh
 new(TransformInfoInterface, Node, CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, Node, CategoryPropertiesFactoryInterface, Level),
+    '$init'(This, TransformInfoInterface, Node, CategoryPropertiesFactoryInterface, Level),
     This;
 new(TransformInfoInterface, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
+    '$init'(This, TransformInfoInterface, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
     This.
 
-init(This, TransformInfoInterface, Node, CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
-        'Category':init(This, CategoryPropertiesFactoryInterface, Level),
+'$init'(This, TransformInfoInterface, Node, CategoryPropertiesFactoryInterface, Level) when is_integer(Level) ->
+        'Category':'$init'(This, CategoryPropertiesFactoryInterface, Level),
         init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         put({This, themeVector}, 'BasicArrayListD':new()),
         (get({This, '$class'})):addThemes(This, Node);
-init(This, TransformInfoInterface, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface) ->
-        'Category':init(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
+'$init'(This, TransformInfoInterface, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface) ->
+        'Category':'$init'(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
         init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         put({This, themeVector}, 'BasicArrayListD':new()).
@@ -79,11 +79,11 @@ init(This, TransformInfoInterface, RootCategoryInterface, ParentCategoryInterfac
 new(TransformInfoInterface, Node, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, Node, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
+    '$init'(This, TransformInfoInterface, Node, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
     This.
 
-init(This, TransformInfoInterface, Node, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface) ->
-        'Category':init(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
+'$init'(This, TransformInfoInterface, Node, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface) ->
+        'Category':'$init'(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface),
         init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         put({This, themeVector}, 'BasicArrayListD':new()),

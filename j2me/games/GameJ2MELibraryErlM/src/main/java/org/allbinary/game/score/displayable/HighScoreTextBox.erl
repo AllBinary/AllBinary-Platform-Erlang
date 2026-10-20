@@ -51,11 +51,11 @@ init_fields(This) ->
 new(HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore, BackgrounBasicColor, ForegroundBasicColor) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore, BackgrounBasicColor, ForegroundBasicColor),
+    '$init'(This, HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore, BackgrounBasicColor, ForegroundBasicColor),
     This.
 
-init(This, HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore, BackgrounBasicColor, ForegroundBasicColor) when (is_list(Name) orelse Name =:= undefined) ->
-        'CustomTextBox':init(This, CmdListener, "New High Score Enter Name:", Name, 12, get({'TextField', 'ANY'}), 'Font':getDefaultFont(), BackgrounBasicColor, ForegroundBasicColor),
+'$init'(This, HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore, BackgrounBasicColor, ForegroundBasicColor) when (is_list(Name) orelse Name =:= undefined) ->
+        'CustomTextBox':'$init'(This, CmdListener, "New High Score Enter Name:", Name, 12, get({'TextField', 'ANY'}), 'Font':getDefaultFont(), BackgrounBasicColor, ForegroundBasicColor),
         init_fields(This),
         put({This, highScoreUtil}, 'HighScoreUtil':new(HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore)),
         OperatingSystemInterface = (fun(Target_N66660) -> (get({Target_N66660, '$class'})):getOperatingSystemInstance(Target_N66660) end)('OperatingSystemFactory':getInstance()),

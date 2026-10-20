@@ -34,11 +34,11 @@ init_fields(This) ->
 new(Sprite, Image, BasicColorArray, Dx, Dy, AnimationBehavior) when (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Sprite, Image, BasicColorArray, Dx, Dy, AnimationBehavior),
+    '$init'(This, Sprite, Image, BasicColorArray, Dx, Dy, AnimationBehavior),
     This.
 
-init(This, Sprite, Image, BasicColorArray, Dx, Dy, AnimationBehavior) when (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
-        'SpriteIndexedAnimation':init(This, Sprite, Image, BasicColorArray, AnimationBehavior),
+'$init'(This, Sprite, Image, BasicColorArray, Dx, Dy, AnimationBehavior) when (is_tuple(BasicColorArray) orelse BasicColorArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
+        'SpriteIndexedAnimation':'$init'(This, Sprite, Image, BasicColorArray, AnimationBehavior),
         init_fields(This),
         put({This, dx}, Dx),
         put({This, dy}, Dy).

@@ -33,10 +33,10 @@ init_fields(This) ->
 new(Type, Reset) when is_integer(Type), is_integer(Reset) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Type, Reset),
+    '$init'(This, Type, Reset),
     This.
 
-init(This, Type, Reset) when is_integer(Type), is_integer(Reset) ->
+'$init'(This, Type, Reset) when is_integer(Type), is_integer(Reset) ->
     init_fields(This),
         put({This, type}, Type),
         case (Type =/= get({'Integer', 'MIN_VALUE'})) of

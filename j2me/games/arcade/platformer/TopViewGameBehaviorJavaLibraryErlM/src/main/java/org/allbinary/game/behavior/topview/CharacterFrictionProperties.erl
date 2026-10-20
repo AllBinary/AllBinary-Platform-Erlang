@@ -31,11 +31,11 @@ init_fields(This) ->
 new(AirFriction, WaterFriction, CollisionFriction) when is_integer(AirFriction), is_integer(WaterFriction), is_integer(CollisionFriction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AirFriction, WaterFriction, CollisionFriction),
+    '$init'(This, AirFriction, WaterFriction, CollisionFriction),
     This.
 
-init(This, AirFriction, WaterFriction, CollisionFriction) when is_integer(AirFriction), is_integer(WaterFriction), is_integer(CollisionFriction) ->
-    'FrictionProperties':init(This),
+'$init'(This, AirFriction, WaterFriction, CollisionFriction) when is_integer(AirFriction), is_integer(WaterFriction), is_integer(CollisionFriction) ->
+    'FrictionProperties':'$init'(This),
     init_fields(This),
         put({This, 'AIR_FRICTION_NOMINATOR'}, ('FrictionData':getFrictionDenominator() - AirFriction)),
         put({This, 'COLLISION_FRICTION_NOMINATOR'}, ('FrictionData':getFrictionDenominator() - CollisionFriction)),

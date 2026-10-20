@@ -37,11 +37,11 @@ init_fields(This) ->
 new(RaceTrackGeographicMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RaceTrackGeographicMap),
+    '$init'(This, RaceTrackGeographicMap),
     This.
 
-init(This, RaceTrackGeographicMap) ->
-    'CustomMapGeneratorBase':init(This),
+'$init'(This, RaceTrackGeographicMap) ->
+    'CustomMapGeneratorBase':'$init'(This),
     init_fields(This),
         put({This, raceTrackGeographicMap}, RaceTrackGeographicMap),
         put({This, geographicMapCellTypeFactory}, (get({get({This, raceTrackGeographicMap}), '$class'})):getGeographicMapCellTypeFactory(get({This, raceTrackGeographicMap}))),

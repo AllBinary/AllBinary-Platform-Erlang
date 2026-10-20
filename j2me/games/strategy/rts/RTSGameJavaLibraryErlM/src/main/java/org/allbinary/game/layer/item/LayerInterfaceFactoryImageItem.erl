@@ -34,11 +34,11 @@ init_fields(This) ->
 new(Label, Img, Layout, AltText, BasicColor, AnimationArray, LayerInterfaceFactoryInterface) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined), (is_tuple(AnimationArray) orelse AnimationArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, Img, Layout, AltText, BasicColor, AnimationArray, LayerInterfaceFactoryInterface),
+    '$init'(This, Label, Img, Layout, AltText, BasicColor, AnimationArray, LayerInterfaceFactoryInterface),
     This.
 
-init(This, Label, Img, Layout, AltText, BasicColor, AnimationArray, LayerInterfaceFactoryInterface) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined), (is_tuple(AnimationArray) orelse AnimationArray =:= undefined) ->
-        'ABCustomImageItem':init(This, Label, Img, Layout, AltText, BasicColor, 0),
+'$init'(This, Label, Img, Layout, AltText, BasicColor, AnimationArray, LayerInterfaceFactoryInterface) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined), (is_tuple(AnimationArray) orelse AnimationArray =:= undefined) ->
+        'ABCustomImageItem':'$init'(This, Label, Img, Layout, AltText, BasicColor, 0),
         init_fields(This),
         put({This, animationArray}, AnimationArray),
         put({This, layerInterfaceFactoryInterface}, LayerInterfaceFactoryInterface).

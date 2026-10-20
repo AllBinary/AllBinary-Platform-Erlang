@@ -41,11 +41,11 @@ init_fields(This) ->
 new(Delay, OwnerLayerInterface, GameInput) when is_integer(Delay) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Delay, OwnerLayerInterface, GameInput),
+    '$init'(This, Delay, OwnerLayerInterface, GameInput),
     This.
 
-init(This, Delay, OwnerLayerInterface, GameInput) when is_integer(Delay) ->
-        'BasicAI':init(This, OwnerLayerInterface, GameInput),
+'$init'(This, Delay, OwnerLayerInterface, GameInput) when is_integer(Delay) ->
+        'BasicAI':'$init'(This, OwnerLayerInterface, GameInput),
         init_fields(This),
         put({This, delay}, Delay).
 

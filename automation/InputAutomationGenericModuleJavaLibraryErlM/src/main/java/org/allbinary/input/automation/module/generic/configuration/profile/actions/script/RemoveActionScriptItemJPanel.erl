@@ -34,11 +34,11 @@ init_fields(This) ->
 new(GenericProfileActionJPanel, ProfileActionScriptConditionInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GenericProfileActionJPanel, ProfileActionScriptConditionInterface),
+    '$init'(This, GenericProfileActionJPanel, ProfileActionScriptConditionInterface),
     This.
 
-init(This, GenericProfileActionJPanel, ProfileActionScriptConditionInterface) ->
-    'Panel':init(This),
+'$init'(This, GenericProfileActionJPanel, ProfileActionScriptConditionInterface) ->
+    'Panel':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):initComponents(This),
         put({This, genericProfileActionJPanel}, GenericProfileActionJPanel),

@@ -35,10 +35,10 @@ createFactory() ->
 new(TotalAngle, AngleIncrement) when is_integer(TotalAngle), is_integer(AngleIncrement) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TotalAngle, AngleIncrement),
+    '$init'(This, TotalAngle, AngleIncrement),
     This.
 
-init(This, TotalAngle, AngleIncrement) when is_integer(TotalAngle), is_integer(AngleIncrement) ->
+'$init'(This, TotalAngle, AngleIncrement) when is_integer(TotalAngle), is_integer(AngleIncrement) ->
     init_fields(This),
         put({This, totalAngle}, TotalAngle),
         put({This, angleIncrement}, AngleIncrement).

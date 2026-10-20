@@ -36,11 +36,11 @@ init_fields(This) ->
 new(TagHelperFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TagHelperFactoryInterface),
+    '$init'(This, TagHelperFactoryInterface),
     This.
 
-init(This, TagHelperFactoryInterface) ->
-        'HelperTag':init(This, TagHelperFactoryInterface),
+'$init'(This, TagHelperFactoryInterface) ->
+        'HelperTag':'$init'(This, TagHelperFactoryInterface),
         init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'JSPTAG'})) of
             true ->

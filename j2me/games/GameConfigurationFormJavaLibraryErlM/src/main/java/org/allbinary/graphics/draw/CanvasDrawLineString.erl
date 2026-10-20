@@ -39,10 +39,10 @@ init_fields(This) ->
 new(X, Y) when is_integer(X), is_integer(Y) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, X, Y),
+    '$init'(This, X, Y),
     This.
 
-init(This, X, Y) when is_integer(X), is_integer(Y) ->
+'$init'(This, X, Y) when is_integer(X), is_integer(Y) ->
     init_fields(This),
         put({This, x}, X),
         put({This, y}, Y).

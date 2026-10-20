@@ -46,9 +46,9 @@ createFromFilePathAppend(Name, Append) when (is_list(Name) orelse Name =:= undef
 new(Name, Append) when (is_list(Name) orelse Name =:= undefined), is_boolean(Append) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Append),
+    '$init'(This, Name, Append),
     This.
 
-init(This, Name, Append) when (is_list(Name) orelse Name =:= undefined), is_boolean(Append) ->
-        'FileOutputStream':init(This, Name, Append).
+'$init'(This, Name, Append) when (is_list(Name) orelse Name =:= undefined), is_boolean(Append) ->
+        'FileOutputStream':'$init'(This, Name, Append).
 

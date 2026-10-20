@@ -32,11 +32,11 @@ init_fields(This) ->
 new(Column, Row, Columns, Rows) when is_integer(Column), is_integer(Row), is_integer(Columns), is_integer(Rows) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Column, Row, Columns, Rows),
+    '$init'(This, Column, Row, Columns, Rows),
     This.
 
-init(This, Column, Row, Columns, Rows) when is_integer(Column), is_integer(Row), is_integer(Columns), is_integer(Rows) ->
-    'V':init(This),
+'$init'(This, Column, Row, Columns, Rows) when is_integer(Column), is_integer(Row), is_integer(Columns), is_integer(Rows) ->
+    'V':'$init'(This),
     init_fields(This),
         put({This, column}, Column),
         put({This, row}, Row),

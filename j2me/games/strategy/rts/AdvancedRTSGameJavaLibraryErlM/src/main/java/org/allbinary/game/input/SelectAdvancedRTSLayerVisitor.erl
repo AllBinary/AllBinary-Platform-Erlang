@@ -36,11 +36,11 @@ init_fields(This) ->
 new(SelectedRTSLayersPlayerGameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SelectedRTSLayersPlayerGameInput),
+    '$init'(This, SelectedRTSLayersPlayerGameInput),
     This.
 
-init(This, SelectedRTSLayersPlayerGameInput) ->
-    'Visitor':init(This),
+'$init'(This, SelectedRTSLayersPlayerGameInput) ->
+    'Visitor':'$init'(This),
     init_fields(This),
         put({This, selectedRTSLayersPlayerGameInput}, SelectedRTSLayersPlayerGameInput).
 

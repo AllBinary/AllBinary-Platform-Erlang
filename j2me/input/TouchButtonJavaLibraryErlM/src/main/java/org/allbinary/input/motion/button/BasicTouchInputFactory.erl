@@ -60,10 +60,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         MAX = get({'InputFactory':getInstance(), 'MAX'}),
         put({This, 'SPECIAL_BUTTON_SEVEN_TESTING_ONLY'}, 'TouchButtonInput':new((MAX - 41), "Button 7 - Testing Only May Cross Over Key Values")),

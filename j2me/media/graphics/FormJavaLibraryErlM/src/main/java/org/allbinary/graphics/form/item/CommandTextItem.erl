@@ -29,11 +29,11 @@ init_fields(This) ->
 new(Command, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor) when is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Command, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Command, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Command, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor) when is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
-        'ABTextItem':init(This, (get({Command, '$class'})):getLabel(Command), Layout, AltText, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Command, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor) when is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
+        'ABTextItem':'$init'(This, (get({Command, '$class'})):getLabel(Command), Layout, AltText, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This),
         put({This, command}, Command).
 

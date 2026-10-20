@@ -43,10 +43,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({This, '$class'})):setLoopCount(This, 0),
         (get({This, '$class'})):setState(This, get({'Player', 'UNREALIZED'})).

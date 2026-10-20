@@ -43,10 +43,10 @@ init_fields(This) ->
 new(Location, PaymentMethod) when (is_list(Location) orelse Location =:= undefined), (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Location, PaymentMethod),
+    '$init'(This, Location, PaymentMethod),
     This.
 
-init(This, Location, PaymentMethod) when (is_list(Location) orelse Location =:= undefined), (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
+'$init'(This, Location, PaymentMethod) when (is_list(Location) orelse Location =:= undefined), (is_list(PaymentMethod) orelse PaymentMethod =:= undefined) ->
     init_fields(This),
         PaymentMethodString = lists:concat([get({'PaymentGatewayPageData', 'NAME'}), PaymentMethod]),
         StringBuffer = 'StringMaker':new(),

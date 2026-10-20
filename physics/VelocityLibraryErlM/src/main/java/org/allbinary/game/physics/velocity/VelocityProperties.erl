@@ -34,11 +34,11 @@ init_fields(This) ->
 new(MaxForwardVelocity, MaxReverseVelocity) when is_integer(MaxForwardVelocity), is_integer(MaxReverseVelocity) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MaxForwardVelocity, MaxReverseVelocity),
+    '$init'(This, MaxForwardVelocity, MaxReverseVelocity),
     This.
 
-init(This, MaxForwardVelocity, MaxReverseVelocity) when is_integer(MaxForwardVelocity), is_integer(MaxReverseVelocity) ->
-    'BasicVelocityProperties':init(This),
+'$init'(This, MaxForwardVelocity, MaxReverseVelocity) when is_integer(MaxForwardVelocity), is_integer(MaxReverseVelocity) ->
+    'BasicVelocityProperties':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):setMaxForwardVelocity(This, MaxForwardVelocity),
         (get({This, '$class'})):setMaxReverseVelocity(This, MaxReverseVelocity).

@@ -32,10 +32,10 @@ init_fields(This) ->
 new(GroupInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GroupInterface),
+    '$init'(This, GroupInterface),
     This.
 
-init(This, GroupInterface) ->
+'$init'(This, GroupInterface) ->
     init_fields(This),
         put({This, groupInterface}, GroupInterface).
 

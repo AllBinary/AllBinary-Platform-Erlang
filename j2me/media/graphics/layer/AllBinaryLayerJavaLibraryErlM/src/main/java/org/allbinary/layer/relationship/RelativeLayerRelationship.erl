@@ -31,11 +31,11 @@ init_fields(This) ->
 new(Layer, Point, TypesAllowedList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Layer, Point, TypesAllowedList),
+    '$init'(This, Layer, Point, TypesAllowedList),
     This.
 
-init(This, Layer, Point, TypesAllowedList) ->
-        'RelativeRelationship':init(This, Point, TypesAllowedList),
+'$init'(This, Layer, Point, TypesAllowedList) ->
+        'RelativeRelationship':'$init'(This, Point, TypesAllowedList),
         init_fields(This),
         put({This, layer}, Layer).
 

@@ -52,10 +52,10 @@ init_fields(This) ->
 new(GroupInterfaceArray) when (is_tuple(GroupInterfaceArray) orelse GroupInterfaceArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GroupInterfaceArray),
+    '$init'(This, GroupInterfaceArray),
     This.
 
-init(This, GroupInterfaceArray) when (is_tuple(GroupInterfaceArray) orelse GroupInterfaceArray =:= undefined) ->
+'$init'(This, GroupInterfaceArray) when (is_tuple(GroupInterfaceArray) orelse GroupInterfaceArray =:= undefined) ->
     init_fields(This),
         Size = array:size(get({This, newUnconstructedRTSLayerInterfaceArray})),
         lists:foreach(fun(Index) ->

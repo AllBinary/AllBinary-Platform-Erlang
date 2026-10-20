@@ -55,11 +55,11 @@ init_fields(This) ->
 new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, PageContext),
+    '$init'(This, HashMap, PageContext),
     This.
 
-init(This, HashMap, PageContext) ->
-    'ModifyTable':init(This),
+'$init'(This, HashMap, PageContext) ->
+    'ModifyTable':'$init'(This),
     init_fields(This),
         put({This, request}, (get({PageContext, '$class'})):getRequest(PageContext)),
         (get({This, '$class'})):getFormData(This).

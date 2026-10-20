@@ -41,10 +41,10 @@ init_fields(This) ->
 new(Frame) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Frame),
+    '$init'(This, Frame),
     This.
 
-init(This, Frame) ->
+'$init'(This, Frame) ->
     init_fields(This),
         put({This, frame}, Frame).
 

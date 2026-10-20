@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         ok.
 

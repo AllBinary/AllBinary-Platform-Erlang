@@ -32,11 +32,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'CompositeSound':init(This, "resource:/wav/building.wav").
+'$init'(This) ->
+        'CompositeSound':'$init'(This, "resource:/wav/building.wav").
 
 getInstance() ->
         get({'BuildingSound', soundInterface}).

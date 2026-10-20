@@ -28,11 +28,11 @@ init_fields(This) ->
 new(ScoreVectorGraphic) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ScoreVectorGraphic),
+    '$init'(This, ScoreVectorGraphic),
     This.
 
-init(This, ScoreVectorGraphic) ->
-        'Scoreable':init(This, 0),
+'$init'(This, ScoreVectorGraphic) ->
+        'Scoreable':'$init'(This, 0),
         init_fields(This),
         put({This, scoreHudWidget}, ScoreVectorGraphic),
         (fun(Target_N65729) -> (get({Target_N65729, '$class'})):set(Target_N65729, 0) end)((get({This, '$class'})):getScoreHudWidget(This)).

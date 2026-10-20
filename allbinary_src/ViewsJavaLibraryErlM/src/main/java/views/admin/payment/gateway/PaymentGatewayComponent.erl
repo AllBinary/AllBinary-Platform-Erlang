@@ -36,11 +36,11 @@ init_fields(This) ->
 new(TransformInfoInterface, PaymentGatewayInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, PaymentGatewayInterface),
+    '$init'(This, TransformInfoInterface, PaymentGatewayInterface),
     This.
 
-init(This, TransformInfoInterface, PaymentGatewayInterface) ->
-        'HttpStoreComponentView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface, PaymentGatewayInterface) ->
+        'HttpStoreComponentView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, paymentGatewayInterface}, PaymentGatewayInterface).
 

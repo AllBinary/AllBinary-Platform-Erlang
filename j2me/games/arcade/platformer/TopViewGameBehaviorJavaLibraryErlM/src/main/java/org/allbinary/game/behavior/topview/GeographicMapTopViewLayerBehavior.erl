@@ -34,11 +34,11 @@ init_fields(This) ->
 new(MaxGravityActionIndex) when is_integer(MaxGravityActionIndex) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MaxGravityActionIndex),
+    '$init'(This, MaxGravityActionIndex),
     This.
 
-init(This, MaxGravityActionIndex) when is_integer(MaxGravityActionIndex) ->
-        'TopViewGameLayerBehavior':init(This, MaxGravityActionIndex).
+'$init'(This, MaxGravityActionIndex) when is_integer(MaxGravityActionIndex) ->
+        'TopViewGameLayerBehavior':'$init'(This, MaxGravityActionIndex).
 
 % throws Exception
 getGeographicMapCellPositionIfNotSolidBlockOrOffMapLocation(This, GeographicMapInterfaceArray, GeographicMapCellTypeArray, VelocityProperties, Layer, X, Y) when (is_tuple(GeographicMapInterfaceArray) orelse GeographicMapInterfaceArray =:= undefined), (is_tuple(GeographicMapCellTypeArray) orelse GeographicMapCellTypeArray =:= undefined), is_integer(X), is_integer(Y) ->

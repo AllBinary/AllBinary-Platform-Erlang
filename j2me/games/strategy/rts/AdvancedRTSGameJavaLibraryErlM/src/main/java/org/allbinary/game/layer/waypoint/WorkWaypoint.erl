@@ -40,11 +40,11 @@ init_fields(This) ->
 new(OwnerLayer) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OwnerLayer),
+    '$init'(This, OwnerLayer),
     This.
 
-init(This, OwnerLayer) ->
-        'Waypoint':init(This, OwnerLayer, 'WorkSound':getInstance()).
+'$init'(This, OwnerLayer) ->
+        'Waypoint':'$init'(This, OwnerLayer, 'WorkSound':getInstance()).
 
 % throws Exception
 visit(This, UnitLayer) ->

@@ -29,11 +29,11 @@ init_fields(This) ->
 new(Midlet) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Midlet),
+    '$init'(This, Midlet),
     This.
 
-init(This, Midlet) ->
-    'Processor':init(This),
+'$init'(This, Midlet) ->
+    'Processor':'$init'(This),
     init_fields(This),
         put({This, midlet}, Midlet).
 

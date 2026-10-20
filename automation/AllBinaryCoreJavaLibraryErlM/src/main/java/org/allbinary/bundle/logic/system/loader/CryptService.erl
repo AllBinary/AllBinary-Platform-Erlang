@@ -41,10 +41,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (fun(Target_N66234) -> (get({Target_N66234, '$class'})):init(Target_N66234, (get({get({This, '$class'}), '$class'})):getClassLoader(get({This, '$class'})), "./") end)('Globals':getInstance()),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Set Globals: ", (get({get({'CryptService', 'URLGLOBALS'}), '$class'})):getWebappPath(get({'CryptService', 'URLGLOBALS'}))]), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})).

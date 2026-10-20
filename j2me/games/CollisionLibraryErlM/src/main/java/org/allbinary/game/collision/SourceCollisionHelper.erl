@@ -28,11 +28,11 @@ init_fields(This) ->
 new(LayerInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerInterface),
+    '$init'(This, LayerInterface),
     This.
 
-init(This, LayerInterface) ->
-        'CollisionHelper':init(This, LayerInterface).
+'$init'(This, LayerInterface) ->
+        'CollisionHelper':'$init'(This, LayerInterface).
 
 isCollidable(This, LayerInterface) ->
         try

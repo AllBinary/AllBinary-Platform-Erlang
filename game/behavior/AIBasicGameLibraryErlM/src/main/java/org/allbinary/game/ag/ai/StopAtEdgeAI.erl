@@ -33,11 +33,11 @@ init_fields(This) ->
 new(OwnerLayerInterface, GameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OwnerLayerInterface, GameInput),
+    '$init'(This, OwnerLayerInterface, GameInput),
     This.
 
-init(This, OwnerLayerInterface, GameInput) ->
-        'BasicAI':init(This, OwnerLayerInterface, GameInput).
+'$init'(This, OwnerLayerInterface, GameInput) ->
+        'BasicAI':'$init'(This, OwnerLayerInterface, GameInput).
 
 % throws Exception
 processAI(This, AllBinaryLayerManager) ->

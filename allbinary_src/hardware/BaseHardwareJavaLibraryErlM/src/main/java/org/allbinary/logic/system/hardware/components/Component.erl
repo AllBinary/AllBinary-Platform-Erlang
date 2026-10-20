@@ -24,10 +24,10 @@ init_fields(This) ->
 new(ComponentName) when (is_list(ComponentName) orelse ComponentName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ComponentName),
+    '$init'(This, ComponentName),
     This.
 
-init(This, ComponentName) when (is_list(ComponentName) orelse ComponentName =:= undefined) ->
+'$init'(This, ComponentName) when (is_list(ComponentName) orelse ComponentName =:= undefined) ->
     init_fields(This),
         put({This, name}, ComponentName).
 

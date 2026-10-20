@@ -56,10 +56,10 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
+'$init'(This, TransformInfoInterface) ->
     init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         put({This, abPath}, 'AbPath':createAbPath()),
@@ -71,20 +71,20 @@ init(This, TransformInfoInterface) ->
 new(TransformInfoInterface, CategoryAbPath) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, CategoryAbPath),
+    '$init'(This, TransformInfoInterface, CategoryAbPath),
     This;
 new(TransformInfoInterface, Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, Node),
+    '$init'(This, TransformInfoInterface, Node),
     This;
 new(TransformInfoInterface, CategoryPropertiesHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, CategoryPropertiesHashMap),
+    '$init'(This, TransformInfoInterface, CategoryPropertiesHashMap),
     This.
 
-init(This, TransformInfoInterface, CategoryAbPath) ->
+'$init'(This, TransformInfoInterface, CategoryAbPath) ->
     init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         put({This, abPath}, CategoryAbPath),
@@ -97,7 +97,7 @@ init(This, TransformInfoInterface, CategoryAbPath) ->
         end,
         (get({This, '$class'})):initPath(This),
         (get({This, '$class'})):log(This);
-init(This, TransformInfoInterface, Node) ->
+'$init'(This, TransformInfoInterface, Node) ->
     init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         CategoryPath = 'CategoryUtil':getNameFromNode(Node),
@@ -111,7 +111,7 @@ init(This, TransformInfoInterface, Node) ->
         end,
         (get({This, '$class'})):initPath(This),
         (get({This, '$class'})):log(This);
-init(This, TransformInfoInterface, CategoryPropertiesHashMap) ->
+'$init'(This, TransformInfoInterface, CategoryPropertiesHashMap) ->
     init_fields(This),
         put({This, transformInfoInterface}, TransformInfoInterface),
         CategoryPath = allbinary_java:to_string((get({CategoryPropertiesHashMap, '$class'})):get(CategoryPropertiesHashMap, get({'CategoryData':getInstance(), 'NAME'}))),

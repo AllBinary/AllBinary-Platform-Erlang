@@ -47,30 +47,30 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         ok.
 
 new(AbeClientInformation, Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, Node),
+    '$init'(This, AbeClientInformation, Node),
     This.
 
-init(This, AbeClientInformation, Node) ->
+'$init'(This, AbeClientInformation, Node) ->
     init_fields(This),
         (get({This, '$class'})):init(This, AbeClientInformation, Node).
 
 new(AbeClientInformation, Name, ClassName) when (is_list(Name) orelse Name =:= undefined), (is_list(ClassName) orelse ClassName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, Name, ClassName),
+    '$init'(This, AbeClientInformation, Name, ClassName),
     This.
 
-init(This, AbeClientInformation, Name, ClassName) when (is_list(Name) orelse Name =:= undefined), (is_list(ClassName) orelse ClassName =:= undefined) ->
+'$init'(This, AbeClientInformation, Name, ClassName) when (is_list(Name) orelse Name =:= undefined), (is_list(ClassName) orelse ClassName =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, Name),
         (get({This, '$class'})):setClassName(This, ClassName),
@@ -79,10 +79,10 @@ init(This, AbeClientInformation, Name, ClassName) when (is_list(Name) orelse Nam
 new(InputAutomationModuleInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputAutomationModuleInterface),
+    '$init'(This, InputAutomationModuleInterface),
     This.
 
-init(This, InputAutomationModuleInterface) ->
+'$init'(This, InputAutomationModuleInterface) ->
     init_fields(This),
         (get({This, '$class'})):setInputAutomationModuleInterface(This, InputAutomationModuleInterface),
         (get({This, '$class'})):setClassName(This, atom_to_list(get({get({This, inputAutomationModuleInterface}), '$class'}))).

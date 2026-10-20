@@ -25,10 +25,10 @@ init_fields(This) ->
 new(Forward, Reverse) when is_integer(Forward), is_integer(Reverse) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Forward, Reverse),
+    '$init'(This, Forward, Reverse),
     This.
 
-init(This, Forward, Reverse) when is_integer(Forward), is_integer(Reverse) ->
+'$init'(This, Forward, Reverse) when is_integer(Forward), is_integer(Reverse) ->
     init_fields(This),
         (get({This, '$class'})):setForward(This, Forward),
         (get({This, '$class'})):setReverse(This, Reverse).

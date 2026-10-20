@@ -43,11 +43,11 @@ init_fields(This) ->
 new(Name, RemoteInfo, Total, PickedUpLayerInterfaceFactoryInterface, AnimationInterface, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined), is_integer(Total) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, RemoteInfo, Total, PickedUpLayerInterfaceFactoryInterface, AnimationInterface, Rectangle, ViewPosition),
+    '$init'(This, Name, RemoteInfo, Total, PickedUpLayerInterfaceFactoryInterface, AnimationInterface, Rectangle, ViewPosition),
     This.
 
-init(This, Name, RemoteInfo, Total, PickedUpLayerInterfaceFactoryInterface, AnimationInterface, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined), is_integer(Total) ->
-        'MultiPlayerGameLayer':init(This, RemoteInfo, get({'BasicGroupFactory':getInstance(), 'NONE_ARRAY'}), Name, Rectangle, ViewPosition),
+'$init'(This, Name, RemoteInfo, Total, PickedUpLayerInterfaceFactoryInterface, AnimationInterface, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined), is_integer(Total) ->
+        'MultiPlayerGameLayer':'$init'(This, RemoteInfo, get({'BasicGroupFactory':getInstance(), 'NONE_ARRAY'}), Name, Rectangle, ViewPosition),
         init_fields(This),
         (get({This, '$class'})):setCollidableInferface(This, (fun(Target_N66188) -> (get({Target_N66188, '$class'})):createBehavior(Target_N66188) end)('CollidableAlwaysPickupNeverCollideBehaviorFactory':getInstance())),
         (get({This, '$class'})):setLayerWidth(This, 10),

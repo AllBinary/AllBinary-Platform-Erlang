@@ -39,10 +39,10 @@ createLife() ->
 new(Lives, Maxlives) when is_integer(Lives), is_integer(Maxlives) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Lives, Maxlives),
+    '$init'(This, Lives, Maxlives),
     This.
 
-init(This, Lives, Maxlives) when is_integer(Lives), is_integer(Maxlives) ->
+'$init'(This, Lives, Maxlives) when is_integer(Lives), is_integer(Maxlives) ->
     init_fields(This),
         put({This, maxlives}, Maxlives),
         case (Lives > get({This, maxlives})) of

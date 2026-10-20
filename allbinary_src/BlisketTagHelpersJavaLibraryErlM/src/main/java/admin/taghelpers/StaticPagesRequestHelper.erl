@@ -61,11 +61,11 @@ init_fields(This) ->
 new(PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PropertiesHashMap, PageContext),
+    '$init'(This, PropertiesHashMap, PageContext),
     This.
 
-init(This, PropertiesHashMap, PageContext) ->
-        'AbContext':init(This, PropertiesHashMap, PageContext),
+'$init'(This, PropertiesHashMap, PageContext) ->
+        'AbContext':'$init'(This, PropertiesHashMap, PageContext),
         init_fields(This),
         put({This, request}, (get({PageContext, '$class'})):getRequest(PageContext)),
         put({This, xslFile}, (get({PropertiesHashMap, '$class'})):get(PropertiesHashMap, get({'TransformInfoData':getInstance(), 'TEMPLATEFILENAME'}))),

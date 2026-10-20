@@ -40,10 +40,10 @@ init_fields(This) ->
 new(Action) when (is_list(Action) orelse Action =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Action),
+    '$init'(This, Action),
     This.
 
-init(This, Action) when (is_list(Action) orelse Action =:= undefined) ->
+'$init'(This, Action) when (is_list(Action) orelse Action =:= undefined) ->
     init_fields(This),
         put({This, action}, Action),
         put({This, inputs}, 'BasicArrayListD':new()).

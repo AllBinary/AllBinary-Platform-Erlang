@@ -30,11 +30,11 @@ init_fields(This) ->
 new(Parent, Modal, Text) when is_boolean(Modal), (is_list(Text) orelse Text =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Parent, Modal, Text),
+    '$init'(This, Parent, Modal, Text),
     This.
 
-init(This, Parent, Modal, Text) when is_boolean(Modal), (is_list(Text) orelse Text =:= undefined) ->
-        'JDialog':init(This, Parent, Modal),
+'$init'(This, Parent, Modal, Text) when is_boolean(Modal), (is_list(Text) orelse Text =:= undefined) ->
+        'JDialog':'$init'(This, Parent, Modal),
         init_fields(This),
         (get({This, '$class'})):initComponents(This),
         (get({This, '$class'})):setText(This, Text).
@@ -48,11 +48,11 @@ addCloseListener(This, CloseListenerInterface) ->
 new(Text) when (is_list(Text) orelse Text =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Text),
+    '$init'(This, Text),
     This.
 
-init(This, Text) when (is_list(Text) orelse Text =:= undefined) ->
-    'JDialog':init(This),
+'$init'(This, Text) when (is_list(Text) orelse Text =:= undefined) ->
+    'JDialog':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):initComponents(This),
         (get({get({This, textJLabel}), '$class'})):setText(get({This, textJLabel}), Text).

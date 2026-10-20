@@ -33,10 +33,10 @@ init_fields(This) ->
 new(DamageableBaseBehavior, DestroyableBaseBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DamageableBaseBehavior, DestroyableBaseBehavior),
+    '$init'(This, DamageableBaseBehavior, DestroyableBaseBehavior),
     This.
 
-init(This, DamageableBaseBehavior, DestroyableBaseBehavior) ->
+'$init'(This, DamageableBaseBehavior, DestroyableBaseBehavior) ->
     init_fields(This),
         put({This, damageableBaseBehavior}, DamageableBaseBehavior),
         put({This, destroyableBaseBehavior}, DestroyableBaseBehavior).

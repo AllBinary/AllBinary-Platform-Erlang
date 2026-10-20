@@ -50,10 +50,10 @@ init_fields(This) ->
 new(Total, CountedPickedUpLayerInterfaceFactory) when is_integer(Total) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Total, CountedPickedUpLayerInterfaceFactory),
+    '$init'(This, Total, CountedPickedUpLayerInterfaceFactory),
     This.
 
-init(This, Total, CountedPickedUpLayerInterfaceFactory) when is_integer(Total) ->
+'$init'(This, Total, CountedPickedUpLayerInterfaceFactory) when is_integer(Total) ->
     init_fields(This),
         put({This, primitiveLongUtil}, 'PrimitiveLongUtil':createPowerOfTen(1000)),
         (get({This, '$class'})):init(This, Total, CountedPickedUpLayerInterfaceFactory).

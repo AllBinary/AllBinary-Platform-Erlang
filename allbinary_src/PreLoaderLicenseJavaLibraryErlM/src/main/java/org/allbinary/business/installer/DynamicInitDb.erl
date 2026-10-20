@@ -30,22 +30,22 @@ init_fields(This) ->
 new(AbeClientInformation) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation),
+    '$init'(This, AbeClientInformation),
     This.
 
-init(This, AbeClientInformation) ->
-    'InitDb':init(This),
+'$init'(This, AbeClientInformation) ->
+    'InitDb':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):setHelper(This, 'InitDbHelperFactory':getInstance(AbeClientInformation)).
 
 new(AbeClientInformation, DatabaseConnectionInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, DatabaseConnectionInfoInterface),
+    '$init'(This, AbeClientInformation, DatabaseConnectionInfoInterface),
     This.
 
-init(This, AbeClientInformation, DatabaseConnectionInfoInterface) ->
-    'InitDb':init(This),
+'$init'(This, AbeClientInformation, DatabaseConnectionInfoInterface) ->
+    'InitDb':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):setHelper(This, 'InitDbHelperFactory':getInstance(AbeClientInformation, DatabaseConnectionInfoInterface)).
 

@@ -37,10 +37,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, list}, 'BasicArrayListD':new()),
         put({This, hashtable}, (fun(Target_N65920) -> (get({Target_N65920, '$class'})):createHashtable(Target_N65920) end)('StdUtil':getInstance())).

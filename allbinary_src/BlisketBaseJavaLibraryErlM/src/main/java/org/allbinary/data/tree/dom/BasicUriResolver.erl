@@ -39,10 +39,10 @@ init_fields(This) ->
 new(Extension) when (is_list(Extension) orelse Extension =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Extension),
+    '$init'(This, Extension),
     This.
 
-init(This, Extension) when (is_list(Extension) orelse Extension =:= undefined) ->
+'$init'(This, Extension) when (is_list(Extension) orelse Extension =:= undefined) ->
     init_fields(This),
         put({This, extension}, Extension).
 

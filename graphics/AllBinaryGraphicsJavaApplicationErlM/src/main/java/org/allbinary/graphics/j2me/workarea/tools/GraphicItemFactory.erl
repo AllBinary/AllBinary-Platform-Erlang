@@ -38,10 +38,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, graphicItems}, (fun(Target_N65927) -> (get({Target_N65927, '$class'})):createHashMap(Target_N65927) end)('StdUtil':getInstance())),
         (get({get({This, graphicItems}), '$class'})):put(get({This, graphicItems}), 'LinesGraphicItem':getStaticName(), 'LinesGraphicItemFactory':new()).

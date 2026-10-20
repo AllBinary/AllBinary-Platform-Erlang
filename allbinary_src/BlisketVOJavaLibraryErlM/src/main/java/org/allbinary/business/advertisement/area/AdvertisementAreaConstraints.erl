@@ -33,10 +33,10 @@ init_fields(This) ->
 new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Document),
+    '$init'(This, Document),
     This.
 
-init(This, Document) ->
+'$init'(This, Document) ->
     init_fields(This),
         Node = 'DomSearchHelper':getNode(get({'AdvertisementAreaData':getInstance(), 'NAME'}), (get({Document, '$class'})):getChildNodes(Document)),
         put({This, displayInBrowserContraintsInterface}, 'DisplayInBrowserContraints':new(Node)),

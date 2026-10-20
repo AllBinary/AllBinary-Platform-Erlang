@@ -30,18 +30,18 @@ init_fields(This) ->
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This;
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         put({This, cssProperty}, 'CssProperty':new(Name));
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         put({This, cssProperty}, 'CssProperty':new(Node)).
 

@@ -28,11 +28,11 @@ init_fields(This) ->
 new(AnyType, DemoGameMidletState) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType, DemoGameMidletState),
+    '$init'(This, AnyType, DemoGameMidletState),
     This.
 
-init(This, AnyType, DemoGameMidletState) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType, DemoGameMidletState) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This),
         put({This, demoGameMidletState}, DemoGameMidletState).
 

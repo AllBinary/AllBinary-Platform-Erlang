@@ -35,10 +35,10 @@ init_fields(This) ->
 new(VisitorInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, VisitorInterface),
+    '$init'(This, VisitorInterface),
     This.
 
-init(This, VisitorInterface) ->
+'$init'(This, VisitorInterface) ->
     init_fields(This),
         put({This, visitorInterface}, VisitorInterface).
 

@@ -26,10 +26,10 @@ init_fields(This) ->
 new(StartTime) when is_integer(StartTime) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StartTime),
+    '$init'(This, StartTime),
     This.
 
-init(This, StartTime) when is_integer(StartTime) ->
+'$init'(This, StartTime) when is_integer(StartTime) ->
     init_fields(This),
         put({This, startTime}, StartTime),
         put({This, lastStartTime}, 0).

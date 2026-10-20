@@ -25,11 +25,11 @@ init_fields(This) ->
 new(Name, Movement, AnimationInterface, Rectangle, ViewPosition, TimeDelay) when (is_list(Name) orelse Name =:= undefined), is_integer(TimeDelay) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Movement, AnimationInterface, Rectangle, ViewPosition, TimeDelay),
+    '$init'(This, Name, Movement, AnimationInterface, Rectangle, ViewPosition, TimeDelay),
     This.
 
-init(This, Name, Movement, AnimationInterface, Rectangle, ViewPosition, TimeDelay) when (is_list(Name) orelse Name =:= undefined), is_integer(TimeDelay) ->
-        'SimpleWeaponLayer':init(This, Name, get({'RemoteInfo', 'REMOTE_INFO'}), (-1), Movement, AnimationInterface, 'SimpleWeaponLayer':createDestroyed(), Rectangle, ViewPosition),
+'$init'(This, Name, Movement, AnimationInterface, Rectangle, ViewPosition, TimeDelay) when (is_list(Name) orelse Name =:= undefined), is_integer(TimeDelay) ->
+        'SimpleWeaponLayer':'$init'(This, Name, get({'RemoteInfo', 'REMOTE_INFO'}), (-1), Movement, AnimationInterface, 'SimpleWeaponLayer':createDestroyed(), Rectangle, ViewPosition),
         init_fields(This),
         put({get({This, timeDelayHelper}), delay}, TimeDelay).
 

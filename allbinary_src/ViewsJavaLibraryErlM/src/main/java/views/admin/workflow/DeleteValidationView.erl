@@ -37,11 +37,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'WorkFlowView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'WorkFlowView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, workFlowName}, (fun(Target_N65982) -> (get({Target_N65982, '$class'})):getParameter(Target_N65982, get({'WorkFlowData':getInstance(), 'NAME'})) end)((fun(Target_N65989) -> (get({Target_N65989, '$class'})):getRequest(Target_N65989) end)((get({This, '$class'})):getPageContext(This)))),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of

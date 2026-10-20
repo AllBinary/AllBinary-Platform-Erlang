@@ -27,10 +27,10 @@ init_fields(This) ->
 new(P1, P2) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, P1, P2),
+    '$init'(This, P1, P2),
     This.
 
-init(This, P1, P2) ->
+'$init'(This, P1, P2) ->
     init_fields(This),
         put({This, p1}, get({'PointFactory':getInstance(), 'ZERO_ZERO'})),
         put({This, p2}, get({This, p1})),

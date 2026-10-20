@@ -33,11 +33,11 @@ init_fields(This) ->
 new(ImageCache) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageCache),
+    '$init'(This, ImageCache),
     This.
 
-init(This, ImageCache) ->
-    'BaseImageLoadingProcessor':init(This),
+'$init'(This, ImageCache) ->
+    'BaseImageLoadingProcessor':'$init'(This),
     init_fields(This),
         put({This, runnable}, 'ImageCacheRunnable':new(ImageCache)).
 

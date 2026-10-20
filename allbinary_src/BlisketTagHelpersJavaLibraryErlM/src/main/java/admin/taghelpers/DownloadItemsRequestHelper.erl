@@ -39,11 +39,11 @@ init_fields(This) ->
 new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, PageContext),
+    '$init'(This, HashMap, PageContext),
     This.
 
-init(This, HashMap, PageContext) ->
-    'ModifyTable':init(This),
+'$init'(This, HashMap, PageContext) ->
+    'ModifyTable':'$init'(This),
     init_fields(This),
         InventoryTag = (get({HashMap, '$class'})):get(HashMap, get({'AbTagData', 'PARENT'})),
         InventoryItemViewParentTagHelper = 'InventoryItemViewParentTagHelper':getInstance(),

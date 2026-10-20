@@ -34,11 +34,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'UsersView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'UsersView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, userVector}, (fun(Target_N65887) -> (get({Target_N65887, '$class'})):getCustomers(Target_N65887) end)('UserEntityFactory':getInstance())).
 

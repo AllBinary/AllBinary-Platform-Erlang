@@ -50,11 +50,11 @@ createFromFilePathAppend(Name, Append) when (is_list(Name) orelse Name =:= undef
 new(FileOutputStream) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FileOutputStream),
+    '$init'(This, FileOutputStream),
     This.
 
-init(This, FileOutputStream) ->
-    'OutputStream':init(This),
+'$init'(This, FileOutputStream) ->
+    'OutputStream':'$init'(This),
     init_fields(This),
         put({This, fileOutputStream}, FileOutputStream).
 

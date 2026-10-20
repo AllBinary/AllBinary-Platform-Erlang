@@ -104,11 +104,11 @@ init_fields(This) ->
 new(CmdListener, Name, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CmdListener, Name, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, CmdListener, Name, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, CmdListener, Name, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Name) orelse Name =:= undefined) ->
-        'MyCanvas':init(This, Name, get({'CanvasStrings':getInstance(), 'EMPTY_CHILD_NAME_LIST'})),
+'$init'(This, CmdListener, Name, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Name) orelse Name =:= undefined) ->
+        'MyCanvas':'$init'(This, Name, get({'CanvasStrings':getInstance(), 'EMPTY_CHILD_NAME_LIST'})),
         init_fields(This),
         put({This, repaintBehavior}, 'RepaintBehavior':getInstance()),
         put({This, foregroundBasicColor}, ForegroundBasicColor),

@@ -47,21 +47,21 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'ModifyTag':init(This, 'TransformInfoRequestHelperFactory':new()),
+'$init'(This) ->
+        'ModifyTag':'$init'(This, 'TransformInfoRequestHelperFactory':new()),
         init_fields(This).
 
 new(TagHelperFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TagHelperFactoryInterface),
+    '$init'(This, TagHelperFactoryInterface),
     This.
 
-init(This, TagHelperFactoryInterface) ->
-        'ModifyTag':init(This, TagHelperFactoryInterface),
+'$init'(This, TagHelperFactoryInterface) ->
+        'ModifyTag':'$init'(This, TagHelperFactoryInterface),
         init_fields(This).
 
 setName(This, Value) when (is_list(Value) orelse Value =:= undefined) ->

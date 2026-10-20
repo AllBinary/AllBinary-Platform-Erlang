@@ -68,10 +68,10 @@ init_fields(This) ->
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         (get({This, '$class'})):getFormData(This, HashMap).
 

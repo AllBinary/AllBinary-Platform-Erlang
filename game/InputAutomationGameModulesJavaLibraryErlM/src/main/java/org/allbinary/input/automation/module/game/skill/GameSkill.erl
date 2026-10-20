@@ -41,10 +41,10 @@ init_fields(This) ->
 new(GameSkillType, Extra, Time) when (is_list(Extra) orelse Extra =:= undefined), is_integer(Time) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameSkillType, Extra, Time),
+    '$init'(This, GameSkillType, Extra, Time),
     This.
 
-init(This, GameSkillType, Extra, Time) when (is_list(Extra) orelse Extra =:= undefined), is_integer(Time) ->
+'$init'(This, GameSkillType, Extra, Time) when (is_list(Extra) orelse Extra =:= undefined), is_integer(Time) ->
     init_fields(This),
         (get({This, '$class'})):setGameSkillType(This, GameSkillType),
         (get({This, '$class'})):setExtra(This, Extra),

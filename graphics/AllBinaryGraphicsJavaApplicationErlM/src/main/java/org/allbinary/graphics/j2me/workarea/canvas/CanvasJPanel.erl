@@ -83,11 +83,11 @@ init_fields(This) ->
 new(WorkAreaJTreeJPanel, Dimension, X, Y) when is_integer(X), is_integer(Y) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, WorkAreaJTreeJPanel, Dimension, X, Y),
+    '$init'(This, WorkAreaJTreeJPanel, Dimension, X, Y),
     This.
 
-init(This, WorkAreaJTreeJPanel, Dimension, X, Y) when is_integer(X), is_integer(Y) ->
-    'JPanel':init(This),
+'$init'(This, WorkAreaJTreeJPanel, Dimension, X, Y) when is_integer(X), is_integer(Y) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         put({This, grid}, 'Grid':new()),
         try
@@ -107,11 +107,11 @@ init(This, WorkAreaJTreeJPanel, Dimension, X, Y) when is_integer(X), is_integer(
 new(WorkAreaJTreeJPanel, Dimension, CanvasDom) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, WorkAreaJTreeJPanel, Dimension, CanvasDom),
+    '$init'(This, WorkAreaJTreeJPanel, Dimension, CanvasDom),
     This.
 
-init(This, WorkAreaJTreeJPanel, Dimension, CanvasDom) ->
-    'JPanel':init(This),
+'$init'(This, WorkAreaJTreeJPanel, Dimension, CanvasDom) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         put({This, grid}, 'Grid':new((get({CanvasDom, '$class'})):getGrid(CanvasDom))),
         try

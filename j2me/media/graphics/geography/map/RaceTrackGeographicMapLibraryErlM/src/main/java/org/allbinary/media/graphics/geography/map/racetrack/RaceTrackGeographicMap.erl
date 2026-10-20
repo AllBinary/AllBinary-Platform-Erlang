@@ -32,11 +32,11 @@ init_fields(This) ->
 new(RaceTrackInfo, RaceTrackData, TiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory, CustomMapGeneratorBaseFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RaceTrackInfo, RaceTrackData, TiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory, CustomMapGeneratorBaseFactory),
+    '$init'(This, RaceTrackInfo, RaceTrackData, TiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory, CustomMapGeneratorBaseFactory),
     This.
 
-init(This, RaceTrackInfo, RaceTrackData, TiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory, CustomMapGeneratorBaseFactory) ->
-        'BaseRaceTrackGeographicMap':init(This, RaceTrackInfo, RaceTrackData, (get({TiledLayerFactoryInterface, '$class'})):getInstance(TiledLayerFactoryInterface, RaceTrackInfo, RaceTrackData), (fun(Target_N65898) -> (get({Target_N65898, '$class'})):getInstance(Target_N65898, RaceTrackInfo, RaceTrackData, TiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface, GeographicMapCellTypeFactory) end)('BasicGeographicMapFactory':new()), GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory),
+'$init'(This, RaceTrackInfo, RaceTrackData, TiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory, CustomMapGeneratorBaseFactory) ->
+        'BaseRaceTrackGeographicMap':'$init'(This, RaceTrackInfo, RaceTrackData, (get({TiledLayerFactoryInterface, '$class'})):getInstance(TiledLayerFactoryInterface, RaceTrackInfo, RaceTrackData), (fun(Target_N65898) -> (get({Target_N65898, '$class'})):getInstance(Target_N65898, RaceTrackInfo, RaceTrackData, TiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface, GeographicMapCellTypeFactory) end)('BasicGeographicMapFactory':new()), GeographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory),
         init_fields(This),
         put({This, customMapGenerator}, (get({CustomMapGeneratorBaseFactory, '$class'})):create(CustomMapGeneratorBaseFactory, This)).
 

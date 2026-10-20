@@ -28,10 +28,10 @@ init_fields(This) ->
 new(ImageComparisonResult, Frame) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageComparisonResult, Frame),
+    '$init'(This, ImageComparisonResult, Frame),
     This.
 
-init(This, ImageComparisonResult, Frame) ->
+'$init'(This, ImageComparisonResult, Frame) ->
     init_fields(This),
         (get({This, '$class'})):setImageComparisonResult(This, ImageComparisonResult),
         put({This, frame}, Frame).

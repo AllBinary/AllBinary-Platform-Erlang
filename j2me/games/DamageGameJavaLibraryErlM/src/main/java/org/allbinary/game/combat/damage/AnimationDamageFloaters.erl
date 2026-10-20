@@ -41,11 +41,11 @@ init_fields(This) ->
 new(LayerInterface, AnimationInterfaceArray, Dx, Dy) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerInterface, AnimationInterfaceArray, Dx, Dy),
+    '$init'(This, LayerInterface, AnimationInterfaceArray, Dx, Dy),
     This.
 
-init(This, LayerInterface, AnimationInterfaceArray, Dx, Dy) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
-    'DamageFloaters':init(This),
+'$init'(This, LayerInterface, AnimationInterfaceArray, Dx, Dy) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
+    'DamageFloaters':'$init'(This),
     init_fields(This),
         put({This, animationInterfaceArray}, AnimationInterfaceArray),
         lists:foreach(fun(Index) ->

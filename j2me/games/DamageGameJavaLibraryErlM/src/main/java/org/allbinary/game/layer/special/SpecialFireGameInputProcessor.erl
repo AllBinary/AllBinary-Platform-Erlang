@@ -28,11 +28,11 @@ init_fields(This) ->
 new(CollidableDestroyableDamageableLayer) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CollidableDestroyableDamageableLayer),
+    '$init'(This, CollidableDestroyableDamageableLayer),
     This.
 
-init(This, CollidableDestroyableDamageableLayer) ->
-        'SpecialGameInputProcessor':init(This, CollidableDestroyableDamageableLayer).
+'$init'(This, CollidableDestroyableDamageableLayer) ->
+        'SpecialGameInputProcessor':'$init'(This, CollidableDestroyableDamageableLayer).
 
 % throws Exception
 processEvent(This, AllbinaryLayerManager, GameKeyEvent) ->

@@ -38,11 +38,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'UsersView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'UsersView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         HttpTransformInfoInterface = (get({This, '$class'})):getTransformInfoInterface(This),
         Role = (fun(Target_N66078) -> (get({Target_N66078, '$class'})):get(Target_N66078, (get({get({'UserRoleData', 'NAME'}), '$class'})):toString(get({'UserRoleData', 'NAME'}))) end)((get({HttpTransformInfoInterface, '$class'})):getPropertiesHashMap(HttpTransformInfoInterface)),

@@ -33,11 +33,11 @@ init_fields(This) ->
 new(AnyType, GeographicMapCellPosition) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType, GeographicMapCellPosition),
+    '$init'(This, AnyType, GeographicMapCellPosition),
     This.
 
-init(This, AnyType, GeographicMapCellPosition) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType, GeographicMapCellPosition) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This),
         put({This, geographicMapCellPosition}, GeographicMapCellPosition).
 

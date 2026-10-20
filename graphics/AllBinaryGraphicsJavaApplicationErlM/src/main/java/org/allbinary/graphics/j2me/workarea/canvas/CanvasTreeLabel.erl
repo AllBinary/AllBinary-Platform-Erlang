@@ -24,10 +24,10 @@ init_fields(This) ->
 new(Str) when (is_list(Str) orelse Str =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Str),
+    '$init'(This, Str),
     This.
 
-init(This, Str) when (is_list(Str) orelse Str =:= undefined) ->
+'$init'(This, Str) when (is_list(Str) orelse Str =:= undefined) ->
     init_fields(This),
         put({This, label}, Str).
 

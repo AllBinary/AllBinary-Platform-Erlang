@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Candidate, TagName, Index) when (is_list(Candidate) orelse Candidate =:= undefined), (is_list(TagName) orelse TagName =:= undefined), is_integer(Index) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Candidate, TagName, Index),
+    '$init'(This, Candidate, TagName, Index),
     This.
 
-init(This, Candidate, TagName, Index) when (is_list(Candidate) orelse Candidate =:= undefined), (is_list(TagName) orelse TagName =:= undefined), is_integer(Index) ->
+'$init'(This, Candidate, TagName, Index) when (is_list(Candidate) orelse Candidate =:= undefined), (is_list(TagName) orelse TagName =:= undefined), is_integer(Index) ->
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), TagName, This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         AcceptableResponseUtil = 'AcceptableResponseUtil':getInstance(),

@@ -35,11 +35,11 @@ init_fields(This) ->
 new(ThreadPool) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ThreadPool),
+    '$init'(This, ThreadPool),
     This.
 
-init(This, ThreadPool) ->
-        'Thread':init(This, (get({ThreadPool, '$class'})):createName(ThreadPool)),
+'$init'(This, ThreadPool) ->
+        'Thread':'$init'(This, (get({ThreadPool, '$class'})):createName(ThreadPool)),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'CONSTRUCTOR'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, threadPool}, ThreadPool).

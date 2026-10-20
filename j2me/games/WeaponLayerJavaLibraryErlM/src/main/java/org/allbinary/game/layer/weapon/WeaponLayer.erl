@@ -60,11 +60,11 @@ init_fields(This) ->
 new(Name, RemoteInfo, MultiPlayerType, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined), is_integer(MultiPlayerType) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, RemoteInfo, MultiPlayerType, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition),
+    '$init'(This, Name, RemoteInfo, MultiPlayerType, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition),
     This.
 
-init(This, Name, RemoteInfo, MultiPlayerType, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined), is_integer(MultiPlayerType) ->
-        'MultiPlayerGameLayer':init(This, RemoteInfo, get({'BasicGroupFactory':getInstance(), 'NONE_ARRAY'}), Name, Rectangle, ViewPosition),
+'$init'(This, Name, RemoteInfo, MultiPlayerType, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined), is_integer(MultiPlayerType) ->
+        'MultiPlayerGameLayer':'$init'(This, RemoteInfo, get({'BasicGroupFactory':getInstance(), 'NONE_ARRAY'}), Name, Rectangle, ViewPosition),
         init_fields(This),
         put({This, initAnimationInterface}, AnimationInterface),
         (get({This, '$class'})):setAnimationInterface(This, AnimationInterface),

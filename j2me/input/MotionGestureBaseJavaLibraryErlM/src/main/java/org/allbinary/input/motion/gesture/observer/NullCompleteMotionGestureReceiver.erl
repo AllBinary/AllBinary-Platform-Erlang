@@ -28,10 +28,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         CommonStrings = 'CommonStrings':getInstance(),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Null Gesture Reciever", This, get({CommonStrings, 'CONSTRUCTOR'})).

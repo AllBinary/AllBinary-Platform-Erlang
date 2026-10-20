@@ -51,11 +51,11 @@ init_fields(This) ->
 new(CmdListener, BackgrounBasicColor, ForegroundBasicColor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CmdListener, BackgrounBasicColor, ForegroundBasicColor),
+    '$init'(This, CmdListener, BackgrounBasicColor, ForegroundBasicColor),
     This.
 
-init(This, CmdListener, BackgrounBasicColor, ForegroundBasicColor) ->
-        'CustomTextBox':init(This, CmdListener, "Enter Registration Code:", get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 60, get({'TextField', 'ANY'}), 'Font':getDefaultFont(), BackgrounBasicColor, ForegroundBasicColor),
+'$init'(This, CmdListener, BackgrounBasicColor, ForegroundBasicColor) ->
+        'CustomTextBox':'$init'(This, CmdListener, "Enter Registration Code:", get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 60, get({'TextField', 'ANY'}), 'Font':getDefaultFont(), BackgrounBasicColor, ForegroundBasicColor),
         init_fields(This).
 
 initCommands(This, CmdListener) ->

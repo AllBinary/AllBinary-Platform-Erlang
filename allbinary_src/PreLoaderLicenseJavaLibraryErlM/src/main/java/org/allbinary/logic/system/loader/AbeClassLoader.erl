@@ -48,11 +48,11 @@ init_fields(This) ->
 new(Parent, Key) when (is_list(Key) orelse Key =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Parent, Key),
+    '$init'(This, Parent, Key),
     This.
 
-init(This, Parent, Key) when (is_list(Key) orelse Key =:= undefined) ->
-        'ClassLoader':init(This, Parent),
+'$init'(This, Parent, Key) when (is_list(Key) orelse Key =:= undefined) ->
+        'ClassLoader':'$init'(This, Parent),
         init_fields(This),
         put({This, key}, Key),
         put({'AbeClassLoader', 'PATH'}, lists:concat([(get({get({get({get({'org', allbinary}), globals}), 'URLGLOBALS'}), '$class'})):getWebappPath(get({get({get({'org', allbinary}), globals}), 'URLGLOBALS'})), "WEB-INF/classes/"])).

@@ -34,11 +34,11 @@ init_fields(This) ->
 new(Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy), is_integer(AngleIncrement) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory),
+    '$init'(This, Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory),
     This.
 
-init(This, Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy), is_integer(AngleIncrement) ->
-        'BaseImageAnimationFactory':init(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, 0, 0, AnimationBehaviorFactory),
+'$init'(This, Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy), is_integer(AngleIncrement) ->
+        'BaseImageAnimationFactory':'$init'(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, 0, 0, AnimationBehaviorFactory),
         init_fields(This),
         put({This, angleIncrement}, AngleIncrement),
         put({get({This, animationFactoryInitializationVisitor}), dx}, Dx),

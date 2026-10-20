@@ -31,25 +31,25 @@ init_fields(This) ->
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This;
 new(File) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, File),
+    '$init'(This, File),
     This;
 new(File) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, File),
+    '$init'(This, File),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
-        'FileInputStream':init(This, Name);
-init(This, File) ->
-        'FileInputStream':init(This, 'AbFileNativeUtil':get(File));
-init(This, File) ->
-        'FileInputStream':init(This, File).
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+        'FileInputStream':'$init'(This, Name);
+'$init'(This, File) ->
+        'FileInputStream':'$init'(This, 'AbFileNativeUtil':get(File));
+'$init'(This, File) ->
+        'FileInputStream':'$init'(This, File).
 
 
 

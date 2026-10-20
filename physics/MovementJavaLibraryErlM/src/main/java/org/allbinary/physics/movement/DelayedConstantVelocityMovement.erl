@@ -32,11 +32,11 @@ init_fields(This) ->
 new(BasicDecimal, VelocityProperties) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicDecimal, VelocityProperties),
+    '$init'(This, BasicDecimal, VelocityProperties),
     This.
 
-init(This, BasicDecimal, VelocityProperties) ->
-        'BasicConstantVelocityMovement':init(This, BasicDecimal, VelocityProperties),
+'$init'(This, BasicDecimal, VelocityProperties) ->
+        'BasicConstantVelocityMovement':'$init'(This, BasicDecimal, VelocityProperties),
         init_fields(This).
 
 init(This, SpeedBasicDecimal, Angle, OtherAngle) when is_integer(Angle), is_integer(OtherAngle) ->

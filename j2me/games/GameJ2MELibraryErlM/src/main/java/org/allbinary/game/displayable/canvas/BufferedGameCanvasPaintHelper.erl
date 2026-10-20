@@ -46,11 +46,11 @@ init_fields(This) ->
 new(GameCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameCanvas),
+    '$init'(This, GameCanvas),
     This.
 
-init(This, GameCanvas) ->
-    'ProcessPaintable':init(This),
+'$init'(This, GameCanvas) ->
+    'ProcessPaintable':'$init'(This),
     init_fields(This),
         erlang:error({'Exception', "No Longer Used"}).
 

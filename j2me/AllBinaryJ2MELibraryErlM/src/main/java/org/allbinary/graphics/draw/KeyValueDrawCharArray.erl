@@ -35,10 +35,10 @@ init_fields(This) ->
 new(Label, X) when (is_list(Label) orelse Label =:= undefined), is_integer(X) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, X),
+    '$init'(This, Label, X),
     This.
 
-init(This, Label, X) when (is_list(Label) orelse Label =:= undefined), is_integer(X) ->
+'$init'(This, Label, X) when (is_list(Label) orelse Label =:= undefined), is_integer(X) ->
     init_fields(This),
         put({This, 'LABEL'}, Label),
         put({This, labelX}, X).

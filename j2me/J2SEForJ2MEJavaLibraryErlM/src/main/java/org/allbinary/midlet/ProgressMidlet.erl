@@ -32,11 +32,11 @@ init_fields(This) ->
 new(ClientInformationFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInformationFactory),
+    '$init'(This, ClientInformationFactory),
     This.
 
-init(This, ClientInformationFactory) ->
-    'AllBinaryMidlet':init(This),
+'$init'(This, ClientInformationFactory) ->
+    'AllBinaryMidlet':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):preInit(This),
         put({This, abeClientInformation}, (get({ClientInformationFactory, '$class'})):getInstance(ClientInformationFactory)).

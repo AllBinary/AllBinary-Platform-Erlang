@@ -41,10 +41,10 @@ createProperties() ->
 new(ShakeListener, Vibration, Duration, WaypointBehaviorBase) when is_integer(Duration) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ShakeListener, Vibration, Duration, WaypointBehaviorBase),
+    '$init'(This, ShakeListener, Vibration, Duration, WaypointBehaviorBase),
     This.
 
-init(This, ShakeListener, Vibration, Duration, WaypointBehaviorBase) when is_integer(Duration) ->
+'$init'(This, ShakeListener, Vibration, Duration, WaypointBehaviorBase) when is_integer(Duration) ->
     init_fields(This),
         put({This, shakeListener}, ShakeListener),
         put({This, vibration}, Vibration),

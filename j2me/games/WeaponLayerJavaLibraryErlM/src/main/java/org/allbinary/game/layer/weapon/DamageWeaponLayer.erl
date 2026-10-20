@@ -31,10 +31,10 @@ init_fields(This) ->
 new(Name, RemoteInfo, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition, Username, ActorSessionId, Id, MultiPlayerType) when (is_list(Name) orelse Name =:= undefined), (is_list(Username) orelse Username =:= undefined), is_integer(ActorSessionId), is_integer(Id), is_integer(MultiPlayerType) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, RemoteInfo, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition, Username, ActorSessionId, Id, MultiPlayerType),
+    '$init'(This, Name, RemoteInfo, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition, Username, ActorSessionId, Id, MultiPlayerType),
     This.
 
-init(This, Name, RemoteInfo, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition, Username, ActorSessionId, Id, MultiPlayerType) when (is_list(Name) orelse Name =:= undefined), (is_list(Username) orelse Username =:= undefined), is_integer(ActorSessionId), is_integer(Id), is_integer(MultiPlayerType) ->
-        'WeaponLayer':init(This, Name, RemoteInfo, MultiPlayerType, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition),
+'$init'(This, Name, RemoteInfo, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition, Username, ActorSessionId, Id, MultiPlayerType) when (is_list(Name) orelse Name =:= undefined), (is_list(Username) orelse Username =:= undefined), is_integer(ActorSessionId), is_integer(Id), is_integer(MultiPlayerType) ->
+        'WeaponLayer':'$init'(This, Name, RemoteInfo, MultiPlayerType, Movement, AnimationInterface, DestroyedAnimationInterface, Rectangle, ViewPosition),
         (get({This, '$class'})):setCollidableInferface(This, 'CollidableDamageWeaponBehavior':new(true)).
 

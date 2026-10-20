@@ -31,10 +31,10 @@ init_fields(This) ->
 new(Angle) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Angle),
+    '$init'(This, Angle),
     This.
 
-init(This, Angle) ->
+'$init'(This, Angle) ->
     init_fields(This),
         put({This, angle}, Angle).
 

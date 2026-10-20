@@ -26,20 +26,20 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         ActionNode = 'DomSearchHelper':getNode(get({'GenericProfileActionScriptInputData', 'NAME'}), (get({Node, '$class'})):getChildNodes(Node)).
 
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         ok.
 

@@ -31,10 +31,10 @@ init_fields(This) ->
 new(Sep) when (is_list(Sep) orelse Sep =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Sep),
+    '$init'(This, Sep),
     This.
 
-init(This, Sep) when (is_list(Sep) orelse Sep =:= undefined) ->
+'$init'(This, Sep) when (is_list(Sep) orelse Sep =:= undefined) ->
     init_fields(This),
         case ((Sep =:= undefined) orelse ((fun(Target_N65857) -> (get({Target_N65857, '$class'})):compareTo(Target_N65857, Sep, get({'StringUtil':getInstance(), 'EMPTY_STRING'})) end)('TsUtil':getInstance()) =:= 0)) of
             true ->

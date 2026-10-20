@@ -38,11 +38,11 @@ init_fields(This) ->
 new(Hashtable, OwnerLayerInterface, GameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Hashtable, OwnerLayerInterface, GameInput),
+    '$init'(This, Hashtable, OwnerLayerInterface, GameInput),
     This.
 
-init(This, Hashtable, OwnerLayerInterface, GameInput) ->
-        'BasicAI':init(This, OwnerLayerInterface, GameInput),
+'$init'(This, Hashtable, OwnerLayerInterface, GameInput) ->
+        'BasicAI':'$init'(This, OwnerLayerInterface, GameInput),
         init_fields(This),
         AllowedDistance = (get({Hashtable, '$class'})):get(Hashtable, get({'BasePatrolAI', 'MAX_DISTANCE'})),
         put({This, allowedDistance}, (get({AllowedDistance, '$class'})):intValue(AllowedDistance)).

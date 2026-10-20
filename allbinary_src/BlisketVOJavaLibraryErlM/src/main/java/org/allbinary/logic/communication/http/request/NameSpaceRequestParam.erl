@@ -35,10 +35,10 @@ init_fields(This) ->
 new(NameSpace, Value) when (is_list(NameSpace) orelse NameSpace =:= undefined), (is_list(Value) orelse Value =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, NameSpace, Value),
+    '$init'(This, NameSpace, Value),
     This.
 
-init(This, NameSpace, Value) when (is_list(NameSpace) orelse NameSpace =:= undefined), (is_list(Value) orelse Value =:= undefined) ->
+'$init'(This, NameSpace, Value) when (is_list(NameSpace) orelse NameSpace =:= undefined), (is_list(Value) orelse Value =:= undefined) ->
     init_fields(This),
         put({This, nameSpaceVector}, 'BasicArrayListD':new()),
         put({This, nameSpacePropertiesHashMap}, (fun(Target_N66035) -> (get({Target_N66035, '$class'})):createHashMap(Target_N66035) end)('StdUtil':getInstance())),

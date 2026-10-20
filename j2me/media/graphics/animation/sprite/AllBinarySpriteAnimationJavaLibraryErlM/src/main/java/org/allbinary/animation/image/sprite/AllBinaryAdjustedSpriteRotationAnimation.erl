@@ -32,11 +32,11 @@ init_fields(This) ->
 new(Sprite, Image, Dx, Dy, AnimationBehavior) when is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Sprite, Image, Dx, Dy, AnimationBehavior),
+    '$init'(This, Sprite, Image, Dx, Dy, AnimationBehavior),
     This.
 
-init(This, Sprite, Image, Dx, Dy, AnimationBehavior) when is_integer(Dx), is_integer(Dy) ->
-        'AllBinarySpriteRotationAnimation':init(This, Sprite, Image, AnimationBehavior),
+'$init'(This, Sprite, Image, Dx, Dy, AnimationBehavior) when is_integer(Dx), is_integer(Dy) ->
+        'AllBinarySpriteRotationAnimation':'$init'(This, Sprite, Image, AnimationBehavior),
         init_fields(This),
         put({This, dx}, Dx),
         put({This, dy}, Dy).

@@ -33,11 +33,11 @@ init_fields(This) ->
 new(SpeedBasicDecimal, OscillateMin, OscillateMax) when is_integer(OscillateMin), is_integer(OscillateMax) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SpeedBasicDecimal, OscillateMin, OscillateMax),
+    '$init'(This, SpeedBasicDecimal, OscillateMin, OscillateMax),
     This.
 
-init(This, SpeedBasicDecimal, OscillateMin, OscillateMax) when is_integer(OscillateMin), is_integer(OscillateMax) ->
-        'BasicConstantVelocityMovement':init(This, SpeedBasicDecimal, 'VelocityProperties':new(trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)), trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)))),
+'$init'(This, SpeedBasicDecimal, OscillateMin, OscillateMax) when is_integer(OscillateMin), is_integer(OscillateMax) ->
+        'BasicConstantVelocityMovement':'$init'(This, SpeedBasicDecimal, 'VelocityProperties':new(trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)), trunc((get({SpeedBasicDecimal, '$class'})):getUnscaled(SpeedBasicDecimal)))),
         init_fields(This),
         put({This, oscillateMin}, OscillateMin),
         put({This, oscillateMax}, OscillateMax).

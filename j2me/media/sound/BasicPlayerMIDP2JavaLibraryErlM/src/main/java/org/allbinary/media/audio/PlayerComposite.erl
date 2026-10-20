@@ -41,10 +41,10 @@ init_fields(This) ->
 new(Player, RepeatTime) when is_integer(RepeatTime) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Player, RepeatTime),
+    '$init'(This, Player, RepeatTime),
     This.
 
-init(This, Player, RepeatTime) when is_integer(RepeatTime) ->
+'$init'(This, Player, RepeatTime) when is_integer(RepeatTime) ->
     init_fields(This),
         put({This, player}, Player),
         put({get({This, timeElapsedHelper}), delay}, RepeatTime).

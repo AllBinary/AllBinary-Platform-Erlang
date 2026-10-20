@@ -30,10 +30,10 @@ init_fields(This) ->
 new(StoreFrontOrdersHistoryStatisticsInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreFrontOrdersHistoryStatisticsInterface),
+    '$init'(This, StoreFrontOrdersHistoryStatisticsInterface),
     This.
 
-init(This, StoreFrontOrdersHistoryStatisticsInterface) ->
+'$init'(This, StoreFrontOrdersHistoryStatisticsInterface) ->
     init_fields(This),
         put({This, storeFrontOrdersHistoryStatisticsInterface}, StoreFrontOrdersHistoryStatisticsInterface).
 

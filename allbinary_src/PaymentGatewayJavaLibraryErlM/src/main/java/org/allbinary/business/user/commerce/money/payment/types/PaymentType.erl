@@ -33,10 +33,10 @@ init_fields(This) ->
 new(BasicPaymentType) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicPaymentType),
+    '$init'(This, BasicPaymentType),
     This.
 
-init(This, BasicPaymentType) ->
+'$init'(This, BasicPaymentType) ->
     init_fields(This),
         put({This, basicPaymentType}, BasicPaymentType),
         put({This, paymentTransactionInterfaceFactoryInterface}, undefined),
@@ -46,10 +46,10 @@ init(This, BasicPaymentType) ->
 new(BasicPaymentType, PaymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicPaymentType, PaymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface),
+    '$init'(This, BasicPaymentType, PaymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface),
     This.
 
-init(This, BasicPaymentType, PaymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface) ->
+'$init'(This, BasicPaymentType, PaymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface) ->
     init_fields(This),
         put({This, basicPaymentType}, BasicPaymentType),
         put({This, paymentTransactionInterfaceFactoryInterface}, PaymentTransactionInterfaceFactoryInterface),

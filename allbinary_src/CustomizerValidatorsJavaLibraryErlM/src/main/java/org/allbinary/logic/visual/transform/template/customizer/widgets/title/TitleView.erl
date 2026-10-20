@@ -44,25 +44,25 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, title}, get({'TitleView', 'NAME'})).
 
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         TitleTextNode = 'DomSearchHelper':getNode(get({'TitleData':getInstance(), 'TEXT'}), (get({Node, '$class'})):getChildNodes(Node)),
         ValueNode = 'DomSearchHelper':getNode(get({'DomData', 'VALUE'}), (get({TitleTextNode, '$class'})):getChildNodes(TitleTextNode)),
@@ -77,7 +77,7 @@ init(This, Node) ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Title: ", (get({This, '$class'})):getTitle(This)]), This, "Consructor()");
             false -> ok
         end;
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
             true ->

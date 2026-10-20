@@ -30,10 +30,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
         (get({This, '$class'})):setEventListenerClassPath(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
@@ -46,10 +46,10 @@ init(This) ->
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, (get({HashMap, '$class'})):get(HashMap, get({'UserEmailEventConfigurationData', 'NAME'}))),
         (get({This, '$class'})):setEventListenerClassPath(This, (get({HashMap, '$class'})):get(HashMap, get({'UserEmailEventConfigurationData', 'LISTENER_CLASSPATH'}))),

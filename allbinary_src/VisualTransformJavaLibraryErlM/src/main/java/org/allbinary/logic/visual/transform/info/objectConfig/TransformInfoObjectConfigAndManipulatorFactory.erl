@@ -43,11 +43,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'TransformInfoObjectConfigAndManipulatorFactoryBase':init(This),
+'$init'(This) ->
+    'TransformInfoObjectConfigAndManipulatorFactoryBase':'$init'(This),
     init_fields(This),
         ok.
 

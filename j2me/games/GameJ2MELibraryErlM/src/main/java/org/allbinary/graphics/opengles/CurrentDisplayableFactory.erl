@@ -68,10 +68,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({get({This, 'DEFAULT_CHILD_NAME_LIST'}), '$class'})):add(get({This, 'DEFAULT_CHILD_NAME_LIST'}), get({get({This, canvasStrings}), 'ABOUT'})),
         (get({get({This, 'DEFAULT_CHILD_NAME_LIST'}), '$class'})):add(get({This, 'DEFAULT_CHILD_NAME_LIST'}), get({get({This, canvasStrings}), 'OPTIONS'})),

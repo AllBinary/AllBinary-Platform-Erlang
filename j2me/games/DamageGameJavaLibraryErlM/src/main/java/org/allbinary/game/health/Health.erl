@@ -38,10 +38,10 @@ init_fields(This) ->
 new(MaxHealth) when is_integer(MaxHealth) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MaxHealth),
+    '$init'(This, MaxHealth),
     This.
 
-init(This, MaxHealth) when is_integer(MaxHealth) ->
+'$init'(This, MaxHealth) when is_integer(MaxHealth) ->
     init_fields(This),
         (get({This, '$class'})):setMaxHealth(This, MaxHealth),
         (get({This, '$class'})):setHealth(This, MaxHealth).

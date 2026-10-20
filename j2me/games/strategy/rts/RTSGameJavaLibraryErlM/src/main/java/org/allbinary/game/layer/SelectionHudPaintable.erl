@@ -56,11 +56,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'InitUpdatePaintable':init(This),
+'$init'(This) ->
+    'InitUpdatePaintable':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):update(This),
         put({This, primitiveLongUtil}, 'PrimitiveLongUtil':createPowerOfTen(10000)).

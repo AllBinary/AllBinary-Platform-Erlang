@@ -30,10 +30,10 @@ init_fields(This) ->
 new(CurrentPoints, BasicColor, AnimationBehaviorFactory) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CurrentPoints, BasicColor, AnimationBehaviorFactory),
+    '$init'(This, CurrentPoints, BasicColor, AnimationBehaviorFactory),
     This.
 
-init(This, CurrentPoints, BasicColor, AnimationBehaviorFactory) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
+'$init'(This, CurrentPoints, BasicColor, AnimationBehaviorFactory) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
     init_fields(This),
         put({This, currentPoints}, CurrentPoints),
         (get({This, '$class'})):setBasicColorP(This, BasicColor),

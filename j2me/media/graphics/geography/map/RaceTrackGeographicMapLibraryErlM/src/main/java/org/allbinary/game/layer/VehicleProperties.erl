@@ -26,10 +26,10 @@ init_fields(This) ->
 new(VelocityProperties, VehicleFrictionProperties) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, VelocityProperties, VehicleFrictionProperties),
+    '$init'(This, VelocityProperties, VehicleFrictionProperties),
     This.
 
-init(This, VelocityProperties, VehicleFrictionProperties) ->
+'$init'(This, VelocityProperties, VehicleFrictionProperties) ->
     init_fields(This),
         put({This, velocityProperties}, VelocityProperties),
         put({This, vehicleFrictionProperties}, VehicleFrictionProperties).

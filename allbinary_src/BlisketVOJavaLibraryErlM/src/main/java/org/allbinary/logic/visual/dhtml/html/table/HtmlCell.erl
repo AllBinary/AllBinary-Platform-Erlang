@@ -38,11 +38,11 @@ init_fields(This) ->
 new(Before, Width, Height, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Width) orelse Width =:= undefined), (is_list(Height) orelse Height =:= undefined), (is_list(After) orelse After =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Before, Width, Height, After),
+    '$init'(This, Before, Width, Height, After),
     This.
 
-init(This, Before, Width, Height, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Width) orelse Width =:= undefined), (is_list(Height) orelse Height =:= undefined), (is_list(After) orelse After =:= undefined) ->
-    'HtmlTag':init(This),
+'$init'(This, Before, Width, Height, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Width) orelse Width =:= undefined), (is_list(Height) orelse Height =:= undefined), (is_list(After) orelse After =:= undefined) ->
+    'HtmlTag':'$init'(This),
     init_fields(This),
         put({This, before}, allbinary_java:to_string(Before)),
         put({This, 'after'}, allbinary_java:to_string(After)),

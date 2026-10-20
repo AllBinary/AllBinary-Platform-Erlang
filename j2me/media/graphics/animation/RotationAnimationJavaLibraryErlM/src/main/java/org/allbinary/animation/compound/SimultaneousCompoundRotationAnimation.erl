@@ -37,11 +37,11 @@ init_fields(This) ->
 new(AnimationInterfaceArray, AnimationBehavior) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterfaceArray, AnimationBehavior),
+    '$init'(This, AnimationInterfaceArray, AnimationBehavior),
     This.
 
-init(This, AnimationInterfaceArray, AnimationBehavior) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined) ->
-        'RotationAnimation':init(This, 'AngleInfo':getInstance(get({'AngleFactory':getInstance(), 'QUARTER_TOTAL_ANGLE'})), 'CircularIndexUtil':createInstance(4), AnimationBehavior),
+'$init'(This, AnimationInterfaceArray, AnimationBehavior) when (is_tuple(AnimationInterfaceArray) orelse AnimationInterfaceArray =:= undefined) ->
+        'RotationAnimation':'$init'(This, 'AngleInfo':getInstance(get({'AngleFactory':getInstance(), 'QUARTER_TOTAL_ANGLE'})), 'CircularIndexUtil':createInstance(4), AnimationBehavior),
         init_fields(This),
         put({This, animationInterfaceArray}, AnimationInterfaceArray).
 

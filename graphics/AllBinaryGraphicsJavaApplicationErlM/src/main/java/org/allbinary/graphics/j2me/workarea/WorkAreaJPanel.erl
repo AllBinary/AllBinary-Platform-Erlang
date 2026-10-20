@@ -65,11 +65,11 @@ init_fields(This) ->
 new(Name, Dimension, X, Y) when (is_list(Name) orelse Name =:= undefined), is_integer(X), is_integer(Y) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Dimension, X, Y),
+    '$init'(This, Name, Dimension, X, Y),
     This.
 
-init(This, Name, Dimension, X, Y) when (is_list(Name) orelse Name =:= undefined), is_integer(X), is_integer(Y) ->
-    'JPanel':init(This),
+'$init'(This, Name, Dimension, X, Y) when (is_list(Name) orelse Name =:= undefined), is_integer(X), is_integer(Y) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         try
             (get({This, '$class'})):initComponents(This),
@@ -88,11 +88,11 @@ init(This, Name, Dimension, X, Y) when (is_list(Name) orelse Name =:= undefined)
 new(WorkAreaDom, Dimension) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, WorkAreaDom, Dimension),
+    '$init'(This, WorkAreaDom, Dimension),
     This.
 
-init(This, WorkAreaDom, Dimension) ->
-    'JPanel':init(This),
+'$init'(This, WorkAreaDom, Dimension) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         try
             (get({This, '$class'})):initComponents(This),

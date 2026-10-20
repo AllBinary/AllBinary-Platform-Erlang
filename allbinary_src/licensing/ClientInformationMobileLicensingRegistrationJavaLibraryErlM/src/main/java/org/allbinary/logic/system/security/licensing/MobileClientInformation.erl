@@ -37,11 +37,11 @@ init_fields(This) ->
 new(Name, Version, SpecialName, ShortName) when (is_list(Name) orelse Name =:= undefined), (is_list(Version) orelse Version =:= undefined), (is_list(SpecialName) orelse SpecialName =:= undefined), (is_list(ShortName) orelse ShortName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Version, SpecialName, ShortName),
+    '$init'(This, Name, Version, SpecialName, ShortName),
     This.
 
-init(This, Name, Version, SpecialName, ShortName) when (is_list(Name) orelse Name =:= undefined), (is_list(Version) orelse Version =:= undefined), (is_list(SpecialName) orelse SpecialName =:= undefined), (is_list(ShortName) orelse ShortName =:= undefined) ->
-        'AbeClientInformation':init(This, Name, Version, (fun(Target_N65889) -> (get({Target_N65889, '$class'})):toString(Target_N65889) end)((fun(Target_N65896) -> (get({Target_N65896, '$class'})):append(Target_N65896, (fun(Target_N65971) -> (get({Target_N65971, '$class'})):get(Target_N65971) end)('PartnerIdentifierFileUtil':getInstance())) end)((fun(Target_N65903) -> (get({Target_N65903, '$class'})):append(Target_N65903, get({'CommonSeps':getInstance(), 'SPACE'})) end)((fun(Target_N65910) -> (get({Target_N65910, '$class'})):append(Target_N65910, SpecialName) end)('StringMaker':new())))), ShortName),
+'$init'(This, Name, Version, SpecialName, ShortName) when (is_list(Name) orelse Name =:= undefined), (is_list(Version) orelse Version =:= undefined), (is_list(SpecialName) orelse SpecialName =:= undefined), (is_list(ShortName) orelse ShortName =:= undefined) ->
+        'AbeClientInformation':'$init'(This, Name, Version, (fun(Target_N65889) -> (get({Target_N65889, '$class'})):toString(Target_N65889) end)((fun(Target_N65896) -> (get({Target_N65896, '$class'})):append(Target_N65896, (fun(Target_N65971) -> (get({Target_N65971, '$class'})):get(Target_N65971) end)('PartnerIdentifierFileUtil':getInstance())) end)((fun(Target_N65903) -> (get({Target_N65903, '$class'})):append(Target_N65903, get({'CommonSeps':getInstance(), 'SPACE'})) end)((fun(Target_N65910) -> (get({Target_N65910, '$class'})):append(Target_N65910, SpecialName) end)('StringMaker':new())))), ShortName),
         String = (get({This, '$class'})):getSpecialName(This),
         Number = string:slice(String, (string:length(String) - 1)),
         case ('Integer':getInteger(Number) =:= undefined) of

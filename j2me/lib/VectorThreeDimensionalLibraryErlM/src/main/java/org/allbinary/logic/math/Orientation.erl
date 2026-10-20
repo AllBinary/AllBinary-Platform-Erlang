@@ -39,10 +39,10 @@ getInstance(Yaw, Pitch, Roll) when is_integer(Yaw), is_integer(Pitch), is_intege
 new(Yaw, Pitch, Roll) when is_integer(Yaw), is_integer(Pitch), is_integer(Roll) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Yaw, Pitch, Roll),
+    '$init'(This, Yaw, Pitch, Roll),
     This.
 
-init(This, Yaw, Pitch, Roll) when is_integer(Yaw), is_integer(Pitch), is_integer(Roll) ->
+'$init'(This, Yaw, Pitch, Roll) when is_integer(Yaw), is_integer(Pitch), is_integer(Roll) ->
     init_fields(This),
         (get({get({This, yaw}), '$class'})):setint(get({This, yaw}), Yaw),
         (get({get({This, pitch}), '$class'})):setint(get({This, pitch}), Pitch),

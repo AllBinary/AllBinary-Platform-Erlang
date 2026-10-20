@@ -64,11 +64,11 @@ init_fields(This) ->
 new(Rectangle, BackgroundBasicColor, ForegroundBasicColor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Rectangle, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Rectangle, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Rectangle, BackgroundBasicColor, ForegroundBasicColor) ->
-    'Paintable':init(This),
+'$init'(This, Rectangle, BackgroundBasicColor, ForegroundBasicColor) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, foregroundBasicColor}, ForegroundBasicColor),
         put({This, label}, get({'BasicPopupMenuPaintable', 'NAME'})),

@@ -30,11 +30,11 @@ init_fields(This) ->
 new(Text, FontSize, Dx, Dy, AnimationBehavior) when (is_list(Text) orelse Text =:= undefined), is_integer(FontSize), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Text, FontSize, Dx, Dy, AnimationBehavior),
+    '$init'(This, Text, FontSize, Dx, Dy, AnimationBehavior),
     This.
 
-init(This, Text, FontSize, Dx, Dy, AnimationBehavior) when (is_list(Text) orelse Text =:= undefined), is_integer(FontSize), is_integer(Dx), is_integer(Dy) ->
-        'CustomTextAnimation':init(This, Text, FontSize, AnimationBehavior),
+'$init'(This, Text, FontSize, Dx, Dy, AnimationBehavior) when (is_list(Text) orelse Text =:= undefined), is_integer(FontSize), is_integer(Dx), is_integer(Dy) ->
+        'CustomTextAnimation':'$init'(This, Text, FontSize, AnimationBehavior),
         init_fields(This),
         put({This, dx}, Dx),
         put({This, dy}, Dy).

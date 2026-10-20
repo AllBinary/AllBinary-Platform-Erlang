@@ -33,11 +33,11 @@ init_fields(This) ->
 new(Name, GameInputProcessorInterface) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, GameInputProcessorInterface),
+    '$init'(This, Name, GameInputProcessorInterface),
     This.
 
-init(This, Name, GameInputProcessorInterface) when (is_list(Name) orelse Name =:= undefined) ->
-        'PlayerGameInput':init(This, 'BasicArrayListD':new(), 'BasicArrayListD':new(), (-1)),
+'$init'(This, Name, GameInputProcessorInterface) when (is_list(Name) orelse Name =:= undefined) ->
+        'PlayerGameInput':'$init'(This, 'BasicArrayListD':new(), 'BasicArrayListD':new(), (-1)),
         init_fields(This),
         put({This, name}, Name),
         put({This, gameInputProcessorInterface}, GameInputProcessorInterface).

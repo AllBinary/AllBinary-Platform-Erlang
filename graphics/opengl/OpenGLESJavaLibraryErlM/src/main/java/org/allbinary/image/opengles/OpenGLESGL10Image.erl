@@ -51,11 +51,11 @@ init_fields(This) ->
 new(Image, BitmapFactory, TextureFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, BitmapFactory, TextureFactory),
+    '$init'(This, Image, BitmapFactory, TextureFactory),
     This.
 
-init(This, Image, BitmapFactory, TextureFactory) ->
-        'OpenGLESImage':init(This, Image, BitmapFactory, TextureFactory),
+'$init'(This, Image, BitmapFactory, TextureFactory) ->
+        'OpenGLESImage':'$init'(This, Image, BitmapFactory, TextureFactory),
         init_fields(This),
         (get({This, '$class'})):initVertices(This).
 

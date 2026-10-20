@@ -47,11 +47,11 @@ init_fields(This) ->
 new(CommandListener, AllBinaryGameLayerManager) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CommandListener, AllBinaryGameLayerManager),
+    '$init'(This, CommandListener, AllBinaryGameLayerManager),
     This.
 
-init(This, CommandListener, AllBinaryGameLayerManager) ->
-        'GameCommandCanvas':init(This, CommandListener, get({'GameInputMappingInstructionsCanvas', 'NAME'}), (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)),
+'$init'(This, CommandListener, AllBinaryGameLayerManager) ->
+        'GameCommandCanvas':'$init'(This, CommandListener, get({'GameInputMappingInstructionsCanvas', 'NAME'}), (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, colorFillPaintable}, (fun(Target_N66540) -> (get({Target_N66540, '$class'})):getInstance(Target_N66540, (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), false) end)('ColorFillPaintableFactory':getInstance())).

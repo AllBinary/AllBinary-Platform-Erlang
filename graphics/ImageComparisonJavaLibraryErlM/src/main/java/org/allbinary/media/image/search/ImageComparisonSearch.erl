@@ -43,10 +43,10 @@ init_fields(This) ->
 new(BufferedImage, BufferedImage2, Tolerance) when is_integer(Tolerance) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BufferedImage, BufferedImage2, Tolerance),
+    '$init'(This, BufferedImage, BufferedImage2, Tolerance),
     This.
 
-init(This, BufferedImage, BufferedImage2, Tolerance) when is_integer(Tolerance) ->
+'$init'(This, BufferedImage, BufferedImage2, Tolerance) when is_integer(Tolerance) ->
     init_fields(This),
         put({This, nonMatchingPixelVector}, 'BasicArrayListD':new()),
         (get({This, '$class'})):setBufferedImages(This, array:new(2, {default, undefined})),

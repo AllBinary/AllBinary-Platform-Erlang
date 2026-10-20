@@ -17,11 +17,11 @@ init_fields(This) ->
 new(Bitmap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Bitmap),
+    '$init'(This, Bitmap),
     This.
 
-init(This, Bitmap) ->
-    'PlatformBitmapBase':init(This),
+'$init'(This, Bitmap) ->
+    'PlatformBitmapBase':'$init'(This),
     init_fields(This),
         put({This, bitmap}, Bitmap).
 

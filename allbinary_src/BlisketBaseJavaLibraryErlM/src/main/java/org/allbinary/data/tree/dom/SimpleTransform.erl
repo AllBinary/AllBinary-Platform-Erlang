@@ -33,10 +33,10 @@ init_fields(This) ->
 new(XsltFilePath, DataFilePath) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, XsltFilePath, DataFilePath),
+    '$init'(This, XsltFilePath, DataFilePath),
     This.
 
-init(This, XsltFilePath, DataFilePath) ->
+'$init'(This, XsltFilePath, DataFilePath) ->
     init_fields(This),
         put({This, xsltFilePath}, XsltFilePath),
         put({This, dataFilePath}, DataFilePath).

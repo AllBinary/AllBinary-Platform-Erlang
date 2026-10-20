@@ -38,10 +38,10 @@ init_fields(This) ->
 new(Name, Index) when (is_list(Name) orelse Name =:= undefined), is_integer(Index) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Index),
+    '$init'(This, Name, Index),
     This.
 
-init(This, Name, Index) when (is_list(Name) orelse Name =:= undefined), is_integer(Index) ->
+'$init'(This, Name, Index) when (is_list(Name) orelse Name =:= undefined), is_integer(Index) ->
     init_fields(This),
         put({This, name}, Name),
         put({This, index}, Index),

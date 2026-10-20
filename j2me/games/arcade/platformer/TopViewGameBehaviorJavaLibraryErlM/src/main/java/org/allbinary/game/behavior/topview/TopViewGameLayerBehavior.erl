@@ -34,11 +34,11 @@ init_fields(This) ->
 new(MaxGravityActionIndex) when is_integer(MaxGravityActionIndex) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MaxGravityActionIndex),
+    '$init'(This, MaxGravityActionIndex),
     This.
 
-init(This, MaxGravityActionIndex) when is_integer(MaxGravityActionIndex) ->
-    'GameLayerBehavior':init(This),
+'$init'(This, MaxGravityActionIndex) when is_integer(MaxGravityActionIndex) ->
+    'GameLayerBehavior':'$init'(This),
     init_fields(This),
         put({This, maxGravityActionIndex}, MaxGravityActionIndex).
 

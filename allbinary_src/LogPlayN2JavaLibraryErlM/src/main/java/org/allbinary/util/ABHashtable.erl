@@ -31,11 +31,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'Hashtable':init(This).
+'$init'(This) ->
+        'Hashtable':'$init'(This).
 
 size(This) ->
         'Hashtable':size(This).

@@ -50,10 +50,10 @@ createBasicWeaponPart(AnimationInterface) ->
 new(AnimationInterface, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship),
+    '$init'(This, AnimationInterface, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship),
     This.
 
-init(This, AnimationInterface, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship) ->
+'$init'(This, AnimationInterface, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship) ->
     init_fields(This),
         (get({This, '$class'})):init(This, SourceLayerInterface, WeaponProperties, ScoreableInterface, RelativeRelationship),
         (get({This, '$class'})):setAnimationInterface(This, AnimationInterface).

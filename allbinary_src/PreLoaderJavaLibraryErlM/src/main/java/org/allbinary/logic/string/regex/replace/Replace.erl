@@ -38,19 +38,19 @@ init_fields(This) ->
 new(Key, Value) when (is_list(Key) orelse Key =:= undefined), (is_list(Value) orelse Value =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Key, Value),
+    '$init'(This, Key, Value),
     This;
 new(Keys, Values) when (is_tuple(Keys) orelse Keys =:= undefined), (is_tuple(Values) orelse Values =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Keys, Values),
+    '$init'(This, Keys, Values),
     This.
 
-init(This, Key, Value) when (is_list(Key) orelse Key =:= undefined), (is_list(Value) orelse Value =:= undefined) ->
+'$init'(This, Key, Value) when (is_list(Key) orelse Key =:= undefined), (is_list(Value) orelse Value =:= undefined) ->
     init_fields(This),
         put({This, hashMap}, (fun(Target_N66126) -> (get({Target_N66126, '$class'})):createHashMap(Target_N66126) end)('StdUtil':getInstance())),
         (get({get({This, hashMap}), '$class'})):put(get({This, hashMap}), array:from_list([Key]), array:from_list([Value]));
-init(This, Keys, Values) when (is_tuple(Keys) orelse Keys =:= undefined), (is_tuple(Values) orelse Values =:= undefined) ->
+'$init'(This, Keys, Values) when (is_tuple(Keys) orelse Keys =:= undefined), (is_tuple(Values) orelse Values =:= undefined) ->
     init_fields(This),
         put({This, hashMap}, (fun(Target_N66335) -> (get({Target_N66335, '$class'})):createHashMap(Target_N66335) end)('StdUtil':getInstance())),
         (get({get({This, hashMap}), '$class'})):put(get({This, hashMap}), Keys, Values).
@@ -59,10 +59,10 @@ init(This, Keys, Values) when (is_tuple(Keys) orelse Keys =:= undefined), (is_tu
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         put({This, hashMap}, HashMap).
 

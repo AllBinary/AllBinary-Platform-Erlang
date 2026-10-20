@@ -27,10 +27,10 @@ init_fields(This) ->
 new(MaxLevel) when is_integer(MaxLevel) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MaxLevel),
+    '$init'(This, MaxLevel),
     This.
 
-init(This, MaxLevel) when is_integer(MaxLevel) ->
+'$init'(This, MaxLevel) when is_integer(MaxLevel) ->
     init_fields(This),
         put({This, maxLevel}, MaxLevel).
 

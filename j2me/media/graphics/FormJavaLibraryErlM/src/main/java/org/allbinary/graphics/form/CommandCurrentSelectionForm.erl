@@ -41,11 +41,11 @@ init_fields(This) ->
 new(Title, Items, Border, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border), is_boolean(MoveForSmallScreen) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, Items, Border, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Title, Items, Border, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Title, Items, Border, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border), is_boolean(MoveForSmallScreen) ->
-        'ScrollCurrentSelectionForm':init(This, Title, Items, 'ItemPaintableFactory':getInstance(), Border, (-3), MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Title, Items, Border, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border), is_boolean(MoveForSmallScreen) ->
+        'ScrollCurrentSelectionForm':'$init'(This, Title, Items, 'ItemPaintableFactory':getInstance(), Border, (-3), MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This),
         (get({This, '$class'})):initAnimations(This),
         (get({This, '$class'})):addAll(This, Items).

@@ -32,11 +32,11 @@ init_fields(This) ->
 new(TireFriction, BrakeFriction, AirFriction, CrashFriction) when is_integer(TireFriction), is_integer(BrakeFriction), is_integer(AirFriction), is_integer(CrashFriction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TireFriction, BrakeFriction, AirFriction, CrashFriction),
+    '$init'(This, TireFriction, BrakeFriction, AirFriction, CrashFriction),
     This.
 
-init(This, TireFriction, BrakeFriction, AirFriction, CrashFriction) when is_integer(TireFriction), is_integer(BrakeFriction), is_integer(AirFriction), is_integer(CrashFriction) ->
-    'FrictionProperties':init(This),
+'$init'(This, TireFriction, BrakeFriction, AirFriction, CrashFriction) when is_integer(TireFriction), is_integer(BrakeFriction), is_integer(AirFriction), is_integer(CrashFriction) ->
+    'FrictionProperties':'$init'(This),
     init_fields(This),
         put({This, 'TIRE_FRICTION_NOMINATOR'}, ('FrictionData':getFrictionDenominator() - TireFriction)),
         put({This, 'BRAKE_FRICTION_NOMINATOR'}, ('FrictionData':getFrictionDenominator() - BrakeFriction)),

@@ -40,11 +40,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbstractInputRobot':init(This, undefined),
+'$init'(This) ->
+        'AbstractInputRobot':'$init'(This, undefined),
         init_fields(This).
 
 getName(This) ->

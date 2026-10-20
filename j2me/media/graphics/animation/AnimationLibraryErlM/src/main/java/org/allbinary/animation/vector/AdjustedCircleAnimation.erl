@@ -41,11 +41,11 @@ createW(Width, Height, InnerWidth, BasicColor) when is_integer(Width), is_intege
 new(Width, Height, BasicColor) when is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Width, Height, BasicColor),
+    '$init'(This, Width, Height, BasicColor),
     This.
 
-init(This, Width, Height, BasicColor) when is_integer(Width), is_integer(Height) ->
-        'CircleAnimation':init(This, Width, Height, BasicColor),
+'$init'(This, Width, Height, BasicColor) when is_integer(Width), is_integer(Height) ->
+        'CircleAnimation':'$init'(This, Width, Height, BasicColor),
         init_fields(This).
 
 initXY(This, XAdjustment, YAdjustment) when is_integer(XAdjustment), is_integer(YAdjustment) ->

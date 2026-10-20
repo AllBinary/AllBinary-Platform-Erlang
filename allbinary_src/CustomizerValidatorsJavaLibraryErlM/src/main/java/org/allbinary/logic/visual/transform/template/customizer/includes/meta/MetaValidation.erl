@@ -45,11 +45,11 @@ init_fields(This) ->
 new(HtmlMetaAttributeData, Label, AttributeValue, ContentValue) when (is_list(Label) orelse Label =:= undefined), (is_list(AttributeValue) orelse AttributeValue =:= undefined), (is_list(ContentValue) orelse ContentValue =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HtmlMetaAttributeData, Label, AttributeValue, ContentValue),
+    '$init'(This, HtmlMetaAttributeData, Label, AttributeValue, ContentValue),
     This.
 
-init(This, HtmlMetaAttributeData, Label, AttributeValue, ContentValue) when (is_list(Label) orelse Label =:= undefined), (is_list(AttributeValue) orelse AttributeValue =:= undefined), (is_list(ContentValue) orelse ContentValue =:= undefined) ->
-    'Validation':init(This),
+'$init'(This, HtmlMetaAttributeData, Label, AttributeValue, ContentValue) when (is_list(Label) orelse Label =:= undefined), (is_list(AttributeValue) orelse AttributeValue =:= undefined), (is_list(ContentValue) orelse ContentValue =:= undefined) ->
+    'Validation':'$init'(This),
     init_fields(This),
         put({This, label}, Label),
         case (get({HtmlMetaAttributeData, '$class'})):equals(HtmlMetaAttributeData, get({'HtmlMetaAttributeDataFactory':getInstance(), 'HTTP_EQUIV'})) of
@@ -67,11 +67,11 @@ init(This, HtmlMetaAttributeData, Label, AttributeValue, ContentValue) when (is_
 new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Document),
+    '$init'(This, Document),
     This.
 
-init(This, Document) ->
-    'Validation':init(This),
+'$init'(This, Document) ->
+    'Validation':'$init'(This),
     init_fields(This),
         erlang:error({'Exception', get({'CommonStrings':getInstance(), 'NOT_IMPLEMENTED'})}).
 

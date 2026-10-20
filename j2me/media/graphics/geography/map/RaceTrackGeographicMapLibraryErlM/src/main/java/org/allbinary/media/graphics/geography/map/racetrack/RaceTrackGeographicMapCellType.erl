@@ -30,11 +30,11 @@ init_fields(This) ->
 new(Name, Type, TravelCost, Reset) when (is_list(Name) orelse Name =:= undefined), is_integer(Type), is_integer(TravelCost), is_integer(Reset) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Type, TravelCost, Reset),
+    '$init'(This, Name, Type, TravelCost, Reset),
     This.
 
-init(This, Name, Type, TravelCost, Reset) when (is_list(Name) orelse Name =:= undefined), is_integer(Type), is_integer(TravelCost), is_integer(Reset) ->
-        'GeographicMapCellType':init(This, Type, Reset),
+'$init'(This, Name, Type, TravelCost, Reset) when (is_list(Name) orelse Name =:= undefined), is_integer(Type), is_integer(TravelCost), is_integer(Reset) ->
+        'GeographicMapCellType':'$init'(This, Type, Reset),
         init_fields(This),
         put({This, name}, Name),
         put({This, travelCost}, TravelCost).

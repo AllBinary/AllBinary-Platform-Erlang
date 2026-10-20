@@ -46,11 +46,11 @@ init_fields(This) ->
 new(AnimationInterface, MovieIndexedAnimationInterface, Player, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehavior) when is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy), is_integer(Time) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, MovieIndexedAnimationInterface, Player, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehavior),
+    '$init'(This, AnimationInterface, MovieIndexedAnimationInterface, Player, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehavior),
     This.
 
-init(This, AnimationInterface, MovieIndexedAnimationInterface, Player, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehavior) when is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy), is_integer(Time) ->
-        'IndexedAnimation':init(This, AnimationBehavior),
+'$init'(This, AnimationInterface, MovieIndexedAnimationInterface, Player, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehavior) when is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy), is_integer(Time) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior),
         init_fields(This),
         put({This, animationInterface}, AnimationInterface),
         put({This, movieIndexedAnimationInterface}, MovieIndexedAnimationInterface),

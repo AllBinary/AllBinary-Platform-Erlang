@@ -28,11 +28,11 @@ init_fields(This) ->
 new(LayerInterface, Location) when is_integer(Location) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerInterface, Location),
+    '$init'(This, LayerInterface, Location),
     This.
 
-init(This, LayerInterface, Location) when is_integer(Location) ->
-        'HealthBarAnimation':init(This, LayerInterface, Location).
+'$init'(This, LayerInterface, Location) when is_integer(Location) ->
+        'HealthBarAnimation':'$init'(This, LayerInterface, Location).
 
 paintXY(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
         Ax = (fun(Target_N65774) -> (get({Target_N65774, '$class'})):getX(Target_N65774) end)((get({get({This, allbinaryLayer}), '$class'})):getViewPosition(get({This, allbinaryLayer}))),

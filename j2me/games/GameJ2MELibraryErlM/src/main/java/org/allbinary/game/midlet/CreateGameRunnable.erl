@@ -35,10 +35,10 @@ init_fields(This) ->
 new(DemoGameMidlet, Hashtable) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DemoGameMidlet, Hashtable),
+    '$init'(This, DemoGameMidlet, Hashtable),
     This.
 
-init(This, DemoGameMidlet, Hashtable) ->
+'$init'(This, DemoGameMidlet, Hashtable) ->
     init_fields(This),
         put({This, demoGameMidlet}, DemoGameMidlet),
         put({This, hashtable}, Hashtable),

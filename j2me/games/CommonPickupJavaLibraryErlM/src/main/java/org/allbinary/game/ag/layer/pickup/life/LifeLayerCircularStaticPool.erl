@@ -31,11 +31,11 @@ init_fields(This) ->
 new(AllbinaryLayerFactoryInterface, Total) when is_integer(Total) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AllbinaryLayerFactoryInterface, Total),
+    '$init'(This, AllbinaryLayerFactoryInterface, Total),
     This.
 
-init(This, AllbinaryLayerFactoryInterface, Total) when is_integer(Total) ->
-    'AllBinaryLayerCircularPool':init(This),
+'$init'(This, AllbinaryLayerFactoryInterface, Total) when is_integer(Total) ->
+    'AllBinaryLayerCircularPool':'$init'(This),
     init_fields(This),
         'AllBinaryLayerCircularPool':initAllBinaryLayerCircularPool(This, AllbinaryLayerFactoryInterface, Total).
 

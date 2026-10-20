@@ -32,10 +32,10 @@ init_fields(This) ->
 new(Point, Anchor) when is_integer(Anchor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Point, Anchor),
+    '$init'(This, Point, Anchor),
     This.
 
-init(This, Point, Anchor) when is_integer(Anchor) ->
+'$init'(This, Point, Anchor) when is_integer(Anchor) ->
     init_fields(This),
         (get({This, '$class'})):setAnchor(This, Anchor),
         (get({This, '$class'})):setPoint(This, Point).

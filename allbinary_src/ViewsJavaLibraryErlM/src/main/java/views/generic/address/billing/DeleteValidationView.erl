@@ -35,11 +35,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'BillingAddressView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'BillingAddressView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         HttpTransformInfoInterface = (get({This, '$class'})):getTransformInfoInterface(This),
         put({This, value}, (fun(Target_N65972) -> (get({Target_N65972, '$class'})):getParameter(Target_N65972, get({'StreetAddressData', 'ID'})) end)((fun(Target_N65979) -> (get({Target_N65979, '$class'})):getRequest(Target_N65979) end)((get({HttpTransformInfoInterface, '$class'})):getPageContext(HttpTransformInfoInterface)))).

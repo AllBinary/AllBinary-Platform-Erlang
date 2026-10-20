@@ -37,15 +37,15 @@ init_fields(This) ->
 new(Result) when (is_list(Result) orelse Result =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Result),
+    '$init'(This, Result),
     This;
 new(KeyValuePairs) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, KeyValuePairs),
+    '$init'(This, KeyValuePairs),
     This.
 
-init(This, Result) when (is_list(Result) orelse Result =:= undefined) ->
+'$init'(This, Result) when (is_list(Result) orelse Result =:= undefined) ->
     init_fields(This),
         try
             put({This, result}, Result),
@@ -58,7 +58,7 @@ init(This, Result) when (is_list(Result) orelse Result =:= undefined) ->
             ExceptionMessage = "TransactionResult Constructor Failed",
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), ExceptionMessage, This, get({get({This, commonStrings}), 'CONSTRUCTOR'}))
         end;
-init(This, KeyValuePairs) ->
+'$init'(This, KeyValuePairs) ->
     init_fields(This),
         put({local, keyValuePairs}, KeyValuePairs),
         put({local, keyValuePairs}, get({local, keyValuePairs})),

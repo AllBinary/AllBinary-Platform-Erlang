@@ -35,10 +35,10 @@ init_fields(This) ->
 new(AbeClientInformation, StoreFrontInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, StoreFrontInterface),
+    '$init'(This, AbeClientInformation, StoreFrontInterface),
     This.
 
-init(This, AbeClientInformation, StoreFrontInterface) ->
+'$init'(This, AbeClientInformation, StoreFrontInterface) ->
     init_fields(This),
         put({This, defaultShippingMethodInterface}, (fun(Target_N66025) -> (get({Target_N66025, '$class'})):getDefaultInstance(Target_N66025) end)('ShippingMethodsFactory':new(AbeClientInformation, StoreFrontInterface))),
         put({This, shippingVector}, (fun(Target_N66084) -> (get({Target_N66084, '$class'})):getInstance(Target_N66084) end)('ShippingMethodsFactory':new(AbeClientInformation, StoreFrontInterface))).

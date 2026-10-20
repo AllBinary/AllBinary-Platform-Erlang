@@ -33,11 +33,11 @@ init_fields(This) ->
 new(AnimationInterface, HealthInterface, Location, Direction) when is_integer(Location), is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, HealthInterface, Location, Direction),
+    '$init'(This, AnimationInterface, HealthInterface, Location, Direction),
     This.
 
-init(This, AnimationInterface, HealthInterface, Location, Direction) when is_integer(Location), is_integer(Direction) ->
-        'HealthGraphic':init(This, AnimationInterface, HealthInterface, Location, Direction),
+'$init'(This, AnimationInterface, HealthInterface, Location, Direction) when is_integer(Location), is_integer(Direction) ->
+        'HealthGraphic':'$init'(This, AnimationInterface, HealthInterface, Location, Direction),
         init_fields(This),
         put({This, image}, array:new((get({get({This, healthInterface}), '$class'})):getMaxHealth(get({This, healthInterface})), {default, undefined})),
         ImageCacheFactory = 'ImageCacheFactory':getInstance(),

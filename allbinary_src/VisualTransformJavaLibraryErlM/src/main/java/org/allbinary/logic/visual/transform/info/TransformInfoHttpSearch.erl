@@ -33,11 +33,11 @@ init_fields(This) ->
 new(SearchRequest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SearchRequest),
+    '$init'(This, SearchRequest),
     This.
 
-init(This, SearchRequest) ->
-        'TransformInfoHttp':init(This, (get({SearchRequest, '$class'})):getPropertiesHashMap(SearchRequest), (get({SearchRequest, '$class'})):getPageContext(SearchRequest)),
+'$init'(This, SearchRequest) ->
+        'TransformInfoHttp':'$init'(This, (get({SearchRequest, '$class'})):getPropertiesHashMap(SearchRequest), (get({SearchRequest, '$class'})):getPageContext(SearchRequest)),
         case ((fun(Target_N65874) -> (get({Target_N65874, '$class'})):getName(Target_N65874) end)((get({SearchRequest, '$class'})):getStoreFront(SearchRequest)) =/= undefined) of
             true ->
             (get({This, '$class'})):setStoreName(This, (fun(Target_N65971) -> (get({Target_N65971, '$class'})):getName(Target_N65971) end)((get({SearchRequest, '$class'})):getStoreFront(SearchRequest)));

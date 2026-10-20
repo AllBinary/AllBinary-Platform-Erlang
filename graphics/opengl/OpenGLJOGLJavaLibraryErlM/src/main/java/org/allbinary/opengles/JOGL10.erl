@@ -40,10 +40,10 @@ init_fields(This) ->
 new(Gl, Gl2) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Gl, Gl2),
+    '$init'(This, Gl, Gl2),
     This.
 
-init(This, Gl, Gl2) ->
+'$init'(This, Gl, Gl2) ->
     init_fields(This),
         put({This, gl10}, Gl2),
         put({This, glu}, 'GLU':createGLU(get({This, gl10}))),

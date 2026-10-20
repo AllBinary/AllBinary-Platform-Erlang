@@ -33,22 +33,22 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(ContextConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ContextConfigurationInterface),
+    '$init'(This, ContextConfigurationInterface),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         ChildNodeList = (get({Node, '$class'})):getChildNodes(Node),
         put({This, contextConfigurationInterface}, 'ContextConfiguration':new()),
         EmailConfigurationNode = 'DomSearchHelper':getNode(get({'EmailServerConfigurationData', 'NAME'}), ChildNodeList),
         EmailServerConfigurationView = 'EmailServerConfigurationView':new(EmailConfigurationNode),
         (get({get({This, contextConfigurationInterface}), '$class'})):setEmailServerConfigurationInterface(get({This, contextConfigurationInterface}), (get({EmailServerConfigurationView, '$class'})):getEmailConfigurationInterface(EmailServerConfigurationView));
-init(This, ContextConfigurationInterface) ->
+'$init'(This, ContextConfigurationInterface) ->
     init_fields(This),
         put({This, contextConfigurationInterface}, ContextConfigurationInterface).
 

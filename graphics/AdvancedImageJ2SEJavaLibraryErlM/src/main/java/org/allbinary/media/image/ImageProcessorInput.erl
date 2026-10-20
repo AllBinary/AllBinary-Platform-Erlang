@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Files, BufferedImageArray) when (is_tuple(Files) orelse Files =:= undefined), (is_tuple(BufferedImageArray) orelse BufferedImageArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Files, BufferedImageArray),
+    '$init'(This, Files, BufferedImageArray),
     This.
 
-init(This, Files, BufferedImageArray) when (is_tuple(Files) orelse Files =:= undefined), (is_tuple(BufferedImageArray) orelse BufferedImageArray =:= undefined) ->
+'$init'(This, Files, BufferedImageArray) when (is_tuple(Files) orelse Files =:= undefined), (is_tuple(BufferedImageArray) orelse BufferedImageArray =:= undefined) ->
         ok,
         init_fields(This),
         put({This, bufferedImageArray}, BufferedImageArray),

@@ -35,11 +35,11 @@ init_fields(This) ->
 new(CacheableInterfaceFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CacheableInterfaceFactoryInterface),
+    '$init'(This, CacheableInterfaceFactoryInterface),
     This.
 
-init(This, CacheableInterfaceFactoryInterface) ->
-        'BasicArrayListResetablePool':init(This, CacheableInterfaceFactoryInterface).
+'$init'(This, CacheableInterfaceFactoryInterface) ->
+        'BasicArrayListResetablePool':'$init'(This, CacheableInterfaceFactoryInterface).
 
 getInstance() ->
         get({'ImageArrayRotationAnimationPool', 'IMAGE_ROTATION_ANIMATION_POOL'}).

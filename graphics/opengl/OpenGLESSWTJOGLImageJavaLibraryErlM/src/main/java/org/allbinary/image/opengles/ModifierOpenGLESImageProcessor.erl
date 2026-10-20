@@ -31,11 +31,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'OpenGLESImageProcessor':init(This),
+'$init'(This) ->
+    'OpenGLESImageProcessor':'$init'(This),
     init_fields(This).
 
 

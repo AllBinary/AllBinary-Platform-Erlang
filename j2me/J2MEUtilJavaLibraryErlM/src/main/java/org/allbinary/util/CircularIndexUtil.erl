@@ -37,10 +37,10 @@ init_fields(This) ->
 new(Index, Size) when is_integer(Index), is_integer(Size) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Index, Size),
+    '$init'(This, Index, Size),
     This.
 
-init(This, Index, Size) when is_integer(Index), is_integer(Size) ->
+'$init'(This, Index, Size) when is_integer(Index), is_integer(Size) ->
     init_fields(This),
         (get({This, '$class'})):setSize(This, Size),
         (get({This, '$class'})):setIndex(This, Index).

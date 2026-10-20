@@ -46,11 +46,11 @@ init_fields(This) ->
 new(PathFindingLayer, LinePathAnimation) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PathFindingLayer, LinePathAnimation),
+    '$init'(This, PathFindingLayer, LinePathAnimation),
     This.
 
-init(This, PathFindingLayer, LinePathAnimation) ->
-    'Animation':init(This),
+'$init'(This, PathFindingLayer, LinePathAnimation) ->
+    'Animation':'$init'(This),
     init_fields(This),
         put({This, pathFindingLayer}, PathFindingLayer),
         put({This, linePathAnimation}, LinePathAnimation).

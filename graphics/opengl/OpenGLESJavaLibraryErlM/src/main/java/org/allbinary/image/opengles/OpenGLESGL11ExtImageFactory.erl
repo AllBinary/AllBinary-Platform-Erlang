@@ -28,11 +28,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'OpenGLImageFactory':init(This),
+'$init'(This) ->
+    'OpenGLImageFactory':'$init'(This),
     init_fields(This).
 
 

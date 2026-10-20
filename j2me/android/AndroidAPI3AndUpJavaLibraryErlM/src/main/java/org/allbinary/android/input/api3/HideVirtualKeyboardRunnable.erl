@@ -35,10 +35,10 @@ init_fields(This) ->
 new(Activity) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Activity),
+    '$init'(This, Activity),
     This.
 
-init(This, Activity) ->
+'$init'(This, Activity) ->
     init_fields(This),
         put({This, activity}, Activity).
 

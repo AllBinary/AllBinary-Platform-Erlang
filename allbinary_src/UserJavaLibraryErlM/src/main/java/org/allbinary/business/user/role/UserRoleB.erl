@@ -36,11 +36,11 @@ init_fields(This) ->
 new(ABasicUserRole, AUserFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ABasicUserRole, AUserFactoryInterface),
+    '$init'(This, ABasicUserRole, AUserFactoryInterface),
     This.
 
-init(This, ABasicUserRole, AUserFactoryInterface) ->
-        'UserRole':init(This, ABasicUserRole, AUserFactoryInterface),
+'$init'(This, ABasicUserRole, AUserFactoryInterface) ->
+        'UserRole':'$init'(This, ABasicUserRole, AUserFactoryInterface),
         (get({get({'UserRoleB', roleVector}), '$class'})):add(get({'UserRoleB', roleVector}), This).
 
 % throws Exception

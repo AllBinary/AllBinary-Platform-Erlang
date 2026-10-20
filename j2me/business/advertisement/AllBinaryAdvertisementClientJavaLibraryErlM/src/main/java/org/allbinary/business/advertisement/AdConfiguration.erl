@@ -28,10 +28,10 @@ init_fields(This) ->
 new(AdvertIdArray) when (is_tuple(AdvertIdArray) orelse AdvertIdArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AdvertIdArray),
+    '$init'(This, AdvertIdArray),
     This.
 
-init(This, AdvertIdArray) when (is_tuple(AdvertIdArray) orelse AdvertIdArray =:= undefined) ->
+'$init'(This, AdvertIdArray) when (is_tuple(AdvertIdArray) orelse AdvertIdArray =:= undefined) ->
     init_fields(This),
         put({This, 'INNERACTIVE'}, array:get(0, AdvertIdArray)),
         put({This, 'ADMOB'}, array:get(1, AdvertIdArray)),

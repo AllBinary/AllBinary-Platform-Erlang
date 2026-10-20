@@ -34,10 +34,10 @@ init_fields(This) ->
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         put({This, name}, (get({HashMap, '$class'})):get(HashMap, get({'AdvertisementAreaData':getInstance(), 'NAME'}))),
         put({This, storeName}, (get({HashMap, '$class'})):get(HashMap, get({'StoreFrontData':getInstance(), 'NAME'}))),

@@ -32,34 +32,34 @@ init_fields(This) ->
 new(Name, MappedName) when (is_list(Name) orelse Name =:= undefined), (is_list(MappedName) orelse MappedName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, MappedName),
+    '$init'(This, Name, MappedName),
     This;
 new(TransformInfoInterface, Mapping) when (is_list(Mapping) orelse Mapping =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, Mapping),
+    '$init'(This, TransformInfoInterface, Mapping),
     This.
 
-init(This, Name, MappedName) when (is_list(Name) orelse Name =:= undefined), (is_list(MappedName) orelse MappedName =:= undefined) ->
-        'TransformInfoDomNode':init(This, Name, MappedName);
-init(This, TransformInfoInterface, Mapping) when (is_list(Mapping) orelse Mapping =:= undefined) ->
-        'TransformInfoDomNode':init(This, TransformInfoInterface, Mapping).
+'$init'(This, Name, MappedName) when (is_list(Name) orelse Name =:= undefined), (is_list(MappedName) orelse MappedName =:= undefined) ->
+        'TransformInfoDomNode':'$init'(This, Name, MappedName);
+'$init'(This, TransformInfoInterface, Mapping) when (is_list(Mapping) orelse Mapping =:= undefined) ->
+        'TransformInfoDomNode':'$init'(This, TransformInfoInterface, Mapping).
 
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This;
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
-        'TransformInfoDomNode':init(This, Name, undefined);
-init(This, TransformInfoInterface) ->
-        'TransformInfoDomNode':init(This, TransformInfoInterface).
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+        'TransformInfoDomNode':'$init'(This, Name, undefined);
+'$init'(This, TransformInfoInterface) ->
+        'TransformInfoDomNode':'$init'(This, TransformInfoInterface).
 
 
 

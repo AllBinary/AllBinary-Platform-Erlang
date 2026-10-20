@@ -55,11 +55,11 @@ getNullInstance() ->
 new(Name, LayerInfo, ViewPosition, CollidableBaseBehaviorFactory) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, LayerInfo, ViewPosition, CollidableBaseBehaviorFactory),
+    '$init'(This, Name, LayerInfo, ViewPosition, CollidableBaseBehaviorFactory),
     This.
 
-init(This, Name, LayerInfo, ViewPosition, CollidableBaseBehaviorFactory) when (is_list(Name) orelse Name =:= undefined) ->
-        'AllBinaryGameLayer':init(This, Name, LayerInfo, ViewPosition),
+'$init'(This, Name, LayerInfo, ViewPosition, CollidableBaseBehaviorFactory) when (is_list(Name) orelse Name =:= undefined) ->
+        'AllBinaryGameLayer':'$init'(This, Name, LayerInfo, ViewPosition),
         init_fields(This),
         case (CollidableBaseBehaviorFactory =/= 'CollidableNeverCollideBehaviorFactory':getInstance()) of
             true ->

@@ -46,11 +46,11 @@ init() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'PickedUpLayerInterfaceFactory':init(This, get({'PickedUpLayerTypeFactory':getInstance(), 'POINTS'}), 'IconLayerFactory':getInstance((fun(Target_N66189) -> (get({Target_N66189, '$class'})):getInstance(Target_N66189, 0) end)((fun(Target_N66196) -> (get({Target_N66196, '$class'})):get(Target_N66196, get({'PointsResources':getInstance(), 'RESOURCE_2'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance())), 10, 10), (fun(Target_N66265) -> (get({Target_N66265, '$class'})):getInstance(Target_N66265, 0) end)((fun(Target_N66272) -> (get({Target_N66272, '$class'})):get(Target_N66272, get({'PointsResources':getInstance(), 'RESOURCE_2'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance()))),
+'$init'(This) ->
+        'PickedUpLayerInterfaceFactory':'$init'(This, get({'PickedUpLayerTypeFactory':getInstance(), 'POINTS'}), 'IconLayerFactory':getInstance((fun(Target_N66189) -> (get({Target_N66189, '$class'})):getInstance(Target_N66189, 0) end)((fun(Target_N66196) -> (get({Target_N66196, '$class'})):get(Target_N66196, get({'PointsResources':getInstance(), 'RESOURCE_2'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance())), 10, 10), (fun(Target_N66265) -> (get({Target_N66265, '$class'})):getInstance(Target_N66265, 0) end)((fun(Target_N66272) -> (get({Target_N66272, '$class'})):get(Target_N66272, get({'PointsResources':getInstance(), 'RESOURCE_2'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance()))),
         init_fields(This).
 
 getTotal(This) ->

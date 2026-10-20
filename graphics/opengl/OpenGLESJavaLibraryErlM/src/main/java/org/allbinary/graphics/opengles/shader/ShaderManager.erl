@@ -39,10 +39,10 @@ getInstance() ->
 new(GL_VERTEX_SHADER, GL_FRAGMENT_SHADER) when is_integer(GL_VERTEX_SHADER), is_integer(GL_FRAGMENT_SHADER) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GL_VERTEX_SHADER, GL_FRAGMENT_SHADER),
+    '$init'(This, GL_VERTEX_SHADER, GL_FRAGMENT_SHADER),
     This.
 
-init(This, GL_VERTEX_SHADER, GL_FRAGMENT_SHADER) when is_integer(GL_VERTEX_SHADER), is_integer(GL_FRAGMENT_SHADER) ->
+'$init'(This, GL_VERTEX_SHADER, GL_FRAGMENT_SHADER) when is_integer(GL_VERTEX_SHADER), is_integer(GL_FRAGMENT_SHADER) ->
     init_fields(This),
         put({This, 'GL_VERTEX_SHADER'}, GL_VERTEX_SHADER),
         put({This, 'GL_FRAGMENT_SHADER'}, GL_FRAGMENT_SHADER).

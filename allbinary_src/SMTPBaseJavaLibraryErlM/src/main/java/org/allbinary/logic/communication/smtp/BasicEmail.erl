@@ -31,10 +31,10 @@ init_fields(This) ->
 new(EmailInfo, To) when (is_list(To) orelse To =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, EmailInfo, To),
+    '$init'(This, EmailInfo, To),
     This.
 
-init(This, EmailInfo, To) when (is_list(To) orelse To =:= undefined) ->
+'$init'(This, EmailInfo, To) when (is_list(To) orelse To =:= undefined) ->
     init_fields(This),
         BasicEmailInfo = (get({EmailInfo, '$class'})):getBasicEmailInfo(EmailInfo),
         put({This, email}, 'AbEmail':new((fun(Target_N65886) -> (get({Target_N65886, '$class'})):getSmtpServer(Target_N65886) end)((get({BasicEmailInfo, '$class'})):getEmailServerConfigurationInterface(BasicEmailInfo)), (fun(Target_N65910) -> (get({Target_N65910, '$class'})):getAccountName(Target_N65910) end)((get({BasicEmailInfo, '$class'})):getEmailServerConfigurationInterface(BasicEmailInfo)), To, (get({BasicEmailInfo, '$class'})):getSubject(BasicEmailInfo), (get({BasicEmailInfo, '$class'})):getTextBody(BasicEmailInfo), (get({EmailInfo, '$class'})):getHtmlAttachment(EmailInfo), (get({EmailInfo, '$class'})):getContentBase(EmailInfo))).

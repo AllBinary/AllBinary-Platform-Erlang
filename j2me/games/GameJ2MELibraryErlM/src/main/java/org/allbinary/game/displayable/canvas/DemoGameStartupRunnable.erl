@@ -36,11 +36,11 @@ init_fields(This) ->
 new(DemoCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DemoCanvas),
+    '$init'(This, DemoCanvas),
     This.
 
-init(This, DemoCanvas) ->
-    'ABRunnable':init(This),
+'$init'(This, DemoCanvas) ->
+    'ABRunnable':'$init'(This),
     init_fields(This),
         put({This, demoCanvas}, DemoCanvas).
 

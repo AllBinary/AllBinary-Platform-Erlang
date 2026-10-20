@@ -31,10 +31,10 @@ init_fields(This) ->
 new(AbeClientInformation, TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, TransformInfoInterface),
+    '$init'(This, AbeClientInformation, TransformInfoInterface),
     This.
 
-init(This, AbeClientInformation, TransformInfoInterface) ->
-        'BasicTransformer':init(This, AbeClientInformation, TransformInfoInterface),
+'$init'(This, AbeClientInformation, TransformInfoInterface) ->
+        'BasicTransformer':'$init'(This, AbeClientInformation, TransformInfoInterface),
         (get({This, '$class'})):setURIResolver(This, 'StoreUriResolver':new((get({This, '$class'})):getTransformInfoInterface(This), (get({This, '$class'})):getURIResolver(This))).
 

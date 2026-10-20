@@ -29,10 +29,10 @@ init_fields(This) ->
 new(JarURL) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, JarURL),
+    '$init'(This, JarURL),
     This.
 
-init(This, JarURL) ->
+'$init'(This, JarURL) ->
     init_fields(This),
         put({This, jarURL}, JarURL).
 

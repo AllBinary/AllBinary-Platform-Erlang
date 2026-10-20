@@ -26,9 +26,9 @@ init_fields(This) ->
 new(Error) when (is_list(Error) orelse Error =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Error),
+    '$init'(This, Error),
     This.
 
-init(This, Error) when (is_list(Error) orelse Error =:= undefined) ->
-        'Exception':init(This, Error).
+'$init'(This, Error) when (is_list(Error) orelse Error =:= undefined) ->
+        'Exception':'$init'(This, Error).
 

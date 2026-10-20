@@ -37,10 +37,10 @@ getInstance() ->
 new(Context) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Context),
+    '$init'(This, Context),
     This.
 
-init(This, Context) ->
+'$init'(This, Context) ->
     init_fields(This),
         ok.
 

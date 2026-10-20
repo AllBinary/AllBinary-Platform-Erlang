@@ -33,11 +33,11 @@ init_fields(This) ->
 new(Name, JPanel, HelpSet) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, JPanel, HelpSet),
+    '$init'(This, Name, JPanel, HelpSet),
     This.
 
-init(This, Name, JPanel, HelpSet) when (is_list(Name) orelse Name =:= undefined) ->
-    'InputAutomationModuleFactoryInterface':init(This),
+'$init'(This, Name, JPanel, HelpSet) when (is_list(Name) orelse Name =:= undefined) ->
+    'InputAutomationModuleFactoryInterface':'$init'(This),
     init_fields(This),
         put({This, name}, Name),
         put({This, jPanel}, JPanel),
@@ -46,11 +46,11 @@ init(This, Name, JPanel, HelpSet) when (is_list(Name) orelse Name =:= undefined)
 new(Name, JPanel) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, JPanel),
+    '$init'(This, Name, JPanel),
     This.
 
-init(This, Name, JPanel) when (is_list(Name) orelse Name =:= undefined) ->
-    'InputAutomationModuleFactoryInterface':init(This),
+'$init'(This, Name, JPanel) when (is_list(Name) orelse Name =:= undefined) ->
+    'InputAutomationModuleFactoryInterface':'$init'(This),
     init_fields(This),
         put({This, name}, Name),
         put({This, jPanel}, JPanel),

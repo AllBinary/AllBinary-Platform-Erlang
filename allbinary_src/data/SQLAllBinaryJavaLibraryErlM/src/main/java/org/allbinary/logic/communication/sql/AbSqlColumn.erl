@@ -38,11 +38,11 @@ init_fields(This) ->
 new(DatabaseConnectionInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DatabaseConnectionInfoInterface),
+    '$init'(This, DatabaseConnectionInfoInterface),
     This.
 
-init(This, DatabaseConnectionInfoInterface) ->
-        'AbSqlTable':init(This, DatabaseConnectionInfoInterface),
+'$init'(This, DatabaseConnectionInfoInterface) ->
+        'AbSqlTable':'$init'(This, DatabaseConnectionInfoInterface),
         init_fields(This).
 
 getLargestIntegerInColumnWhere(This, ColumnName, Key, Value) when (is_list(ColumnName) orelse ColumnName =:= undefined), (is_list(Key) orelse Key =:= undefined), (is_list(Value) orelse Value =:= undefined) ->

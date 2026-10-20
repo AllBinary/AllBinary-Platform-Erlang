@@ -35,10 +35,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'Sound':init(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
+'$init'(This) ->
+        'Sound':'$init'(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
         (get({This, '$class'})):setPlayerP(This, get({'NoPlayer', 'NO_PLAYER'})).
 

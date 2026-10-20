@@ -46,20 +46,20 @@ init_fields(This) ->
 new(FilePath) when (is_list(FilePath) orelse FilePath =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FilePath),
+    '$init'(This, FilePath),
     This.
 
-init(This, FilePath) when (is_list(FilePath) orelse FilePath =:= undefined) ->
+'$init'(This, FilePath) when (is_list(FilePath) orelse FilePath =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):init(This, FilePath).
 
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({This, '$class'})):init(This, get({This, 'CPUFILE'})).
 

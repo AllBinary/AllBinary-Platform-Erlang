@@ -36,10 +36,10 @@ init_fields(This) ->
 new(Label, Text) when (is_list(Label) orelse Label =:= undefined), (is_list(Text) orelse Text =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, Text),
+    '$init'(This, Label, Text),
     This.
 
-init(This, Label, Text) when (is_list(Label) orelse Label =:= undefined), (is_list(Text) orelse Text =:= undefined) ->
+'$init'(This, Label, Text) when (is_list(Label) orelse Label =:= undefined), (is_list(Text) orelse Text =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setText(This, Text),
         (get({This, '$class'})):setLabel(This, Label),

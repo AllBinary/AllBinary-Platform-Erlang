@@ -45,16 +45,16 @@ init_fields(This) ->
 new(StoreName) when (is_list(StoreName) orelse StoreName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreName),
+    '$init'(This, StoreName),
     This;
 new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Document),
+    '$init'(This, Document),
     This.
 
-init(This, StoreName) when (is_list(StoreName) orelse StoreName =:= undefined) ->
-    'Validation':init(This),
+'$init'(This, StoreName) when (is_list(StoreName) orelse StoreName =:= undefined) ->
+    'Validation':'$init'(This),
     init_fields(This),
         put({This, storeFrontInterface}, 'StoreFrontFactory':getInstance(StoreName)),
         put({This, metaValidationVector}, 'BasicArrayListD':new()),
@@ -65,8 +65,8 @@ init(This, StoreName) when (is_list(StoreName) orelse StoreName =:= undefined) -
         (get({get({This, metaValidationVector}), '$class'})):add(get({This, metaValidationVector}), KeywordsMetaValidation),
         (get({get({This, metaValidationVector}), '$class'})):add(get({This, metaValidationVector}), AbstractMetaValidation),
         (get({get({This, metaValidationVector}), '$class'})):add(get({This, metaValidationVector}), DescriptionMetaValidation);
-init(This, Document) ->
-    'Validation':init(This),
+'$init'(This, Document) ->
+    'Validation':'$init'(This),
     init_fields(This),
         erlang:error({'Exception', get({'CommonStrings':getInstance(), 'NOT_IMPLEMENTED'})}).
 

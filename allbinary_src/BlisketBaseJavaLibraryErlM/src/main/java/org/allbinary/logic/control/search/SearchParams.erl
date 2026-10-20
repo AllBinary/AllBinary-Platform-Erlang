@@ -37,10 +37,10 @@ init_fields(This) ->
 new(Request) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Request),
+    '$init'(This, Request),
     This.
 
-init(This, Request) ->
+'$init'(This, Request) ->
     init_fields(This),
         put({This, columnsAndSearchValues}, (fun(Target_N66004) -> (get({Target_N66004, '$class'})):createHashMap(Target_N66004) end)('StdUtil':getInstance())),
         (get({This, '$class'})):setLength(This, (get({Request, '$class'})):getParameter(Request, get({'SearchData', 'LENGTH'}))),

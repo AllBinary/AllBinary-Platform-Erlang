@@ -29,11 +29,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'AndroidKeyFactory':init(This),
+'$init'(This) ->
+    'AndroidKeyFactory':'$init'(This),
     init_fields(This),
         put({This, 'KEYCODE_BUTTON_L1'}, 'AndroidGameKey':new(get({'KeyEvent', 'KEYCODE_BUTTON_L1'}), "BUTTON L1")),
         put({This, 'KEYCODE_BUTTON_R1'}, 'AndroidGameKey':new(get({'KeyEvent', 'KEYCODE_BUTTON_R1'}), "BUTTON R1")),

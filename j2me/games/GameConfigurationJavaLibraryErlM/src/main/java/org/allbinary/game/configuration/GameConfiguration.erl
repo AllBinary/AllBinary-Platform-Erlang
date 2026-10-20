@@ -40,10 +40,10 @@ init_fields(This) ->
 new(Name, DefaultValue, MinValue, MaxValue) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, DefaultValue, MinValue, MaxValue),
+    '$init'(This, Name, DefaultValue, MinValue, MaxValue),
     This.
 
-init(This, Name, DefaultValue, MinValue, MaxValue) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name, DefaultValue, MinValue, MaxValue) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, Name),
         (get({This, '$class'})):setDefaultValue(This, DefaultValue),

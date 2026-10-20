@@ -40,31 +40,31 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'Validation':init(This),
+'$init'(This) ->
+    'Validation':'$init'(This),
     init_fields(This),
         ok.
 
 new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Document),
+    '$init'(This, Document),
     This;
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, Document) ->
-    'Validation':init(This),
+'$init'(This, Document) ->
+    'Validation':'$init'(This),
     init_fields(This),
         NodeList = (get({Document, '$class'})):getElementsByTagName(Document, get({'StylesData':getInstance(), 'NAME'}));
-init(This, HashMap) ->
-    'Validation':init(This),
+'$init'(This, HashMap) ->
+    'Validation':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):getFormData(This, HashMap).
 

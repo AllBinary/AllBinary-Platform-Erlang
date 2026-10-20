@@ -29,9 +29,9 @@ init_fields(This) ->
 new(Layer) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Layer),
+    '$init'(This, Layer),
     This.
 
-init(This, Layer) ->
-        'RelativeLayerRelationship':init(This, Layer, (fun(Target_N65691) -> (get({Target_N65691, '$class'})):createXY(Target_N65691, (get({Layer, '$class'})):getHalfWidth(Layer), (get({Layer, '$class'})):getHalfHeight(Layer)) end)('PointFactory':getInstance()), (fun(Target_N65750) -> (get({Target_N65750, '$class'})):getImmutableInstance(Target_N65750) end)('BasicArrayListUtil':getInstance())).
+'$init'(This, Layer) ->
+        'RelativeLayerRelationship':'$init'(This, Layer, (fun(Target_N65691) -> (get({Target_N65691, '$class'})):createXY(Target_N65691, (get({Layer, '$class'})):getHalfWidth(Layer), (get({Layer, '$class'})):getHalfHeight(Layer)) end)('PointFactory':getInstance()), (fun(Target_N65750) -> (get({Target_N65750, '$class'})):getImmutableInstance(Target_N65750) end)('BasicArrayListUtil':getInstance())).
 

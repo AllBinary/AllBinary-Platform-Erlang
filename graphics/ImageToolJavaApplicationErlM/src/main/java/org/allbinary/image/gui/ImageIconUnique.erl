@@ -29,11 +29,11 @@ init_fields(This) ->
 new(BufferedImage, Index) when is_integer(Index) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BufferedImage, Index),
+    '$init'(This, BufferedImage, Index),
     This.
 
-init(This, BufferedImage, Index) when is_integer(Index) ->
-        'ImageIcon':init(This, BufferedImage),
+'$init'(This, BufferedImage, Index) when is_integer(Index) ->
+        'ImageIcon':'$init'(This, BufferedImage),
         init_fields(This),
         (get({This, '$class'})):setId(This, Index).
 

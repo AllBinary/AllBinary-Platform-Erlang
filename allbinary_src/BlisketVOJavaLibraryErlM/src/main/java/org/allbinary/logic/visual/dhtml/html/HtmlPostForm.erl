@@ -26,10 +26,10 @@ init_fields(This) ->
 new(Action) when (is_list(Action) orelse Action =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Action),
+    '$init'(This, Action),
     This.
 
-init(This, Action) when (is_list(Action) orelse Action =:= undefined) ->
-        'HtmlForm':init(This, Action),
+'$init'(This, Action) when (is_list(Action) orelse Action =:= undefined) ->
+        'HtmlForm':'$init'(This, Action),
         (get({This, '$class'})):setPost(This).
 

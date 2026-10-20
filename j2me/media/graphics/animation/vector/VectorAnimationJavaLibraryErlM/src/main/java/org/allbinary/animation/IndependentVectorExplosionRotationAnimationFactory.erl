@@ -32,10 +32,10 @@ init_fields(This) ->
 new(VectorInfo, BasicColor, VectorAnimationFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, VectorInfo, BasicColor, VectorAnimationFactoryInterface),
+    '$init'(This, VectorInfo, BasicColor, VectorAnimationFactoryInterface),
     This.
 
-init(This, VectorInfo, BasicColor, VectorAnimationFactoryInterface) ->
+'$init'(This, VectorInfo, BasicColor, VectorAnimationFactoryInterface) ->
     init_fields(This),
         put({This, vectorInfo}, VectorInfo),
         put({This, basicColor}, BasicColor),

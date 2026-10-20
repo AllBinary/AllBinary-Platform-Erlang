@@ -29,11 +29,11 @@ init_fields(This) ->
 new(OwnerLayer) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OwnerLayer),
+    '$init'(This, OwnerLayer),
     This.
 
-init(This, OwnerLayer) ->
-    'DestroyableBaseBehavior':init(This),
+'$init'(This, OwnerLayer) ->
+    'DestroyableBaseBehavior':'$init'(This),
     init_fields(This),
         put({This, ownerLayer}, OwnerLayer).
 

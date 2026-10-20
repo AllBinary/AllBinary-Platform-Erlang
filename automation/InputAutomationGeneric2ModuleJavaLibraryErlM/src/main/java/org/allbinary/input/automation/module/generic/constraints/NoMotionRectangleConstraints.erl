@@ -29,11 +29,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'MotionRectangleConstraints':init(This),
+'$init'(This) ->
+    'MotionRectangleConstraints':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):setMinDimension(This, 'Dimension':new(0, 0)),
         (get({This, '$class'})):setMinArea(This, 0),

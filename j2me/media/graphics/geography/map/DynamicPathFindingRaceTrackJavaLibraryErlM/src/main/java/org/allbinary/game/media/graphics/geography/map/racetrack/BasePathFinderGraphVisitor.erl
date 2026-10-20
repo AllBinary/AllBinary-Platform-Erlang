@@ -37,11 +37,11 @@ init_fields(This) ->
 new(GeographicMapInterface, EdgeMinimum, MinPathWeight, MaxPathWeight) when is_integer(EdgeMinimum), is_integer(MinPathWeight), is_integer(MaxPathWeight) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GeographicMapInterface, EdgeMinimum, MinPathWeight, MaxPathWeight),
+    '$init'(This, GeographicMapInterface, EdgeMinimum, MinPathWeight, MaxPathWeight),
     This.
 
-init(This, GeographicMapInterface, EdgeMinimum, MinPathWeight, MaxPathWeight) when is_integer(EdgeMinimum), is_integer(MinPathWeight), is_integer(MaxPathWeight) ->
-    'PathFinderGraphVisitorBase':init(This),
+'$init'(This, GeographicMapInterface, EdgeMinimum, MinPathWeight, MaxPathWeight) when is_integer(EdgeMinimum), is_integer(MinPathWeight), is_integer(MaxPathWeight) ->
+    'PathFinderGraphVisitorBase':'$init'(This),
     init_fields(This),
         put({This, geographicMapInterface}, GeographicMapInterface),
         put({This, edgeMinimum}, EdgeMinimum),

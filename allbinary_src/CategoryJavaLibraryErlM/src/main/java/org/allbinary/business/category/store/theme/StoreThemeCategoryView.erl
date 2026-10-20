@@ -33,11 +33,11 @@ init_fields(This) ->
 new(CategoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryInterface),
+    '$init'(This, CategoryInterface),
     This.
 
-init(This, CategoryInterface) ->
-        'CategoryView':init(This, CategoryInterface).
+'$init'(This, CategoryInterface) ->
+        'CategoryView':'$init'(This, CategoryInterface).
 
 % throws Exception
 toXmlNode(This, Document) ->

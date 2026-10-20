@@ -30,9 +30,9 @@ init_fields(This) ->
 new(AnimationInterface, Width, Height) when is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationInterface, Width, Height),
+    '$init'(This, AnimationInterface, Width, Height),
     This.
 
-init(This, AnimationInterface, Width, Height) when is_integer(Width), is_integer(Height) ->
-        'SingletonAnimationInterfaceFactory':init(This, 'ImageAnimation':new((fun(Target_N65721) -> (get({Target_N65721, '$class'})):getInstanceWH(Target_N65721, Width, Height, AnimationInterface) end)('AnimationFrameToImageUtil':getInstance()), 'AnimationBehavior':getInstance())).
+'$init'(This, AnimationInterface, Width, Height) when is_integer(Width), is_integer(Height) ->
+        'SingletonAnimationInterfaceFactory':'$init'(This, 'ImageAnimation':new((fun(Target_N65721) -> (get({Target_N65721, '$class'})):getInstanceWH(Target_N65721, Width, Height, AnimationInterface) end)('AnimationFrameToImageUtil':getInstance()), 'AnimationBehavior':getInstance())).
 

@@ -28,10 +28,10 @@ init_fields(This) ->
 new(HelpSet) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HelpSet),
+    '$init'(This, HelpSet),
     This.
 
-init(This, HelpSet) ->
+'$init'(This, HelpSet) ->
     init_fields(This),
         (get({This, '$class'})):setHelpSet(This, HelpSet).
 

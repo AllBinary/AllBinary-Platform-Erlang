@@ -52,11 +52,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'Waypoint2LogHelper':init(This),
+'$init'(This) ->
+    'Waypoint2LogHelper':'$init'(This),
     init_fields(This).
 
 

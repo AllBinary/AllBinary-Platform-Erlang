@@ -41,11 +41,11 @@ createCache(Size) when is_integer(Size) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'BaseBasicArrayListCache':init(This),
+'$init'(This) ->
+    'BaseBasicArrayListCache':'$init'(This),
     init_fields(This),
         ok.
 

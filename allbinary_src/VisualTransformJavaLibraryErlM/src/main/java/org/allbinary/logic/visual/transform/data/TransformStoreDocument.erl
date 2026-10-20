@@ -34,11 +34,11 @@ init_fields(This) ->
 new(PageContext, WeblisketSession) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PageContext, WeblisketSession),
+    '$init'(This, PageContext, WeblisketSession),
     This.
 
-init(This, PageContext, WeblisketSession) ->
-        'TransformHttpRequestDocument':init(This, PageContext, WeblisketSession),
+'$init'(This, PageContext, WeblisketSession) ->
+        'TransformHttpRequestDocument':'$init'(This, PageContext, WeblisketSession),
         init_fields(This),
         try
             StoreName = (get({WeblisketSession, '$class'})):getStoreName(WeblisketSession),
@@ -61,11 +61,11 @@ init(This, PageContext, WeblisketSession) ->
 new(SearchRequest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SearchRequest),
+    '$init'(This, SearchRequest),
     This.
 
-init(This, SearchRequest) ->
-        'TransformHttpRequestDocument':init(This, SearchRequest),
+'$init'(This, SearchRequest) ->
+        'TransformHttpRequestDocument':'$init'(This, SearchRequest),
         init_fields(This),
         try
             (fun(Target_N66791) -> (get({Target_N66791, '$class'})):appendChild(Target_N66791, (fun(Target_N66811) -> (get({Target_N66811, '$class'})):toXmlNode(Target_N66811, (get({This, '$class'})):getDoc(This)) end)('StoreFrontViewFactory':getInstance((fun(Target_N66835) -> (get({Target_N66835, '$class'})):getName(Target_N66835) end)((get({SearchRequest, '$class'})):getStoreFront(SearchRequest))))) end)((get({This, '$class'})):getBaseNode(This)),

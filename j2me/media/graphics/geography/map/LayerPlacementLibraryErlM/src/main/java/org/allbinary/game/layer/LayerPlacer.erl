@@ -35,10 +35,10 @@ init_fields(This) ->
 new(LayerInterfaceVisitor, Dimension) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerInterfaceVisitor, Dimension),
+    '$init'(This, LayerInterfaceVisitor, Dimension),
     This.
 
-init(This, LayerInterfaceVisitor, Dimension) ->
+'$init'(This, LayerInterfaceVisitor, Dimension) ->
     init_fields(This),
         put({This, layerInterfaceVisitor}, LayerInterfaceVisitor),
         put({This, dimension}, Dimension).

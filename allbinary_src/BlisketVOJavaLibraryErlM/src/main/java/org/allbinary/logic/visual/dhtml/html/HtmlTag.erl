@@ -26,10 +26,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, otherAttributes}, (fun(Target_N65694) -> (get({Target_N65694, '$class'})):createHashMap(Target_N65694) end)('StdUtil':getInstance())).
 

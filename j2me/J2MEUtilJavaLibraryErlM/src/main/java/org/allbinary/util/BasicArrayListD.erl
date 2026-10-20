@@ -28,9 +28,9 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'BasicArrayListS':init(This, 7).
+'$init'(This) ->
+        'BasicArrayListS':'$init'(This, 7).
 

@@ -30,10 +30,10 @@ init_fields(This) ->
 new(CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), (is_list(Text) orelse Text =:= undefined), is_integer(MaxSize), is_integer(Constraints) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), (is_list(Text) orelse Text =:= undefined), is_integer(MaxSize), is_integer(Constraints) ->
-        'CustomTextBox':init(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), (is_list(Text) orelse Text =:= undefined), is_integer(MaxSize), is_integer(Constraints) ->
+        'CustomTextBox':'$init'(This, CmdListener, Label, Text, MaxSize, Constraints, Font, BackgroundBasicColor, ForegroundBasicColor),
         (fun(Target_N65796) -> (get({Target_N65796, '$class'})):setFocus(Target_N65796, true) end)((get({This, '$class'})):getTextFieldItem(This)).
 

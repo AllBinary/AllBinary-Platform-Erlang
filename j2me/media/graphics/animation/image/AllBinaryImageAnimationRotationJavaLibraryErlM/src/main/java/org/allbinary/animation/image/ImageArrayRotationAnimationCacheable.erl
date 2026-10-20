@@ -31,11 +31,11 @@ init_fields(This) ->
 new(AnyType, AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType, AnimationBehavior),
+    '$init'(This, AnyType, AnimationBehavior),
     This.
 
-init(This, AnyType, AnimationBehavior) ->
-        'AdjustedImageArrayRotationAnimation':init(This, (get({(AnyType), '$class'})):getImageArray((AnyType)), (get({(AnyType), '$class'})):getAngleInfoP((AnyType)), (get({(AnyType), '$class'})):getTotalAngle((AnyType)), (get({(AnyType), '$class'})):getDx((AnyType)), (get({(AnyType), '$class'})):getDy((AnyType)), AnimationBehavior).
+'$init'(This, AnyType, AnimationBehavior) ->
+        'AdjustedImageArrayRotationAnimation':'$init'(This, (get({(AnyType), '$class'})):getImageArray((AnyType)), (get({(AnyType), '$class'})):getAngleInfoP((AnyType)), (get({(AnyType), '$class'})):getTotalAngle((AnyType)), (get({(AnyType), '$class'})):getDx((AnyType)), (get({(AnyType), '$class'})):getDy((AnyType)), AnimationBehavior).
 
 getKey(This) ->
         get({'NullUtil':getInstance(), 'NULL_OBJECT'}).

@@ -27,11 +27,11 @@ init_fields(This) ->
 new(Source) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Source),
+    '$init'(This, Source),
     This.
 
-init(This, Source) ->
-        'EventObject':init(This, Source).
+'$init'(This, Source) ->
+        'EventObject':'$init'(This, Source).
 
 getSource(This) ->
         'EventObject':getSource(This).

@@ -31,10 +31,10 @@ init_fields(This) ->
 new(TotalLaps) when is_integer(TotalLaps) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TotalLaps),
+    '$init'(This, TotalLaps),
     This.
 
-init(This, TotalLaps) when is_integer(TotalLaps) ->
+'$init'(This, TotalLaps) when is_integer(TotalLaps) ->
     init_fields(This),
         put({This, totalLaps}, TotalLaps),
         put({This, numberOfLaps}, 1).

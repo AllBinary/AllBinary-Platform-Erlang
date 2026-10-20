@@ -42,11 +42,11 @@ init_fields(This) ->
 new(RecordId) when (is_list(RecordId) orelse RecordId =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RecordId),
+    '$init'(This, RecordId),
     This.
 
-init(This, RecordId) when (is_list(RecordId) orelse RecordId =:= undefined) ->
-        'BasicPersitance':init(This, RecordId),
+'$init'(This, RecordId) when (is_list(RecordId) orelse RecordId =:= undefined) ->
+        'BasicPersitance':'$init'(This, RecordId),
         init_fields(This).
 
 % throws Exception

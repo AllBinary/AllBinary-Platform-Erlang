@@ -29,10 +29,10 @@ init_fields(This) ->
 new(Delay) when is_integer(Delay) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Delay),
+    '$init'(This, Delay),
     This.
 
-init(This, Delay) when is_integer(Delay) ->
+'$init'(This, Delay) when is_integer(Delay) ->
     init_fields(This),
         put({This, delay}, Delay),
         (get({This, '$class'})):setStartTimeTNT(This).

@@ -29,11 +29,11 @@ init_fields(This) ->
 new(Name, Version, SpecialName, ShortName, LongArrayIdentifier) when (is_list(Name) orelse Name =:= undefined), (is_list(Version) orelse Version =:= undefined), (is_list(SpecialName) orelse SpecialName =:= undefined), (is_list(ShortName) orelse ShortName =:= undefined), (is_tuple(LongArrayIdentifier) orelse LongArrayIdentifier =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Version, SpecialName, ShortName, LongArrayIdentifier),
+    '$init'(This, Name, Version, SpecialName, ShortName, LongArrayIdentifier),
     This.
 
-init(This, Name, Version, SpecialName, ShortName, LongArrayIdentifier) when (is_list(Name) orelse Name =:= undefined), (is_list(Version) orelse Version =:= undefined), (is_list(SpecialName) orelse SpecialName =:= undefined), (is_list(ShortName) orelse ShortName =:= undefined), (is_tuple(LongArrayIdentifier) orelse LongArrayIdentifier =:= undefined) ->
-        'AbeClientInformation':init(This, Name, Version, SpecialName, ShortName),
+'$init'(This, Name, Version, SpecialName, ShortName, LongArrayIdentifier) when (is_list(Name) orelse Name =:= undefined), (is_list(Version) orelse Version =:= undefined), (is_list(SpecialName) orelse SpecialName =:= undefined), (is_list(ShortName) orelse ShortName =:= undefined), (is_tuple(LongArrayIdentifier) orelse LongArrayIdentifier =:= undefined) ->
+        'AbeClientInformation':'$init'(This, Name, Version, SpecialName, ShortName),
         init_fields(This),
         put({This, longArrayIdentifier}, LongArrayIdentifier).
 

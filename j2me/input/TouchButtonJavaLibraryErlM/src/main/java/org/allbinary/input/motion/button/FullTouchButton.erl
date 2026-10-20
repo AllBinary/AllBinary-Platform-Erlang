@@ -36,11 +36,11 @@ createButton(TouchButtonInput, TouchButtonResource, RawRectangle, CellPosition, 
 new(TouchButtonInput, AnimationInterface, HintAnimationInterface, RawRectangle, CellPosition, XBorder, YBorder) when is_integer(XBorder), is_integer(YBorder) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TouchButtonInput, AnimationInterface, HintAnimationInterface, RawRectangle, CellPosition, XBorder, YBorder),
+    '$init'(This, TouchButtonInput, AnimationInterface, HintAnimationInterface, RawRectangle, CellPosition, XBorder, YBorder),
     This.
 
-init(This, TouchButtonInput, AnimationInterface, HintAnimationInterface, RawRectangle, CellPosition, XBorder, YBorder) when is_integer(XBorder), is_integer(YBorder) ->
-        'TouchButton':init(This, TouchButtonInput, AnimationInterface, HintAnimationInterface, RawRectangle, CellPosition, XBorder, YBorder).
+'$init'(This, TouchButtonInput, AnimationInterface, HintAnimationInterface, RawRectangle, CellPosition, XBorder, YBorder) when is_integer(XBorder), is_integer(YBorder) ->
+        'TouchButton':'$init'(This, TouchButtonInput, AnimationInterface, HintAnimationInterface, RawRectangle, CellPosition, XBorder, YBorder).
 
 updateRectangle(This) ->
         try

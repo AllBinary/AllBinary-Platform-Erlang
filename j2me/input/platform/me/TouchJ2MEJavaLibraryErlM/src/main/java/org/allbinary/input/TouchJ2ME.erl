@@ -32,10 +32,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         MotionGesturesHandler = (fun(Target_N65937) -> (get({Target_N65937, '$class'})):getMotionGesturesHandler(Target_N65937) end)((get({get({This, motionRecognizer}), '$class'})):getMotionGestureRecognizer(get({This, motionRecognizer}))),
         (get({MotionGesturesHandler, '$class'})):addListenerInterface(MotionGesturesHandler, 'GameMotionGestureListener':new('MotionGestureReceiveInterfaceFactory':getInstance())).

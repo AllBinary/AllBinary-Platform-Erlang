@@ -37,11 +37,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'HttpStoreComponentView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'HttpStoreComponentView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, newStoreFrontInterface}, 'StoreFrontFactory':getInstance((get({TransformInfoInterface, '$class'})):getStoreName(TransformInfoInterface))),
         put({This, domNodeInterface}, 'RealTimeStoreFrontStatisticsView':new('RealTimeStoreFrontStatistics':new(get({This, newStoreFrontInterface})), (fun(Target_N66167) -> (get({Target_N66167, '$class'})):getRole(Target_N66167) end)((get({This, '$class'})):getWeblisketSession(This)))).

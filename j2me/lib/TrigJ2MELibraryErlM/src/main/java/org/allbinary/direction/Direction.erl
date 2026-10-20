@@ -33,10 +33,10 @@ init_fields(This) ->
 new(Name, OtherName, Value, FrameFactor) when (is_list(Name) orelse Name =:= undefined), (is_list(OtherName) orelse OtherName =:= undefined), is_integer(Value), is_integer(FrameFactor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, OtherName, Value, FrameFactor),
+    '$init'(This, Name, OtherName, Value, FrameFactor),
     This.
 
-init(This, Name, OtherName, Value, FrameFactor) when (is_list(Name) orelse Name =:= undefined), (is_list(OtherName) orelse OtherName =:= undefined), is_integer(Value), is_integer(FrameFactor) ->
+'$init'(This, Name, OtherName, Value, FrameFactor) when (is_list(Name) orelse Name =:= undefined), (is_list(OtherName) orelse OtherName =:= undefined), is_integer(Value), is_integer(FrameFactor) ->
     init_fields(This),
         put({This, name}, Name),
         put({This, otherName}, OtherName),

@@ -43,11 +43,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'ShippingAddressView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'ShippingAddressView':'$init'(This, TransformInfoInterface),
         init_fields(This).
 
 % throws Exception

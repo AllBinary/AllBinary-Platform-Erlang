@@ -38,11 +38,11 @@ init_fields(This) ->
 new(AlwaysActionScriptConditionInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AlwaysActionScriptConditionInterface),
+    '$init'(This, AlwaysActionScriptConditionInterface),
     This.
 
-init(This, AlwaysActionScriptConditionInterface) ->
-    'JPanel':init(This),
+'$init'(This, AlwaysActionScriptConditionInterface) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         (get({This, '$class'})):initComponents(This),

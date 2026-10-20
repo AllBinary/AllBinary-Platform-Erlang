@@ -32,11 +32,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'BillingAddressesView':init(This, TransformInfoInterface).
+'$init'(This, TransformInfoInterface) ->
+        'BillingAddressesView':'$init'(This, TransformInfoInterface).
 
 isValid(This) ->
         try

@@ -53,11 +53,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-    'TransformInfoObjectConfigGenerator':init(This),
+'$init'(This, TransformInfoInterface) ->
+    'TransformInfoObjectConfigGenerator':'$init'(This),
     init_fields(This),
         HttpTransformInfoInterface = TransformInfoInterface,
         WeblisketSession = 'WeblisketSession':new((get({HttpTransformInfoInterface, '$class'})):getPropertiesHashMap(HttpTransformInfoInterface), (get({HttpTransformInfoInterface, '$class'})):getPageContext(HttpTransformInfoInterface)),

@@ -30,10 +30,10 @@ init_fields(This) ->
 new(ResourcePerMapCellType) when (is_tuple(ResourcePerMapCellType) orelse ResourcePerMapCellType =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ResourcePerMapCellType),
+    '$init'(This, ResourcePerMapCellType),
     This.
 
-init(This, ResourcePerMapCellType) when (is_tuple(ResourcePerMapCellType) orelse ResourcePerMapCellType =:= undefined) ->
+'$init'(This, ResourcePerMapCellType) when (is_tuple(ResourcePerMapCellType) orelse ResourcePerMapCellType =:= undefined) ->
     init_fields(This),
         put({This, resourcePerMapCellType}, ResourcePerMapCellType).
 

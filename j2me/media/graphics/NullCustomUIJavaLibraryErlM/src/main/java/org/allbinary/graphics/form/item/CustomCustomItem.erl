@@ -22,11 +22,11 @@ init_fields(This) ->
 new(Label, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Label, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Label, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined) ->
-        'ABCustomItem':init(This, Label, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Label, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined) ->
+        'ABCustomItem':'$init'(This, Label, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This).
 
 updateMeasurement(This, Graphics) ->

@@ -56,11 +56,11 @@ init_fields(This) ->
 new(GameCanvas, PreGameSelectorPaintable, NextGameState, LockedIndex) when is_integer(LockedIndex) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameCanvas, PreGameSelectorPaintable, NextGameState, LockedIndex),
+    '$init'(This, GameCanvas, PreGameSelectorPaintable, NextGameState, LockedIndex),
     This.
 
-init(This, GameCanvas, PreGameSelectorPaintable, NextGameState, LockedIndex) when is_integer(LockedIndex) ->
-    'Processor':init(This),
+'$init'(This, GameCanvas, PreGameSelectorPaintable, NextGameState, LockedIndex) when is_integer(LockedIndex) ->
+    'Processor':'$init'(This),
     init_fields(This),
         put({This, gameCanvas}, GameCanvas),
         put({This, preGameSelectorPaintable}, PreGameSelectorPaintable),

@@ -26,18 +26,18 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'DbInitInfo':init(This, undefined, false).
+'$init'(This) ->
+        'DbInitInfo':'$init'(This, undefined, false).
 
 new(Read) when is_boolean(Read) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Read),
+    '$init'(This, Read),
     This.
 
-init(This, Read) when is_boolean(Read) ->
-        'DbInitInfo':init(This, undefined, false).
+'$init'(This, Read) when is_boolean(Read) ->
+        'DbInitInfo':'$init'(This, undefined, false).
 

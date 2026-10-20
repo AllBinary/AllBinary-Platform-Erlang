@@ -28,11 +28,11 @@ init_fields(This) ->
 new(MoneyGraphic) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MoneyGraphic),
+    '$init'(This, MoneyGraphic),
     This.
 
-init(This, MoneyGraphic) ->
-    'Capital':init(This),
+'$init'(This, MoneyGraphic) ->
+    'Capital':'$init'(This),
     init_fields(This),
         put({This, capitalGraphic}, MoneyGraphic).
 

@@ -32,22 +32,22 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(EmailServerConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, EmailServerConfigurationInterface),
+    '$init'(This, EmailServerConfigurationInterface),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         ChildNodeList = (get({Node, '$class'})):getChildNodes(Node),
         Server = 'DomNodeHelper':getTextNodeValue(get({'EmailServerConfigurationData', 'SERVER'}), ChildNodeList),
         AccountName = 'DomNodeHelper':getTextNodeValue(get({'EmailServerConfigurationData', 'ACCOUNT'}), ChildNodeList),
         Password = 'DomNodeHelper':getTextNodeValue(get({'EmailServerConfigurationData', 'PASSWORD'}), ChildNodeList),
         put({This, emailServerConfigurationInterface}, 'EmailServerConfiguration':new(AccountName, Password, Server));
-init(This, EmailServerConfigurationInterface) ->
+'$init'(This, EmailServerConfigurationInterface) ->
     init_fields(This),
         put({This, emailServerConfigurationInterface}, EmailServerConfigurationInterface).
 

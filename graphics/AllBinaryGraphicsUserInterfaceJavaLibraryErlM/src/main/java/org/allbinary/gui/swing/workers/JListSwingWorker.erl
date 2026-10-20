@@ -29,11 +29,11 @@ init_fields(This) ->
 new(JList, ListModel) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, JList, ListModel),
+    '$init'(This, JList, ListModel),
     This.
 
-init(This, JList, ListModel) ->
-    'SwingWorker':init(This),
+'$init'(This, JList, ListModel) ->
+    'SwingWorker':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):setJList(This, JList),
         (get({This, '$class'})):setListModel(This, ListModel).

@@ -28,10 +28,10 @@ init_fields(This) ->
 new(Data) when (is_list(Data) orelse Data =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Data),
+    '$init'(This, Data),
     This.
 
-init(This, Data) when (is_list(Data) orelse Data =:= undefined) ->
+'$init'(This, Data) when (is_list(Data) orelse Data =:= undefined) ->
     init_fields(This),
         put({This, data}, Data).
 

@@ -33,10 +33,10 @@ init_fields(This) ->
 new(DataMappingInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DataMappingInterface),
+    '$init'(This, DataMappingInterface),
     This.
 
-init(This, DataMappingInterface) ->
+'$init'(This, DataMappingInterface) ->
     init_fields(This),
         put({This, dataMappingInterface}, DataMappingInterface).
 

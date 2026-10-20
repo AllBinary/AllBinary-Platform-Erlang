@@ -35,10 +35,10 @@ init_fields(This) ->
 new(Options) when (is_tuple(Options) orelse Options =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Options),
+    '$init'(This, Options),
     This.
 
-init(This, Options) when (is_tuple(Options) orelse Options =:= undefined) ->
+'$init'(This, Options) when (is_tuple(Options) orelse Options =:= undefined) ->
     init_fields(This),
         (fun(Target_N65976) -> (get({Target_N65976, '$class'})):setFilePath(Target_N65976, (get({'PrintLicenseInitInfo', 'PATH'}) + get({(get({get({'LicenseClientAndServerTest', 'PATH_GLOBALS'}), '$class'})):getInstance(get({'LicenseClientAndServerTest', 'PATH_GLOBALS'})), 'INIT_PATH'}))) end)('LicenseInitInfoUtil':getInstance()),
         lists:foreach(fun(Index) ->

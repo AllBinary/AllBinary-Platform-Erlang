@@ -32,11 +32,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'JvmStatistics':init(This).
+'$init'(This) ->
+        'JvmStatistics':'$init'(This).
 
 toHashMap(This) ->
         HashMap = (fun(Target_N65790) -> (get({Target_N65790, '$class'})):createHashMap(Target_N65790) end)('StdUtil':getInstance()),

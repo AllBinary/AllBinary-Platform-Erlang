@@ -38,11 +38,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'WorkFlowView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'WorkFlowView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         HttpTransformInfoInterface = (get({This, '$class'})):getTransformInfoInterface(This),
         put({This, workFlowName}, (fun(Target_N66072) -> (get({Target_N66072, '$class'})):getParameter(Target_N66072, get({'WorkFlowData':getInstance(), 'NAME'})) end)((fun(Target_N66079) -> (get({Target_N66079, '$class'})):getRequest(Target_N66079) end)((get({HttpTransformInfoInterface, '$class'})):getPageContext(HttpTransformInfoInterface)))).

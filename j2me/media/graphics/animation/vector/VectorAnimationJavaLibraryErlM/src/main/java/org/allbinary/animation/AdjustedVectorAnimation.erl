@@ -30,11 +30,11 @@ init_fields(This) ->
 new(CurrentPoints, BasicColor, Dx, Dy, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CurrentPoints, BasicColor, Dx, Dy, AnimationBehavior),
+    '$init'(This, CurrentPoints, BasicColor, Dx, Dy, AnimationBehavior),
     This.
 
-init(This, CurrentPoints, BasicColor, Dx, Dy, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined), is_integer(Dx), is_integer(Dy) ->
-        'VectorAnimation':init(This, CurrentPoints, BasicColor, AnimationBehavior),
+'$init'(This, CurrentPoints, BasicColor, Dx, Dy, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined), is_integer(Dx), is_integer(Dy) ->
+        'VectorAnimation':'$init'(This, CurrentPoints, BasicColor, AnimationBehavior),
         init_fields(This),
         put({This, dx}, Dx),
         put({This, dy}, Dy).

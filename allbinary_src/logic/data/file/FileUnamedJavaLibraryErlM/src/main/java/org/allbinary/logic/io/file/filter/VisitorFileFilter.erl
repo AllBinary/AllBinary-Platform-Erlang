@@ -30,10 +30,10 @@ init_fields(This) ->
 new(BooleanVisitorInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BooleanVisitorInterface),
+    '$init'(This, BooleanVisitorInterface),
     This.
 
-init(This, BooleanVisitorInterface) ->
+'$init'(This, BooleanVisitorInterface) ->
     init_fields(This),
         put({This, booleanVisitorInterface}, BooleanVisitorInterface).
 

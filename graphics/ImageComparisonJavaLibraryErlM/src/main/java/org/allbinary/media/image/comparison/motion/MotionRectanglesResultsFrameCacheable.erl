@@ -28,10 +28,10 @@ init_fields(This) ->
 new(MotionRectangles, Frame) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MotionRectangles, Frame),
+    '$init'(This, MotionRectangles, Frame),
     This.
 
-init(This, MotionRectangles, Frame) ->
+'$init'(This, MotionRectangles, Frame) ->
     init_fields(This),
         put({This, frame}, Frame),
         (get({This, '$class'})):setMotionRectangles(This, MotionRectangles).

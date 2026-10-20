@@ -58,10 +58,10 @@ init_fields(This) ->
 new(EventHandlerName) when (is_list(EventHandlerName) orelse EventHandlerName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, EventHandlerName),
+    '$init'(This, EventHandlerName),
     This.
 
-init(This, EventHandlerName) when (is_list(EventHandlerName) orelse EventHandlerName =:= undefined) ->
+'$init'(This, EventHandlerName) when (is_list(EventHandlerName) orelse EventHandlerName =:= undefined) ->
     init_fields(This),
         put({This, eventHandlerName}, EventHandlerName),
         (get({This, '$class'})):initNextId(This),

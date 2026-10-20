@@ -27,10 +27,10 @@ init_fields(This) ->
 new(AnyType) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType),
+    '$init'(This, AnyType),
     This.
 
-init(This, AnyType) ->
+'$init'(This, AnyType) ->
     init_fields(This),
         put({This, anyType}, AnyType).
 

@@ -36,10 +36,10 @@ init_fields(This) ->
 new(OnDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, ResourceAnimationInterfaceFactoryInterfaceFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OnDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, ResourceAnimationInterfaceFactoryInterfaceFactory),
+    '$init'(This, OnDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, ResourceAnimationInterfaceFactoryInterfaceFactory),
     This.
 
-init(This, OnDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, ResourceAnimationInterfaceFactoryInterfaceFactory) ->
+'$init'(This, OnDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, ResourceAnimationInterfaceFactoryInterfaceFactory) ->
     init_fields(This),
         put({This, onDemandResourcesFactory}, OnDemandResourcesFactory),
         put({This, gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory}, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory),

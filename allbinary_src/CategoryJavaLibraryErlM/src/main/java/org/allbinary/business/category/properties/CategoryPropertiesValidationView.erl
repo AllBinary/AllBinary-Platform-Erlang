@@ -33,11 +33,11 @@ init_fields(This) ->
 new(CategoryPropertiesInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryPropertiesInterface),
+    '$init'(This, CategoryPropertiesInterface),
     This.
 
-init(This, CategoryPropertiesInterface) ->
-        'CategoryPropertiesView':init(This, CategoryPropertiesInterface),
+'$init'(This, CategoryPropertiesInterface) ->
+        'CategoryPropertiesView':'$init'(This, CategoryPropertiesInterface),
         init_fields(This).
 
 % throws Exception

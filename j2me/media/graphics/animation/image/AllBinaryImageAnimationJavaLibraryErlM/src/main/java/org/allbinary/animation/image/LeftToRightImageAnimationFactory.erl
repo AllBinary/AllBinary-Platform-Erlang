@@ -29,11 +29,11 @@ init_fields(This) ->
 new(Image, SequenceArray, Dx, Dy, AnimationBehaviorFactory) when (is_tuple(SequenceArray) orelse SequenceArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, SequenceArray, Dx, Dy, AnimationBehaviorFactory),
+    '$init'(This, Image, SequenceArray, Dx, Dy, AnimationBehaviorFactory),
     This.
 
-init(This, Image, SequenceArray, Dx, Dy, AnimationBehaviorFactory) when (is_tuple(SequenceArray) orelse SequenceArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
-        'BaseImageAnimationFactory':init(This, Image, SequenceArray, (get({Image, '$class'})):getWidth(Image), (get({Image, '$class'})):getHeight(Image), Dx, Dy, AnimationBehaviorFactory).
+'$init'(This, Image, SequenceArray, Dx, Dy, AnimationBehaviorFactory) when (is_tuple(SequenceArray) orelse SequenceArray =:= undefined), is_integer(Dx), is_integer(Dy) ->
+        'BaseImageAnimationFactory':'$init'(This, Image, SequenceArray, (get({Image, '$class'})):getWidth(Image), (get({Image, '$class'})):getHeight(Image), Dx, Dy, AnimationBehaviorFactory).
 
 % throws Exception
 getInstance(This, InstanceId) when is_integer(InstanceId) ->

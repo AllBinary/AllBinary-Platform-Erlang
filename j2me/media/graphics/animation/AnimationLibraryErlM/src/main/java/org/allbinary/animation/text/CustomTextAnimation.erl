@@ -38,11 +38,11 @@ init_fields(This) ->
 new(Text, FontSize, AnimationBehavior) when (is_list(Text) orelse Text =:= undefined), is_integer(FontSize) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Text, FontSize, AnimationBehavior),
+    '$init'(This, Text, FontSize, AnimationBehavior),
     This.
 
-init(This, Text, FontSize, AnimationBehavior) when (is_list(Text) orelse Text =:= undefined), is_integer(FontSize) ->
-        'TextAnimation':init(This, Text, AnimationBehavior),
+'$init'(This, Text, FontSize, AnimationBehavior) when (is_list(Text) orelse Text =:= undefined), is_integer(FontSize) ->
+        'TextAnimation':'$init'(This, Text, AnimationBehavior),
         init_fields(This),
         put({This, fontSize}, FontSize),
         put({This, font}, 'Font':getFont(get({'Font', 'FACE_SYSTEM'}), get({'Font', 'STYLE_PLAIN'}), FontSize)).

@@ -24,10 +24,10 @@ init_fields(This) ->
 new(AndroidMediaPlayerWrapper) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AndroidMediaPlayerWrapper),
+    '$init'(This, AndroidMediaPlayerWrapper),
     This.
 
-init(This, AndroidMediaPlayerWrapper) ->
+'$init'(This, AndroidMediaPlayerWrapper) ->
     init_fields(This),
         try
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),

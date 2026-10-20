@@ -48,11 +48,11 @@ init_fields(This) ->
 new(GroupInterface, IsUnitProducer) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), is_boolean(IsUnitProducer) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GroupInterface, IsUnitProducer),
+    '$init'(This, GroupInterface, IsUnitProducer),
     This.
 
-init(This, GroupInterface, IsUnitProducer) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), is_boolean(IsUnitProducer) ->
-        'BuildingRTSFormInput':init(This, GroupInterface, IsUnitProducer),
+'$init'(This, GroupInterface, IsUnitProducer) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), is_boolean(IsUnitProducer) ->
+        'BuildingRTSFormInput':'$init'(This, GroupInterface, IsUnitProducer),
         init_fields(This),
         BasicColorFactory = 'BasicColorFactory':getInstance(),
         put({This, atLeastOneHouseGameNotificationEvent}, 'GameNotificationEvent':new(This, "Build At Least One House First", (fun(Target_N66467) -> (get({Target_N66467, '$class'})):getAt(Target_N66467, 2) end)('SmallIntegerSingletonFactory':getInstance()), get({BasicColorFactory, 'WHITE'}), get({'BooleanFactory':getInstance(), 'FALSE'}))).

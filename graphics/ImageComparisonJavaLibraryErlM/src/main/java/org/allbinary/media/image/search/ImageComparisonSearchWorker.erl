@@ -46,11 +46,11 @@ init_fields(This) ->
 new(ImageSearchConstraintsInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageSearchConstraintsInterface),
+    '$init'(This, ImageSearchConstraintsInterface),
     This.
 
-init(This, ImageSearchConstraintsInterface) ->
-    'BasicEventHandler':init(This),
+'$init'(This, ImageSearchConstraintsInterface) ->
+    'BasicEventHandler':'$init'(This),
     init_fields(This),
         put({This, imageComparisonInfoVector}, 'BasicArrayListD':new()),
         put({This, imageSearchConstraintsInterface}, ImageSearchConstraintsInterface).

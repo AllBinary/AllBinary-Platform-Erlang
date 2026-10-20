@@ -73,11 +73,11 @@ init_fields(This) ->
 new(CommandListener, AllBinaryGameLayerManager, GameInfo, Paintable, HighScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CommandListener, AllBinaryGameLayerManager, GameInfo, Paintable, HighScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface),
+    '$init'(This, CommandListener, AllBinaryGameLayerManager, GameInfo, Paintable, HighScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface),
     This.
 
-init(This, CommandListener, AllBinaryGameLayerManager, GameInfo, Paintable, HighScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface) ->
-        'GameCommandCanvas':init(This, CommandListener, get({'HighScoresCanvas', 'NAME'}), (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)),
+'$init'(This, CommandListener, AllBinaryGameLayerManager, GameInfo, Paintable, HighScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface) ->
+        'GameCommandCanvas':'$init'(This, CommandListener, get({'HighScoresCanvas', 'NAME'}), (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, highScoresPaintable}, Paintable),

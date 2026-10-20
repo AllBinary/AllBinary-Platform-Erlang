@@ -28,11 +28,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'ThirdPartyStore':init(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'})).
+'$init'(This) ->
+        'ThirdPartyStore':'$init'(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'})).
 
 authorize(This, ClientInformationInterface) ->
         (get({This, '$class'})):setAuthorized(This, true).

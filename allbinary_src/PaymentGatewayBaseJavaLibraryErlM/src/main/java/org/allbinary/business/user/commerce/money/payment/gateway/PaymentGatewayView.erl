@@ -35,10 +35,10 @@ init_fields(This) ->
 new(PaymentGatewayInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PaymentGatewayInterface),
+    '$init'(This, PaymentGatewayInterface),
     This.
 
-init(This, PaymentGatewayInterface) ->
+'$init'(This, PaymentGatewayInterface) ->
     init_fields(This),
         put({This, paymentGatewayInterface}, PaymentGatewayInterface).
 

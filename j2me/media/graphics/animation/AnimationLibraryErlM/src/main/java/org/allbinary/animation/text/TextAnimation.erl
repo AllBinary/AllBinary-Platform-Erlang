@@ -47,11 +47,11 @@ init_fields(This) ->
 new(Text, AnimationBehavior) when (is_list(Text) orelse Text =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Text, AnimationBehavior),
+    '$init'(This, Text, AnimationBehavior),
     This.
 
-init(This, Text, AnimationBehavior) when (is_list(Text) orelse Text =:= undefined) ->
-        'IndexedAnimation':init(This, AnimationBehavior),
+'$init'(This, Text, AnimationBehavior) when (is_list(Text) orelse Text =:= undefined) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior),
         init_fields(This),
         (get({This, '$class'})):setText(This, Text).
 

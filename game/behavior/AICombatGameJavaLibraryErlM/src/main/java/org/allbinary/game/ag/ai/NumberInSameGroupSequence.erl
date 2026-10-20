@@ -38,10 +38,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         SmallIntegerSingletonFactory = 'SmallIntegerSingletonFactory':getInstance(),
         put({This, 'NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO'}, (get({SmallIntegerSingletonFactory, '$class'})):getAt(SmallIntegerSingletonFactory, 100)),

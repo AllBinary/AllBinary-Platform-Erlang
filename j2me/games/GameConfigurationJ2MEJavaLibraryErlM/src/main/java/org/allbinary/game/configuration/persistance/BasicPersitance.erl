@@ -39,10 +39,10 @@ init_fields(This) ->
 new(RecordId) when (is_list(RecordId) orelse RecordId =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RecordId),
+    '$init'(This, RecordId),
     This.
 
-init(This, RecordId) when (is_list(RecordId) orelse RecordId =:= undefined) ->
+'$init'(This, RecordId) when (is_list(RecordId) orelse RecordId =:= undefined) ->
     init_fields(This),
         put({This, recordId}, RecordId).
 

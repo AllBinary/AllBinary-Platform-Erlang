@@ -30,10 +30,10 @@ init_fields(This) ->
 new(Vector) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Vector),
+    '$init'(This, Vector),
     This.
 
-init(This, Vector) ->
+'$init'(This, Vector) ->
     init_fields(This),
         put({This, advertisementsVector}, get({This, advertisementsVector})).
 

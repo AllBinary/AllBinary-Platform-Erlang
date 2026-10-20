@@ -32,11 +32,11 @@ init_fields(This) ->
 new(FileInputStream) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FileInputStream),
+    '$init'(This, FileInputStream),
     This.
 
-init(This, FileInputStream) ->
-    'InputStream':init(This),
+'$init'(This, FileInputStream) ->
+    'InputStream':'$init'(This),
     init_fields(This),
         put({This, fileInputStream}, FileInputStream).
 

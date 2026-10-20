@@ -36,10 +36,10 @@ init_fields(This) ->
 new(MaxTime) when is_integer(MaxTime) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MaxTime),
+    '$init'(This, MaxTime),
     This.
 
-init(This, MaxTime) when is_integer(MaxTime) ->
+'$init'(This, MaxTime) when is_integer(MaxTime) ->
     init_fields(This),
         put({This, primitiveLongUtil}, 'PrimitiveLongUtil':createPowerOfTen(MaxTime)),
         put({This, maxTime}, MaxTime).

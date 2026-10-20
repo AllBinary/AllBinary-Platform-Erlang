@@ -40,10 +40,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({get({'LogConfigTypes', 'LOGGING'}), '$class'})):add(get({'LogConfigTypes', 'LOGGING'}), get({This, 'OS'})),
         (get({get({'LogConfigTypes', 'LOGGING'}), '$class'})):add(get({'LogConfigTypes', 'LOGGING'}), get({This, 'FACTORYERROR'})).

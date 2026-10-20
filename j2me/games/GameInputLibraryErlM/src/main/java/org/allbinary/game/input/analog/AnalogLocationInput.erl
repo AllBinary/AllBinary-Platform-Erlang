@@ -22,10 +22,10 @@ init_fields(This) ->
 new(PlayerId) when is_integer(PlayerId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PlayerId),
+    '$init'(This, PlayerId),
     This.
 
-init(This, PlayerId) when is_integer(PlayerId) ->
+'$init'(This, PlayerId) when is_integer(PlayerId) ->
     init_fields(This),
         put({This, playerId}, PlayerId),
         put({This, customGPoint}, 'CustomGPoint':new(0, 0, 0)).

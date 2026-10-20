@@ -50,11 +50,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'Paintable':init(This),
+'$init'(This) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         case (fun(Target_N66296) -> (get({Target_N66296, '$class'})):isTouch(Target_N66296) end)('TouchScreenFactory':getInstance()) of
             true ->

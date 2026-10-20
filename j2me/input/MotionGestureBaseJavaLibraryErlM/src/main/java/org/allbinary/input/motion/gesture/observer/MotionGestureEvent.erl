@@ -46,11 +46,11 @@ init_fields(This) ->
 new(Source, Id, MotionGesture) when is_integer(Id) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Source, Id, MotionGesture),
+    '$init'(This, Source, Id, MotionGesture),
     This.
 
-init(This, Source, Id, MotionGesture) when is_integer(Id) ->
-        'AllBinaryEventObject':init(This, Source),
+'$init'(This, Source, Id, MotionGesture) when is_integer(Id) ->
+        'AllBinaryEventObject':'$init'(This, Source),
         init_fields(This),
         put({This, id}, Id),
         (get({This, '$class'})):setMotionGesture(This, MotionGesture).

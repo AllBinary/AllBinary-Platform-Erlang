@@ -26,10 +26,10 @@ init_fields(This) ->
 new(BasicAnimationInterfaceFactoryInterfaceArray) when (is_tuple(BasicAnimationInterfaceFactoryInterfaceArray) orelse BasicAnimationInterfaceFactoryInterfaceArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicAnimationInterfaceFactoryInterfaceArray),
+    '$init'(This, BasicAnimationInterfaceFactoryInterfaceArray),
     This.
 
-init(This, BasicAnimationInterfaceFactoryInterfaceArray) when (is_tuple(BasicAnimationInterfaceFactoryInterfaceArray) orelse BasicAnimationInterfaceFactoryInterfaceArray =:= undefined) ->
+'$init'(This, BasicAnimationInterfaceFactoryInterfaceArray) when (is_tuple(BasicAnimationInterfaceFactoryInterfaceArray) orelse BasicAnimationInterfaceFactoryInterfaceArray =:= undefined) ->
     init_fields(This),
         put({This, basicAnimationInterfaceFactoryInterfaceArray}, BasicAnimationInterfaceFactoryInterfaceArray).
 

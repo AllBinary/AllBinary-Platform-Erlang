@@ -34,11 +34,11 @@ init_fields(This) ->
 new(Points) when is_integer(Points) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Points),
+    '$init'(This, Points),
     This.
 
-init(This, Points) when is_integer(Points) ->
-        'AllBinaryLayer':init(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 0, 0), 'ViewPosition':getInstanceD()),
+'$init'(This, Points) when is_integer(Points) ->
+        'AllBinaryLayer':'$init'(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 'Rectangle':new(get({'PointFactory':getInstance(), 'ZERO_ZERO'}), 0, 0), 'ViewPosition':getInstanceD()),
         init_fields(This),
         put({This, points}, Points).
 

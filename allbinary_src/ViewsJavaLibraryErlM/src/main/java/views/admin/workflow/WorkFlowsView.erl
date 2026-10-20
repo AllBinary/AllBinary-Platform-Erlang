@@ -41,11 +41,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'HttpStoreComponentView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'HttpStoreComponentView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, workFlowsVector}, (fun(Target_N66112) -> (get({Target_N66112, '$class'})):get(Target_N66112, (fun(Target_N66145) -> (get({Target_N66145, '$class'})):getStoreName(Target_N66145) end)((get({This, '$class'})):getWeblisketSession(This))) end)((fun(Target_N66119) -> (get({Target_N66119, '$class'})):create2(Target_N66119) end)('WorkFlowEntityFactory':getInstance()))).
 

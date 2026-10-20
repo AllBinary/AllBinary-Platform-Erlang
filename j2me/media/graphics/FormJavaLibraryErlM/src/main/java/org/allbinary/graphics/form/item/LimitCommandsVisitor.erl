@@ -33,11 +33,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'Visitor':init(This),
+'$init'(This) ->
+    'Visitor':'$init'(This),
     init_fields(This),
         DisplayInfo = 'DisplayInfoSingleton':getInstance(),
         put({This, isNotSmallDisplay}, ((((get({DisplayInfo, '$class'})):isPortrait(DisplayInfo) andalso ((get({DisplayInfo, '$class'})):getLastHeight(DisplayInfo) > get({'ScreenInfo':getInstance(), 'SMALL_WIDTH'})))) orelse (((not (get({DisplayInfo, '$class'})):isPortrait(DisplayInfo)) andalso ((get({DisplayInfo, '$class'})):getLastHeight(DisplayInfo) > get({'ScreenInfo':getInstance(), 'SMALL_HEIGHT'})))))).

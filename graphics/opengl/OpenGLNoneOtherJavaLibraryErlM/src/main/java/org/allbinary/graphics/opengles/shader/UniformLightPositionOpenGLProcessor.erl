@@ -27,11 +27,11 @@ init_fields(This) ->
 new(ShaderComposite, HandleIndex) when is_integer(HandleIndex) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ShaderComposite, HandleIndex),
+    '$init'(This, ShaderComposite, HandleIndex),
     This.
 
-init(This, ShaderComposite, HandleIndex) when is_integer(HandleIndex) ->
-    'OpenGLObject3dProcessor':init(This),
+'$init'(This, ShaderComposite, HandleIndex) when is_integer(HandleIndex) ->
+    'OpenGLObject3dProcessor':'$init'(This),
     init_fields(This),
         ok.
 

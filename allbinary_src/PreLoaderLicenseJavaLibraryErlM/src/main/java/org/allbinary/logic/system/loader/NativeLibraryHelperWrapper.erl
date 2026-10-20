@@ -29,10 +29,10 @@ init_fields(This) ->
 new(LibraryName) when (is_list(LibraryName) orelse LibraryName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LibraryName),
+    '$init'(This, LibraryName),
     This.
 
-init(This, LibraryName) when (is_list(LibraryName) orelse LibraryName =:= undefined) ->
+'$init'(This, LibraryName) when (is_list(LibraryName) orelse LibraryName =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setLibraryName(This, LibraryName).
 

@@ -38,11 +38,11 @@ init_fields(This) ->
 new(StoreFront, SearchParams, XslFile, ContentType, PropertiesHashMap, PageContext) when (is_list(XslFile) orelse XslFile =:= undefined), (is_list(ContentType) orelse ContentType =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreFront, SearchParams, XslFile, ContentType, PropertiesHashMap, PageContext),
+    '$init'(This, StoreFront, SearchParams, XslFile, ContentType, PropertiesHashMap, PageContext),
     This.
 
-init(This, StoreFront, SearchParams, XslFile, ContentType, PropertiesHashMap, PageContext) when (is_list(XslFile) orelse XslFile =:= undefined), (is_list(ContentType) orelse ContentType =:= undefined) ->
-        'AbContext':init(This, PropertiesHashMap, PageContext),
+'$init'(This, StoreFront, SearchParams, XslFile, ContentType, PropertiesHashMap, PageContext) when (is_list(XslFile) orelse XslFile =:= undefined), (is_list(ContentType) orelse ContentType =:= undefined) ->
+        'AbContext':'$init'(This, PropertiesHashMap, PageContext),
         init_fields(This),
         put({This, storeFront}, StoreFront),
         put({This, searchParams}, SearchParams),

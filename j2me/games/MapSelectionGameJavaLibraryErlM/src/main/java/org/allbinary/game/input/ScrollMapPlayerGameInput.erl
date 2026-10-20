@@ -48,11 +48,11 @@ init_fields(This) ->
 new(GeographicMapInterface, List, PlayerInputId) when is_integer(PlayerInputId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GeographicMapInterface, List, PlayerInputId),
+    '$init'(This, GeographicMapInterface, List, PlayerInputId),
     This.
 
-init(This, GeographicMapInterface, List, PlayerInputId) when is_integer(PlayerInputId) ->
-        'PlayerGameInput':init(This, List, 'BasicArrayListD':new(), PlayerInputId),
+'$init'(This, GeographicMapInterface, List, PlayerInputId) when is_integer(PlayerInputId) ->
+        'PlayerGameInput':'$init'(This, List, 'BasicArrayListD':new(), PlayerInputId),
         init_fields(This),
         (get({This, '$class'})):initInputProcessors(This),
         put({This, geographicMapInterface}, GeographicMapInterface),

@@ -51,11 +51,11 @@ init_fields(This) ->
 new(AllBinaryGameCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AllBinaryGameCanvas),
+    '$init'(This, AllBinaryGameCanvas),
     This.
 
-init(This, AllBinaryGameCanvas) ->
-    'InputProcessor':init(This),
+'$init'(This, AllBinaryGameCanvas) ->
+    'InputProcessor':'$init'(This),
     init_fields(This),
         put({This, allBinaryGameCanvas}, AllBinaryGameCanvas).
 

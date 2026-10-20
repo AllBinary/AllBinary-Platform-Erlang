@@ -47,10 +47,10 @@ init_fields(This) ->
 new(SearchRequest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SearchRequest),
+    '$init'(This, SearchRequest),
     This.
 
-init(This, SearchRequest) ->
+'$init'(This, SearchRequest) ->
         ok,
         init_fields(This),
         put({This, searchRequest}, SearchRequest).

@@ -38,11 +38,11 @@ getInstance() ->
 new(AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationBehavior),
+    '$init'(This, AnimationBehavior),
     This.
 
-init(This, AnimationBehavior) ->
-        'IndexedAnimation':init(This, AnimationBehavior).
+'$init'(This, AnimationBehavior) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior).
 
 nextFrame(This) ->
         IndexedAnimationBehavior = (get({This, animationBehaviorP})),

@@ -34,10 +34,10 @@ createType(Type) when is_integer(Type) ->
 new(Types) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Types),
+    '$init'(This, Types),
     This.
 
-init(This, Types) ->
+'$init'(This, Types) ->
     init_fields(This),
         Size = (get({Types, '$class'})):size(Types),
         TypeArray = array:new(Size, {default, 0}),

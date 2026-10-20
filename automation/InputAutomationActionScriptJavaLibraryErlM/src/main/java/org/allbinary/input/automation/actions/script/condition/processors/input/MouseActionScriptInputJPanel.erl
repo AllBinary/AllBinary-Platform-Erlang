@@ -56,11 +56,11 @@ init_fields(This) ->
 new(MouseActionScriptInputInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MouseActionScriptInputInterface),
+    '$init'(This, MouseActionScriptInputInterface),
     This.
 
-init(This, MouseActionScriptInputInterface) ->
-    'JPanel':init(This),
+'$init'(This, MouseActionScriptInputInterface) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({'CommonLabels':getInstance(), 'START'}) + MouseActionScriptInputInterface), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         (get({This, '$class'})):initComponents(This),

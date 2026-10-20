@@ -48,11 +48,11 @@ init_fields(This) ->
 new(InputAutomationActionInterface, GenericProfile, MotionRectangleConstraintsInterface, ImageComparatorConstraintsInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputAutomationActionInterface, GenericProfile, MotionRectangleConstraintsInterface, ImageComparatorConstraintsInterface),
+    '$init'(This, InputAutomationActionInterface, GenericProfile, MotionRectangleConstraintsInterface, ImageComparatorConstraintsInterface),
     This.
 
-init(This, InputAutomationActionInterface, GenericProfile, MotionRectangleConstraintsInterface, ImageComparatorConstraintsInterface) ->
-        'AbstractInputAutomationWorker':init(This, InputAutomationActionInterface),
+'$init'(This, InputAutomationActionInterface, GenericProfile, MotionRectangleConstraintsInterface, ImageComparatorConstraintsInterface) ->
+        'AbstractInputAutomationWorker':'$init'(This, InputAutomationActionInterface),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         (get({This, '$class'})):setCaptureWorker(This, 'GenericProfileCaptureWorkerFactory':getInstance(GenericProfile)),

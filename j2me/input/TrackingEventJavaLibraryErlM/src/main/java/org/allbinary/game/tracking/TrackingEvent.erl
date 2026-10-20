@@ -30,11 +30,11 @@ init_fields(This) ->
 new(AllBinaryLayerInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AllBinaryLayerInterface),
+    '$init'(This, AllBinaryLayerInterface),
     This.
 
-init(This, AllBinaryLayerInterface) ->
-        'AllBinaryEventObject':init(This, AllBinaryLayerInterface),
+'$init'(This, AllBinaryLayerInterface) ->
+        'AllBinaryEventObject':'$init'(This, AllBinaryLayerInterface),
         init_fields(This),
         case (AllBinaryLayerInterface =/= 'TrackingEventHandler':getInstance()) of
             true ->

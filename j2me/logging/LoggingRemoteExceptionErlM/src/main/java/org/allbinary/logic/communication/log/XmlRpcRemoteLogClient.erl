@@ -38,11 +38,11 @@ init_fields(This) ->
 new(ClientInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInfo),
+    '$init'(This, ClientInfo),
     This.
 
-init(This, ClientInfo) ->
-        'XmlRpcAbeClient':init(This, ClientInfo, "SSLLogServ.logUtil"),
+'$init'(This, ClientInfo) ->
+        'XmlRpcAbeClient':'$init'(This, ClientInfo, "SSLLogServ.logUtil"),
         init_fields(This).
 
 % throws Exception

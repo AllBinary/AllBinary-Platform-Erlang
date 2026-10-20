@@ -29,11 +29,11 @@ init_fields(This) ->
 new(SearchRequest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SearchRequest),
+    '$init'(This, SearchRequest),
     This.
 
-init(This, SearchRequest) ->
-        'InventorySearch':init(This, SearchRequest).
+'$init'(This, SearchRequest) ->
+        'InventorySearch':'$init'(This, SearchRequest).
 
 isValid(This) ->
         true.

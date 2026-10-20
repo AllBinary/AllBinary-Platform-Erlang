@@ -46,11 +46,11 @@ init_fields(This) ->
 new(ImageComparatorConstraintsInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageComparatorConstraintsInterface),
+    '$init'(This, ImageComparatorConstraintsInterface),
     This.
 
-init(This, ImageComparatorConstraintsInterface) ->
-    'BasicEventHandler':init(This),
+'$init'(This, ImageComparatorConstraintsInterface) ->
+    'BasicEventHandler':'$init'(This),
     init_fields(This),
         put({This, imageComparatorConstraintsInterface}, ImageComparatorConstraintsInterface),
         put({This, imageComparator}, 'ImageComparator':new(ImageComparatorConstraintsInterface)).

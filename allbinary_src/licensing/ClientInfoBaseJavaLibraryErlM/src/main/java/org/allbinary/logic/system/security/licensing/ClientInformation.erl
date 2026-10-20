@@ -45,10 +45,10 @@ init_fields(This) ->
 new(Name, Version, SpecialName, ShortName) when (is_list(Name) orelse Name =:= undefined), (is_list(Version) orelse Version =:= undefined), (is_list(SpecialName) orelse SpecialName =:= undefined), (is_list(ShortName) orelse ShortName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Version, SpecialName, ShortName),
+    '$init'(This, Name, Version, SpecialName, ShortName),
     This.
 
-init(This, Name, Version, SpecialName, ShortName) when (is_list(Name) orelse Name =:= undefined), (is_list(Version) orelse Version =:= undefined), (is_list(SpecialName) orelse SpecialName =:= undefined), (is_list(ShortName) orelse ShortName =:= undefined) ->
+'$init'(This, Name, Version, SpecialName, ShortName) when (is_list(Name) orelse Name =:= undefined), (is_list(Version) orelse Version =:= undefined), (is_list(SpecialName) orelse SpecialName =:= undefined), (is_list(ShortName) orelse ShortName =:= undefined) ->
     init_fields(This),
         put({This, name}, Name),
         put({This, version}, Version),

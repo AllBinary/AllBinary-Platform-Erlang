@@ -36,11 +36,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'RaceTrackGeographicMapCellTypeFactory':init(This),
+'$init'(This) ->
+    'RaceTrackGeographicMapCellTypeFactory':'$init'(This),
     init_fields(This),
         CommonStrings = 'CommonStrings':getInstance(),
         put({This, 'EMPTY_CELL_TYPE'}, 'RaceTrackGeographicMapCellType':new(get({CommonStrings, 'EMPTY'}), 0, get({'PathFindingNodeCostInfoData':getInstance(), 'MAX_NODE_COST'}), 1)),

@@ -44,11 +44,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'TopBarView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'TopBarView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         MultipartRequestHashMap = (fun(Target_N66288) -> (get({Target_N66288, '$class'})):toHashMap(Target_N66288) end)('MultipartRequestParams':new((get({This, '$class'})):getPageContext(This))),
         StoreFrontInterface = 'StoreFrontFactory':getInstance((fun(Target_N66366) -> (get({Target_N66366, '$class'})):getStoreName(Target_N66366) end)((get({This, '$class'})):getWeblisketSession(This))),

@@ -30,10 +30,10 @@ init_fields(This) ->
 new(ImageArray, AngleIncrement, TotalAngle, Dx, Dy) when (is_tuple(ImageArray) orelse ImageArray =:= undefined), is_integer(AngleIncrement), is_integer(TotalAngle), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageArray, AngleIncrement, TotalAngle, Dx, Dy),
+    '$init'(This, ImageArray, AngleIncrement, TotalAngle, Dx, Dy),
     This.
 
-init(This, ImageArray, AngleIncrement, TotalAngle, Dx, Dy) when (is_tuple(ImageArray) orelse ImageArray =:= undefined), is_integer(AngleIncrement), is_integer(TotalAngle), is_integer(Dx), is_integer(Dy) ->
+'$init'(This, ImageArray, AngleIncrement, TotalAngle, Dx, Dy) when (is_tuple(ImageArray) orelse ImageArray =:= undefined), is_integer(AngleIncrement), is_integer(TotalAngle), is_integer(Dx), is_integer(Dy) ->
     init_fields(This),
         put({This, imageArray}, ImageArray),
         put({This, angleIncrement}, AngleIncrement),

@@ -37,11 +37,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'UserView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'UserView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, userName}, (fun(Target_N65982) -> (get({Target_N65982, '$class'})):getUserName(Target_N65982) end)((get({This, '$class'})):getWeblisketSession(This))).
 

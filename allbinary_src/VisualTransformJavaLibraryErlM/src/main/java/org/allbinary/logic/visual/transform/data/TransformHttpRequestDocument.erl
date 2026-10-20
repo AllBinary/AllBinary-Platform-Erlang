@@ -46,10 +46,10 @@ init_fields(This) ->
 new(PageContext, WeblisketSession) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PageContext, WeblisketSession),
+    '$init'(This, PageContext, WeblisketSession),
     This.
 
-init(This, PageContext, WeblisketSession) ->
+'$init'(This, PageContext, WeblisketSession) ->
     init_fields(This),
         try
             ContentType = (fun(Target_N66264) -> (get({Target_N66264, '$class'})):get(Target_N66264, (get({PageContext, '$class'})):getRequest(PageContext)) end)('AcceptableResponseGenerator':getInstance()),
@@ -78,10 +78,10 @@ init(This, PageContext, WeblisketSession) ->
 new(SearchRequest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SearchRequest),
+    '$init'(This, SearchRequest),
     This.
 
-init(This, SearchRequest) ->
+'$init'(This, SearchRequest) ->
     init_fields(This),
         try
             ContentType = (get({SearchRequest, '$class'})):getContentType(SearchRequest),

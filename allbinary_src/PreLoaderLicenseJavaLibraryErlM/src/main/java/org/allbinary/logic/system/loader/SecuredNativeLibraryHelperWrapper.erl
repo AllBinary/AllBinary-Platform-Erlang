@@ -30,11 +30,11 @@ init_fields(This) ->
 new(SecuredNativeLibraryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SecuredNativeLibraryInterface),
+    '$init'(This, SecuredNativeLibraryInterface),
     This.
 
-init(This, SecuredNativeLibraryInterface) ->
-        'NativeLibraryHelperWrapper':init(This, (get({SecuredNativeLibraryInterface, '$class'})):getLibraryName(SecuredNativeLibraryInterface)),
+'$init'(This, SecuredNativeLibraryInterface) ->
+        'NativeLibraryHelperWrapper':'$init'(This, (get({SecuredNativeLibraryInterface, '$class'})):getLibraryName(SecuredNativeLibraryInterface)),
         init_fields(This),
         put({This, securedNativeLibraryInterface}, SecuredNativeLibraryInterface).
 

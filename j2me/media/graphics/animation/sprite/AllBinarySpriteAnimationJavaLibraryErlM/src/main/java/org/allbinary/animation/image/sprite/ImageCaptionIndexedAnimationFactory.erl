@@ -53,10 +53,10 @@ init_fields(This) ->
 new(CaptionImage, SpriteMovieImage, SoundInterface, FrameWidth, FrameHeight, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehaviorFactory) when is_integer(FrameWidth), is_integer(FrameHeight), is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy), is_integer(Time) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CaptionImage, SpriteMovieImage, SoundInterface, FrameWidth, FrameHeight, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehaviorFactory),
+    '$init'(This, CaptionImage, SpriteMovieImage, SoundInterface, FrameWidth, FrameHeight, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehaviorFactory),
     This.
 
-init(This, CaptionImage, SpriteMovieImage, SoundInterface, FrameWidth, FrameHeight, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehaviorFactory) when is_integer(FrameWidth), is_integer(FrameHeight), is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy), is_integer(Time) ->
+'$init'(This, CaptionImage, SpriteMovieImage, SoundInterface, FrameWidth, FrameHeight, CaptionDx, CaptionDy, Dx, Dy, Time, AnimationBehaviorFactory) when is_integer(FrameWidth), is_integer(FrameHeight), is_integer(CaptionDx), is_integer(CaptionDy), is_integer(Dx), is_integer(Dy), is_integer(Time) ->
     init_fields(This),
         case (AnimationBehaviorFactory =:= 'AnimationBehaviorFactory':getInstance()) of
             true ->

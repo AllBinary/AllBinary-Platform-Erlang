@@ -94,11 +94,11 @@ getNullScrollSelectionFormHorizontal() ->
 new(Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border), is_integer(AdjustedExtraBorder) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border), is_integer(AdjustedExtraBorder) ->
-        'PaintableForm':init(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border), is_integer(AdjustedExtraBorder) ->
+        'PaintableForm':'$init'(This, Title, Items, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This),
         put({This, adjustedExtraBorder}, AdjustedExtraBorder),
         put({This, buttonBasicColor}, ForegroundBasicColor),

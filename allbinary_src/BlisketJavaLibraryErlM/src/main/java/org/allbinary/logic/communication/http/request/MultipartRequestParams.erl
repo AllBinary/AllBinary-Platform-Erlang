@@ -38,20 +38,20 @@ init_fields(This) ->
 new(Request) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Request),
+    '$init'(This, Request),
     This;
 new(PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PageContext),
+    '$init'(This, PageContext),
     This.
 
-init(This, Request) ->
-        'RequestParams':init(This),
+'$init'(This, Request) ->
+        'RequestParams':'$init'(This),
         init_fields(This),
         (get({This, '$class'})):processMultipartRequest(This, Request);
-init(This, PageContext) ->
-        'RequestParams':init(This),
+'$init'(This, PageContext) ->
+        'RequestParams':'$init'(This),
         init_fields(This),
         (get({This, '$class'})):processMultipartRequest(This, (get({PageContext, '$class'})):getRequest(PageContext)).
 

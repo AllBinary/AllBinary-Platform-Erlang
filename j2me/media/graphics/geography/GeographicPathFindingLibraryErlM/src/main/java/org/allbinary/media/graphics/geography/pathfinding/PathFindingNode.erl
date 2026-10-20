@@ -31,10 +31,10 @@ init_fields(This) ->
 new(Parent, GeographicMapCellPosition) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Parent, GeographicMapCellPosition),
+    '$init'(This, Parent, GeographicMapCellPosition),
     This.
 
-init(This, Parent, GeographicMapCellPosition) ->
+'$init'(This, Parent, GeographicMapCellPosition) ->
     init_fields(This),
         put({This, parent}, Parent),
         (get({This, '$class'})):setGeographicMapCellPositionP(This, GeographicMapCellPosition),

@@ -55,11 +55,11 @@ init_fields(This) ->
 new(LayoutIndex, InstanceId, ScaleProperties, AnimationInterfaceFactoryInterface, AnimationBehavior) when is_integer(LayoutIndex), is_integer(InstanceId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayoutIndex, InstanceId, ScaleProperties, AnimationInterfaceFactoryInterface, AnimationBehavior),
+    '$init'(This, LayoutIndex, InstanceId, ScaleProperties, AnimationInterfaceFactoryInterface, AnimationBehavior),
     This.
 
-init(This, LayoutIndex, InstanceId, ScaleProperties, AnimationInterfaceFactoryInterface, AnimationBehavior) when is_integer(LayoutIndex), is_integer(InstanceId) ->
-        'RotationAnimation':init(This, 'AngleInfo':getInstance(get({'AngleFactory':getInstance(), 'QUARTER_TOTAL_ANGLE'})), 'CircularIndexUtil':createInstance(4), AnimationBehavior),
+'$init'(This, LayoutIndex, InstanceId, ScaleProperties, AnimationInterfaceFactoryInterface, AnimationBehavior) when is_integer(LayoutIndex), is_integer(InstanceId) ->
+        'RotationAnimation':'$init'(This, 'AngleInfo':getInstance(get({'AngleFactory':getInstance(), 'QUARTER_TOTAL_ANGLE'})), 'CircularIndexUtil':createInstance(4), AnimationBehavior),
         init_fields(This),
         put({This, layoutIndex}, LayoutIndex),
         put({This, instanceId}, InstanceId),

@@ -52,10 +52,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         MAX = get({'InputFactory':getInstance(), 'MAX'}),
         put({This, 'LEFT'}, 'MotionGestureInput':new((MAX - 3), "Left Touch")),

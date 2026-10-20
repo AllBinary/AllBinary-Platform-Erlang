@@ -33,11 +33,11 @@ init_fields(This) ->
 new(Key, Name) when is_integer(Key), (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Key, Name),
+    '$init'(This, Key, Name),
     This.
 
-init(This, Key, Name) when is_integer(Key), (is_list(Name) orelse Name =:= undefined) ->
-        'Input':init(This, Key, Name).
+'$init'(This, Key, Name) when is_integer(Key), (is_list(Name) orelse Name =:= undefined) ->
+        'Input':'$init'(This, Key, Name).
 
 toString(This) ->
         (fun(Target_N65841) -> (get({Target_N65841, '$class'})):toString(Target_N65841) end)((fun(Target_N65848) -> (get({Target_N65848, '$class'})):append(Target_N65848, 'Input':toString(This)) end)((fun(Target_N65855) -> (get({Target_N65855, '$class'})):append(Target_N65855, "GameKey ") end)('StringMaker':new()))).

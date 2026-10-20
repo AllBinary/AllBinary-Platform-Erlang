@@ -30,10 +30,10 @@ init_fields(This) ->
 new(ServiceReference) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ServiceReference),
+    '$init'(This, ServiceReference),
     This.
 
-init(This, ServiceReference) ->
+'$init'(This, ServiceReference) ->
     init_fields(This),
         put({This, serviceReference}, ServiceReference).
 

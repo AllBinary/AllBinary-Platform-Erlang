@@ -37,11 +37,11 @@ init_fields(This) ->
 new(MotionRectangles) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MotionRectangles),
+    '$init'(This, MotionRectangles),
     This.
 
-init(This, MotionRectangles) ->
-        'MotionRectangles':init(This, get({'ConsolidateMotionRectangles', 'NAME'}), (get({MotionRectangles, '$class'})):getImageComparisonResult(MotionRectangles)),
+'$init'(This, MotionRectangles) ->
+        'MotionRectangles':'$init'(This, get({'ConsolidateMotionRectangles', 'NAME'}), (get({MotionRectangles, '$class'})):getImageComparisonResult(MotionRectangles)),
         init_fields(This),
         Vector = (get({MotionRectangles, '$class'})):getVector(MotionRectangles),
         Size = (get({Vector, '$class'})):size(Vector),

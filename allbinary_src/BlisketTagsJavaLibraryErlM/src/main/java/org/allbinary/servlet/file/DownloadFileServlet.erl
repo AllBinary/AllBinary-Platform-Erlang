@@ -50,11 +50,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'HttpServlet':init(This),
+'$init'(This) ->
+    'HttpServlet':'$init'(This),
     init_fields(This).
 
 

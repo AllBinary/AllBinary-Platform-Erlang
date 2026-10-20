@@ -46,10 +46,10 @@ init_fields(This) ->
 new(MusicServiceClass, SongList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MusicServiceClass, SongList),
+    '$init'(This, MusicServiceClass, SongList),
     This.
 
-init(This, MusicServiceClass, SongList) ->
+'$init'(This, MusicServiceClass, SongList) ->
     init_fields(This),
         'PreLogUtil':put((get({get({This, commonStateStrings}), 'CONTEXT'}) + (get({get({This, resourceUtil}), '$class'})):getContext(get({This, resourceUtil}))), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, musicServiceClass}, MusicServiceClass),

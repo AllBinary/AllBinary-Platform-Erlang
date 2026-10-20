@@ -38,11 +38,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'BasicQueue':init(This),
+'$init'(This) ->
+    'BasicQueue':'$init'(This),
     init_fields(This),
         ok.
 

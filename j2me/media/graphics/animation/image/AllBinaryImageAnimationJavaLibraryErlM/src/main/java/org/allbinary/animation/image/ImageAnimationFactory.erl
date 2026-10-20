@@ -35,11 +35,11 @@ createFactory(Image) ->
 new(Image, Width, Height, Dx, Dy, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, Width, Height, Dx, Dy, AnimationBehaviorFactory),
+    '$init'(This, Image, Width, Height, Dx, Dy, AnimationBehaviorFactory),
     This.
 
-init(This, Image, Width, Height, Dx, Dy, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy) ->
-        'BaseImageAnimationFactory':init(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, Dx, Dy, AnimationBehaviorFactory).
+'$init'(This, Image, Width, Height, Dx, Dy, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy) ->
+        'BaseImageAnimationFactory':'$init'(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, Dx, Dy, AnimationBehaviorFactory).
 
 % throws Exception
 getInstance(This, InstanceId) when is_integer(InstanceId) ->

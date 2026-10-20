@@ -57,11 +57,11 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
-        'BasicProfileActionScriptCondition':init(This, get({'ColorAtActionScriptCondition', 'NAME'}), Node),
+'$init'(This, Node) ->
+        'BasicProfileActionScriptCondition':'$init'(This, get({'ColorAtActionScriptCondition', 'NAME'}), Node),
         init_fields(This),
         put({This, point}, 'Point':new(0, 0)),
         ActionNode = 'DomSearchHelper':getNode(get({'ColorAtActionScriptConditionData', 'NAME'}), (get({Node, '$class'})):getChildNodes(Node)),
@@ -127,11 +127,11 @@ init(This, Node) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'BasicProfileActionScriptCondition':init(This, get({'ColorAtActionScriptCondition', 'NAME'})),
+'$init'(This) ->
+        'BasicProfileActionScriptCondition':'$init'(This, get({'ColorAtActionScriptCondition', 'NAME'})),
         init_fields(This),
         put({This, point}, 'Point':new(0, 0)),
         (get({This, '$class'})):init(This).

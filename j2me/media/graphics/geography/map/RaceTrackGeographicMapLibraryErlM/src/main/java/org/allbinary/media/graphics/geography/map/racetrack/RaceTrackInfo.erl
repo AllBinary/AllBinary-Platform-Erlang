@@ -32,10 +32,10 @@ init_fields(This) ->
 new(Id, Name, RaceTrackFrictionProperties, ForegroundBasicColor, BackgroundBasicColor, QualifyTime, WorstContinuePosition, TotalLaps) when (is_list(Name) orelse Name =:= undefined), is_integer(QualifyTime), is_integer(WorstContinuePosition), is_integer(TotalLaps) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Id, Name, RaceTrackFrictionProperties, ForegroundBasicColor, BackgroundBasicColor, QualifyTime, WorstContinuePosition, TotalLaps),
+    '$init'(This, Id, Name, RaceTrackFrictionProperties, ForegroundBasicColor, BackgroundBasicColor, QualifyTime, WorstContinuePosition, TotalLaps),
     This.
 
-init(This, Id, Name, RaceTrackFrictionProperties, ForegroundBasicColor, BackgroundBasicColor, QualifyTime, WorstContinuePosition, TotalLaps) when (is_list(Name) orelse Name =:= undefined), is_integer(QualifyTime), is_integer(WorstContinuePosition), is_integer(TotalLaps) ->
+'$init'(This, Id, Name, RaceTrackFrictionProperties, ForegroundBasicColor, BackgroundBasicColor, QualifyTime, WorstContinuePosition, TotalLaps) when (is_list(Name) orelse Name =:= undefined), is_integer(QualifyTime), is_integer(WorstContinuePosition), is_integer(TotalLaps) ->
     init_fields(This),
         put({This, id}, Id),
         put({This, name}, Name),

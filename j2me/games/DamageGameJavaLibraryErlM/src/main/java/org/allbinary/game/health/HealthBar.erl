@@ -33,11 +33,11 @@ init_fields(This) ->
 new(LayerInterface, HealthInterface, AnimationInterface, Direction) when is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerInterface, HealthInterface, AnimationInterface, Direction),
+    '$init'(This, LayerInterface, HealthInterface, AnimationInterface, Direction),
     This.
 
-init(This, LayerInterface, HealthInterface, AnimationInterface, Direction) when is_integer(Direction) ->
-    'Paintable':init(This),
+'$init'(This, LayerInterface, HealthInterface, AnimationInterface, Direction) when is_integer(Direction) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, allbinaryLayer}, LayerInterface),
         put({This, animationInterface}, AnimationInterface),

@@ -31,11 +31,11 @@ init_fields(This) ->
 new(PickeUpLayerType, IconLayer, AnimationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PickeUpLayerType, IconLayer, AnimationInterface),
+    '$init'(This, PickeUpLayerType, IconLayer, AnimationInterface),
     This.
 
-init(This, PickeUpLayerType, IconLayer, AnimationInterface) ->
-    'PickedUpLayerInterfaceFactoryBase':init(This),
+'$init'(This, PickeUpLayerType, IconLayer, AnimationInterface) ->
+    'PickedUpLayerInterfaceFactoryBase':'$init'(This),
     init_fields(This),
         put({This, pickedUpLayerType}, PickeUpLayerType),
         put({This, animationInterface}, AnimationInterface),

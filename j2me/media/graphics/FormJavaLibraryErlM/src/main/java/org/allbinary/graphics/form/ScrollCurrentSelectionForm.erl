@@ -43,11 +43,11 @@ init_fields(This) ->
 new(Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border), is_integer(AdjustedExtraBorder), is_boolean(MoveForSmallScreen) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border), is_integer(AdjustedExtraBorder), is_boolean(MoveForSmallScreen) ->
-        'ScrollSelectionForm':init(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, MoveForSmallScreen, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined), (is_tuple(Items) orelse Items =:= undefined), is_integer(Border), is_integer(AdjustedExtraBorder), is_boolean(MoveForSmallScreen) ->
+        'ScrollSelectionForm':'$init'(This, Title, Items, FormPaintableFactory, Border, AdjustedExtraBorder, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This),
         put({This, moveForSmallScreen}, MoveForSmallScreen).
 

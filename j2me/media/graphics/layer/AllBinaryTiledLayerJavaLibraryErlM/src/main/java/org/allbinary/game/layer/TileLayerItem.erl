@@ -33,11 +33,11 @@ init_fields(This) ->
 new(Label, TiledLayer, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Label, TiledLayer, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Label, TiledLayer, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Label, TiledLayer, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
-        'ABCustomItem':init(This, Label, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Label, TiledLayer, Layout, AltText, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Label) orelse Label =:= undefined), is_integer(Layout), (is_list(AltText) orelse AltText =:= undefined) ->
+        'ABCustomItem':'$init'(This, Label, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This),
         put({This, tiledLayer}, TiledLayer).
 

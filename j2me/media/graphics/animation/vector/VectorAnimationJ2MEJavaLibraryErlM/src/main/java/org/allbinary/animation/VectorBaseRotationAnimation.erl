@@ -34,11 +34,11 @@ init_fields(This) ->
 new(AngleInfo, CurrentPoints, BasicColor, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AngleInfo, CurrentPoints, BasicColor, AnimationBehavior),
+    '$init'(This, AngleInfo, CurrentPoints, BasicColor, AnimationBehavior),
     This.
 
-init(This, AngleInfo, CurrentPoints, BasicColor, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
-        'RotationAnimation':init(This, AngleInfo, 'CircularIndexUtil':createInstance((360 / (fun(Target_N65872) -> (get({Target_N65872, '$class'})):getAngleIncrement(Target_N65872) end)((get({AngleInfo, '$class'})):getAngleIncrementInfo(AngleInfo)))), AnimationBehavior),
+'$init'(This, AngleInfo, CurrentPoints, BasicColor, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
+        'RotationAnimation':'$init'(This, AngleInfo, 'CircularIndexUtil':createInstance((360 / (fun(Target_N65872) -> (get({Target_N65872, '$class'})):getAngleIncrement(Target_N65872) end)((get({AngleInfo, '$class'})):getAngleIncrementInfo(AngleInfo)))), AnimationBehavior),
         init_fields(This),
         (get({This, '$class'})):setPoints(This, CurrentPoints),
         (get({This, '$class'})):setBasicColorP(This, BasicColor).

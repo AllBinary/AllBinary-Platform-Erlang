@@ -30,10 +30,10 @@ init_fields(This) ->
 new(SpecialMessage, AnyType, FunctionName, Exception) when (is_list(SpecialMessage) orelse SpecialMessage =:= undefined), (is_list(FunctionName) orelse FunctionName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SpecialMessage, AnyType, FunctionName, Exception),
+    '$init'(This, SpecialMessage, AnyType, FunctionName, Exception),
     This.
 
-init(This, SpecialMessage, AnyType, FunctionName, Exception) when (is_list(SpecialMessage) orelse SpecialMessage =:= undefined), (is_list(FunctionName) orelse FunctionName =:= undefined) ->
+'$init'(This, SpecialMessage, AnyType, FunctionName, Exception) when (is_list(SpecialMessage) orelse SpecialMessage =:= undefined), (is_list(FunctionName) orelse FunctionName =:= undefined) ->
     init_fields(This),
         put({This, specialMessage}, SpecialMessage),
         put({This, anyType}, AnyType),

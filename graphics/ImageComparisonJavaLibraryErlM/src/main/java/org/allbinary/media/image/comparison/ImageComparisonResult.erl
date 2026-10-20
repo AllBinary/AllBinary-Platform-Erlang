@@ -47,10 +47,10 @@ init_fields(This) ->
 new(Name, BufferedImage, BufferedImage2, FrameOne, FrameTwo, Tolerance) when (is_list(Name) orelse Name =:= undefined), is_integer(Tolerance) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, BufferedImage, BufferedImage2, FrameOne, FrameTwo, Tolerance),
+    '$init'(This, Name, BufferedImage, BufferedImage2, FrameOne, FrameTwo, Tolerance),
     This.
 
-init(This, Name, BufferedImage, BufferedImage2, FrameOne, FrameTwo, Tolerance) when (is_list(Name) orelse Name =:= undefined), is_integer(Tolerance) ->
+'$init'(This, Name, BufferedImage, BufferedImage2, FrameOne, FrameTwo, Tolerance) when (is_list(Name) orelse Name =:= undefined), is_integer(Tolerance) ->
     init_fields(This),
         put({This, name}, Name),
         put({This, nonMatchingPixelVector}, 'BasicArrayListD':new()),

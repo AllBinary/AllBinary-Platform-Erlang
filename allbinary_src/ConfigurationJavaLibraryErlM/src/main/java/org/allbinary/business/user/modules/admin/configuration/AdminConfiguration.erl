@@ -39,10 +39,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, contextConfigurationInterface}, (fun(Target_N66227) -> (get({Target_N66227, '$class'})):getInstance(Target_N66227, get({'AdminConfigurationData', 'CONTEXTNAME'})) end)('ContextConfigurationInterfaceFactory':getInstance())).
@@ -50,19 +50,19 @@ init(This) ->
 new(Request) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Request),
+    '$init'(This, Request),
     This;
 new(StoreHashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreHashMap),
+    '$init'(This, StoreHashMap),
     This.
 
-init(This, Request) ->
+'$init'(This, Request) ->
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         (get({This, '$class'})):getFormData(This, (fun(Target_N66387) -> (get({Target_N66387, '$class'})):toHashMap(Target_N66387) end)('RequestParams':new(Request)));
-init(This, StoreHashMap) ->
+'$init'(This, StoreHashMap) ->
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         (get({This, '$class'})):getFormData(This, StoreHashMap).

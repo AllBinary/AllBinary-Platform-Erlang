@@ -27,11 +27,11 @@ init_fields(This) ->
 new(MagnitudeBasicDecimal, Direction) when is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MagnitudeBasicDecimal, Direction),
+    '$init'(This, MagnitudeBasicDecimal, Direction),
     This.
 
-init(This, MagnitudeBasicDecimal, Direction) when is_integer(Direction) ->
-        'MathVector':init(This, MagnitudeBasicDecimal, Direction),
+'$init'(This, MagnitudeBasicDecimal, Direction) when is_integer(Direction) ->
+        'MathVector':'$init'(This, MagnitudeBasicDecimal, Direction),
         (get({This, '$class'})):calculate(This).
 
 calculate(This) ->

@@ -37,11 +37,11 @@ init_fields(This) ->
 new(GameKeyEventList, PlayerInputId, GameCanvas) when is_integer(PlayerInputId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameKeyEventList, PlayerInputId, GameCanvas),
+    '$init'(This, GameKeyEventList, PlayerInputId, GameCanvas),
     This.
 
-init(This, GameKeyEventList, PlayerInputId, GameCanvas) when is_integer(PlayerInputId) ->
-        'PlayerGameInput':init(This, GameKeyEventList, 'BasicArrayListD':new(), PlayerInputId),
+'$init'(This, GameKeyEventList, PlayerInputId, GameCanvas) when is_integer(PlayerInputId) ->
+        'PlayerGameInput':'$init'(This, GameKeyEventList, 'BasicArrayListD':new(), PlayerInputId),
         init_fields(This),
         put({This, canvas}, GameCanvas).
 

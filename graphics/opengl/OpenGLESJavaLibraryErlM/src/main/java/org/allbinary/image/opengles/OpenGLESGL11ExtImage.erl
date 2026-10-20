@@ -40,11 +40,11 @@ init_fields(This) ->
 new(Image, BitmapFactory, TextureFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, BitmapFactory, TextureFactory),
+    '$init'(This, Image, BitmapFactory, TextureFactory),
     This.
 
-init(This, Image, BitmapFactory, TextureFactory) ->
-        'OpenGLESImage':init(This, Image, BitmapFactory, TextureFactory),
+'$init'(This, Image, BitmapFactory, TextureFactory) ->
+        'OpenGLESImage':'$init'(This, Image, BitmapFactory, TextureFactory),
         init_fields(This),
         (get({This, '$class'})):onDisplayChangeEvent(This, get({'DisplayInfoSingleton':getInstance(), displayChangeEvent})),
         put({This, rectangle}, array:from_list([0, (get({This, '$class'})):getHeight(This), (get({This, '$class'})):getWidth(This), (-(get({This, '$class'})):getHeight(This))])).

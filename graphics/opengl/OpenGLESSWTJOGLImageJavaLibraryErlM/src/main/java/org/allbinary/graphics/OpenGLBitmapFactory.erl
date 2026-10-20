@@ -25,11 +25,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'PlatformBitmapBaseFactory':init(This),
+'$init'(This) ->
+    'PlatformBitmapBaseFactory':'$init'(This),
     init_fields(This).
 
 

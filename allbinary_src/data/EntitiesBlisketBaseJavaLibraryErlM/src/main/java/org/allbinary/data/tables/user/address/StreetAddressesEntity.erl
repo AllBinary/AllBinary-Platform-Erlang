@@ -44,21 +44,21 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbSqlBean':init(This, 'UserDbInitInfo':new()),
+'$init'(This) ->
+        'AbSqlBean':'$init'(This, 'UserDbInitInfo':new()),
         init_fields(This).
 
 new(UserName) when (is_list(UserName) orelse UserName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UserName),
+    '$init'(This, UserName),
     This.
 
-init(This, UserName) when (is_list(UserName) orelse UserName =:= undefined) ->
-        'AbSqlBean':init(This, 'UserDbInitInfo':new()),
+'$init'(This, UserName) when (is_list(UserName) orelse UserName =:= undefined) ->
+        'AbSqlBean':'$init'(This, 'UserDbInitInfo':new()),
         init_fields(This),
         put({This, userName}, UserName).
 

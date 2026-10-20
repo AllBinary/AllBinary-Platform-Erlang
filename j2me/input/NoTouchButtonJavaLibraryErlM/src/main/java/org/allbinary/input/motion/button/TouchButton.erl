@@ -50,11 +50,11 @@ init_fields(This) ->
 new(TouchButtonInput, AnimationInterface, RawRectangle, CellPosition, XBorder, YBorder) when is_integer(XBorder), is_integer(YBorder) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TouchButtonInput, AnimationInterface, RawRectangle, CellPosition, XBorder, YBorder),
+    '$init'(This, TouchButtonInput, AnimationInterface, RawRectangle, CellPosition, XBorder, YBorder),
     This.
 
-init(This, TouchButtonInput, AnimationInterface, RawRectangle, CellPosition, XBorder, YBorder) when is_integer(XBorder), is_integer(YBorder) ->
-    'Paintable':init(This),
+'$init'(This, TouchButtonInput, AnimationInterface, RawRectangle, CellPosition, XBorder, YBorder) when is_integer(XBorder), is_integer(YBorder) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, touchButtonInput}, TouchButtonInput),
         put({This, animationInterface}, AnimationInterface),

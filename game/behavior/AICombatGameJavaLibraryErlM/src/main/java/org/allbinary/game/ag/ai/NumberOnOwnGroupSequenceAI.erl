@@ -33,11 +33,11 @@ init_fields(This) ->
 new(NumberOnSameTeam, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput) when (is_tuple(NumberOnSameTeam) orelse NumberOnSameTeam =:= undefined), (is_tuple(ArtificialIntelligenceInterface) orelse ArtificialIntelligenceInterface =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, NumberOnSameTeam, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
+    '$init'(This, NumberOnSameTeam, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
     This.
 
-init(This, NumberOnSameTeam, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput) when (is_tuple(NumberOnSameTeam) orelse NumberOnSameTeam =:= undefined), (is_tuple(ArtificialIntelligenceInterface) orelse ArtificialIntelligenceInterface =:= undefined) ->
-        'SequenceAI':init(This, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
+'$init'(This, NumberOnSameTeam, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput) when (is_tuple(NumberOnSameTeam) orelse NumberOnSameTeam =:= undefined), (is_tuple(ArtificialIntelligenceInterface) orelse ArtificialIntelligenceInterface =:= undefined) ->
+        'SequenceAI':'$init'(This, ArtificialIntelligenceInterface, OwnerLayerInterface, GameInput),
         init_fields(This),
         put({This, numberOnSameTeam}, NumberOnSameTeam).
 

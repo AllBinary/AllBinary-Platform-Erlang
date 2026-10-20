@@ -33,10 +33,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, userEmailConfigurationInterface}, 'UserEmailConfiguration':new()),
         put({This, timeCreated}, 'TimeCreated':new(0)),
@@ -45,10 +45,10 @@ init(This) ->
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         put({This, userEmailConfigurationInterface}, 'UserEmailConfiguration':new(HashMap)),
         put({This, timeCreated}, 'TimeCreated':new((get({HashMap, '$class'})):get(HashMap, get({'EntryData':getInstance(), 'TIMECREATED'})))),

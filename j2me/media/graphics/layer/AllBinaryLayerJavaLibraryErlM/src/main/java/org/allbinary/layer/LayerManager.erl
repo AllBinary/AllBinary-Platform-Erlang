@@ -26,10 +26,10 @@ init_fields(This) ->
 new(LayerManagerLogging) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerManagerLogging),
+    '$init'(This, LayerManagerLogging),
     This.
 
-init(This, LayerManagerLogging) ->
+'$init'(This, LayerManagerLogging) ->
     init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, layerManagerLogging}, LayerManagerLogging).

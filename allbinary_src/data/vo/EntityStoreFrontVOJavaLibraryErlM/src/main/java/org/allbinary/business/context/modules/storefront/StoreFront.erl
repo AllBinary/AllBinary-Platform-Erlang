@@ -102,25 +102,25 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, contextConfigurationInterface}, 'ContextConfiguration':new()).
 
 new(Request) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Request),
+    '$init'(This, Request),
     This;
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, Request) ->
+'$init'(This, Request) ->
     init_fields(This),
         (get({This, '$class'})):getFormData(This, (fun(Target_N68648) -> (get({Target_N68648, '$class'})):toHashMap(Target_N68648) end)('RequestParams':new(Request))),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'EMAILLOGGING'})) of
@@ -129,7 +129,7 @@ init(This, Request) ->
             false -> ok
         end,
         (get({This, '$class'})):setContextConfigurationInterface(This, (fun(Target_N68908) -> (get({Target_N68908, '$class'})):getInstance(Target_N68908, "Admin") end)('ContextConfigurationInterfaceFactory':getInstance()));
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         (get({This, '$class'})):getFormData(This, HashMap),
         DomDocumentString = (get({HashMap, '$class'})):get(HashMap, get({'StoreFrontData':getInstance(), 'CONFIGURATION'})),

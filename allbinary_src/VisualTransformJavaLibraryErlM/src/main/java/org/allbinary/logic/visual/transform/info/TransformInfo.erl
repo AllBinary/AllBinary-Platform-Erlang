@@ -70,30 +70,30 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         ok.
 
 new(Name) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name),
+    '$init'(This, Name),
     This.
 
-init(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, Name).
 
 new(Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName) when (is_list(Name) orelse Name =:= undefined), (is_list(ObjectFileName) orelse ObjectFileName =:= undefined), (is_list(ObjectConfigFileName) orelse ObjectConfigFileName =:= undefined), (is_list(TemplateFileName) orelse TemplateFileName =:= undefined), (is_list(DataFileName) orelse DataFileName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName),
+    '$init'(This, Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName),
     This.
 
-init(This, Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName) when (is_list(Name) orelse Name =:= undefined), (is_list(ObjectFileName) orelse ObjectFileName =:= undefined), (is_list(ObjectConfigFileName) orelse ObjectConfigFileName =:= undefined), (is_list(TemplateFileName) orelse TemplateFileName =:= undefined), (is_list(DataFileName) orelse DataFileName =:= undefined) ->
+'$init'(This, Name, ObjectFileName, ObjectConfigFileName, TemplateFileName, DataFileName) when (is_list(Name) orelse Name =:= undefined), (is_list(ObjectFileName) orelse ObjectFileName =:= undefined), (is_list(ObjectConfigFileName) orelse ObjectConfigFileName =:= undefined), (is_list(TemplateFileName) orelse TemplateFileName =:= undefined), (is_list(DataFileName) orelse DataFileName =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setName(This, Name),
         (get({This, '$class'})):setObjectFile(This, ObjectFileName),

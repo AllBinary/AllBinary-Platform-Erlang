@@ -56,11 +56,11 @@ init_fields(This) ->
 new(GeographicMapInterface, ViewPosition) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GeographicMapInterface, ViewPosition),
+    '$init'(This, GeographicMapInterface, ViewPosition),
     This.
 
-init(This, GeographicMapInterface, ViewPosition) ->
-        'AllBinaryLayer':init(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 'Rectangle':new((fun(Target_N66610) -> (get({Target_N66610, '$class'})):createXY(Target_N66610, 0, (get({ViewPosition, '$class'})):getY(ViewPosition)) end)('PointFactory':getInstance()), (fun(Target_N66657) -> (get({Target_N66657, '$class'})):getWidth(Target_N66657) end)((get({GeographicMapInterface, '$class'})):getAllBinaryTiledLayer(GeographicMapInterface)), (fun(Target_N66681) -> (get({Target_N66681, '$class'})):getHeight(Target_N66681) end)((get({GeographicMapInterface, '$class'})):getAllBinaryTiledLayer(GeographicMapInterface))), ViewPosition),
+'$init'(This, GeographicMapInterface, ViewPosition) ->
+        'AllBinaryLayer':'$init'(This, get({'StringUtil':getInstance(), 'EMPTY_STRING'}), 'Rectangle':new((fun(Target_N66610) -> (get({Target_N66610, '$class'})):createXY(Target_N66610, 0, (get({ViewPosition, '$class'})):getY(ViewPosition)) end)('PointFactory':getInstance()), (fun(Target_N66657) -> (get({Target_N66657, '$class'})):getWidth(Target_N66657) end)((get({GeographicMapInterface, '$class'})):getAllBinaryTiledLayer(GeographicMapInterface)), (fun(Target_N66681) -> (get({Target_N66681, '$class'})):getHeight(Target_N66681) end)((get({GeographicMapInterface, '$class'})):getAllBinaryTiledLayer(GeographicMapInterface))), ViewPosition),
         init_fields(This),
         put({This, allBinaryTiledLayer}, (get({GeographicMapInterface, '$class'})):getAllBinaryTiledLayer(GeographicMapInterface)),
         put({This, geographicMapCellPositionFactory}, (get({GeographicMapInterface, '$class'})):getGeographicMapCellPositionFactory(GeographicMapInterface)),

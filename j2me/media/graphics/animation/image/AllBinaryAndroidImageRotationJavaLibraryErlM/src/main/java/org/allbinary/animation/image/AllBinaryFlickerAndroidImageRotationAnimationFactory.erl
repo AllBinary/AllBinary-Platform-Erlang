@@ -37,10 +37,10 @@ init_fields(This) ->
 new(Image, Width, Height, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory),
+    '$init'(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory),
     This.
 
-init(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement) ->
+'$init'(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement) ->
     init_fields(This),
         (get({This, '$class'})):setImage(This, Image),
         put({This, angleIncrement}, AngleIncrement),

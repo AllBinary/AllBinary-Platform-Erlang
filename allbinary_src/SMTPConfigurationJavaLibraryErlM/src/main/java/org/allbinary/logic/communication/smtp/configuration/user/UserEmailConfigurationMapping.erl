@@ -30,10 +30,10 @@ init_fields(This) ->
 new(UserEmailConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UserEmailConfigurationInterface),
+    '$init'(This, UserEmailConfigurationInterface),
     This.
 
-init(This, UserEmailConfigurationInterface) ->
+'$init'(This, UserEmailConfigurationInterface) ->
     init_fields(This),
         put({This, userEmailConfigurationInterface}, UserEmailConfigurationInterface).
 

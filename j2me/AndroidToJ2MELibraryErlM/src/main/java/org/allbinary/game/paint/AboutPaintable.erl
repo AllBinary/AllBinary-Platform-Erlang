@@ -50,11 +50,11 @@ getInstance(Info, Developers) when (is_tuple(Info) orelse Info =:= undefined), (
 new(Info, Developers) when (is_tuple(Info) orelse Info =:= undefined), (is_tuple(Developers) orelse Developers =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Info, Developers),
+    '$init'(This, Info, Developers),
     This.
 
-init(This, Info, Developers) when (is_tuple(Info) orelse Info =:= undefined), (is_tuple(Developers) orelse Developers =:= undefined) ->
-    'Paintable':init(This),
+'$init'(This, Info, Developers) when (is_tuple(Info) orelse Info =:= undefined), (is_tuple(Developers) orelse Developers =:= undefined) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, info}, Info),
         put({This, infoBeginWidth}, array:new(array:size(get({This, info})), {default, 0})),

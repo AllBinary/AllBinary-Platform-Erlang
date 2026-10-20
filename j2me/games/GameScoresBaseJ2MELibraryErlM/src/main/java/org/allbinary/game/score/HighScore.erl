@@ -33,10 +33,10 @@ init_fields(This) ->
 new(Id, Name, GameInfo, Score) when is_integer(Id), (is_list(Name) orelse Name =:= undefined), is_integer(Score) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Id, Name, GameInfo, Score),
+    '$init'(This, Id, Name, GameInfo, Score),
     This.
 
-init(This, Id, Name, GameInfo, Score) when is_integer(Id), (is_list(Name) orelse Name =:= undefined), is_integer(Score) ->
+'$init'(This, Id, Name, GameInfo, Score) when is_integer(Id), (is_list(Name) orelse Name =:= undefined), is_integer(Score) ->
     init_fields(This),
         put({This, id}, Id),
         put({This, name}, Name),

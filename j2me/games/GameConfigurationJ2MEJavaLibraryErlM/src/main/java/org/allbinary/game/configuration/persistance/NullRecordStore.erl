@@ -31,11 +31,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'RecordStore':init(This),
+'$init'(This) ->
+    'RecordStore':'$init'(This),
     init_fields(This).
 
 

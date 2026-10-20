@@ -35,11 +35,11 @@ init_fields(This) ->
 new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, PageContext),
+    '$init'(This, HashMap, PageContext),
     This.
 
-init(This, HashMap, PageContext) ->
-    'BasicTable':init(This),
+'$init'(This, HashMap, PageContext) ->
+    'BasicTable':'$init'(This),
     init_fields(This),
         put({This, portion}, 'Portion':new(HashMap)).
 

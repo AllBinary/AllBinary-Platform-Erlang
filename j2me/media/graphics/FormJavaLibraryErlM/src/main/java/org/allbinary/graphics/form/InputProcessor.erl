@@ -29,11 +29,11 @@ init_fields(This) ->
 new(PlayerGameInputCompositeInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PlayerGameInputCompositeInterface),
+    '$init'(This, PlayerGameInputCompositeInterface),
     This.
 
-init(This, PlayerGameInputCompositeInterface) ->
-    'Processor':init(This),
+'$init'(This, PlayerGameInputCompositeInterface) ->
+    'Processor':'$init'(This),
     init_fields(This),
         put({This, playerGameInputCompositeInterface}, PlayerGameInputCompositeInterface).
 

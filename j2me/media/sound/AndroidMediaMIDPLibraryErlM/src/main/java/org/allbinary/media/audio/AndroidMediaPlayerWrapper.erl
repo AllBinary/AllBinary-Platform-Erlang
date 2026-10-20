@@ -50,11 +50,11 @@ createPlayerWrapper() ->
 new(Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Resource),
+    '$init'(This, Resource),
     This.
 
-init(This, Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
-    'BasicPlayer':init(This),
+'$init'(This, Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
+    'BasicPlayer':'$init'(This),
     init_fields(This),
         try
             case (Resource =:= get({'StringUtil':getInstance(), 'EMPTY_STRING'})) of

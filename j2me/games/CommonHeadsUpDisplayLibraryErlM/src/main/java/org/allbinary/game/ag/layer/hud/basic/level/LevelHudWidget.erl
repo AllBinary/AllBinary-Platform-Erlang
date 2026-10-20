@@ -45,11 +45,11 @@ createHud(Maxlevel, Location, Direction) when is_integer(Maxlevel), is_integer(L
 new(Maxlevel, Location, Direction) when is_integer(Maxlevel), is_integer(Location), is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Maxlevel, Location, Direction),
+    '$init'(This, Maxlevel, Location, Direction),
     This.
 
-init(This, Maxlevel, Location, Direction) when is_integer(Maxlevel), is_integer(Location), is_integer(Direction) ->
-        'BasicHud':init(This, Location, Direction, 2, get({'BasicColorFactory':getInstance(), 'GREY'})),
+'$init'(This, Maxlevel, Location, Direction) when is_integer(Maxlevel), is_integer(Location), is_integer(Direction) ->
+        'BasicHud':'$init'(This, Location, Direction, 2, get({'BasicColorFactory':getInstance(), 'GREY'})),
         init_fields(This),
         put({This, primitiveLongUtil}, 'PrimitiveLongUtil':createPowerOfTen(1000)),
         LEVEL = "Lv ",

@@ -30,11 +30,11 @@ init_fields(This) ->
 new(BasicColor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicColor),
+    '$init'(This, BasicColor),
     This.
 
-init(This, BasicColor) ->
-        'ColorFillBasePaintable':init(This, BasicColor),
+'$init'(This, BasicColor) ->
+        'ColorFillBasePaintable':'$init'(This, BasicColor),
         init_fields(This).
 
 paint(This, Graphics) ->

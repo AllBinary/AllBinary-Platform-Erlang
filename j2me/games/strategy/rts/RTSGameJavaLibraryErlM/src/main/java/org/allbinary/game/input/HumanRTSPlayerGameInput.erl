@@ -89,11 +89,11 @@ init_fields(This) ->
 new(GameCanvas, InputList, PlayerInputId, TowerInfoPaintable, RtsPlayerLayerInterface, LayerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory) when is_integer(PlayerInputId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameCanvas, InputList, PlayerInputId, TowerInfoPaintable, RtsPlayerLayerInterface, LayerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory),
+    '$init'(This, GameCanvas, InputList, PlayerInputId, TowerInfoPaintable, RtsPlayerLayerInterface, LayerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory),
     This.
 
-init(This, GameCanvas, InputList, PlayerInputId, TowerInfoPaintable, RtsPlayerLayerInterface, LayerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory) when is_integer(PlayerInputId) ->
-        'RTSPlayerGameInput':init(This, GameCanvas, InputList, PlayerInputId, TowerInfoPaintable, RtsPlayerLayerInterface, LayerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface),
+'$init'(This, GameCanvas, InputList, PlayerInputId, TowerInfoPaintable, RtsPlayerLayerInterface, LayerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory) when is_integer(PlayerInputId) ->
+        'RTSPlayerGameInput':'$init'(This, GameCanvas, InputList, PlayerInputId, TowerInfoPaintable, RtsPlayerLayerInterface, LayerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface),
         init_fields(This),
         put({This, touchButtonsBuilderFactory}, TouchButtonsBuilderFactory),
         BasicColorFactory = 'BasicColorFactory':getInstance(),

@@ -35,11 +35,11 @@ init_fields(This) ->
 new(ClientInformationFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ClientInformationFactory),
+    '$init'(This, ClientInformationFactory),
     This.
 
-init(This, ClientInformationFactory) ->
-    'AllBinaryMidlet':init(This),
+'$init'(This, ClientInformationFactory) ->
+    'AllBinaryMidlet':'$init'(This),
     init_fields(This),
         (fun(Target_N65868) -> (get({Target_N65868, '$class'})):init(Target_N65868, (fun(Target_N65893) -> (get({Target_N65893, '$class'})):getClassClassLoader(Target_N65893, This) end)('TsUtil':getInstance()), get({'StringUtil':getInstance(), 'EMPTY_STRING'})) end)('Globals':getInstance()),
         (get({This, '$class'})):preInit(This),

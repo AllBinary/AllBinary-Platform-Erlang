@@ -40,11 +40,11 @@ getInstance3(X, Y) when is_integer(X), is_integer(Y) ->
 new(X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, X, Y, Z),
+    '$init'(This, X, Y, Z),
     This.
 
-init(This, X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
-        'GPoint':init(This, X, Y, Z),
+'$init'(This, X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
+        'GPoint':'$init'(This, X, Y, Z),
         init_fields(This).
 
 setX(This, X) when is_integer(X) ->

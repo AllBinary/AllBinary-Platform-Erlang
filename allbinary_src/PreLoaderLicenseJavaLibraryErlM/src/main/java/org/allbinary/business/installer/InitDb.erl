@@ -33,20 +33,20 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         ok.
 
 new(DbConnectionInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DbConnectionInfo),
+    '$init'(This, DbConnectionInfo),
     This.
 
-init(This, DbConnectionInfo) ->
+'$init'(This, DbConnectionInfo) ->
     init_fields(This),
         ok.
 

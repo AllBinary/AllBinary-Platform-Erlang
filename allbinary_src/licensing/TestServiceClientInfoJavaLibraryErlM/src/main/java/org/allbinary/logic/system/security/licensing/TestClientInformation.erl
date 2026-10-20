@@ -26,9 +26,9 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbeClientInformation':init(This, "Test App Name", "0.0.1", "Test App Name 0.0.1", "TA").
+'$init'(This) ->
+        'AbeClientInformation':'$init'(This, "Test App Name", "0.0.1", "Test App Name 0.0.1", "TA").
 

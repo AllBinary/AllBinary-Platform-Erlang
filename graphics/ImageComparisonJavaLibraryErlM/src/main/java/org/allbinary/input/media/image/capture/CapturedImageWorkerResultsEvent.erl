@@ -30,11 +30,11 @@ init_fields(This) ->
 new(AnyType, Frame, BufferedImage) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType, Frame, BufferedImage),
+    '$init'(This, AnyType, Frame, BufferedImage),
     This.
 
-init(This, AnyType, Frame, BufferedImage) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType, Frame, BufferedImage) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This),
         put({This, frame}, Frame),
         (get({This, '$class'})):setBufferedImage(This, BufferedImage).

@@ -18,11 +18,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'RectangleFilledAnimation':init(This, 0, 0, get({'BasicColorFactory':getInstance(), 'BLACK'})),
+'$init'(This) ->
+        'RectangleFilledAnimation':'$init'(This, 0, 0, get({'BasicColorFactory':getInstance(), 'BLACK'})),
         init_fields(This).
 
 nextFrame(This) ->

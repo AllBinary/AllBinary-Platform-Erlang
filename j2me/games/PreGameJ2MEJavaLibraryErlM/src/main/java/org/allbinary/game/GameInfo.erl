@@ -46,10 +46,10 @@ init_fields(This) ->
 new(GameType, GameMode, PlayerType, HighestLevel, CurrentLevel) when is_integer(HighestLevel), is_integer(CurrentLevel) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameType, GameMode, PlayerType, HighestLevel, CurrentLevel),
+    '$init'(This, GameType, GameMode, PlayerType, HighestLevel, CurrentLevel),
     This.
 
-init(This, GameType, GameMode, PlayerType, HighestLevel, CurrentLevel) when is_integer(HighestLevel), is_integer(CurrentLevel) ->
+'$init'(This, GameType, GameMode, PlayerType, HighestLevel, CurrentLevel) when is_integer(HighestLevel), is_integer(CurrentLevel) ->
     init_fields(This),
         put({This, gameType}, GameType),
         put({This, gameMode}, GameMode),

@@ -63,11 +63,11 @@ init_fields(This) ->
 new(Location, Direction, BufferZone, BasicColor) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Location, Direction, BufferZone, BasicColor),
+    '$init'(This, Location, Direction, BufferZone, BasicColor),
     This.
 
-init(This, Location, Direction, BufferZone, BasicColor) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
-        'GameNotificationHud':init(This, Location, Direction, BufferZone, BasicColor),
+'$init'(This, Location, Direction, BufferZone, BasicColor) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
+        'GameNotificationHud':'$init'(This, Location, Direction, BufferZone, BasicColor),
         init_fields(This),
         put({This, circularIndexUtil}, 'CircularIndexUtil':createInstance(0)),
         GameNotificationEventHandler = 'GameNotificationEventHandler':getInstance(),

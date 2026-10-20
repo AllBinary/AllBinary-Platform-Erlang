@@ -62,10 +62,10 @@ init_fields(This) ->
 new(From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase) when (is_list(From) orelse From =:= undefined), (is_list(To) orelse To =:= undefined), (is_list(Subject) orelse Subject =:= undefined), (is_list(Server) orelse Server =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined), (is_list(HtmlAttachment) orelse HtmlAttachment =:= undefined), (is_list(ContentBase) orelse ContentBase =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase),
+    '$init'(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase),
     This.
 
-init(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase) when (is_list(From) orelse From =:= undefined), (is_list(To) orelse To =:= undefined), (is_list(Subject) orelse Subject =:= undefined), (is_list(Server) orelse Server =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined), (is_list(HtmlAttachment) orelse HtmlAttachment =:= undefined), (is_list(ContentBase) orelse ContentBase =:= undefined) ->
+'$init'(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase) when (is_list(From) orelse From =:= undefined), (is_list(To) orelse To =:= undefined), (is_list(Subject) orelse Subject =:= undefined), (is_list(Server) orelse Server =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined), (is_list(HtmlAttachment) orelse HtmlAttachment =:= undefined), (is_list(ContentBase) orelse ContentBase =:= undefined) ->
     init_fields(This),
         put({This, isDebug}, false),
         (get({This, '$class'})):init(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase).
@@ -73,10 +73,10 @@ init(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase) whe
 new(From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase, IsDebug) when (is_list(From) orelse From =:= undefined), (is_list(To) orelse To =:= undefined), (is_list(Subject) orelse Subject =:= undefined), (is_list(Server) orelse Server =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined), (is_list(HtmlAttachment) orelse HtmlAttachment =:= undefined), (is_list(ContentBase) orelse ContentBase =:= undefined), is_boolean(IsDebug) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase, IsDebug),
+    '$init'(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase, IsDebug),
     This.
 
-init(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase, IsDebug) when (is_list(From) orelse From =:= undefined), (is_list(To) orelse To =:= undefined), (is_list(Subject) orelse Subject =:= undefined), (is_list(Server) orelse Server =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined), (is_list(HtmlAttachment) orelse HtmlAttachment =:= undefined), (is_list(ContentBase) orelse ContentBase =:= undefined), is_boolean(IsDebug) ->
+'$init'(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase, IsDebug) when (is_list(From) orelse From =:= undefined), (is_list(To) orelse To =:= undefined), (is_list(Subject) orelse Subject =:= undefined), (is_list(Server) orelse Server =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined), (is_list(HtmlAttachment) orelse HtmlAttachment =:= undefined), (is_list(ContentBase) orelse ContentBase =:= undefined), is_boolean(IsDebug) ->
     init_fields(This),
         put({This, isDebug}, IsDebug),
         (get({This, '$class'})):init(This, From, To, Subject, Server, TextBody, HtmlAttachment, ContentBase).

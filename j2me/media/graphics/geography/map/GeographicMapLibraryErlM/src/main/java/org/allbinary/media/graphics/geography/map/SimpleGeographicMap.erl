@@ -35,10 +35,10 @@ init_fields(This) ->
 new(Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor) when (is_list(Name) orelse Name =:= undefined), (is_tuple(CellTypeIdToGeographicMapCellType) orelse CellTypeIdToGeographicMapCellType =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor),
+    '$init'(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor),
     This.
 
-init(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor) when (is_list(Name) orelse Name =:= undefined), (is_tuple(CellTypeIdToGeographicMapCellType) orelse CellTypeIdToGeographicMapCellType =:= undefined) ->
+'$init'(This, Id, Name, CellTypeIdToGeographicMapCellType, TiledLayer, ForegroundBasicColor, BackgroundBasicColor) when (is_list(Name) orelse Name =:= undefined), (is_tuple(CellTypeIdToGeographicMapCellType) orelse CellTypeIdToGeographicMapCellType =:= undefined) ->
     init_fields(This),
         put({This, id}, Id),
         put({This, name}, Name),

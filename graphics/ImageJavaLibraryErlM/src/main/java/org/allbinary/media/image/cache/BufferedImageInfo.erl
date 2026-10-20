@@ -28,10 +28,10 @@ init_fields(This) ->
 new(Width, Height, Type) when is_integer(Width), is_integer(Height), is_integer(Type) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Width, Height, Type),
+    '$init'(This, Width, Height, Type),
     This.
 
-init(This, Width, Height, Type) when is_integer(Width), is_integer(Height), is_integer(Type) ->
+'$init'(This, Width, Height, Type) when is_integer(Width), is_integer(Height), is_integer(Type) ->
     init_fields(This),
         put({This, width}, Width),
         put({This, height}, Height),

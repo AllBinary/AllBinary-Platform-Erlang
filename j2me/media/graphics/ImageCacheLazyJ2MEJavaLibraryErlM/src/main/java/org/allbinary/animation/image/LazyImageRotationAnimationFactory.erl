@@ -33,10 +33,10 @@ init_fields(This) ->
 new(LayoutIndex, AssociatedLazyAnimationId, AnimationInterfaceFactoryInterface) when is_integer(LayoutIndex), is_integer(AssociatedLazyAnimationId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayoutIndex, AssociatedLazyAnimationId, AnimationInterfaceFactoryInterface),
+    '$init'(This, LayoutIndex, AssociatedLazyAnimationId, AnimationInterfaceFactoryInterface),
     This.
 
-init(This, LayoutIndex, AssociatedLazyAnimationId, AnimationInterfaceFactoryInterface) when is_integer(LayoutIndex), is_integer(AssociatedLazyAnimationId) ->
+'$init'(This, LayoutIndex, AssociatedLazyAnimationId, AnimationInterfaceFactoryInterface) when is_integer(LayoutIndex), is_integer(AssociatedLazyAnimationId) ->
     init_fields(This),
         put({This, layoutIndex}, LayoutIndex),
         put({This, animationInterfaceFactoryInterface}, AnimationInterfaceFactoryInterface),

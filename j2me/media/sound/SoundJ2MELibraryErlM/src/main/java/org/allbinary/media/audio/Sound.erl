@@ -30,10 +30,10 @@ init_fields(This) ->
 new(Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Resource),
+    '$init'(This, Resource),
     This.
 
-init(This, Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
+'$init'(This, Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
     init_fields(This),
         put({This, resource}, Resource).
 

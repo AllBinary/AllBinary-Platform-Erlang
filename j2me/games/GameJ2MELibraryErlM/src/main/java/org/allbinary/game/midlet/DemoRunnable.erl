@@ -34,10 +34,10 @@ init_fields(This) ->
 new(DemoGameMidlet) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DemoGameMidlet),
+    '$init'(This, DemoGameMidlet),
     This.
 
-init(This, DemoGameMidlet) ->
+'$init'(This, DemoGameMidlet) ->
     init_fields(This),
         put({This, demoGameMidlet}, DemoGameMidlet),
         put({This, startDemoGameMidletEvent}, 'DemoGameMidletEvent':new(get({This, demoGameMidlet}), get({'DemoGameMidletStateFactory':getInstance(), 'START_DEMO'}))).

@@ -47,10 +47,10 @@ createDXY(Text, FontSize, Dx, Dy, AnimationBehaviorFactory) when (is_list(Text) 
 new(Text, FontSize, AnimationBehaviorFactory) when (is_list(Text) orelse Text =:= undefined), is_integer(FontSize) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Text, FontSize, AnimationBehaviorFactory),
+    '$init'(This, Text, FontSize, AnimationBehaviorFactory),
     This.
 
-init(This, Text, FontSize, AnimationBehaviorFactory) when (is_list(Text) orelse Text =:= undefined), is_integer(FontSize) ->
+'$init'(This, Text, FontSize, AnimationBehaviorFactory) when (is_list(Text) orelse Text =:= undefined), is_integer(FontSize) ->
     init_fields(This),
         put({This, scaleProperties}, 'ScaleProperties':new()),
         put({This, text}, Text),

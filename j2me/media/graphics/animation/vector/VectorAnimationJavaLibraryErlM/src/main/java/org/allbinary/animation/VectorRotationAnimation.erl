@@ -31,11 +31,11 @@ init_fields(This) ->
 new(CurrentPoints, BasicColor, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CurrentPoints, BasicColor, AnimationBehavior),
+    '$init'(This, CurrentPoints, BasicColor, AnimationBehavior),
     This.
 
-init(This, CurrentPoints, BasicColor, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
-        'VectorBaseRotationAnimation':init(This, 'AngleInfo':getInstance(trunc(((get({'AngleFactory':getInstance(), 'TOTAL_ANGLE'}) / array:size(CurrentPoints))))), CurrentPoints, BasicColor, AnimationBehavior),
+'$init'(This, CurrentPoints, BasicColor, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
+        'VectorBaseRotationAnimation':'$init'(This, 'AngleInfo':getInstance(trunc(((get({'AngleFactory':getInstance(), 'TOTAL_ANGLE'}) / array:size(CurrentPoints))))), CurrentPoints, BasicColor, AnimationBehavior),
         (get({get({This, angleInfo}), '$class'})):adjustAngle(get({This, angleInfo}), (get({This, '$class'})):getFrame(This)).
 
 setFrameByDirection(This, Direction) ->

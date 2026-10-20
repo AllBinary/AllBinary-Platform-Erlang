@@ -28,10 +28,10 @@ init_fields(This) ->
 new(ViewPositionFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ViewPositionFactoryInterface),
+    '$init'(This, ViewPositionFactoryInterface),
     This.
 
-init(This, ViewPositionFactoryInterface) ->
+'$init'(This, ViewPositionFactoryInterface) ->
     init_fields(This),
         put({This, viewPositionFactoryInterface}, ViewPositionFactoryInterface).
 

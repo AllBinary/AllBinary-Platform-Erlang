@@ -43,11 +43,11 @@ createHealthIncludingLifeBar(LayerInterface, Life, HealthInterface, Location, Di
 new(LayerInterface, Life, HealthInterface, AnimationInterface, Direction) when is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerInterface, Life, HealthInterface, AnimationInterface, Direction),
+    '$init'(This, LayerInterface, Life, HealthInterface, AnimationInterface, Direction),
     This.
 
-init(This, LayerInterface, Life, HealthInterface, AnimationInterface, Direction) when is_integer(Direction) ->
-    'Paintable':init(This),
+'$init'(This, LayerInterface, Life, HealthInterface, AnimationInterface, Direction) when is_integer(Direction) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, allbinaryLayer}, LayerInterface),
         put({This, animationInterface}, AnimationInterface),

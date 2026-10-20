@@ -35,11 +35,11 @@ init_fields(This) ->
 new(Image, AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, AnimationBehavior),
+    '$init'(This, Image, AnimationBehavior),
     This.
 
-init(This, Image, AnimationBehavior) ->
-        'ImageSegmentAnimation':init(This, Image, 'PrimitiveIntUtil':getArrayInstance(), AnimationBehavior),
+'$init'(This, Image, AnimationBehavior) ->
+        'ImageSegmentAnimation':'$init'(This, Image, 'PrimitiveIntUtil':getArrayInstance(), AnimationBehavior),
         init_fields(This),
         (get({This, '$class'})):setFrame(This, ((get({This, '$class'})):getSize(This) - 1)).
 

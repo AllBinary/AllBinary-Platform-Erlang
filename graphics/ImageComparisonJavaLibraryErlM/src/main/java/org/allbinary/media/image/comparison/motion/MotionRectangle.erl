@@ -30,10 +30,10 @@ init_fields(This) ->
 new(Rectangle) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Rectangle),
+    '$init'(This, Rectangle),
     This.
 
-init(This, Rectangle) ->
+'$init'(This, Rectangle) ->
     init_fields(This),
         (get({This, '$class'})):setRectangle(This, Rectangle),
         (get({This, '$class'})):setPixelDeltaVector(This, 'BasicArrayListD':new()).

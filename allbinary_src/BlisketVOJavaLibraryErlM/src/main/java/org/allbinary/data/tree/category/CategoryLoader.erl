@@ -42,11 +42,11 @@ init_fields(This) ->
 new(CategoryFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryFactoryInterface),
+    '$init'(This, CategoryFactoryInterface),
     This.
 
-init(This, CategoryFactoryInterface) ->
-        'CategoryModifierTree':init(This, CategoryFactoryInterface),
+'$init'(This, CategoryFactoryInterface) ->
+        'CategoryModifierTree':'$init'(This, CategoryFactoryInterface),
         init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'CATEGORY'})) of
             true ->

@@ -39,11 +39,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'WaypointInfoHudPaintable':init(This),
+'$init'(This) ->
+    'WaypointInfoHudPaintable':'$init'(This),
     init_fields(This),
         put({This, keyvalueDrawString}, 'KeyValueDrawCharArray':new(get({'GeologicalResourceInfoHudPaintable', 'RESOURCES'}), get({This, textX}))).
 

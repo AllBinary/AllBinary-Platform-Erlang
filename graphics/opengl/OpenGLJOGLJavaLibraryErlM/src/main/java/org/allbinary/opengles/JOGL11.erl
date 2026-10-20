@@ -30,20 +30,20 @@ init_fields(This) ->
 new(Gl) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Gl),
+    '$init'(This, Gl),
     This.
 
-init(This, Gl) ->
-        init(This, Gl, Gl).
+'$init'(This, Gl) ->
+        '$init'(This, Gl, Gl).
 
 new(Gl, Gl2) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Gl, Gl2),
+    '$init'(This, Gl, Gl2),
     This.
 
-init(This, Gl, Gl2) ->
-        'JOGL10':init(This, Gl, Gl2),
+'$init'(This, Gl, Gl2) ->
+        'JOGL10':'$init'(This, Gl, Gl2),
         init_fields(This),
         put({This, gl11}, (get({This, '$class'})):getJOGLGL(This)).
 

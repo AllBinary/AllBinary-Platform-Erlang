@@ -62,11 +62,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'JPanel':init(This),
+'$init'(This) ->
+    'JPanel':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):initComponents(This),
         (get({This, '$class'})):setGenericProfiles(This, 'GenericProfiles':new(get({'GenericProfiles', 'DEFAULT_FILE'}))),

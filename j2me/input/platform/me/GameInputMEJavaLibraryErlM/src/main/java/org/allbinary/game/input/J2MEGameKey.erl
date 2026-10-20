@@ -28,11 +28,11 @@ init_fields(This) ->
 new(Key, KeyName) when is_integer(Key), (is_list(KeyName) orelse KeyName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Key, KeyName),
+    '$init'(This, Key, KeyName),
     This.
 
-init(This, Key, KeyName) when is_integer(Key), (is_list(KeyName) orelse KeyName =:= undefined) ->
-        'Input':init(This, Key, KeyName),
+'$init'(This, Key, KeyName) when is_integer(Key), (is_list(KeyName) orelse KeyName =:= undefined) ->
+        'Input':'$init'(This, Key, KeyName),
         Id = (get({This, '$class'})):getId(This),
         case (Id >= 0) of
             true ->

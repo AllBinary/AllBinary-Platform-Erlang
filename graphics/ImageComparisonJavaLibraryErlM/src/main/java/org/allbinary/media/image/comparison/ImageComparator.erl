@@ -33,10 +33,10 @@ init_fields(This) ->
 new(ImageComparatorConstraintsInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageComparatorConstraintsInterface),
+    '$init'(This, ImageComparatorConstraintsInterface),
     This.
 
-init(This, ImageComparatorConstraintsInterface) ->
+'$init'(This, ImageComparatorConstraintsInterface) ->
     init_fields(This),
         put({This, imageComparatorConstraintsInterface}, ImageComparatorConstraintsInterface).
 

@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Angle) when is_integer(Angle) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Angle),
+    '$init'(This, Angle),
     This.
 
-init(This, Angle) when is_integer(Angle) ->
+'$init'(This, Angle) when is_integer(Angle) ->
     init_fields(This),
         put({This, value}, Angle).
 

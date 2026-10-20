@@ -28,10 +28,10 @@ init_fields(This) ->
 new(HIGH_SCORE_COMMANDS) when (is_tuple(HIGH_SCORE_COMMANDS) orelse HIGH_SCORE_COMMANDS =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HIGH_SCORE_COMMANDS),
+    '$init'(This, HIGH_SCORE_COMMANDS),
     This.
 
-init(This, HIGH_SCORE_COMMANDS) when (is_tuple(HIGH_SCORE_COMMANDS) orelse HIGH_SCORE_COMMANDS =:= undefined) ->
+'$init'(This, HIGH_SCORE_COMMANDS) when (is_tuple(HIGH_SCORE_COMMANDS) orelse HIGH_SCORE_COMMANDS =:= undefined) ->
     init_fields(This),
         put({This, 'HIGH_SCORE_COMMANDS'}, HIGH_SCORE_COMMANDS).
 

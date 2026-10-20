@@ -37,11 +37,11 @@ init_fields(This) ->
 new(BasicColor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicColor),
+    '$init'(This, BasicColor),
     This.
 
-init(This, BasicColor) ->
-    'Animation':init(This),
+'$init'(This, BasicColor) ->
+    'Animation':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):setBasicColorP(This, BasicColor).
 

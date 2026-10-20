@@ -26,9 +26,9 @@ init_fields(This) ->
 new(UniformBlockArray, UniformArray, AttributeArray, AttributeHandleArray) when (is_tuple(UniformBlockArray) orelse UniformBlockArray =:= undefined), (is_tuple(UniformArray) orelse UniformArray =:= undefined), (is_tuple(AttributeArray) orelse AttributeArray =:= undefined), (is_tuple(AttributeHandleArray) orelse AttributeHandleArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UniformBlockArray, UniformArray, AttributeArray, AttributeHandleArray),
+    '$init'(This, UniformBlockArray, UniformArray, AttributeArray, AttributeHandleArray),
     This.
 
-init(This, UniformBlockArray, UniformArray, AttributeArray, AttributeHandleArray) when (is_tuple(UniformBlockArray) orelse UniformBlockArray =:= undefined), (is_tuple(UniformArray) orelse UniformArray =:= undefined), (is_tuple(AttributeArray) orelse AttributeArray =:= undefined), (is_tuple(AttributeHandleArray) orelse AttributeHandleArray =:= undefined) ->
-        'CompositeShaderUpdater':init(This, UniformBlockArray, UniformArray, AttributeArray, AttributeHandleArray).
+'$init'(This, UniformBlockArray, UniformArray, AttributeArray, AttributeHandleArray) when (is_tuple(UniformBlockArray) orelse UniformBlockArray =:= undefined), (is_tuple(UniformArray) orelse UniformArray =:= undefined), (is_tuple(AttributeArray) orelse AttributeArray =:= undefined), (is_tuple(AttributeHandleArray) orelse AttributeHandleArray =:= undefined) ->
+        'CompositeShaderUpdater':'$init'(This, UniformBlockArray, UniformArray, AttributeArray, AttributeHandleArray).
 

@@ -38,10 +38,10 @@ init_fields(This) ->
 new(Algorithm) when (is_list(Algorithm) orelse Algorithm =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Algorithm),
+    '$init'(This, Algorithm),
     This.
 
-init(This, Algorithm) when (is_list(Algorithm) orelse Algorithm =:= undefined) ->
+'$init'(This, Algorithm) when (is_list(Algorithm) orelse Algorithm =:= undefined) ->
     init_fields(This),
         put({This, algorithm}, Algorithm).
 

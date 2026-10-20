@@ -53,10 +53,10 @@ init_fields(This) ->
 new(HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore),
+    '$init'(This, HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore),
     This.
 
-init(This, HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, HighScoresFactoryInterface, HighScoresHelper, AbeClientInformation, GameInfo, CmdListener, Name, HighScore) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         put({This, highScoresFactoryInterface}, HighScoresFactoryInterface),
         put({This, highScoresHelper}, HighScoresHelper),

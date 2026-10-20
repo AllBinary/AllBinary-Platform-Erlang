@@ -19,11 +19,11 @@ init_fields(This) ->
 new(PixelBuffer, Width, Height, AnimationBehavior) when (is_tuple(PixelBuffer) orelse PixelBuffer =:= undefined), is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PixelBuffer, Width, Height, AnimationBehavior),
+    '$init'(This, PixelBuffer, Width, Height, AnimationBehavior),
     This.
 
-init(This, PixelBuffer, Width, Height, AnimationBehavior) when (is_tuple(PixelBuffer) orelse PixelBuffer =:= undefined), is_integer(Width), is_integer(Height) ->
-        'IndexedAnimation':init(This, AnimationBehavior),
+'$init'(This, PixelBuffer, Width, Height, AnimationBehavior) when (is_tuple(PixelBuffer) orelse PixelBuffer =:= undefined), is_integer(Width), is_integer(Height) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior),
         init_fields(This),
         put({This, width}, 100),
         put({This, height}, 100),

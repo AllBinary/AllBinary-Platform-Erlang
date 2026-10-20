@@ -24,10 +24,10 @@ init_fields(This) ->
 new(CacheType) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CacheType),
+    '$init'(This, CacheType),
     This.
 
-init(This, CacheType) ->
+'$init'(This, CacheType) ->
     init_fields(This),
         put({This, cacheType}, CacheType).
 

@@ -37,11 +37,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'ViewPosition':init(This, 0, 0, 0).
+'$init'(This) ->
+        'ViewPosition':'$init'(This, 0, 0, 0).
 
 getX(This) ->
         ('ViewPosition':getX(This) - (get({get({'StaticTileLayerIntoPositionViewPosition', tiledLayer}), '$class'})):getXP(get({'StaticTileLayerIntoPositionViewPosition', tiledLayer}))).

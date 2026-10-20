@@ -47,10 +47,10 @@ init_fields(This) ->
 new(Id) when is_integer(Id) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Id),
+    '$init'(This, Id),
     This.
 
-init(This, Id) when is_integer(Id) ->
+'$init'(This, Id) when is_integer(Id) ->
     init_fields(This),
         put({This, motionEventCircularPool}, 'MotionEventCircularPool':createPool(Id)),
         put({local, motionGesturesHandler}, 'BasicEventHandler':new()),

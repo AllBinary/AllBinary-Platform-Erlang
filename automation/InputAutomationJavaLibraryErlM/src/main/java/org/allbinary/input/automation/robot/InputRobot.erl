@@ -38,10 +38,10 @@ init_fields(This) ->
 new(GraphicsDevice) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GraphicsDevice),
+    '$init'(This, GraphicsDevice),
     This.
 
-init(This, GraphicsDevice) ->
+'$init'(This, GraphicsDevice) ->
     init_fields(This),
         put({This, robot}, 'Robot':new(GraphicsDevice)).
 

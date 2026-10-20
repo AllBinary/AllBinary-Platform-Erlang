@@ -26,10 +26,10 @@ init_fields(This) ->
 new(SourceLayerInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SourceLayerInterface),
+    '$init'(This, SourceLayerInterface),
     This.
 
-init(This, SourceLayerInterface) ->
+'$init'(This, SourceLayerInterface) ->
     init_fields(This),
         put({This, sourceLayerInterface}, SourceLayerInterface).
 

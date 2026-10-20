@@ -42,11 +42,11 @@ createEvent(AnyType, SourceId, Key) when is_integer(SourceId), is_integer(Key) -
 new(AnyType, SourceId, OriginalKey, GameActionKey, Key, Repeated) when is_integer(SourceId), is_integer(OriginalKey), is_integer(GameActionKey), is_integer(Key), is_boolean(Repeated) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType, SourceId, OriginalKey, GameActionKey, Key, Repeated),
+    '$init'(This, AnyType, SourceId, OriginalKey, GameActionKey, Key, Repeated),
     This.
 
-init(This, AnyType, SourceId, OriginalKey, GameActionKey, Key, Repeated) when is_integer(SourceId), is_integer(OriginalKey), is_integer(GameActionKey), is_integer(Key), is_boolean(Repeated) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType, SourceId, OriginalKey, GameActionKey, Key, Repeated) when is_integer(SourceId), is_integer(OriginalKey), is_integer(GameActionKey), is_integer(Key), is_boolean(Repeated) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This),
         put({This, sourceId}, SourceId),
         (get({This, '$class'})):setOriginalKey(This, OriginalKey),

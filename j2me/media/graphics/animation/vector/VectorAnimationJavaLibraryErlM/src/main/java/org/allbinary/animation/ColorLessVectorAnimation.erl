@@ -28,11 +28,11 @@ init_fields(This) ->
 new(CurrentPoints, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CurrentPoints, AnimationBehavior),
+    '$init'(This, CurrentPoints, AnimationBehavior),
     This.
 
-init(This, CurrentPoints, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
-        'VectorAnimation':init(This, CurrentPoints, get({'BasicColorFactory':getInstance(), 'WHITE'}), AnimationBehavior).
+'$init'(This, CurrentPoints, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
+        'VectorAnimation':'$init'(This, CurrentPoints, get({'BasicColorFactory':getInstance(), 'WHITE'}), AnimationBehavior).
 
 paintXY(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
         (get({This, '$class'})):paintVectors(This, Graphics, X, Y).

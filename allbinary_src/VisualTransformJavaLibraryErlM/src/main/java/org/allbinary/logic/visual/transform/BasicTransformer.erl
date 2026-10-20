@@ -47,11 +47,11 @@ init_fields(This) ->
 new(AbeClientInformation, TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, TransformInfoInterface),
+    '$init'(This, AbeClientInformation, TransformInfoInterface),
     This.
 
-init(This, AbeClientInformation, TransformInfoInterface) ->
-        'AbTransformer':init(This, TransformInfoInterface),
+'$init'(This, AbeClientInformation, TransformInfoInterface) ->
+        'AbTransformer':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation),
         (get({This, '$class'})):setTemplateAsInputStream(This).

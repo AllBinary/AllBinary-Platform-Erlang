@@ -41,10 +41,10 @@ init_fields(This) ->
 new(Path, BasicURIResolver) when (is_list(Path) orelse Path =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Path, BasicURIResolver),
+    '$init'(This, Path, BasicURIResolver),
     This.
 
-init(This, Path, BasicURIResolver) when (is_list(Path) orelse Path =:= undefined) ->
+'$init'(This, Path, BasicURIResolver) when (is_list(Path) orelse Path =:= undefined) ->
     init_fields(This),
         put({This, path}, Path),
         put({This, basicURIResolver}, BasicURIResolver).

@@ -40,11 +40,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'WorkFlowView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'WorkFlowView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         HttpTransformInfoInterface = (get({This, '$class'})):getTransformInfoInterface(This),
         put({This, workFlowInterface}, (fun(Target_N66162) -> (get({Target_N66162, '$class'})):getInstance(Target_N66162, get({This, abeClientInformation}), (fun(Target_N66201) -> (get({Target_N66201, '$class'})):get(Target_N66201, get({'DynamicObjectData', 'NAME'})) end)((get({HttpTransformInfoInterface, '$class'})):getPropertiesHashMap(HttpTransformInfoInterface))) end)('NewWorkFlowFactory':getInstance())).

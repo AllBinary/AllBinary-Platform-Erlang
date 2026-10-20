@@ -34,10 +34,10 @@ init_fields(This) ->
 new(GeographicMapInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GeographicMapInterface),
+    '$init'(This, GeographicMapInterface),
     This.
 
-init(This, GeographicMapInterface) ->
+'$init'(This, GeographicMapInterface) ->
     init_fields(This),
         put({This, geographicMapInterface}, GeographicMapInterface),
         put({This, geographicMapCellPositionFactoryInterface}, (get({get({This, geographicMapInterface}), '$class'})):getGeographicMapCellPositionFactoryInterface(get({This, geographicMapInterface}))),

@@ -28,11 +28,11 @@ init_fields(This) ->
 new(RunnableCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RunnableCanvas),
+    '$init'(This, RunnableCanvas),
     This.
 
-init(This, RunnableCanvas) ->
-    'Processor':init(This),
+'$init'(This, RunnableCanvas) ->
+    'Processor':'$init'(This),
     init_fields(This),
         put({This, runnableCanvas}, RunnableCanvas).
 

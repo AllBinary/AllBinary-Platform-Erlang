@@ -53,11 +53,11 @@ init_fields(This) ->
 new(PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PropertiesHashMap, PageContext),
+    '$init'(This, PropertiesHashMap, PageContext),
     This.
 
-init(This, PropertiesHashMap, PageContext) ->
-    'TagHelper':init(This),
+'$init'(This, PropertiesHashMap, PageContext) ->
+    'TagHelper':'$init'(This),
     init_fields(This),
         put({This, response}, (get({PageContext, '$class'})):getResponse(PageContext)),
         put({This, request}, (get({PageContext, '$class'})):getRequest(PageContext)),

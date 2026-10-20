@@ -38,11 +38,11 @@ init_fields(This) ->
 new(Title, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Title, BackgroundBasicColor, ForegroundBasicColor),
+    '$init'(This, Title, BackgroundBasicColor, ForegroundBasicColor),
     This.
 
-init(This, Title, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined) ->
-        'ProgressCanvas':init(This, Title, BackgroundBasicColor, ForegroundBasicColor),
+'$init'(This, Title, BackgroundBasicColor, ForegroundBasicColor) when (is_list(Title) orelse Title =:= undefined) ->
+        'ProgressCanvas':'$init'(This, Title, BackgroundBasicColor, ForegroundBasicColor),
         init_fields(This).
 
 init(This, Activity) ->

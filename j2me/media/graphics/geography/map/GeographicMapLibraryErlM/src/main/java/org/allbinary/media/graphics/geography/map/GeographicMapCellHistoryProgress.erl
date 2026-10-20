@@ -29,11 +29,11 @@ init_fields(This) ->
 new(GeographicMapCellHistoryArray) when (is_tuple(GeographicMapCellHistoryArray) orelse GeographicMapCellHistoryArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GeographicMapCellHistoryArray),
+    '$init'(This, GeographicMapCellHistoryArray),
     This.
 
-init(This, GeographicMapCellHistoryArray) when (is_tuple(GeographicMapCellHistoryArray) orelse GeographicMapCellHistoryArray =:= undefined) ->
-    'GeographicMapCellHistoryProgressBase':init(This),
+'$init'(This, GeographicMapCellHistoryArray) when (is_tuple(GeographicMapCellHistoryArray) orelse GeographicMapCellHistoryArray =:= undefined) ->
+    'GeographicMapCellHistoryProgressBase':'$init'(This),
     init_fields(This),
         put({This, geographicMapCellHistoryArray}, GeographicMapCellHistoryArray),
         (get({This, '$class'})):init(This).

@@ -37,11 +37,11 @@ init_fields(This) ->
 new(ItemInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ItemInterface),
+    '$init'(This, ItemInterface),
     This.
 
-init(This, ItemInterface) ->
-    'Validation':init(This),
+'$init'(This, ItemInterface) ->
+    'Validation':'$init'(This),
     init_fields(This),
         put({This, itemInterface}, ItemInterface).
 

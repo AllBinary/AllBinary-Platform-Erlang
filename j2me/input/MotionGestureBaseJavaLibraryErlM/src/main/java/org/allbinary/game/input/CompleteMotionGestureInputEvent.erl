@@ -36,11 +36,11 @@ init_fields(This) ->
 new(Name, MotionGestureInput) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, MotionGestureInput),
+    '$init'(This, Name, MotionGestureInput),
     This.
 
-init(This, Name, MotionGestureInput) when (is_list(Name) orelse Name =:= undefined) ->
-        'AllBinaryEventObject':init(This, MotionGestureInput),
+'$init'(This, Name, MotionGestureInput) when (is_list(Name) orelse Name =:= undefined) ->
+        'AllBinaryEventObject':'$init'(This, MotionGestureInput),
         init_fields(This),
         (get({This, '$class'})):setName(This, Name),
         try

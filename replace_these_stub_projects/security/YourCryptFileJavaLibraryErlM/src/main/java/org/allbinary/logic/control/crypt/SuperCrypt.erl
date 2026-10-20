@@ -16,10 +16,10 @@ init_fields(This) ->
 new(Key) when is_integer(Key) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Key),
+    '$init'(This, Key),
     This.
 
-init(This, Key) when is_integer(Key) ->
+'$init'(This, Key) when is_integer(Key) ->
     init_fields(This),
         ok.
 

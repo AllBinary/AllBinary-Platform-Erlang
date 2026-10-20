@@ -36,11 +36,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'PlayerGameInput':init(This, 'BasicArrayListD':new(), 'BasicArrayListD':new(), (-1)).
+'$init'(This) ->
+        'PlayerGameInput':'$init'(This, 'BasicArrayListD':new(), 'BasicArrayListD':new(), (-1)).
 
 onDownGameKeyEvent(This, GameKeyEvent) ->
         ok.

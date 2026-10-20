@@ -30,40 +30,40 @@ init_fields(This) ->
 new(UsDollarStr) when (is_list(UsDollarStr) orelse UsDollarStr =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UsDollarStr),
+    '$init'(This, UsDollarStr),
     This;
 new(Units) when is_integer(Units) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Units),
+    '$init'(This, Units),
     This;
 new(Money) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Money),
+    '$init'(This, Money),
     This.
 
-init(This, UsDollarStr) when (is_list(UsDollarStr) orelse UsDollarStr =:= undefined) ->
+'$init'(This, UsDollarStr) when (is_list(UsDollarStr) orelse UsDollarStr =:= undefined) ->
     init_fields(This),
         case ((UsDollarStr =/= undefined) andalso (fun(Target_N66000) -> (get({Target_N66000, '$class'})):isNumber(Target_N66000, UsDollarStr) end)('StringValidationUtil':getInstance())) of
             true ->
             put({This, units}, (get({This, '$class'})):convertUsdToUnits(This, UsDollarStr));
             false -> ok
         end;
-init(This, Units) when is_integer(Units) ->
+'$init'(This, Units) when is_integer(Units) ->
     init_fields(This),
         put({This, units}, Units);
-init(This, Money) ->
+'$init'(This, Money) ->
     init_fields(This),
         put({This, units}, (get({Money, '$class'})):getUnits(Money)).
 
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, units}, 0).
 

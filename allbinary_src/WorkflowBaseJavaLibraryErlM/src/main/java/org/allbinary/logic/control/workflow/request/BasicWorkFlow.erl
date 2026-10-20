@@ -49,10 +49,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, workFlowName}, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
         put({This, workFlowDoc}, 'DomDocumentHelper':create()),
@@ -62,10 +62,10 @@ init(This) ->
 new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, PageContext),
+    '$init'(This, HashMap, PageContext),
     This.
 
-init(This, HashMap, PageContext) ->
+'$init'(This, HashMap, PageContext) ->
     init_fields(This),
         WeblisketSession = 'WeblisketSession':new(HashMap, PageContext),
         put({This, storeName}, (get({WeblisketSession, '$class'})):getStoreName(WeblisketSession)),
@@ -76,10 +76,10 @@ init(This, HashMap, PageContext) ->
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         put({This, workFlowName}, (get({HashMap, '$class'})):get(HashMap, get({'WorkFlowData':getInstance(), 'NAME'}))),
         put({This, storeName}, (get({HashMap, '$class'})):get(HashMap, get({'StoreFrontData':getInstance(), 'NAME'}))),

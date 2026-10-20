@@ -56,15 +56,15 @@ init_fields(This) ->
 new(CanvasNode) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CanvasNode),
+    '$init'(This, CanvasNode),
     This;
 new(CanvasJPanel) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CanvasJPanel),
+    '$init'(This, CanvasJPanel),
     This.
 
-init(This, CanvasNode) ->
+'$init'(This, CanvasNode) ->
     init_fields(This),
         put({This, grid}, 'Grid':new()),
         put({get({This, grid}), grid}, (fun(Target_N66683) -> (get({Target_N66683, '$class'})):createXY(Target_N66683, 0, 0) end)('PointFactory':getInstance())),
@@ -112,7 +112,7 @@ init(This, CanvasNode) ->
             false ->
             erlang:error({'Exception', lists:concat(["Frame Element Not Found but Found: ", Name])})
         end;
-init(This, CanvasJPanel) ->
+'$init'(This, CanvasJPanel) ->
     init_fields(This),
         put({This, angle}, (get({CanvasJPanel, '$class'})):getAngle(CanvasJPanel)),
         put({This, graphicItemHashMap}, (get({CanvasJPanel, '$class'})):getGraphicItemHashMap(CanvasJPanel)),

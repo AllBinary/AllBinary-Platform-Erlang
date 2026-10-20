@@ -43,21 +43,21 @@ init_fields(This) ->
 new(PropertiesHashMap, PageContext, Crud) when is_boolean(Crud) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PropertiesHashMap, PageContext, Crud),
+    '$init'(This, PropertiesHashMap, PageContext, Crud),
     This;
 new(Request, PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Request, PropertiesHashMap, PageContext),
+    '$init'(This, Request, PropertiesHashMap, PageContext),
     This;
 new(DatabaseHashMap, PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DatabaseHashMap, PropertiesHashMap, PageContext),
+    '$init'(This, DatabaseHashMap, PropertiesHashMap, PageContext),
     This.
 
-init(This, PropertiesHashMap, PageContext, Crud) when is_boolean(Crud) ->
-        'TransformInfo':init(This),
+'$init'(This, PropertiesHashMap, PageContext, Crud) when is_boolean(Crud) ->
+        'TransformInfo':'$init'(This),
         init_fields(This),
         put({This, abContext}, 'AbContext':new(PropertiesHashMap, PageContext)),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
@@ -66,8 +66,8 @@ init(This, PropertiesHashMap, PageContext, Crud) when is_boolean(Crud) ->
             false -> ok
         end,
         (get({This, '$class'})):override(This, PropertiesHashMap);
-init(This, Request, PropertiesHashMap, PageContext) ->
-        'TransformInfo':init(This),
+'$init'(This, Request, PropertiesHashMap, PageContext) ->
+        'TransformInfo':'$init'(This),
         init_fields(This),
         put({This, abContext}, 'AbContext':new(PropertiesHashMap, PageContext)),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
@@ -77,8 +77,8 @@ init(This, Request, PropertiesHashMap, PageContext) ->
         end,
         (get({This, '$class'})):set(This, (fun(Target_N66864) -> (get({Target_N66864, '$class'})):toHashMap(Target_N66864) end)('RequestParams':new(Request))),
         (get({This, '$class'})):override(This, PropertiesHashMap);
-init(This, DatabaseHashMap, PropertiesHashMap, PageContext) ->
-        'TransformInfo':init(This),
+'$init'(This, DatabaseHashMap, PropertiesHashMap, PageContext) ->
+        'TransformInfo':'$init'(This),
         init_fields(This),
         put({This, abContext}, 'AbContext':new(PropertiesHashMap, PageContext)),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
@@ -93,11 +93,11 @@ init(This, DatabaseHashMap, PropertiesHashMap, PageContext) ->
 new(PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PropertiesHashMap, PageContext),
+    '$init'(This, PropertiesHashMap, PageContext),
     This.
 
-init(This, PropertiesHashMap, PageContext) ->
-        'TransformInfo':init(This),
+'$init'(This, PropertiesHashMap, PageContext) ->
+        'TransformInfo':'$init'(This),
         init_fields(This),
         put({This, abContext}, 'AbContext':new(PropertiesHashMap, PageContext)),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
@@ -110,11 +110,11 @@ init(This, PropertiesHashMap, PageContext) ->
 new(ParentViewOfThisTransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ParentViewOfThisTransformInfoInterface),
+    '$init'(This, ParentViewOfThisTransformInfoInterface),
     This.
 
-init(This, ParentViewOfThisTransformInfoInterface) ->
-        'TransformInfo':init(This),
+'$init'(This, ParentViewOfThisTransformInfoInterface) ->
+        'TransformInfo':'$init'(This),
         init_fields(This),
         put({This, abContext}, 'AbContext':new((get({ParentViewOfThisTransformInfoInterface, '$class'})):getPropertiesHashMap(ParentViewOfThisTransformInfoInterface), (get({ParentViewOfThisTransformInfoInterface, '$class'})):getPageContext(ParentViewOfThisTransformInfoInterface))).
 

@@ -26,10 +26,10 @@ init_fields(This) ->
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         put({This, current}, (get({HashMap, '$class'})):get(HashMap, "current")),
         put({This, total}, (get({HashMap, '$class'})):get(HashMap, "total")).

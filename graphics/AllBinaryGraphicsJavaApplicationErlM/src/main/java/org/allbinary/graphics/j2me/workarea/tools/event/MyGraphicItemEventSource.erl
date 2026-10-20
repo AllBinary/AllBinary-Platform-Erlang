@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Command, TreeNode) when (is_list(Command) orelse Command =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Command, TreeNode),
+    '$init'(This, Command, TreeNode),
     This.
 
-init(This, Command, TreeNode) when (is_list(Command) orelse Command =:= undefined) ->
+'$init'(This, Command, TreeNode) when (is_list(Command) orelse Command =:= undefined) ->
     init_fields(This),
         put({This, command}, Command),
         put({This, treeNode}, TreeNode).
@@ -38,10 +38,10 @@ init(This, Command, TreeNode) when (is_list(Command) orelse Command =:= undefine
 new(Command, Angle, TreeNode) when (is_list(Command) orelse Command =:= undefined), is_number(Angle) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Command, Angle, TreeNode),
+    '$init'(This, Command, Angle, TreeNode),
     This.
 
-init(This, Command, Angle, TreeNode) when (is_list(Command) orelse Command =:= undefined), is_number(Angle) ->
+'$init'(This, Command, Angle, TreeNode) when (is_list(Command) orelse Command =:= undefined), is_number(Angle) ->
     init_fields(This),
         put({This, command}, Command),
         put({This, treeNode}, TreeNode),

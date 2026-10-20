@@ -37,10 +37,10 @@ init_fields(This) ->
 new(RegistryName, BundleContext, OsgiServiceVisitorInterface) when (is_list(RegistryName) orelse RegistryName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RegistryName, BundleContext, OsgiServiceVisitorInterface),
+    '$init'(This, RegistryName, BundleContext, OsgiServiceVisitorInterface),
     This.
 
-init(This, RegistryName, BundleContext, OsgiServiceVisitorInterface) when (is_list(RegistryName) orelse RegistryName =:= undefined) ->
+'$init'(This, RegistryName, BundleContext, OsgiServiceVisitorInterface) when (is_list(RegistryName) orelse RegistryName =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setRegistryName(This, RegistryName),
         (get({This, '$class'})):setBundleContext(This, BundleContext),

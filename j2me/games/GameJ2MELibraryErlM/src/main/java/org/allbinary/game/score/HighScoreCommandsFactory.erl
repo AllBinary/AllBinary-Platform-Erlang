@@ -35,9 +35,9 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'HighScoreCommandsBaseFactory':init(This, array:from_list([get({'HighScoreCommands':getInstance(), 'PERSONAL'}), get({'HighScoreCommands':getInstance(), 'WORLD'})])).
+'$init'(This) ->
+        'HighScoreCommandsBaseFactory':'$init'(This, array:from_list([get({'HighScoreCommands':getInstance(), 'PERSONAL'}), get({'HighScoreCommands':getInstance(), 'WORLD'})])).
 

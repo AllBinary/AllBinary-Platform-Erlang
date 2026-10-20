@@ -45,11 +45,11 @@ init() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'PickedUpLayerInterfaceFactory':init(This, get({'PickedUpLayerTypeFactory':getInstance(), 'HEAL'}), 'IconLayerFactory':getInstance((fun(Target_N66123) -> (get({Target_N66123, '$class'})):getInstance(Target_N66123, 0) end)((fun(Target_N66130) -> (get({Target_N66130, '$class'})):get(Target_N66130, get({'HealthResources':getInstance(), 'RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance())), 10, 10), (fun(Target_N66199) -> (get({Target_N66199, '$class'})):getInstance(Target_N66199, 0) end)((fun(Target_N66206) -> (get({Target_N66206, '$class'})):get(Target_N66206, get({'HealthResources':getInstance(), 'RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance()))),
+'$init'(This) ->
+        'PickedUpLayerInterfaceFactory':'$init'(This, get({'PickedUpLayerTypeFactory':getInstance(), 'HEAL'}), 'IconLayerFactory':getInstance((fun(Target_N66123) -> (get({Target_N66123, '$class'})):getInstance(Target_N66123, 0) end)((fun(Target_N66130) -> (get({Target_N66130, '$class'})):get(Target_N66130, get({'HealthResources':getInstance(), 'RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance())), 10, 10), (fun(Target_N66199) -> (get({Target_N66199, '$class'})):getInstance(Target_N66199, 0) end)((fun(Target_N66206) -> (get({Target_N66206, '$class'})):get(Target_N66206, get({'HealthResources':getInstance(), 'RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance()))),
         init_fields(This).
 
 getTotal(This) ->

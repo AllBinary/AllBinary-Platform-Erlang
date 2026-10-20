@@ -54,10 +54,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (fun(Target_N66514) -> (get({Target_N66514, '$class'})):addListenerInterface(Target_N66514, This) end)('LocalPlayerBuildingEventHandler':getInstance()),
         (fun(Target_N66548) -> (get({Target_N66548, '$class'})):addListenerInterface(Target_N66548, This) end)('ScrollMapEventHandler':getInstance()).

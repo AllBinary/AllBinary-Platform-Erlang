@@ -49,11 +49,11 @@ init() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'CountedPickedUpLayerInterfaceFactory':init(This, get({'PickedUpLayerTypeFactory':getInstance(), 'MINE'}), 'IconLayerFactory':getInstance((fun(Target_N66186) -> (get({Target_N66186, '$class'})):getInstance(Target_N66186, 0) end)((fun(Target_N66193) -> (get({Target_N66193, '$class'})):get(Target_N66193, get({'MineWeaponResources':getInstance(), 'DROP_ICON_RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance())), 10, 10), (fun(Target_N66262) -> (get({Target_N66262, '$class'})):getInstance(Target_N66262, 0) end)((fun(Target_N66269) -> (get({Target_N66269, '$class'})):get(Target_N66269, get({'MineWeaponResources':getInstance(), 'DROP_RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance()))),
+'$init'(This) ->
+        'CountedPickedUpLayerInterfaceFactory':'$init'(This, get({'PickedUpLayerTypeFactory':getInstance(), 'MINE'}), 'IconLayerFactory':getInstance((fun(Target_N66186) -> (get({Target_N66186, '$class'})):getInstance(Target_N66186, 0) end)((fun(Target_N66193) -> (get({Target_N66193, '$class'})):get(Target_N66193, get({'MineWeaponResources':getInstance(), 'DROP_ICON_RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance())), 10, 10), (fun(Target_N66262) -> (get({Target_N66262, '$class'})):getInstance(Target_N66262, 0) end)((fun(Target_N66269) -> (get({Target_N66269, '$class'})):get(Target_N66269, get({'MineWeaponResources':getInstance(), 'DROP_RESOURCE'})) end)('FeaturedAnimationInterfaceFactoryInterfaceFactory':getInstance()))),
         init_fields(This).
 
 getInstance() ->

@@ -58,11 +58,11 @@ init_fields(This) ->
 new(Before, Cellpadding, Cellspacing, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Cellpadding) orelse Cellpadding =:= undefined), (is_list(Cellspacing) orelse Cellspacing =:= undefined), (is_list(After) orelse After =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Before, Cellpadding, Cellspacing, After),
+    '$init'(This, Before, Cellpadding, Cellspacing, After),
     This.
 
-init(This, Before, Cellpadding, Cellspacing, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Cellpadding) orelse Cellpadding =:= undefined), (is_list(Cellspacing) orelse Cellspacing =:= undefined), (is_list(After) orelse After =:= undefined) ->
-    'HtmlTag':init(This),
+'$init'(This, Before, Cellpadding, Cellspacing, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Cellpadding) orelse Cellpadding =:= undefined), (is_list(Cellspacing) orelse Cellspacing =:= undefined), (is_list(After) orelse After =:= undefined) ->
+    'HtmlTag':'$init'(This),
     init_fields(This),
         put({This, before}, Before),
         put({This, cellpadding}, Cellpadding),

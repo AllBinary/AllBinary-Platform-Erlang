@@ -55,11 +55,11 @@ init_fields(This) ->
 new(SavedCaptureGenericProfileDataWorkerType) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SavedCaptureGenericProfileDataWorkerType),
+    '$init'(This, SavedCaptureGenericProfileDataWorkerType),
     This.
 
-init(This, SavedCaptureGenericProfileDataWorkerType) ->
-    'BasicEventHandler':init(This),
+'$init'(This, SavedCaptureGenericProfileDataWorkerType) ->
+    'BasicEventHandler':'$init'(This),
     init_fields(This),
         put({This, savedCaptureGenericProfileDataWorkerType}, SavedCaptureGenericProfileDataWorkerType),
         put({This, screenScavangerRobot}, 'ScreenScavangerRobot':new()),

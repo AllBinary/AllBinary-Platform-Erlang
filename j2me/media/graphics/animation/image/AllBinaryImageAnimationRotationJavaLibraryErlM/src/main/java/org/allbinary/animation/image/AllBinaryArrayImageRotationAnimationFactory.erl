@@ -49,11 +49,11 @@ createFactoryA(Image, Dx, Dy, AngleIncrement) when is_integer(Dx), is_integer(Dy
 new(Image, Width, Height, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory),
+    '$init'(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory),
     This.
 
-init(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement) ->
-        'BaseImageAnimationFactory':init(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, 0, 0, AnimationBehaviorFactory),
+'$init'(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement) ->
+        'BaseImageAnimationFactory':'$init'(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, 0, 0, AnimationBehaviorFactory),
         init_fields(This),
         put({This, angleIncrement}, AngleIncrement),
         (get({This, '$class'})):init(This).

@@ -29,11 +29,11 @@ init_fields(This) ->
 new(Image, SequenceArray, AnimationBehaviorFactory) when (is_tuple(SequenceArray) orelse SequenceArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, SequenceArray, AnimationBehaviorFactory),
+    '$init'(This, Image, SequenceArray, AnimationBehaviorFactory),
     This.
 
-init(This, Image, SequenceArray, AnimationBehaviorFactory) when (is_tuple(SequenceArray) orelse SequenceArray =:= undefined) ->
-        'BaseImageAnimationFactory':init(This, Image, SequenceArray, (get({Image, '$class'})):getWidth(Image), (get({Image, '$class'})):getHeight(Image), 0, 0, AnimationBehaviorFactory).
+'$init'(This, Image, SequenceArray, AnimationBehaviorFactory) when (is_tuple(SequenceArray) orelse SequenceArray =:= undefined) ->
+        'BaseImageAnimationFactory':'$init'(This, Image, SequenceArray, (get({Image, '$class'})):getWidth(Image), (get({Image, '$class'})):getHeight(Image), 0, 0, AnimationBehaviorFactory).
 
 % throws Exception
 getInstance(This, InstanceId) when is_integer(InstanceId) ->

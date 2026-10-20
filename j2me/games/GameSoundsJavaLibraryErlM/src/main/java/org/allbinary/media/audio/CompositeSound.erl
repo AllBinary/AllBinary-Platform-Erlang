@@ -26,11 +26,11 @@ init_fields(This) ->
 new(Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Resource),
+    '$init'(This, Resource),
     This.
 
-init(This, Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
-        'Sound':init(This, Resource).
+'$init'(This, Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
+        'Sound':'$init'(This, Resource).
 
 % throws Exception
 init(This) ->

@@ -38,11 +38,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'AbTransformer':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'AbTransformer':'$init'(This, TransformInfoInterface),
         init_fields(This),
         (get({This, '$class'})):setURIResolver(This, 'StoreUriResolver':new((get({This, '$class'})):getTransformInfoInterface(This), (get({This, '$class'})):getURIResolver(This))),
         ObjectConfig = 'CompoundContextTransformInfoObjectConfig':new(get({This, abeClientInformation}), (get({This, '$class'})):getTransformInfoInterface(This), (fun(Target_N66163) -> (get({Target_N66163, '$class'})):toXmlDoc(Target_N66163) end)((fun(Target_N66170) -> (get({Target_N66170, '$class'})):getObjectConfigInterface(Target_N66170) end)((get({This, '$class'})):getTransformInfoInterface(This)))),

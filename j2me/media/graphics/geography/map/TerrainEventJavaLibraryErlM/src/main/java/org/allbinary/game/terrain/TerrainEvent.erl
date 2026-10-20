@@ -30,11 +30,11 @@ init_fields(This) ->
 new(BasicTerrainInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, BasicTerrainInfo),
+    '$init'(This, BasicTerrainInfo),
     This.
 
-init(This, BasicTerrainInfo) ->
-        'AllBinaryEventObject':init(This, BasicTerrainInfo),
+'$init'(This, BasicTerrainInfo) ->
+        'AllBinaryEventObject':'$init'(This, BasicTerrainInfo),
         init_fields(This),
         (get({This, '$class'})):setBasicTerrainInfo(This, get({This, basicTerrainInfo})).
 

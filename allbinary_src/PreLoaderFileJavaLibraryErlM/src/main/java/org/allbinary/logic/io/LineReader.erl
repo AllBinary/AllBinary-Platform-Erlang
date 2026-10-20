@@ -34,10 +34,10 @@ init_fields(This) ->
 new(FileName) when (is_list(FileName) orelse FileName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FileName),
+    '$init'(This, FileName),
     This.
 
-init(This, FileName) when (is_list(FileName) orelse FileName =:= undefined) ->
+'$init'(This, FileName) when (is_list(FileName) orelse FileName =:= undefined) ->
     init_fields(This),
         try
             Bytes = array:new(100000, {default, 0}),

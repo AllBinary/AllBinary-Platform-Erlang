@@ -29,10 +29,10 @@ init_fields(This) ->
 new(StoreName, GatewayName) when (is_list(StoreName) orelse StoreName =:= undefined), (is_list(GatewayName) orelse GatewayName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreName, GatewayName),
+    '$init'(This, StoreName, GatewayName),
     This.
 
-init(This, StoreName, GatewayName) when (is_list(StoreName) orelse StoreName =:= undefined), (is_list(GatewayName) orelse GatewayName =:= undefined) ->
+'$init'(This, StoreName, GatewayName) when (is_list(StoreName) orelse StoreName =:= undefined), (is_list(GatewayName) orelse GatewayName =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setStoreName(This, StoreName),
         (get({This, '$class'})):setName(This, GatewayName).

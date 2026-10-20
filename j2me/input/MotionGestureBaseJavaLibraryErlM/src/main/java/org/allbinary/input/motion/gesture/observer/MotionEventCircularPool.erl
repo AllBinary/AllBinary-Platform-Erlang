@@ -32,10 +32,10 @@ createPool(Id) when is_integer(Id) ->
 new(Id) when is_integer(Id) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Id),
+    '$init'(This, Id),
     This.
 
-init(This, Id) when is_integer(Id) ->
+'$init'(This, Id) when is_integer(Id) ->
     init_fields(This),
         (get({get({This, eventPool}), '$class'})):initAllBinaryEventCircularPool(get({This, eventPool}), 'MotionEventFactory':new(get({This, eventPool}), Id)).
 

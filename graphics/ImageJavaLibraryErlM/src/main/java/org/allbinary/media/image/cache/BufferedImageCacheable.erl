@@ -29,10 +29,10 @@ init_fields(This) ->
 new(Key) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Key),
+    '$init'(This, Key),
     This.
 
-init(This, Key) ->
+'$init'(This, Key) ->
     init_fields(This),
         put({This, key}, Key),
         (get({This, '$class'})):setBufferedImage(This, 'BufferedImage':new((get({Key, '$class'})):getWidth(Key), (get({Key, '$class'})):getHeight(Key), (get({Key, '$class'})):getType(Key))).

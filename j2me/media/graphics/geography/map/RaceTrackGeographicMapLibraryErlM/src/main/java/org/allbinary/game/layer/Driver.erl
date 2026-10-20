@@ -32,10 +32,10 @@ init_fields(This) ->
 new(TurnSpeed, TrackPathSelectionSkill, Aggression) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TurnSpeed, TrackPathSelectionSkill, Aggression),
+    '$init'(This, TurnSpeed, TrackPathSelectionSkill, Aggression),
     This.
 
-init(This, TurnSpeed, TrackPathSelectionSkill, Aggression) ->
+'$init'(This, TurnSpeed, TrackPathSelectionSkill, Aggression) ->
     init_fields(This),
         (get({This, '$class'})):setTurnSpeed(This, TurnSpeed),
         (get({This, '$class'})):setTrackPathSelectionSkill(This, TrackPathSelectionSkill),

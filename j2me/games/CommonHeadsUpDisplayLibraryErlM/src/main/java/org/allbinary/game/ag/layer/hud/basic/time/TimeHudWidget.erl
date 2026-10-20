@@ -42,11 +42,11 @@ getInstance(Location, Direction, BasicColor, Timer) when is_integer(Location), i
 new(Location, Direction, BufferZone, BasicColor, Timer) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Location, Direction, BufferZone, BasicColor, Timer),
+    '$init'(This, Location, Direction, BufferZone, BasicColor, Timer),
     This.
 
-init(This, Location, Direction, BufferZone, BasicColor, Timer) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
-        'BasicHud':init(This, Location, Direction, BufferZone, BasicColor),
+'$init'(This, Location, Direction, BufferZone, BasicColor, Timer) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
+        'BasicHud':'$init'(This, Location, Direction, BufferZone, BasicColor),
         init_fields(This),
         put({This, timer}, Timer),
         (get({This, '$class'})):set(This),

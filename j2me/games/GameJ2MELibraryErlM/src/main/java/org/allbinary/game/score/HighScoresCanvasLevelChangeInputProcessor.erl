@@ -44,11 +44,11 @@ init_fields(This) ->
 new(HighScoresCanvas) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HighScoresCanvas),
+    '$init'(This, HighScoresCanvas),
     This.
 
-init(This, HighScoresCanvas) ->
-        'HighScoresCanvasInputProcessor':init(This, HighScoresCanvas),
+'$init'(This, HighScoresCanvas) ->
+        'HighScoresCanvasInputProcessor':'$init'(This, HighScoresCanvas),
         init_fields(This).
 
 updateMeasurement(This, Graphics) ->

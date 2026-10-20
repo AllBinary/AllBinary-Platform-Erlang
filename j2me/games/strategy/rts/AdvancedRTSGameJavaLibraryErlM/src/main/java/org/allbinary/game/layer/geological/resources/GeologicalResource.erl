@@ -25,10 +25,10 @@ init_fields(This) ->
 new(InitTotal) when is_integer(InitTotal) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InitTotal),
+    '$init'(This, InitTotal),
     This.
 
-init(This, InitTotal) when is_integer(InitTotal) ->
+'$init'(This, InitTotal) when is_integer(InitTotal) ->
     init_fields(This),
         put({This, initTotal}, InitTotal),
         (get({This, '$class'})):init(This).

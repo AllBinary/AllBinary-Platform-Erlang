@@ -125,11 +125,11 @@ createSimulatedInstance(RemoteInfo) ->
 new(RemoteInfo, GroupInterface, RootName, Name, HealthInterface, RtsFormInput, AnimationInterfaceFactoryInterface, EmptyAnimationInterfaceFactoryInterface, BaseAnimationInterfaceFactoryInterface, BuildAnimationInterfaceFactoryInterface, VerticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y, ViewPosition) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(RootName) orelse RootName =:= undefined), (is_list(Name) orelse Name =:= undefined), is_integer(X), is_integer(Y) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, RemoteInfo, GroupInterface, RootName, Name, HealthInterface, RtsFormInput, AnimationInterfaceFactoryInterface, EmptyAnimationInterfaceFactoryInterface, BaseAnimationInterfaceFactoryInterface, BuildAnimationInterfaceFactoryInterface, VerticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y, ViewPosition),
+    '$init'(This, RemoteInfo, GroupInterface, RootName, Name, HealthInterface, RtsFormInput, AnimationInterfaceFactoryInterface, EmptyAnimationInterfaceFactoryInterface, BaseAnimationInterfaceFactoryInterface, BuildAnimationInterfaceFactoryInterface, VerticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y, ViewPosition),
     This.
 
-init(This, RemoteInfo, GroupInterface, RootName, Name, HealthInterface, RtsFormInput, AnimationInterfaceFactoryInterface, EmptyAnimationInterfaceFactoryInterface, BaseAnimationInterfaceFactoryInterface, BuildAnimationInterfaceFactoryInterface, VerticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y, ViewPosition) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(RootName) orelse RootName =:= undefined), (is_list(Name) orelse Name =:= undefined), is_integer(X), is_integer(Y) ->
-        'MultiPlayerGameLayer':init(This, RemoteInfo, GroupInterface, Name, Rectangle, ViewPosition),
+'$init'(This, RemoteInfo, GroupInterface, RootName, Name, HealthInterface, RtsFormInput, AnimationInterfaceFactoryInterface, EmptyAnimationInterfaceFactoryInterface, BaseAnimationInterfaceFactoryInterface, BuildAnimationInterfaceFactoryInterface, VerticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y, ViewPosition) when (is_tuple(GroupInterface) orelse GroupInterface =:= undefined), (is_list(RootName) orelse RootName =:= undefined), (is_list(Name) orelse Name =:= undefined), is_integer(X), is_integer(Y) ->
+        'MultiPlayerGameLayer':'$init'(This, RemoteInfo, GroupInterface, Name, Rectangle, ViewPosition),
         init_fields(This),
         (get({This, '$class'})):initInputProcessors(This),
         put({This, rootName}, RootName),

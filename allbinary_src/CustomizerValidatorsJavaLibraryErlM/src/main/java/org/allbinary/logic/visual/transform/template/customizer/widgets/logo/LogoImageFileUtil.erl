@@ -32,10 +32,10 @@ init_fields(This) ->
 new(ImageAbPath, ImageFile) when (is_list(ImageFile) orelse ImageFile =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ImageAbPath, ImageFile),
+    '$init'(This, ImageAbPath, ImageFile),
     This.
 
-init(This, ImageAbPath, ImageFile) when (is_list(ImageFile) orelse ImageFile =:= undefined) ->
+'$init'(This, ImageAbPath, ImageFile) when (is_list(ImageFile) orelse ImageFile =:= undefined) ->
     init_fields(This),
         put({This, fileName}, ImageFile),
         put({This, imageFileAbPath}, ImageAbPath).

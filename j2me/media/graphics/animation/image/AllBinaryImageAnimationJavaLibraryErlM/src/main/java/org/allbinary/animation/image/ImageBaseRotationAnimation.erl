@@ -37,11 +37,11 @@ init_fields(This) ->
 new(Image, AngleInfo, TotalAngle, AnimationBehavior) when is_integer(TotalAngle) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, AngleInfo, TotalAngle, AnimationBehavior),
+    '$init'(This, Image, AngleInfo, TotalAngle, AnimationBehavior),
     This.
 
-init(This, Image, AngleInfo, TotalAngle, AnimationBehavior) when is_integer(TotalAngle) ->
-        'RotationAnimation':init(This, AngleInfo, 'CircularIndexUtil':createInstance((TotalAngle / (fun(Target_N65913) -> (get({Target_N65913, '$class'})):getAngleIncrement(Target_N65913) end)((get({AngleInfo, '$class'})):getAngleIncrementInfo(AngleInfo)))), AnimationBehavior),
+'$init'(This, Image, AngleInfo, TotalAngle, AnimationBehavior) when is_integer(TotalAngle) ->
+        'RotationAnimation':'$init'(This, AngleInfo, 'CircularIndexUtil':createInstance((TotalAngle / (fun(Target_N65913) -> (get({Target_N65913, '$class'})):getAngleIncrement(Target_N65913) end)((get({AngleInfo, '$class'})):getAngleIncrementInfo(AngleInfo)))), AnimationBehavior),
         init_fields(This),
         put({This, image}, Image).
 

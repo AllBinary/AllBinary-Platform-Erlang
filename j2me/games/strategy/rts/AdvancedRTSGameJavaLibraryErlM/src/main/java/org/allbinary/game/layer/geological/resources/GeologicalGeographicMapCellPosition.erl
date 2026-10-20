@@ -28,11 +28,11 @@ init_fields(This) ->
 new(Column, Row, Columns, Rows, Width, Height, GeologicalResource) when is_integer(Column), is_integer(Row), is_integer(Columns), is_integer(Rows), is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Column, Row, Columns, Rows, Width, Height, GeologicalResource),
+    '$init'(This, Column, Row, Columns, Rows, Width, Height, GeologicalResource),
     This.
 
-init(This, Column, Row, Columns, Rows, Width, Height, GeologicalResource) when is_integer(Column), is_integer(Row), is_integer(Columns), is_integer(Rows), is_integer(Width), is_integer(Height) ->
-        'GeographicMapCellPosition':init(This, Column, Row, Columns, Rows, Width, Height),
+'$init'(This, Column, Row, Columns, Rows, Width, Height, GeologicalResource) when is_integer(Column), is_integer(Row), is_integer(Columns), is_integer(Rows), is_integer(Width), is_integer(Height) ->
+        'GeographicMapCellPosition':'$init'(This, Column, Row, Columns, Rows, Width, Height),
         init_fields(This),
         put({This, geologicalResource}, GeologicalResource).
 

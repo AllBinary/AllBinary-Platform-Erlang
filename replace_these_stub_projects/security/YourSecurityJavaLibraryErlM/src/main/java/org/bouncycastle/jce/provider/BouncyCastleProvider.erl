@@ -21,11 +21,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'Provider':init(This, get({'BouncyCastleProvider', 'PROVIDER_NAME'}), 1.41, get({'BouncyCastleProvider', info})).
+'$init'(This) ->
+        'Provider':'$init'(This, get({'BouncyCastleProvider', 'PROVIDER_NAME'}), 1.41, get({'BouncyCastleProvider', info})).
 
 setParameter(This, ParameterName, Parameter) when (is_list(ParameterName) orelse ParameterName =:= undefined) ->
         ok.

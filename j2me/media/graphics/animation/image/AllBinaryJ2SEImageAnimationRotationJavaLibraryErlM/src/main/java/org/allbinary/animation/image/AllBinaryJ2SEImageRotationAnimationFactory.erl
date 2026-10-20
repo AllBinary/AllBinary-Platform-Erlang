@@ -47,11 +47,11 @@ createDXY(Image, Width, Height, Dx, Dy, AngleIncrement, AnimationBehaviorFactory
 new(Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement), is_boolean(ResizeCanvasForRotation) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation),
+    '$init'(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation),
     This.
 
-init(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement), is_boolean(ResizeCanvasForRotation) ->
-        'BaseImageAnimationFactory':init(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, 0, 0, AnimationBehaviorFactory),
+'$init'(This, Image, Width, Height, AngleIncrement, AnimationBehaviorFactory, ResizeCanvasForRotation) when is_integer(Width), is_integer(Height), is_integer(AngleIncrement), is_boolean(ResizeCanvasForRotation) ->
+        'BaseImageAnimationFactory':'$init'(This, Image, 'PrimitiveIntUtil':getArrayInstance(), Width, Height, 0, 0, AnimationBehaviorFactory),
         init_fields(This),
         put({This, angleIncrementP}, AngleIncrement),
         put({This, resizeCanvasForRotation}, ResizeCanvasForRotation).

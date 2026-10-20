@@ -34,11 +34,11 @@ init_fields(This) ->
 new(OwnerLayerInterface, GameInput) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OwnerLayerInterface, GameInput),
+    '$init'(This, OwnerLayerInterface, GameInput),
     This.
 
-init(This, OwnerLayerInterface, GameInput) ->
-        'LurchAI':init(This, OwnerLayerInterface, GameInput),
+'$init'(This, OwnerLayerInterface, GameInput) ->
+        'LurchAI':'$init'(This, OwnerLayerInterface, GameInput),
         init_fields(This),
         RotationAnimationInterfaceCompositeInterface = (get({This, '$class'})):getOwnerLayerInterface(This),
         put({This, rotationAnimationInterface}, (get({RotationAnimationInterfaceCompositeInterface, '$class'})):getRotationAnimationInterface(RotationAnimationInterfaceCompositeInterface)),

@@ -33,10 +33,10 @@ init_fields(This) ->
 new(A_Name) when (is_list(A_Name) orelse A_Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, A_Name),
+    '$init'(This, A_Name),
     This.
 
-init(This, A_Name) when (is_list(A_Name) orelse A_Name =:= undefined) ->
+'$init'(This, A_Name) when (is_list(A_Name) orelse A_Name =:= undefined) ->
     init_fields(This),
         put({This, name}, A_Name),
         put({This, extension}, lists:concat([".", get({This, name})])),

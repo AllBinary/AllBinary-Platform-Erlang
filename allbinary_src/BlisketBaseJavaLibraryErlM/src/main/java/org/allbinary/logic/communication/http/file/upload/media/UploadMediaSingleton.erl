@@ -41,10 +41,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, readerFileTypesHashMap}, (fun(Target_N66083) -> (get({Target_N66083, '$class'})):createHashMap(Target_N66083) end)('StdUtil':getInstance())),
         put({This, writerFileTypesHashMap}, (fun(Target_N66127) -> (get({Target_N66127, '$class'})):createHashMap(Target_N66127) end)('StdUtil':getInstance())),

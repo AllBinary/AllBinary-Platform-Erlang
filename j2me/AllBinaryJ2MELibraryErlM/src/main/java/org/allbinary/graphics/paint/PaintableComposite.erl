@@ -28,11 +28,11 @@ init_fields(This) ->
 new(PaintableArray) when (is_tuple(PaintableArray) orelse PaintableArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PaintableArray),
+    '$init'(This, PaintableArray),
     This.
 
-init(This, PaintableArray) when (is_tuple(PaintableArray) orelse PaintableArray =:= undefined) ->
-    'Paintable':init(This),
+'$init'(This, PaintableArray) when (is_tuple(PaintableArray) orelse PaintableArray =:= undefined) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, paintableArray}, PaintableArray).
 

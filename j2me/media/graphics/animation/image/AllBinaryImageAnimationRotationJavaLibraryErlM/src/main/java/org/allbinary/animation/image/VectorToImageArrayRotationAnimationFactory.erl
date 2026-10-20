@@ -42,11 +42,11 @@ init_fields(This) ->
 new(VectorInfo, BasicColor, AnimationBehaviorFactory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, VectorInfo, BasicColor, AnimationBehaviorFactory),
+    '$init'(This, VectorInfo, BasicColor, AnimationBehaviorFactory),
     This.
 
-init(This, VectorInfo, BasicColor, AnimationBehaviorFactory) ->
-        'BaseImageAnimationFactory':init(This, (fun(Target_N66055) -> (get({Target_N66055, '$class'})):getInstanceTranslate(Target_N66055, (get({VectorInfo, '$class'})):getWidth(VectorInfo), (get({VectorInfo, '$class'})):getHeight(VectorInfo), 'VectorAnimation':createVectorAnimation((get({VectorInfo, '$class'})):getPoints(VectorInfo), BasicColor, (get({AnimationBehaviorFactory, '$class'})):getOrCreateInstance(AnimationBehaviorFactory))) end)('AnimationFrameToImageUtil':getInstance()), 'PrimitiveIntUtil':getArrayInstance(), 0, 0, 0, 0, AnimationBehaviorFactory),
+'$init'(This, VectorInfo, BasicColor, AnimationBehaviorFactory) ->
+        'BaseImageAnimationFactory':'$init'(This, (fun(Target_N66055) -> (get({Target_N66055, '$class'})):getInstanceTranslate(Target_N66055, (get({VectorInfo, '$class'})):getWidth(VectorInfo), (get({VectorInfo, '$class'})):getHeight(VectorInfo), 'VectorAnimation':createVectorAnimation((get({VectorInfo, '$class'})):getPoints(VectorInfo), BasicColor, (get({AnimationBehaviorFactory, '$class'})):getOrCreateInstance(AnimationBehaviorFactory))) end)('AnimationFrameToImageUtil':getInstance()), 'PrimitiveIntUtil':getArrayInstance(), 0, 0, 0, 0, AnimationBehaviorFactory),
         init_fields(This),
         (get({This, '$class'})):init(This).
 

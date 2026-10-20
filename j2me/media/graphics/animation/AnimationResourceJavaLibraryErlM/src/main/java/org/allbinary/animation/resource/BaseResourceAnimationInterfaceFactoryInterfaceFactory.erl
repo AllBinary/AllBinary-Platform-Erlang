@@ -42,10 +42,10 @@ init_fields(This) ->
 new(Name, Hashtable, RectangleHashtable, RectangleArrayHashtable) when (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Hashtable, RectangleHashtable, RectangleArrayHashtable),
+    '$init'(This, Name, Hashtable, RectangleHashtable, RectangleArrayHashtable),
     This.
 
-init(This, Name, Hashtable, RectangleHashtable, RectangleArrayHashtable) when (is_list(Name) orelse Name =:= undefined) ->
+'$init'(This, Name, Hashtable, RectangleHashtable, RectangleArrayHashtable) when (is_list(Name) orelse Name =:= undefined) ->
     init_fields(This),
         put({This, hashtable}, Hashtable),
         put({This, rectangleHashtable}, RectangleHashtable),

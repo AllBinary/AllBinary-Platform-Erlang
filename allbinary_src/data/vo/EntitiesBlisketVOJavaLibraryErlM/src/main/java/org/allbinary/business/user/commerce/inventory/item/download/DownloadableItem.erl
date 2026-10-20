@@ -47,15 +47,15 @@ init_fields(This) ->
 new(Id) when (is_list(Id) orelse Id =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Id),
+    '$init'(This, Id),
     This;
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, Id) when (is_list(Id) orelse Id =:= undefined) ->
+'$init'(This, Id) when (is_list(Id) orelse Id =:= undefined) ->
     init_fields(This),
         EMPTY_STRING = get({'StringUtil':getInstance(), 'EMPTY_STRING'}),
         put({This, id}, (fun(Target_N66434) -> (get({Target_N66434, '$class'})):getNext(Target_N66434) end)('ProductIdGenerator':new())),
@@ -71,7 +71,7 @@ init(This, Id) when (is_list(Id) orelse Id =:= undefined) ->
         put({This, size}, allbinary_java:to_string(0)),
         put({This, validTime}, allbinary_java:to_string(0)),
         put({This, retries}, EMPTY_STRING);
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         put({This, id}, (get({HashMap, '$class'})):get(HashMap, get({'DownloadItemData', 'ID'}))),
         put({This, basicItemId}, (get({HashMap, '$class'})):get(HashMap, get({'BasicItemData':getInstance(), 'ID'}))),

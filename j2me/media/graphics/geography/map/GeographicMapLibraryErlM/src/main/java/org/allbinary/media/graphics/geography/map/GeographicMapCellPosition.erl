@@ -31,11 +31,11 @@ init_fields(This) ->
 new(Column, Row, Columns, Rows, Width, Height) when is_integer(Column), is_integer(Row), is_integer(Columns), is_integer(Rows), is_integer(Width), is_integer(Height) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Column, Row, Columns, Rows, Width, Height),
+    '$init'(This, Column, Row, Columns, Rows, Width, Height),
     This.
 
-init(This, Column, Row, Columns, Rows, Width, Height) when is_integer(Column), is_integer(Row), is_integer(Columns), is_integer(Rows), is_integer(Width), is_integer(Height) ->
-        'CellPosition':init(This, Column, Row, Columns, Rows),
+'$init'(This, Column, Row, Columns, Rows, Width, Height) when is_integer(Column), is_integer(Row), is_integer(Columns), is_integer(Rows), is_integer(Width), is_integer(Height) ->
+        'CellPosition':'$init'(This, Column, Row, Columns, Rows),
         init_fields(This),
         X = ((get({This, '$class'})):getColumn(This) * Width),
         Y = ((get({This, '$class'})):getRow(This) * Height),

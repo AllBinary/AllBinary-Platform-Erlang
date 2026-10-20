@@ -35,10 +35,10 @@ init_fields(This) ->
 new(FullPath) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FullPath),
+    '$init'(This, FullPath),
     This.
 
-init(This, FullPath) ->
+'$init'(This, FullPath) ->
     init_fields(This),
         put({This, file}, 'AbFile':createAbFileFromAbPath('AbPath':new((get({FullPath, '$class'})):toFileSystemString(FullPath), get({'FileUploadData':getInstance(), 'FILE'})))),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEWERROR'})) of

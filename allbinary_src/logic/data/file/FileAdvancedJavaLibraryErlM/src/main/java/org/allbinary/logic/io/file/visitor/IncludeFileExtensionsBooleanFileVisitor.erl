@@ -28,11 +28,11 @@ init_fields(This) ->
 new(FilterStringBasicArrayList) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FilterStringBasicArrayList),
+    '$init'(This, FilterStringBasicArrayList),
     This.
 
-init(This, FilterStringBasicArrayList) ->
-        'BooleanFileVisitor':init(This, FilterStringBasicArrayList).
+'$init'(This, FilterStringBasicArrayList) ->
+        'BooleanFileVisitor':'$init'(This, FilterStringBasicArrayList).
 
 visit(This, File) ->
         try

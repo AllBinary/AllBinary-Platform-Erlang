@@ -27,9 +27,9 @@ init_fields(This) ->
 new(Type) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Type),
+    '$init'(This, Type),
     This.
 
-init(This, Type) ->
-        'Control':init(This, Type).
+'$init'(This, Type) ->
+        'Control':'$init'(This, Type).
 

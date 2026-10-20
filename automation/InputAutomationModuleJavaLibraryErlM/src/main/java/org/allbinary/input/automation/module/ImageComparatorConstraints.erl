@@ -37,10 +37,10 @@ init_fields(This) ->
 new(DoImageComparisonEveryNthFrame) when is_integer(DoImageComparisonEveryNthFrame) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DoImageComparisonEveryNthFrame),
+    '$init'(This, DoImageComparisonEveryNthFrame),
     This.
 
-init(This, DoImageComparisonEveryNthFrame) when is_integer(DoImageComparisonEveryNthFrame) ->
+'$init'(This, DoImageComparisonEveryNthFrame) when is_integer(DoImageComparisonEveryNthFrame) ->
     init_fields(This),
         put({This, doImageComparisonEveryNthFrame}, DoImageComparisonEveryNthFrame),
         (get({This, '$class'})):setAvoidVector(This, 'BasicArrayListD':new()).

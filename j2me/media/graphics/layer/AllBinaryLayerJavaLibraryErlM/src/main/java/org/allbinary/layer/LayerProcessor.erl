@@ -27,10 +27,10 @@ init_fields(This) ->
 new(LayerManager) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, LayerManager),
+    '$init'(This, LayerManager),
     This.
 
-init(This, LayerManager) ->
+'$init'(This, LayerManager) ->
     init_fields(This),
         put({This, layerManager}, LayerManager).
 

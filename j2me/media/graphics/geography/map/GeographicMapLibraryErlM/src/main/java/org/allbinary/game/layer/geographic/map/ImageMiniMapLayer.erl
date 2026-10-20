@@ -35,11 +35,11 @@ init_fields(This) ->
 new(GeographicMapInterface, ViewPosition) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GeographicMapInterface, ViewPosition),
+    '$init'(This, GeographicMapInterface, ViewPosition),
     This.
 
-init(This, GeographicMapInterface, ViewPosition) ->
-        'MiniMapLayer':init(This, GeographicMapInterface, ViewPosition),
+'$init'(This, GeographicMapInterface, ViewPosition) ->
+        'MiniMapLayer':'$init'(This, GeographicMapInterface, ViewPosition),
         init_fields(This).
 
 % throws Exception

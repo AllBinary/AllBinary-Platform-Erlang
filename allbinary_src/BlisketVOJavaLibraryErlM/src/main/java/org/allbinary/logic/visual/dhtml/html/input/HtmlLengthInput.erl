@@ -30,11 +30,11 @@ init_fields(This) ->
 new(Before, Type, Name, Value, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Type) orelse Type =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(Value) orelse Value =:= undefined), (is_list(After) orelse After =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Before, Type, Name, Value, After),
+    '$init'(This, Before, Type, Name, Value, After),
     This.
 
-init(This, Before, Type, Name, Value, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Type) orelse Type =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(Value) orelse Value =:= undefined), (is_list(After) orelse After =:= undefined) ->
-        'HtmlValueInput':init(This, Before, Type, Name, Value, After),
+'$init'(This, Before, Type, Name, Value, After) when (is_list(Before) orelse Before =:= undefined), (is_list(Type) orelse Type =:= undefined), (is_list(Name) orelse Name =:= undefined), (is_list(Value) orelse Value =:= undefined), (is_list(After) orelse After =:= undefined) ->
+        'HtmlValueInput':'$init'(This, Before, Type, Name, Value, After),
         init_fields(This).
 
 setMaxLength(This, Length) ->

@@ -39,11 +39,11 @@ init_fields(This) ->
 new(Parent, Modal, Dimension, NewName) when is_boolean(Modal), (is_list(NewName) orelse NewName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Parent, Modal, Dimension, NewName),
+    '$init'(This, Parent, Modal, Dimension, NewName),
     This.
 
-init(This, Parent, Modal, Dimension, NewName) when is_boolean(Modal), (is_list(NewName) orelse NewName =:= undefined) ->
-        'JDialog':init(This, Parent, Modal),
+'$init'(This, Parent, Modal, Dimension, NewName) when is_boolean(Modal), (is_list(NewName) orelse NewName =:= undefined) ->
+        'JDialog':'$init'(This, Parent, Modal),
         init_fields(This),
         try
             (get({This, '$class'})):initComponents(This),

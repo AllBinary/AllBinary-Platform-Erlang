@@ -30,11 +30,11 @@ init_fields(This) ->
 new(PlayerInputId) when is_integer(PlayerInputId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PlayerInputId),
+    '$init'(This, PlayerInputId),
     This.
 
-init(This, PlayerInputId) when is_integer(PlayerInputId) ->
-    'AnalogControllerVisitor':init(This),
+'$init'(This, PlayerInputId) when is_integer(PlayerInputId) ->
+    'AnalogControllerVisitor':'$init'(This),
     init_fields(This),
         put({This, playerInputId}, PlayerInputId).
 

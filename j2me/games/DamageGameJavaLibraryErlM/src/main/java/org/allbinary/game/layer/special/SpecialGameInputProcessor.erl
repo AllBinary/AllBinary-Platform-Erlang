@@ -28,11 +28,11 @@ init_fields(This) ->
 new(CollidableDestroyableDamageableLayer) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CollidableDestroyableDamageableLayer),
+    '$init'(This, CollidableDestroyableDamageableLayer),
     This.
 
-init(This, CollidableDestroyableDamageableLayer) ->
-    'GameInputProcessor':init(This),
+'$init'(This, CollidableDestroyableDamageableLayer) ->
+    'GameInputProcessor':'$init'(This),
     init_fields(This),
         put({This, collidableDestroyableDamageableLayer}, CollidableDestroyableDamageableLayer).
 

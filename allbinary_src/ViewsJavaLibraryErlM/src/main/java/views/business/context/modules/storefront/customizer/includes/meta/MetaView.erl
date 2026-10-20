@@ -36,11 +36,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'HttpStoreComponentView':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'HttpStoreComponentView':'$init'(This, TransformInfoInterface),
         init_fields(This),
         put({This, metasValidation}, 'MetasValidation':new((fun(Target_N66010) -> (get({Target_N66010, '$class'})):getStoreName(Target_N66010) end)((get({This, '$class'})):getWeblisketSession(This)))).
 

@@ -78,11 +78,11 @@ init_fields(This) ->
 new(OwnerAdvancedRTSGameLayer, FakeWaypoint) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OwnerAdvancedRTSGameLayer, FakeWaypoint),
+    '$init'(This, OwnerAdvancedRTSGameLayer, FakeWaypoint),
     This.
 
-init(This, OwnerAdvancedRTSGameLayer, FakeWaypoint) ->
-        'UnitWaypointBehavior':init(This, OwnerAdvancedRTSGameLayer, FakeWaypoint),
+'$init'(This, OwnerAdvancedRTSGameLayer, FakeWaypoint) ->
+        'UnitWaypointBehavior':'$init'(This, OwnerAdvancedRTSGameLayer, FakeWaypoint),
         init_fields(This),
         put({This, progressTimeDelayHelper}, 'TimeDelayHelper':new(5000)),
         put({This, wanderPathsList}, 'BasicArrayListD':new()),

@@ -30,10 +30,10 @@ init_fields(This) ->
 new(File) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, File),
+    '$init'(This, File),
     This.
 
-init(This, File) ->
+'$init'(This, File) ->
     init_fields(This),
         put({This, file}, File).
 

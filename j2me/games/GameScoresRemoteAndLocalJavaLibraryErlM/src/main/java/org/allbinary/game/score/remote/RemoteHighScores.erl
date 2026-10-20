@@ -52,11 +52,11 @@ init_fields(This) ->
 new(AbeClientInformation, SoftwareInformation, GameInfo, Heading, ColumnTwoHeading, Ascending, Preload) when (is_list(Heading) orelse Heading =:= undefined), (is_list(ColumnTwoHeading) orelse ColumnTwoHeading =:= undefined), is_boolean(Preload) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, SoftwareInformation, GameInfo, Heading, ColumnTwoHeading, Ascending, Preload),
+    '$init'(This, AbeClientInformation, SoftwareInformation, GameInfo, Heading, ColumnTwoHeading, Ascending, Preload),
     This.
 
-init(This, AbeClientInformation, SoftwareInformation, GameInfo, Heading, ColumnTwoHeading, Ascending, Preload) when (is_list(Heading) orelse Heading =:= undefined), (is_list(ColumnTwoHeading) orelse ColumnTwoHeading =:= undefined), is_boolean(Preload) ->
-        'HighScores':init(This, (get({GameInfo, '$class'})):toString(GameInfo), Heading, ColumnTwoHeading),
+'$init'(This, AbeClientInformation, SoftwareInformation, GameInfo, Heading, ColumnTwoHeading, Ascending, Preload) when (is_list(Heading) orelse Heading =:= undefined), (is_list(ColumnTwoHeading) orelse ColumnTwoHeading =:= undefined), is_boolean(Preload) ->
+        'HighScores':'$init'(This, (get({GameInfo, '$class'})):toString(GameInfo), Heading, ColumnTwoHeading),
         init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation),
         put({This, softwareInformation}, SoftwareInformation),

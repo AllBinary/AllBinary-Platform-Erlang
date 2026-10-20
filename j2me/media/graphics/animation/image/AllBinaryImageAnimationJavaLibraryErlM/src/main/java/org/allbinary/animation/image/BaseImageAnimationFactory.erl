@@ -45,10 +45,10 @@ createFactoryBase(Image, SequenceArray, Width, Height, AnimationBehaviorFactory)
 new(Image, SequenceArray, Width, Height, Dx, Dy, AnimationBehaviorFactory) when (is_tuple(SequenceArray) orelse SequenceArray =:= undefined), is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, SequenceArray, Width, Height, Dx, Dy, AnimationBehaviorFactory),
+    '$init'(This, Image, SequenceArray, Width, Height, Dx, Dy, AnimationBehaviorFactory),
     This.
 
-init(This, Image, SequenceArray, Width, Height, Dx, Dy, AnimationBehaviorFactory) when (is_tuple(SequenceArray) orelse SequenceArray =:= undefined), is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy) ->
+'$init'(This, Image, SequenceArray, Width, Height, Dx, Dy, AnimationBehaviorFactory) when (is_tuple(SequenceArray) orelse SequenceArray =:= undefined), is_integer(Width), is_integer(Height), is_integer(Dx), is_integer(Dy) ->
     init_fields(This),
         put({This, animationFactoryInitializationVisitor}, 'AnimationFactoryInitializationVisitor':new()),
         put({This, image}, Image),

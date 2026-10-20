@@ -45,11 +45,11 @@ createVectorAnimation(CurrentPoints2, BasicColor, AnimationBehavior) when (is_tu
 new(CurrentPoints, BasicColor, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CurrentPoints, BasicColor, AnimationBehavior),
+    '$init'(This, CurrentPoints, BasicColor, AnimationBehavior),
     This.
 
-init(This, CurrentPoints, BasicColor, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
-        'IndexedAnimation':init(This, AnimationBehavior),
+'$init'(This, CurrentPoints, BasicColor, AnimationBehavior) when (is_tuple(CurrentPoints) orelse CurrentPoints =:= undefined) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior),
         init_fields(This),
         (get({This, '$class'})):setPoints(This, CurrentPoints),
         (get({This, '$class'})):setBasicColorP(This, BasicColor).

@@ -30,10 +30,10 @@ init_fields(This) ->
 new(Key) when (is_list(Key) orelse Key =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Key),
+    '$init'(This, Key),
     This.
 
-init(This, Key) when (is_list(Key) orelse Key =:= undefined) ->
+'$init'(This, Key) when (is_list(Key) orelse Key =:= undefined) ->
     init_fields(This),
         put({This, key}, Key).
 

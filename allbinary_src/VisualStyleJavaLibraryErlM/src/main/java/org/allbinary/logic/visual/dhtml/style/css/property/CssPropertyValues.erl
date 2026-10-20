@@ -40,20 +40,20 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, propertyValueVector}, 'BasicArrayListD':new()).
 
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         IndexPropertyValueHashMap = (fun(Target_N66177) -> (get({Target_N66177, '$class'})):createHashMap(Target_N66177) end)('StdUtil':getInstance()),
         put({This, propertyValueVector}, 'BasicArrayListD':new()),

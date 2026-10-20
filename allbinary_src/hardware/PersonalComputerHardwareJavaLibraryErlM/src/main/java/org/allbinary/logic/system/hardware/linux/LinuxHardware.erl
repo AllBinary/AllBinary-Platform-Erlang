@@ -74,20 +74,20 @@ init_fields(This) ->
 new(Path) when (is_list(Path) orelse Path =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Path),
+    '$init'(This, Path),
     This.
 
-init(This, Path) when (is_list(Path) orelse Path =:= undefined) ->
+'$init'(This, Path) when (is_list(Path) orelse Path =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):init(This, Path).
 
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({This, '$class'})):init(This, get({'LinuxHardware', 'PCIFILE'})),
         case ((get({get({This, componentInterfaceVector}), '$class'})):size(get({This, componentInterfaceVector})) < get({This, 'MINHARDWARE'})) of

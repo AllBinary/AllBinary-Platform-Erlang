@@ -26,11 +26,11 @@ init_fields(This) ->
 new(X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, X, Y, Z),
+    '$init'(This, X, Y, Z),
     This.
 
-init(This, X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
-        'ViewPosition':init(This, X, Y, Z).
+'$init'(This, X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
+        'ViewPosition':'$init'(This, X, Y, Z).
 
 getX(This) ->
         (get({This, '$class'})):getRawX(This).

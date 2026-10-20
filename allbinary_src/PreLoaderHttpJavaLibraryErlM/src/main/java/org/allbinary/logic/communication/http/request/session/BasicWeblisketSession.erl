@@ -34,10 +34,10 @@ init_fields(This) ->
 new(PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PageContext),
+    '$init'(This, PageContext),
     This.
 
-init(This, PageContext) ->
+'$init'(This, PageContext) ->
     init_fields(This),
         put({This, pageContext}, PageContext),
         Request = (get({PageContext, '$class'})):getRequest(PageContext),

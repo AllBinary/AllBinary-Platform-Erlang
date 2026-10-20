@@ -40,11 +40,11 @@ init_fields(This) ->
 new(Parent, Modal) when is_boolean(Modal) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Parent, Modal),
+    '$init'(This, Parent, Modal),
     This.
 
-init(This, Parent, Modal) when is_boolean(Modal) ->
-        'JDialog':init(This, Parent, Modal),
+'$init'(This, Parent, Modal) when is_boolean(Modal) ->
+        'JDialog':'$init'(This, Parent, Modal),
         init_fields(This),
         (get({This, '$class'})):initComponents(This).
 

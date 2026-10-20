@@ -33,11 +33,11 @@ init_fields(This) ->
 new(SecretKey, Cipher, Key) when (is_tuple(Key) orelse Key =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, SecretKey, Cipher, Key),
+    '$init'(This, SecretKey, Cipher, Key),
     This.
 
-init(This, SecretKey, Cipher, Key) when (is_tuple(Key) orelse Key =:= undefined) ->
-    'BaseSecretComposite':init(This),
+'$init'(This, SecretKey, Cipher, Key) when (is_tuple(Key) orelse Key =:= undefined) ->
+    'BaseSecretComposite':'$init'(This),
     init_fields(This),
         put({This, secretKey}, SecretKey),
         put({This, cipher}, Cipher),

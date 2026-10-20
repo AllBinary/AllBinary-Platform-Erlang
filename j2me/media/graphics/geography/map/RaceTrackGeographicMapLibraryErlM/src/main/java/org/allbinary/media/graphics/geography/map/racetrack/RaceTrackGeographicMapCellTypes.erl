@@ -39,10 +39,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         put({This, 'BOTTOM_LEFT_TURN_ROAD_CELL_TYPE'}, 'RaceTrackGeographicMapCellType':new("Bottom Left Turn", 1, 1, 0)),
         put({This, 'BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE'}, 'RaceTrackGeographicMapCellType':new("Bottom Right Turn", 2, 1, 0)),

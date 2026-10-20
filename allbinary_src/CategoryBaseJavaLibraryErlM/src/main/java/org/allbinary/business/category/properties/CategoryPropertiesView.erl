@@ -30,10 +30,10 @@ init_fields(This) ->
 new(CategoryPropertiesInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CategoryPropertiesInterface),
+    '$init'(This, CategoryPropertiesInterface),
     This.
 
-init(This, CategoryPropertiesInterface) ->
+'$init'(This, CategoryPropertiesInterface) ->
     init_fields(This),
         put({This, categoryPropertiesInterface}, CategoryPropertiesInterface).
 

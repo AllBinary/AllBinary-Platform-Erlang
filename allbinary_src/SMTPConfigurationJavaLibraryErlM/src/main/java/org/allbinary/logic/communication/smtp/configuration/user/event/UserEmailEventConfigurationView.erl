@@ -33,15 +33,15 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This;
 new(UserEmailEventConfigurationInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UserEmailEventConfigurationInterface),
+    '$init'(This, UserEmailEventConfigurationInterface),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         ChildNodeList = (get({Node, '$class'})):getChildNodes(Node),
         HashMap = (fun(Target_N65931) -> (get({Target_N65931, '$class'})):createHashMap(Target_N65931) end)('StdUtil':getInstance()),
@@ -50,7 +50,7 @@ init(This, Node) ->
         EventListenerClassPath = 'DomNodeHelper':getTextNodeValue(get({'UserEmailEventConfigurationData', 'LISTENER_CLASSPATH'}), ChildNodeList),
         (get({HashMap, '$class'})):put(HashMap, get({'UserEmailEventConfigurationData', 'LISTENER_CLASSPATH'}), EventListenerClassPath),
         (get({This, '$class'})):setUserEmailEventConfigurationInterface(This, 'UserEmailEventConfiguration':new(HashMap));
-init(This, UserEmailEventConfigurationInterface) ->
+'$init'(This, UserEmailEventConfigurationInterface) ->
     init_fields(This),
         (get({This, '$class'})):setUserEmailEventConfigurationInterface(This, UserEmailEventConfigurationInterface).
 

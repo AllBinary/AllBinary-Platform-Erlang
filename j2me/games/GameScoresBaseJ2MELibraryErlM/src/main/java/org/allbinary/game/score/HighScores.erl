@@ -34,10 +34,10 @@ init_fields(This) ->
 new(Name, Heading, ColumnTwoHeading) when (is_list(Name) orelse Name =:= undefined), (is_list(Heading) orelse Heading =:= undefined), (is_list(ColumnTwoHeading) orelse ColumnTwoHeading =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, Heading, ColumnTwoHeading),
+    '$init'(This, Name, Heading, ColumnTwoHeading),
     This.
 
-init(This, Name, Heading, ColumnTwoHeading) when (is_list(Name) orelse Name =:= undefined), (is_list(Heading) orelse Heading =:= undefined), (is_list(ColumnTwoHeading) orelse ColumnTwoHeading =:= undefined) ->
+'$init'(This, Name, Heading, ColumnTwoHeading) when (is_list(Name) orelse Name =:= undefined), (is_list(Heading) orelse Heading =:= undefined), (is_list(ColumnTwoHeading) orelse ColumnTwoHeading =:= undefined) ->
     init_fields(This),
         put({This, name}, Name),
         put({This, heading}, Heading),

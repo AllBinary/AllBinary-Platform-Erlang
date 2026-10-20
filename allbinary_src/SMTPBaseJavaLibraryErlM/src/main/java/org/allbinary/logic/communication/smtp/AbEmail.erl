@@ -29,10 +29,10 @@ init_fields(This) ->
 new(Server, From, To, Subject, TextBody, HtmlAttachment, ContentBase) when (is_list(Server) orelse Server =:= undefined), (is_list(From) orelse From =:= undefined), (is_list(To) orelse To =:= undefined), (is_list(Subject) orelse Subject =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined), (is_list(HtmlAttachment) orelse HtmlAttachment =:= undefined), (is_list(ContentBase) orelse ContentBase =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Server, From, To, Subject, TextBody, HtmlAttachment, ContentBase),
+    '$init'(This, Server, From, To, Subject, TextBody, HtmlAttachment, ContentBase),
     This.
 
-init(This, Server, From, To, Subject, TextBody, HtmlAttachment, ContentBase) when (is_list(Server) orelse Server =:= undefined), (is_list(From) orelse From =:= undefined), (is_list(To) orelse To =:= undefined), (is_list(Subject) orelse Subject =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined), (is_list(HtmlAttachment) orelse HtmlAttachment =:= undefined), (is_list(ContentBase) orelse ContentBase =:= undefined) ->
+'$init'(This, Server, From, To, Subject, TextBody, HtmlAttachment, ContentBase) when (is_list(Server) orelse Server =:= undefined), (is_list(From) orelse From =:= undefined), (is_list(To) orelse To =:= undefined), (is_list(Subject) orelse Subject =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined), (is_list(HtmlAttachment) orelse HtmlAttachment =:= undefined), (is_list(ContentBase) orelse ContentBase =:= undefined) ->
     init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'EMAILLOGGINGERROR'})) of
             true ->

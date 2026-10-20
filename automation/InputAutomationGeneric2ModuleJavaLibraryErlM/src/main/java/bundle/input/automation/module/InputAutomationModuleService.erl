@@ -26,10 +26,10 @@ init_fields(This) ->
 new(InputAutomationModuleInterfaceArray) when (is_tuple(InputAutomationModuleInterfaceArray) orelse InputAutomationModuleInterfaceArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputAutomationModuleInterfaceArray),
+    '$init'(This, InputAutomationModuleInterfaceArray),
     This.
 
-init(This, InputAutomationModuleInterfaceArray) when (is_tuple(InputAutomationModuleInterfaceArray) orelse InputAutomationModuleInterfaceArray =:= undefined) ->
+'$init'(This, InputAutomationModuleInterfaceArray) when (is_tuple(InputAutomationModuleInterfaceArray) orelse InputAutomationModuleInterfaceArray =:= undefined) ->
     init_fields(This),
         (get({This, '$class'})):setInputAutomationModuleInterfaceArray(This, InputAutomationModuleInterfaceArray).
 

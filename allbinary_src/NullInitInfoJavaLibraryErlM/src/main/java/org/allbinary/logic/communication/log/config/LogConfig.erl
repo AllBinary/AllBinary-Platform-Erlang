@@ -35,10 +35,10 @@ init_fields(This) ->
 new(AName, ADescription, APath, AFileName) when (is_list(AName) orelse AName =:= undefined), (is_list(ADescription) orelse ADescription =:= undefined), (is_list(APath) orelse APath =:= undefined), (is_list(AFileName) orelse AFileName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AName, ADescription, APath, AFileName),
+    '$init'(This, AName, ADescription, APath, AFileName),
     This.
 
-init(This, AName, ADescription, APath, AFileName) when (is_list(AName) orelse AName =:= undefined), (is_list(ADescription) orelse ADescription =:= undefined), (is_list(APath) orelse APath =:= undefined), (is_list(AFileName) orelse AFileName =:= undefined) ->
+'$init'(This, AName, ADescription, APath, AFileName) when (is_list(AName) orelse AName =:= undefined), (is_list(ADescription) orelse ADescription =:= undefined), (is_list(APath) orelse APath =:= undefined), (is_list(AFileName) orelse AFileName =:= undefined) ->
     init_fields(This),
         put({This, isEnabled}, false),
         put({This, name}, AName),
@@ -49,10 +49,10 @@ init(This, AName, ADescription, APath, AFileName) when (is_list(AName) orelse AN
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
+'$init'(This, Node) ->
     init_fields(This),
         EnabledValueNode = 'DomSearchHelper':getNode(get({'EntryData':getInstance(), 'ENABLE'}), (get({Node, '$class'})):getChildNodes(Node)),
         IsEnabledString = 'DomNodeHelper':getTextNodeValue(EnabledValueNode),

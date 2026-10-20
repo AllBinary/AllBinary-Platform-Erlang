@@ -30,11 +30,11 @@ init_fields(This) ->
 new(Angle, Name) when is_integer(Angle), (is_list(Name) orelse Name =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Angle, Name),
+    '$init'(This, Angle, Name),
     This.
 
-init(This, Angle, Name) when is_integer(Angle), (is_list(Name) orelse Name =:= undefined) ->
-        'Angle':init(This, Angle),
+'$init'(This, Angle, Name) when is_integer(Angle), (is_list(Name) orelse Name =:= undefined) ->
+        'Angle':'$init'(This, Angle),
         init_fields(This),
         put({This, name}, Name).
 

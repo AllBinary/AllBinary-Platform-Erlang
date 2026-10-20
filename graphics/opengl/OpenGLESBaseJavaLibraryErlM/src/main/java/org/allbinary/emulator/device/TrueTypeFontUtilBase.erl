@@ -42,10 +42,10 @@ init_fields(This) ->
 new(Scale) when is_integer(Scale) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Scale),
+    '$init'(This, Scale),
     This.
 
-init(This, Scale) when is_integer(Scale) ->
+'$init'(This, Scale) when is_integer(Scale) ->
     init_fields(This),
         put({local, shortPattern}, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
         case 'AvianUtil':isAvian() of

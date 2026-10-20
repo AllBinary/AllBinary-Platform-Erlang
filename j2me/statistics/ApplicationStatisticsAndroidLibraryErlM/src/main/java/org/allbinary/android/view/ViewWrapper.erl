@@ -28,11 +28,11 @@ init_fields(This) ->
 new(View) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, View),
+    '$init'(This, View),
     This.
 
-init(This, View) ->
-    'BaseViewWrapper':init(This),
+'$init'(This, View) ->
+    'BaseViewWrapper':'$init'(This),
     init_fields(This),
         put({This, view}, View).
 

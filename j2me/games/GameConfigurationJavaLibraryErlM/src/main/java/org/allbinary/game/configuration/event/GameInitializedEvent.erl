@@ -31,11 +31,11 @@ init_fields(This) ->
 new(AnyType) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnyType),
+    '$init'(This, AnyType),
     This.
 
-init(This, AnyType) ->
-        'AllBinaryEventObject':init(This, AnyType),
+'$init'(This, AnyType) ->
+        'AllBinaryEventObject':'$init'(This, AnyType),
         init_fields(This).
 
 setLevel(This, Level) when is_integer(Level) ->

@@ -47,10 +47,10 @@ init_fields(This) ->
 new(UserName, Request) when (is_list(UserName) orelse UserName =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, UserName, Request),
+    '$init'(This, UserName, Request),
     This.
 
-init(This, UserName, Request) when (is_list(UserName) orelse UserName =:= undefined) ->
+'$init'(This, UserName, Request) when (is_list(UserName) orelse UserName =:= undefined) ->
     init_fields(This),
         QuoteRequestData = 'QuoteRequestData':getInstance(),
         put({This, id}, (fun(Target_N66382) -> (get({Target_N66382, '$class'})):getNext(Target_N66382) end)('QuoteRequestIdGenerator':new())),
@@ -69,10 +69,10 @@ init(This, UserName, Request) when (is_list(UserName) orelse UserName =:= undefi
 new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap),
+    '$init'(This, HashMap),
     This.
 
-init(This, HashMap) ->
+'$init'(This, HashMap) ->
     init_fields(This),
         QuoteRequestData = 'QuoteRequestData':getInstance(),
         put({This, id}, (get({HashMap, '$class'})):get(HashMap, get({QuoteRequestData, 'ID'}))),

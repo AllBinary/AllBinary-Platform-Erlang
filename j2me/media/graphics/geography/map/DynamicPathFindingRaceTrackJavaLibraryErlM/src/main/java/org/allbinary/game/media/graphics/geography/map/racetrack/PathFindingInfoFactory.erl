@@ -61,11 +61,11 @@ initMax(Max) when is_integer(Max) ->
 new(PathFinderGraphVisitorFactoryInterface, Max) when is_integer(Max) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PathFinderGraphVisitorFactoryInterface, Max),
+    '$init'(This, PathFinderGraphVisitorFactoryInterface, Max),
     This.
 
-init(This, PathFinderGraphVisitorFactoryInterface, Max) when is_integer(Max) ->
-    'BasePathFindingInfoFactory':init(This),
+'$init'(This, PathFinderGraphVisitorFactoryInterface, Max) when is_integer(Max) ->
+    'BasePathFindingInfoFactory':'$init'(This),
     init_fields(This),
         CommonStrings = 'CommonStrings':getInstance(),
         'PreLogUtil':put("Using Dynamic Path Finding", This, get({CommonStrings, 'GET_INSTANCE'})),

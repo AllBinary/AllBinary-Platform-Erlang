@@ -30,11 +30,11 @@ init_fields(This) ->
 new(Points) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Points),
+    '$init'(This, Points),
     This.
 
-init(This, Points) ->
-        'BasicGraphicsPipeline':init(This, Points).
+'$init'(This, Points) ->
+        'BasicGraphicsPipeline':'$init'(This, Points).
 
 % throws Exception
 rotateTheta(This, ATheta) when is_number(ATheta) ->

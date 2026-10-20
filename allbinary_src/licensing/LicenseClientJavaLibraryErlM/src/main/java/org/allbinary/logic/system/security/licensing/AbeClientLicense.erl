@@ -36,10 +36,10 @@ init_fields(This) ->
 new(Hashtable) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Hashtable),
+    '$init'(This, Hashtable),
     This.
 
-init(This, Hashtable) ->
+'$init'(This, Hashtable) ->
     init_fields(This),
         put({This, hashtable}, (fun(Target_N65989) -> (get({Target_N65989, '$class'})):createHashtable(Target_N65989) end)('StdUtil':getInstance())),
         AbeClientInformationData = 'AbeClientInformationData':getInstance(),

@@ -35,32 +35,32 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'NoTemplateTransformInfoObjectConfig':init(This, TransformInfoInterface),
+'$init'(This, TransformInfoInterface) ->
+        'NoTemplateTransformInfoObjectConfig':'$init'(This, TransformInfoInterface),
         init_fields(This).
 
 new(TransformInfoInterface, Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, Document),
+    '$init'(This, TransformInfoInterface, Document),
     This.
 
-init(This, TransformInfoInterface, Document) ->
-        'NoTemplateTransformInfoObjectConfig':init(This, TransformInfoInterface, Document),
+'$init'(This, TransformInfoInterface, Document) ->
+        'NoTemplateTransformInfoObjectConfig':'$init'(This, TransformInfoInterface, Document),
         init_fields(This),
         (get({This, '$class'})):setDocument(This, (get({This, '$class'})):generate(This, (get({This, '$class'})):toXmlDoc(This))).
 
 new(TransformInfoInterface, Name, Type) when (is_list(Name) orelse Name =:= undefined), (is_list(Type) orelse Type =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface, Name, Type),
+    '$init'(This, TransformInfoInterface, Name, Type),
     This.
 
-init(This, TransformInfoInterface, Name, Type) when (is_list(Name) orelse Name =:= undefined), (is_list(Type) orelse Type =:= undefined) ->
-        'NoTemplateTransformInfoObjectConfig':init(This, TransformInfoInterface, Name, Type),
+'$init'(This, TransformInfoInterface, Name, Type) when (is_list(Name) orelse Name =:= undefined), (is_list(Type) orelse Type =:= undefined) ->
+        'NoTemplateTransformInfoObjectConfig':'$init'(This, TransformInfoInterface, Name, Type),
         init_fields(This),
         (get({This, '$class'})):setDocument(This, (get({This, '$class'})):generate(This, (get({This, '$class'})):toXmlDoc(This))).
 

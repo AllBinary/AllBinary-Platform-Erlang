@@ -44,11 +44,11 @@ init_fields(This) ->
 new(Location, Direction, BufferZone, BasicColor) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Location, Direction, BufferZone, BasicColor),
+    '$init'(This, Location, Direction, BufferZone, BasicColor),
     This.
 
-init(This, Location, Direction, BufferZone, BasicColor) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
-        'BasicHud':init(This, Location, Direction, BufferZone, BasicColor),
+'$init'(This, Location, Direction, BufferZone, BasicColor) when is_integer(Location), is_integer(Direction), is_integer(BufferZone) ->
+        'BasicHud':'$init'(This, Location, Direction, BufferZone, BasicColor),
         init_fields(This).
 
 onEvent(This, EventObject) ->

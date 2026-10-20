@@ -49,11 +49,11 @@
         <module>../../allbinary_src/LogNoPlatformJavaLibraryErlM</module>
         <module>../../allbinary_src/LogJ2MEJavaLibraryErlM</module>
         <module>../../allbinary_src/LogJ2SEJavaLibraryErlM</module>
-        <module>../../allbinary_src/LogAndroidJavaLibraryErlM</module>
+<!--        <module>../../allbinary_src/LogAndroidJavaLibraryErlM</module>-->
         <module>../logging/LoggingNoneErlM</module>
         <module>../logging/LoggingJ2MEAllErlM</module>
         <module>../logging/LoggingJ2MEExceptionErlM</module>
-        <module>../logging/LoggingAndroidAllErlM</module>
+<!--        <module>../logging/LoggingAndroidAllErlM</module>-->
         <!--
         //While it is a possible dependency option it really does not fit here
         //as such it is actually build in the final POM builds instead
@@ -67,6 +67,7 @@
         
         <module>../../allbinary_src/ThreadLibraryErlM</module>
         <module>../../allbinary_src/ThreadHTMLLibraryErlM</module>
+        <module>../../replace_these_stub_projects/allbinary_src/NoneOnlyJavaLibraryErlM</module>
         <module>../../allbinary_src/ThreadJ2MELibraryErlM</module>
         <module>../time/TimeJavaLibraryErlM</module>
 

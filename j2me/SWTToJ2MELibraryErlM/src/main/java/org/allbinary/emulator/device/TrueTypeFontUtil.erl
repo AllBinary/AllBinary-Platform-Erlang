@@ -58,11 +58,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'TrueTypeFontUtilBase':init(This, 2),
+'$init'(This) ->
+        'TrueTypeFontUtilBase':'$init'(This, 2),
         init_fields(This),
         case 'AvianUtil':isAvian() of
             true ->

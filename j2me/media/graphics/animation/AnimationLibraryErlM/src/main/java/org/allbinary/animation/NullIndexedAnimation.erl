@@ -14,11 +14,11 @@ init_fields(This) ->
 new(AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AnimationBehavior),
+    '$init'(This, AnimationBehavior),
     This.
 
-init(This, AnimationBehavior) ->
-        'IndexedAnimation':init(This, AnimationBehavior).
+'$init'(This, AnimationBehavior) ->
+        'IndexedAnimation':'$init'(This, AnimationBehavior).
 
 % throws Exception
 getAnimationSize(This) ->

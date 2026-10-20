@@ -50,21 +50,21 @@ init_fields(This) ->
 new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, PageContext),
+    '$init'(This, HashMap, PageContext),
     This;
 new(HashMap, HttpServletRequest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, HashMap, HttpServletRequest),
+    '$init'(This, HashMap, HttpServletRequest),
     This.
 
-init(This, HashMap, PageContext) ->
-    'TagHelper':init(This),
+'$init'(This, HashMap, PageContext) ->
+    'TagHelper':'$init'(This),
     init_fields(This),
         put({This, weblisketSession}, 'WeblisketSession':new(HashMap, PageContext)),
         put({This, request}, (get({PageContext, '$class'})):getRequest(PageContext));
-init(This, HashMap, HttpServletRequest) ->
-    'TagHelper':init(This),
+'$init'(This, HashMap, HttpServletRequest) ->
+    'TagHelper':'$init'(This),
     init_fields(This),
         put({This, weblisketSession}, 'WeblisketSession':new(HashMap, HttpServletRequest)),
         put({This, request}, HttpServletRequest).

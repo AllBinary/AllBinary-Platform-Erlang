@@ -47,11 +47,11 @@ init_fields(This) ->
 new(InputStream) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputStream),
+    '$init'(This, InputStream),
     This.
 
-init(This, InputStream) ->
-    'BasicPlayer':init(This),
+'$init'(This, InputStream) ->
+    'BasicPlayer':'$init'(This),
     init_fields(This),
         put({local, audioInputStream}, 'AudioInputStream':new('ByteArrayInputStream':new(get({'NullUtil':getInstance(), 'NULL_BYTE_ARRAY'})), get({'NullAudioFormat', 'NULL_AUDIO_FORMAT'}), 0)),
         put({local, clip}, 'NullClip':new()),

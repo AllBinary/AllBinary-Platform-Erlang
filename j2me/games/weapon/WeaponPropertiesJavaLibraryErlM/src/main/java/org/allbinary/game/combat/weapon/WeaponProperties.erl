@@ -45,11 +45,11 @@ init_fields(This) ->
 new(ReloadTime, TargetingTime, Speed, Damage, Dissipation) when is_integer(ReloadTime), is_integer(TargetingTime), is_integer(Speed), is_integer(Damage), is_integer(Dissipation) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ReloadTime, TargetingTime, Speed, Damage, Dissipation),
+    '$init'(This, ReloadTime, TargetingTime, Speed, Damage, Dissipation),
     This.
 
-init(This, ReloadTime, TargetingTime, Speed, Damage, Dissipation) when is_integer(ReloadTime), is_integer(TargetingTime), is_integer(Speed), is_integer(Damage), is_integer(Dissipation) ->
-    'SimpleWeaponProperties':init(This),
+'$init'(This, ReloadTime, TargetingTime, Speed, Damage, Dissipation) when is_integer(ReloadTime), is_integer(TargetingTime), is_integer(Speed), is_integer(Damage), is_integer(Dissipation) ->
+    'SimpleWeaponProperties':'$init'(This),
     init_fields(This),
         case (((Speed < get({This, 'MAX'})) andalso (Speed =/= 0)) andalso (not get({'WeaponProperties', messageSent}))) of
             true ->

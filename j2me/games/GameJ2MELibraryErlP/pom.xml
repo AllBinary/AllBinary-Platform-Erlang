@@ -43,7 +43,6 @@
         <module>../../../replace_these_stub_projects/security/YourCryptFileJavaLibraryErlM</module>
         <module>../../../replace_these_stub_projects/security/YourSecurityJavaLibraryErlM</module>
         <module>../../../replace_these_stub_projects/communication/YourXmlRpcJavaLibraryErlM</module>
-        <module>../../../replace_these_stub_projects/allbinary_src/NoneOnlyJavaLibraryErlM</module>
         <module>../../../replace_these_stub_projects/allbinary_src/J2MEOnlyJavaLibraryErlM</module>
         <module>../../../replace_these_stub_projects/allbinary_src/J2MECompatibilityJavaLibraryErlM</module>
         <module>../../../replace_these_stub_projects/allbinary_src/J2MEJsInteropCompatibilityJavaLibraryErlM</module>

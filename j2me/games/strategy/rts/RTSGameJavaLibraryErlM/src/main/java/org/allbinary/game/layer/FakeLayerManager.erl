@@ -33,11 +33,11 @@ init_fields(This) ->
 new(GameInfo) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameInfo),
+    '$init'(This, GameInfo),
     This.
 
-init(This, GameInfo) ->
-        'AllBinaryGameLayerManager':init(This, get({'BasicColorFactory':getInstance(), 'BLACK'}), get({'BasicColorFactory':getInstance(), 'WHITE'}), GameInfo),
+'$init'(This, GameInfo) ->
+        'AllBinaryGameLayerManager':'$init'(This, get({'BasicColorFactory':getInstance(), 'BLACK'}), get({'BasicColorFactory':getInstance(), 'WHITE'}), GameInfo),
         init_fields(This).
 
 getGeographicMapInterface(This) ->

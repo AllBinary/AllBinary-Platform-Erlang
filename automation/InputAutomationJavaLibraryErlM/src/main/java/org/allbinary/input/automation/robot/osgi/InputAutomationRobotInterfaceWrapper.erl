@@ -25,10 +25,10 @@ init_fields(This) ->
 new(InputRobotInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputRobotInterface),
+    '$init'(This, InputRobotInterface),
     This.
 
-init(This, InputRobotInterface) ->
+'$init'(This, InputRobotInterface) ->
     init_fields(This),
         (get({This, '$class'})):setInputRobotInterface(This, InputRobotInterface).
 

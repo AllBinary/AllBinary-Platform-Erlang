@@ -45,11 +45,11 @@ init_fields(This) ->
 new(GameKeyEventList, PlayerInputId, GameCanvas, Rectangle) when is_integer(PlayerInputId) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameKeyEventList, PlayerInputId, GameCanvas, Rectangle),
+    '$init'(This, GameKeyEventList, PlayerInputId, GameCanvas, Rectangle),
     This.
 
-init(This, GameKeyEventList, PlayerInputId, GameCanvas, Rectangle) when is_integer(PlayerInputId) ->
-        'BasicMenuInputProcessor':init(This, GameKeyEventList, PlayerInputId, GameCanvas),
+'$init'(This, GameKeyEventList, PlayerInputId, GameCanvas, Rectangle) when is_integer(PlayerInputId) ->
+        'BasicMenuInputProcessor':'$init'(This, GameKeyEventList, PlayerInputId, GameCanvas),
         init_fields(This),
         put({This, rectangle}, Rectangle).
 

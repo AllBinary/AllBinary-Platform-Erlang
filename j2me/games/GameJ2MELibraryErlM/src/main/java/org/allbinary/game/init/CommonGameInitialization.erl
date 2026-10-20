@@ -37,11 +37,11 @@ init_fields(This) ->
 new(ResourceInitializationArray, Portion) when (is_tuple(ResourceInitializationArray) orelse ResourceInitializationArray =:= undefined), is_integer(Portion) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, ResourceInitializationArray, Portion),
+    '$init'(This, ResourceInitializationArray, Portion),
     This.
 
-init(This, ResourceInitializationArray, Portion) when (is_tuple(ResourceInitializationArray) orelse ResourceInitializationArray =:= undefined), is_integer(Portion) ->
-        'BaseGameInitialization':init(This, ResourceInitializationArray, Portion),
+'$init'(This, ResourceInitializationArray, Portion) when (is_tuple(ResourceInitializationArray) orelse ResourceInitializationArray =:= undefined), is_integer(Portion) ->
+        'BaseGameInitialization':'$init'(This, ResourceInitializationArray, Portion),
         init_fields(This).
 
 % throws Exception

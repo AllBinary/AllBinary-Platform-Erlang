@@ -35,9 +35,9 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'GameInputMotionInfo':init(This, 4, 1).
+'$init'(This) ->
+        'GameInputMotionInfo':'$init'(This, 4, 1).
 

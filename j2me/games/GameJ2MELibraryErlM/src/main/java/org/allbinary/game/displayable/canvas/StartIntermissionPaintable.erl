@@ -59,11 +59,11 @@ init_fields(This) ->
 new(GameCanvas, StringArray, BasicColor, Font) when (is_tuple(StringArray) orelse StringArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameCanvas, StringArray, BasicColor, Font),
+    '$init'(This, GameCanvas, StringArray, BasicColor, Font),
     This.
 
-init(This, GameCanvas, StringArray, BasicColor, Font) when (is_tuple(StringArray) orelse StringArray =:= undefined) ->
-    'InitUpdatePaintable':init(This),
+'$init'(This, GameCanvas, StringArray, BasicColor, Font) when (is_tuple(StringArray) orelse StringArray =:= undefined) ->
+    'InitUpdatePaintable':'$init'(This),
     init_fields(This),
         put({This, gameCanvas}, GameCanvas),
         put({This, stringArray}, StringArray),

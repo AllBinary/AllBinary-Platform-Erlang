@@ -64,11 +64,11 @@ init_fields(This) ->
 new(CommandListener, ChildNameList, HasParam) when is_boolean(HasParam) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CommandListener, ChildNameList, HasParam),
+    '$init'(This, CommandListener, ChildNameList, HasParam),
     This.
 
-init(This, CommandListener, ChildNameList, HasParam) when is_boolean(HasParam) ->
-        'MyCanvas':init(This, get({'CommonStrings':getInstance(), 'UNKNOWN'}), ChildNameList),
+'$init'(This, CommandListener, ChildNameList, HasParam) when is_boolean(HasParam) ->
+        'MyCanvas':'$init'(This, get({'CommonStrings':getInstance(), 'UNKNOWN'}), ChildNameList),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N66948) -> (get({Target_N66948, '$class'})):toString(Target_N66948) end)((fun(Target_N66955) -> (get({Target_N66955, '$class'})):appendint(Target_N66955, trunc(get({get({This, loopTimeHelper}), delay}))) end)((fun(Target_N66962) -> (get({Target_N66962, '$class'})):append(Target_N66962, "RunnableCanvas delay: ") end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, runnableCanvasRefreshHelper}, 'RunnableCanvasRefreshHelper':new(This)),

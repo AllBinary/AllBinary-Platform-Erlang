@@ -66,11 +66,11 @@ createCanvas(GameLayerManager) ->
 new(GameLayerManager) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, GameLayerManager),
+    '$init'(This, GameLayerManager),
     This.
 
-init(This, GameLayerManager) ->
-        'AllBinaryGameCanvas':init(This, get({'NullCommandListener', 'NULL_COMMAND_LISTENER'}), GameLayerManager, 'NoHighScoresFactory':getInstance(), get({'BasicBuildGameInitializerFactory', 'NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY'}), false),
+'$init'(This, GameLayerManager) ->
+        'AllBinaryGameCanvas':'$init'(This, get({'NullCommandListener', 'NULL_COMMAND_LISTENER'}), GameLayerManager, 'NoHighScoresFactory':getInstance(), get({'BasicBuildGameInitializerFactory', 'NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY'}), false),
         init_fields(This),
         'AllBinaryGameCanvas':setWait(This, 1200).
 

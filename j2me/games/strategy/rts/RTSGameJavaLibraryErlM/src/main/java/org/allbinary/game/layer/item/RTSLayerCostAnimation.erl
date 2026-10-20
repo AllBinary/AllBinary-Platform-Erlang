@@ -54,11 +54,11 @@ init_fields(This) ->
 new(Image, LayerInterfaceFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Image, LayerInterfaceFactoryInterface),
+    '$init'(This, Image, LayerInterfaceFactoryInterface),
     This.
 
-init(This, Image, LayerInterfaceFactoryInterface) ->
-    'Animation':init(This),
+'$init'(This, Image, LayerInterfaceFactoryInterface) ->
+    'Animation':'$init'(This),
     init_fields(This),
         put({This, image}, Image),
         put({This, layerInterfaceFactoryInterface}, LayerInterfaceFactoryInterface),

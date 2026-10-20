@@ -36,11 +36,11 @@ getInstance() ->
 new(PoolName, NumThreads, Priority) when (is_list(PoolName) orelse PoolName =:= undefined), is_integer(NumThreads), is_integer(Priority) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, PoolName, NumThreads, Priority),
+    '$init'(This, PoolName, NumThreads, Priority),
     This.
 
-init(This, PoolName, NumThreads, Priority) when (is_list(PoolName) orelse PoolName =:= undefined), is_integer(NumThreads), is_integer(Priority) ->
-        'ThreadPool':init(This, PoolName, NumThreads, Priority).
+'$init'(This, PoolName, NumThreads, Priority) when (is_list(PoolName) orelse PoolName =:= undefined), is_integer(NumThreads), is_integer(Priority) ->
+        'ThreadPool':'$init'(This, PoolName, NumThreads, Priority).
 
 runTask(This, Task) ->
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N65940) -> (get({Target_N65940, '$class'})):toString(Target_N65940) end)((fun(Target_N65947) -> (get({Target_N65947, '$class'})):appendlong(Target_N65947, trunc(erlang:system_time(millisecond))) end)((fun(Target_N65954) -> (get({Target_N65954, '$class'})):append(Target_N65954, (fun(Target_N65975) -> (get({Target_N65975, '$class'})):toString(Target_N65975, Task) end)('StringUtil':getInstance())) end)('StringMaker':new()))), This, get({get({This, threadPoolStrings}), 'ADD_TASK'})),

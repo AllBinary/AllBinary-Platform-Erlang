@@ -33,11 +33,11 @@ init_fields(This) ->
 new(Sprite, Image, AnimationBehavior) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Sprite, Image, AnimationBehavior),
+    '$init'(This, Sprite, Image, AnimationBehavior),
     This.
 
-init(This, Sprite, Image, AnimationBehavior) ->
-        'HackRotationSpriteIndexedAnimation':init(This, Sprite, Image, 'AngleInfo':getInstance(trunc(((get({'AngleFactory':getInstance(), 'TOTAL_ANGLE'}) / (get({Sprite, '$class'})):getRawFrameCount(Sprite))))), AnimationBehavior),
+'$init'(This, Sprite, Image, AnimationBehavior) ->
+        'HackRotationSpriteIndexedAnimation':'$init'(This, Sprite, Image, 'AngleInfo':getInstance(trunc(((get({'AngleFactory':getInstance(), 'TOTAL_ANGLE'}) / (get({Sprite, '$class'})):getRawFrameCount(Sprite))))), AnimationBehavior),
         (get({get({This, angleInfo}), '$class'})):adjustAngle(get({This, angleInfo}), (get({get({This, sprite}), '$class'})):getFrame(get({This, sprite}))).
 
 nextRotation(This) ->

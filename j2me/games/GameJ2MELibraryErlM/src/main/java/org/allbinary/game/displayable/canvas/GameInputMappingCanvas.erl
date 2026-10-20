@@ -64,11 +64,11 @@ init_fields(This) ->
 new(AbeClientInformation, CommandListener, AllBinaryGameLayerManager, HelpPaintable) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, CommandListener, AllBinaryGameLayerManager, HelpPaintable),
+    '$init'(This, AbeClientInformation, CommandListener, AllBinaryGameLayerManager, HelpPaintable),
     This.
 
-init(This, AbeClientInformation, CommandListener, AllBinaryGameLayerManager, HelpPaintable) ->
-        'GameCommandCanvas':init(This, CommandListener, get({'GameInputMappingCanvas', 'NAME'}), (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)),
+'$init'(This, AbeClientInformation, CommandListener, AllBinaryGameLayerManager, HelpPaintable) ->
+        'GameCommandCanvas':'$init'(This, CommandListener, get({'GameInputMappingCanvas', 'NAME'}), (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         case (HelpPaintable =:= undefined) of

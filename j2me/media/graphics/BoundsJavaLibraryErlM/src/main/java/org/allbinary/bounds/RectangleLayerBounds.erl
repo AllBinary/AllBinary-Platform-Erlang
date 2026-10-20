@@ -27,11 +27,11 @@ init_fields(This) ->
 new(Rectangle) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Rectangle),
+    '$init'(This, Rectangle),
     This.
 
-init(This, Rectangle) ->
-        'LayerBounds':init(This, Rectangle).
+'$init'(This, Rectangle) ->
+        'LayerBounds':'$init'(This, Rectangle).
 
 visit(This, BoundsVisitorInterface) ->
         case ((get({BoundsVisitorInterface, '$class'})):getX(BoundsVisitorInterface) > (get({get({This, rectangle}), '$class'})):getMaxX(get({This, rectangle}))) of

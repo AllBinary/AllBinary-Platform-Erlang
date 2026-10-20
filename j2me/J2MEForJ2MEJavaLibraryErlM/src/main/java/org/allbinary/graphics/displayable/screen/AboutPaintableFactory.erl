@@ -36,10 +36,10 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         INFO = array:from_list(["Built with the", "AllBinary Platform", get({'StringUtil':getInstance(), 'EMPTY_STRING'}), "Comments or Questions:", "support@allbinary.com"]),
         DEVELOPERS = array:from_list(["Developed By:", "Travis Berthelot"]),

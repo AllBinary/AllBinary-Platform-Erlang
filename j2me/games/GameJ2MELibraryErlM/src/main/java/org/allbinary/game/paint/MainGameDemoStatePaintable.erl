@@ -30,11 +30,11 @@ init_fields(This) ->
 new(OwnershipPaintableInterface, MenuPaintableInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, OwnershipPaintableInterface, MenuPaintableInterface),
+    '$init'(This, OwnershipPaintableInterface, MenuPaintableInterface),
     This.
 
-init(This, OwnershipPaintableInterface, MenuPaintableInterface) ->
-    'Paintable':init(This),
+'$init'(This, OwnershipPaintableInterface, MenuPaintableInterface) ->
+    'Paintable':'$init'(This),
     init_fields(This),
         put({This, ownershipPaintableInterface}, OwnershipPaintableInterface),
         put({This, menuPaintableInterface}, MenuPaintableInterface).

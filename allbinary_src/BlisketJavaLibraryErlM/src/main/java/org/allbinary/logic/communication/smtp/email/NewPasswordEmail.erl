@@ -39,10 +39,10 @@ init_fields(This) ->
 new(AbeClientInformation, UserInterface, NewPassword) when (is_list(NewPassword) orelse NewPassword =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, UserInterface, NewPassword),
+    '$init'(This, AbeClientInformation, UserInterface, NewPassword),
     This.
 
-init(This, AbeClientInformation, UserInterface, NewPassword) when (is_list(NewPassword) orelse NewPassword =:= undefined) ->
+'$init'(This, AbeClientInformation, UserInterface, NewPassword) when (is_list(NewPassword) orelse NewPassword =:= undefined) ->
     init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation),
         put({This, userInterface}, UserInterface),

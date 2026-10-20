@@ -45,10 +45,10 @@ init_fields(This) ->
 new(Sound) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Sound),
+    '$init'(This, Sound),
     This.
 
-init(This, Sound) ->
+'$init'(This, Sound) ->
     init_fields(This),
         put({This, sound}, Sound).
 

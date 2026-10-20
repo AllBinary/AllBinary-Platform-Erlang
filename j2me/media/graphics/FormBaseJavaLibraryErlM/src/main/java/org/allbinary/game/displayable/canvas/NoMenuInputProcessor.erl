@@ -38,11 +38,11 @@ getInstance() ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'BasicMenuInputProcessor':init(This, (fun(Target_N65846) -> (get({Target_N65846, '$class'})):getImmutableInstance(Target_N65846) end)('BasicArrayListUtil':getInstance()), (-1), get({'NullCanvas', 'NULL_CANVAS'})).
+'$init'(This) ->
+        'BasicMenuInputProcessor':'$init'(This, (fun(Target_N65846) -> (get({Target_N65846, '$class'})):getImmutableInstance(Target_N65846) end)('BasicArrayListUtil':getInstance()), (-1), get({'NullCanvas', 'NULL_CANVAS'})).
 
 onDownGameKeyEvent(This, GameKeyEvent) ->
         ok.

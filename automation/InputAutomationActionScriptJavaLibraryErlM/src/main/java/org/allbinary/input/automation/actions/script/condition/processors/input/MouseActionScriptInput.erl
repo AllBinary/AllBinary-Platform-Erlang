@@ -49,11 +49,11 @@ init_fields(This) ->
 new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Node),
+    '$init'(This, Node),
     This.
 
-init(This, Node) ->
-        'BasicProfileActionScriptInput':init(This, get({'MouseActionScriptInput', 'NAME'}), Node),
+'$init'(This, Node) ->
+        'BasicProfileActionScriptInput':'$init'(This, get({'MouseActionScriptInput', 'NAME'}), Node),
         init_fields(This),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})),
         put({This, point}, 'Point':new()),
@@ -92,11 +92,11 @@ init(This, Node) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'BasicProfileActionScriptInput':init(This, get({'MouseActionScriptInput', 'NAME'})),
+'$init'(This) ->
+        'BasicProfileActionScriptInput':'$init'(This, get({'MouseActionScriptInput', 'NAME'})),
         init_fields(This),
         put({This, point}, 'Point':new()),
         (get({This, '$class'})):setAllowsChildren(This, false),

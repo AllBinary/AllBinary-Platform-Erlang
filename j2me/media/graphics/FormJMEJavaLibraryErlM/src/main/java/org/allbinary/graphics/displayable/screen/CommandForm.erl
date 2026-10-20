@@ -60,11 +60,11 @@ getNullCommandForm() ->
 new(CommandListener, FormTitle, BackgrounBasicColor, ForegroundBasicColor) when (is_list(FormTitle) orelse FormTitle =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CommandListener, FormTitle, BackgrounBasicColor, ForegroundBasicColor),
+    '$init'(This, CommandListener, FormTitle, BackgrounBasicColor, ForegroundBasicColor),
     This.
 
-init(This, CommandListener, FormTitle, BackgrounBasicColor, ForegroundBasicColor) when (is_list(FormTitle) orelse FormTitle =:= undefined) ->
-        'Form':init(This, FormTitle),
+'$init'(This, CommandListener, FormTitle, BackgrounBasicColor, ForegroundBasicColor) when (is_list(FormTitle) orelse FormTitle =:= undefined) ->
+        'Form':'$init'(This, FormTitle),
         init_fields(This),
         put({This, commandStack}, (fun(Target_N66593) -> (get({Target_N66593, '$class'})):createStack(Target_N66593) end)('StdUtil':getInstance())),
         try

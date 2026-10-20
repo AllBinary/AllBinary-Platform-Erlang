@@ -27,10 +27,10 @@ init_fields(This) ->
 new(Width, Height, Points, TotalFrames) when is_integer(Width), is_integer(Height), (is_tuple(Points) orelse Points =:= undefined), is_integer(TotalFrames) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Width, Height, Points, TotalFrames),
+    '$init'(This, Width, Height, Points, TotalFrames),
     This.
 
-init(This, Width, Height, Points, TotalFrames) when is_integer(Width), is_integer(Height), (is_tuple(Points) orelse Points =:= undefined), is_integer(TotalFrames) ->
+'$init'(This, Width, Height, Points, TotalFrames) when is_integer(Width), is_integer(Height), (is_tuple(Points) orelse Points =:= undefined), is_integer(TotalFrames) ->
     init_fields(This),
         put({This, width}, Width),
         put({This, height}, Height),

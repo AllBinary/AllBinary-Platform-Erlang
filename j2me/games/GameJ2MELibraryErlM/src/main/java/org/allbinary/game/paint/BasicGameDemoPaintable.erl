@@ -34,11 +34,11 @@ init_fields(This) ->
 new(MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface),
+    '$init'(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface),
     This.
 
-init(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface) ->
-    'StatePaintable':init(This),
+'$init'(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface) ->
+    'StatePaintable':'$init'(This),
     init_fields(This),
         put({This, mainDemoStatePaintable}, MainDemoStatePaintable),
         (get({This, '$class'})):setCurrentStatePaintable(This, 'NullPaintable':getInstance()),

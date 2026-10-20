@@ -40,10 +40,10 @@ init_fields(This) ->
 new(InputAutomationModuleConfigurations, HelpSetListenerInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, InputAutomationModuleConfigurations, HelpSetListenerInterface),
+    '$init'(This, InputAutomationModuleConfigurations, HelpSetListenerInterface),
     This.
 
-init(This, InputAutomationModuleConfigurations, HelpSetListenerInterface) ->
+'$init'(This, InputAutomationModuleConfigurations, HelpSetListenerInterface) ->
     init_fields(This),
         put({This, helpSetListenerInterface}, HelpSetListenerInterface),
         put({This, defaultListModelHelper}, 'DefaultListModelHelper':new()),

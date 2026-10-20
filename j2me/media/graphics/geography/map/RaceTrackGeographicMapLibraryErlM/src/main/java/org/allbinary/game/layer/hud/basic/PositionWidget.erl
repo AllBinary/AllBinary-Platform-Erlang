@@ -33,11 +33,11 @@ init_fields(This) ->
 new(Position, Location, Direction, BasicColor) when is_integer(Position), is_integer(Location), is_integer(Direction) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Position, Location, Direction, BasicColor),
+    '$init'(This, Position, Location, Direction, BasicColor),
     This.
 
-init(This, Position, Location, Direction, BasicColor) when is_integer(Position), is_integer(Location), is_integer(Direction) ->
-        'BasicHud':init(This, Location, Direction, 2, BasicColor),
+'$init'(This, Position, Location, Direction, BasicColor) when is_integer(Position), is_integer(Location), is_integer(Direction) ->
+        'BasicHud':'$init'(This, Location, Direction, 2, BasicColor),
         init_fields(This),
         put({This, updateMaxHeight}, 10),
         put({This, updateMaxWidth}, 40).

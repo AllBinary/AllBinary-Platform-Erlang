@@ -13,10 +13,10 @@ init_fields(This) ->
 new(DecryptedExtension, EncryptedExtension) when (is_list(DecryptedExtension) orelse DecryptedExtension =:= undefined), (is_list(EncryptedExtension) orelse EncryptedExtension =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, DecryptedExtension, EncryptedExtension),
+    '$init'(This, DecryptedExtension, EncryptedExtension),
     This.
 
-init(This, DecryptedExtension, EncryptedExtension) when (is_list(DecryptedExtension) orelse DecryptedExtension =:= undefined), (is_list(EncryptedExtension) orelse EncryptedExtension =:= undefined) ->
+'$init'(This, DecryptedExtension, EncryptedExtension) when (is_list(DecryptedExtension) orelse DecryptedExtension =:= undefined), (is_list(EncryptedExtension) orelse EncryptedExtension =:= undefined) ->
     init_fields(This),
         ok.
 

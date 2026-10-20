@@ -37,10 +37,10 @@ init_fields(This) ->
 new(Source, Id) when is_integer(Id) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Source, Id),
+    '$init'(This, Source, Id),
     This.
 
-init(This, Source, Id) when is_integer(Id) ->
+'$init'(This, Source, Id) when is_integer(Id) ->
     init_fields(This),
         put({This, source}, Source),
         put({This, id}, Id),

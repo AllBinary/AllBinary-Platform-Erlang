@@ -96,11 +96,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-    'JFrame':init(This),
+'$init'(This) ->
+    'JFrame':'$init'(This),
     init_fields(This),
         (get({This, '$class'})):initComponents(This),
         put({local, url}, (get({get({This, '$class'}), '$class'})):getResource(get({This, '$class'}), "/help/Help.hs")),

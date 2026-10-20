@@ -36,11 +36,11 @@ init_fields(This) ->
 new(MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface, BasicColor) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface, BasicColor),
+    '$init'(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface, BasicColor),
     This.
 
-init(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface, BasicColor) ->
-        'BasicGameDemoPaintable':init(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface),
+'$init'(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface, BasicColor) ->
+        'BasicGameDemoPaintable':'$init'(This, MainDemoStatePaintable, OwnershipPaintable, HelpPaintableInterface),
         (get({This, '$class'})):setColor(This, BasicColor),
         (fun(Target_N65959) -> (get({Target_N65959, '$class'})):addListenerInterface(Target_N65959, This) end)('ColorChangeEventHandler':getInstance()).
 

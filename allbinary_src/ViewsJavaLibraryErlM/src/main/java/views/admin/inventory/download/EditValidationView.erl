@@ -46,11 +46,11 @@ init_fields(This) ->
 new(TransformInfoInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, TransformInfoInterface),
+    '$init'(This, TransformInfoInterface),
     This.
 
-init(This, TransformInfoInterface) ->
-        'DownloadableInventoryItemView':init(This, TransformInfoInterface, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
+'$init'(This, TransformInfoInterface) ->
+        'DownloadableInventoryItemView':'$init'(This, TransformInfoInterface, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
         init_fields(This),
         (get({This, '$class'})):getFormData(This).
 

@@ -33,11 +33,11 @@ init_fields(This) ->
 new(StoreFrontInterface, Subject, TextBody) when (is_list(Subject) orelse Subject =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, StoreFrontInterface, Subject, TextBody),
+    '$init'(This, StoreFrontInterface, Subject, TextBody),
     This.
 
-init(This, StoreFrontInterface, Subject, TextBody) when (is_list(Subject) orelse Subject =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined) ->
-        'BasicEmailInfo':init(This, Subject, TextBody),
+'$init'(This, StoreFrontInterface, Subject, TextBody) when (is_list(Subject) orelse Subject =:= undefined), (is_list(TextBody) orelse TextBody =:= undefined) ->
+        'BasicEmailInfo':'$init'(This, Subject, TextBody),
         init_fields(This),
         case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'EMAILLOGGING'})) of
             true ->

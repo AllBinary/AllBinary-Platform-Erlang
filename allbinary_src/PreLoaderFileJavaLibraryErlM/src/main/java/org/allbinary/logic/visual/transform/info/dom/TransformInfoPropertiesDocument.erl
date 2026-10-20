@@ -41,10 +41,10 @@ init_fields(This) ->
 new(FilePath) when (is_list(FilePath) orelse FilePath =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, FilePath),
+    '$init'(This, FilePath),
     This.
 
-init(This, FilePath) when (is_list(FilePath) orelse FilePath =:= undefined) ->
+'$init'(This, FilePath) when (is_list(FilePath) orelse FilePath =:= undefined) ->
     init_fields(This),
         XmlFile = 'AbFile':createAbFile(FilePath),
         put({This, document}, 'DomDocumentFileHelper':createDocument(XmlFile)).

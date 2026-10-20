@@ -43,10 +43,10 @@ init_fields(This) ->
 new(Name, FieldName, ByteArray) when (is_list(Name) orelse Name =:= undefined), (is_list(FieldName) orelse FieldName =:= undefined), (is_tuple(ByteArray) orelse ByteArray =:= undefined) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, Name, FieldName, ByteArray),
+    '$init'(This, Name, FieldName, ByteArray),
     This.
 
-init(This, Name, FieldName, ByteArray) when (is_list(Name) orelse Name =:= undefined), (is_list(FieldName) orelse FieldName =:= undefined), (is_tuple(ByteArray) orelse ByteArray =:= undefined) ->
+'$init'(This, Name, FieldName, ByteArray) when (is_list(Name) orelse Name =:= undefined), (is_list(FieldName) orelse FieldName =:= undefined), (is_tuple(ByteArray) orelse ByteArray =:= undefined) ->
     init_fields(This),
         put({This, name}, Name),
         put({This, fieldName}, FieldName),

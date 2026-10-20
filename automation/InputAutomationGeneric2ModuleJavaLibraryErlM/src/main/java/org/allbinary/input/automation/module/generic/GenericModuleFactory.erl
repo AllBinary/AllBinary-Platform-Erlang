@@ -39,11 +39,11 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
-        'AbstractInputAutomationFactory':init(This, get({'GenericModuleFactory', 'NAME'}), 'GenericModuleConfigurationJPanel':new()).
+'$init'(This) ->
+        'AbstractInputAutomationFactory':'$init'(This, get({'GenericModuleFactory', 'NAME'}), 'GenericModuleConfigurationJPanel':new()).
 
 % throws Exception
 getInstance(This) ->

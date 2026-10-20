@@ -30,10 +30,10 @@ init_fields(This) ->
 new(CacheableInterfaceFactoryInterface) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, CacheableInterfaceFactoryInterface),
+    '$init'(This, CacheableInterfaceFactoryInterface),
     This.
 
-init(This, CacheableInterfaceFactoryInterface) ->
+'$init'(This, CacheableInterfaceFactoryInterface) ->
     init_fields(This),
         put({This, cacheableInterfaceFactoryInterface}, CacheableInterfaceFactoryInterface).
 

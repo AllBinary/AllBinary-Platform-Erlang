@@ -46,11 +46,11 @@ init_fields(This) ->
 new(AbeClientInformation, SoftwareInformation) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, AbeClientInformation, SoftwareInformation),
+    '$init'(This, AbeClientInformation, SoftwareInformation),
     This.
 
-init(This, AbeClientInformation, SoftwareInformation) ->
-    'HighScoresBase':init(This),
+'$init'(This, AbeClientInformation, SoftwareInformation) ->
+    'HighScoresBase':'$init'(This),
     init_fields(This),
         put({This, abeClientInformation}, AbeClientInformation),
         put({This, softwareInformation}, SoftwareInformation).

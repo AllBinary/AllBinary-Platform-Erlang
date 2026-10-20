@@ -32,11 +32,11 @@ init_fields(This) ->
 new(EdgeMinimum, MinPathWeight, MaxPathWeight) when is_integer(EdgeMinimum), is_integer(MinPathWeight), is_integer(MaxPathWeight) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This, EdgeMinimum, MinPathWeight, MaxPathWeight),
+    '$init'(This, EdgeMinimum, MinPathWeight, MaxPathWeight),
     This.
 
-init(This, EdgeMinimum, MinPathWeight, MaxPathWeight) when is_integer(EdgeMinimum), is_integer(MinPathWeight), is_integer(MaxPathWeight) ->
-    'PathFinderGraphVisitorFactoryBase':init(This),
+'$init'(This, EdgeMinimum, MinPathWeight, MaxPathWeight) when is_integer(EdgeMinimum), is_integer(MinPathWeight), is_integer(MaxPathWeight) ->
+    'PathFinderGraphVisitorFactoryBase':'$init'(This),
     init_fields(This),
         put({This, edgeMinimum}, EdgeMinimum),
         put({This, minPathWeight}, MinPathWeight),
