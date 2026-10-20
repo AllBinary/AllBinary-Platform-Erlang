@@ -7,7 +7,7 @@ This repo is used to allow developers to skip the Erlang code generation step.
 
 What are some examples game with this Erlang code?
 
-https://allbinary.itch.io (The downloads with "-ts" in the filename are Erlang only builds. Currently that only includes nothing. Also the Erlang builds are not available on Google Play or other stores.)
+https://allbinary.itch.io (The downloads with "-erl" in the filename are Erlang only builds. Currently that only includes nothing. Also the Erlang builds are not available on Google Play or other stores.)
 
 What is the License?
 
