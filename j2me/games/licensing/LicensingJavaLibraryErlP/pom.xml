@@ -14,8 +14,8 @@
 
     <modules>
 
-        <module>../../platform/android/AndroidResourcesTempJavaLibraryErlM</module>
-        <module>../../../../allbinary_src/licensing/ClientInformationMobileLicensingRegistrationJavaLibraryErlM</module>
+        <!--<module>../../platform/android/AndroidResourcesTempJavaLibraryErlM</module>-->
+        <!--<module>../../../../allbinary_src/licensing/ClientInformationMobileLicensingRegistrationJavaLibraryErlM</module>-->
 
         <!--
         <module>../../../../../working/allbinary_src/licensing/LicenseRegistrationJavaLibraryErlM</module>
@@ -39,6 +39,7 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+    </dependencies>
 
 
 </project>
