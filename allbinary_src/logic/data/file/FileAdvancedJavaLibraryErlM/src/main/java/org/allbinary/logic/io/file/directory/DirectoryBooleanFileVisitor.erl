@@ -34,15 +34,8 @@ new() ->
         ok.
 
 visit(This, AnyType) ->
-        (get({This, '$class'})):visit(This, AnyType);
-visit(This, File) ->
-        try
-        case (get({File, '$class'})):isDirectory(File) of
-            true ->
-            throw({'$return', true});
-            false -> ok
-        end,
-        false
-        catch throw:{'$return', ReturnValue} -> ReturnValue end.
+        (get({This, '$class'})):visit(This, AnyType)
+% unreachable Java overload visit(AbFile file) has the same guards as an earlier clause
+.
 
 

@@ -61,3 +61,7 @@ toXmlNode(This, Document) ->
 view(This) ->
         (fun(Target_N66147) -> (get({Target_N66147, '$class'})):view(Target_N66147) end)('GatewayView':new((get({This, '$class'})):getTransformInfoInterface(This))).
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'HttpStoreComponentView':getTransformInfoInterface(This).
+

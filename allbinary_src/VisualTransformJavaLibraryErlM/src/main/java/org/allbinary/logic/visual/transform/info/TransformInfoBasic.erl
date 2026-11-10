@@ -21,6 +21,7 @@
 % import org.allbinary.logic.io.path.AbPath
 % import org.allbinary.logic.visual.transform.info.objectConfig.TransformInfoObjectConfigInterface
 % import org.w3c.dom.Document
+% import org.allbinary.logic.communication.http.request.session.WeblisketSessionInterface
 
 -module('TransformInfoBasic').
 -compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
@@ -138,4 +139,13 @@ toVector(This) ->
 % throws Exception
 toHashMap(This) ->
         undefined.
+
+getWeblisketSession(This) ->
+        'AbContext':getWeblisketSession(This).
+
+getPageContext(This) ->
+        'AbContext':getPageContext(This).
+
+getPropertiesHashMap(This) ->
+        'AbContext':getPropertiesHashMap(This).
 

@@ -23,6 +23,7 @@ static_init() ->
     ok.
 
 init_fields(This) ->
+    put({This, 'PATHING'}, "Pathing"),
     put({This, 'WANDERING'}, "Order?"),
     put({This, 'THINKING'}, "Thinking"),
     put({This, 'THINKING_ABOUT_TARGET'}, "Hmmm"),
@@ -36,6 +37,10 @@ init_fields(This) ->
     put({This, 'ALREADY_THERE_SHORT'}, "Again?"),
     put({This, 'ALREADY_THERE'}, "Already There"),
     put({This, 'NEXT_PATH_NODE'}, lists:concat([get({'CommonLabels':getInstance(), 'NEXT'}), " Path Node"])),
+    put({This, '_ALL_VISITED_SHORT'}, " Arrived"),
+    put({This, '_ALREADY_THERE_SHORT'}, " Again?"),
+    put({This, 'VISITED_MOST_OF_THE_PATH'}, " visited most of the path"),
+    put({This, 'RETURNING_AS_WAYPOINT_PATH_LIST'}, " returning as waypointPathsList was runningWaypointPathList"),
     ok.
 
 new() ->

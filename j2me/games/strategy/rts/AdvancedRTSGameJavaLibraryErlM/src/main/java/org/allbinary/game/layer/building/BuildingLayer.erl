@@ -58,6 +58,7 @@
 % import org.allbinary.util.BasicArrayListS
 % import org.allbinary.game.multiplayer.layer.RemoteInfo
 % import org.allbinary.util.ABHashtable
+% import org.allbinary.animation.RotationAnimation
 
 -module('BuildingLayer').
 -compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
@@ -98,7 +99,7 @@ new(RemoteInfo, BuildingPropertiesFactory, AdvancedRTSProperties, GroupInterface
         'AdvancedRTSGameLayer':'$init'(This, RemoteInfo, get({'NullPathFindingLayer', 'NULL_PATH_FINDING_LAYER'}), AdvancedRTSProperties, GroupInterface, RootName, Name, HealthInterface, RtsFormInput, AnimationInterfaceFactoryInterface, EmptyAnimationInterfaceFactoryInterface, BaseAnimationInterfaceFactoryInterface, BuildAnimationInterfaceFactoryInterface, VerticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface, Rectangle, X, Y, 'TileLayerPositionIntoViewPosition':new()),
         init_fields(This),
         (get({This, '$class'})):setCollidableInferface(This, 'CollidableRTSBehavior':new(true)),
-        (fun(Target_N67898) -> (get({Target_N67898, '$class'})):setWaypoint(Target_N67898, 'Waypoint':new(This, 'SelectSound':getInstance())) end)((get({This, '$class'})):getWaypointBehavior(This)),
+        (fun(Target_N67923) -> (get({Target_N67923, '$class'})):setWaypoint(Target_N67923, 'Waypoint':new(This, 'SelectSound':getInstance())) end)((get({This, '$class'})):getWaypointBehavior(This)),
         put({This, damageFloaters}, (get({BuildingPropertiesFactory, '$class'})):getDamageFloaters(BuildingPropertiesFactory, This)),
         put({This, damageFloatersPaintableInterface}, get({BuildingPropertiesFactory, damageFloatersPaintableInterface})),
         put({This, healthBar}, (get({BuildingPropertiesFactory, '$class'})):getHealthBar(BuildingPropertiesFactory, This)),
@@ -125,7 +126,7 @@ initVisibility(This, RtsPlayerLayerInterface) ->
 % throws Exception
 construct(This, RtsPlayerLayerInterface) ->
         'AdvancedRTSGameLayer':construct(This, RtsPlayerLayerInterface),
-        (fun(Target_N69050) -> (get({Target_N69050, '$class'})):addListenerInterface(Target_N69050, This) end)('TrackingEventHandler':getInstance()).
+        (fun(Target_N69075) -> (get({Target_N69075, '$class'})):addListenerInterface(Target_N69075, This) end)('TrackingEventHandler':getInstance()).
 
 onMovement(This, TrackingEvent) ->
         try
@@ -141,12 +142,12 @@ onMovement(This, TrackingEvent) ->
 
 % throws Exception
 processBuiltTick(This, AllBinaryLayerManager) ->
-        case (fun(Target_N69539) -> (get({Target_N69539, '$class'})):isDamaged(Target_N69539) end)((get({This, '$class'})):getHealthInterface(This)) of
+        case (fun(Target_N69564) -> (get({Target_N69564, '$class'})):isDamaged(Target_N69564) end)((get({This, '$class'})):getHealthInterface(This)) of
             true ->
             (get({This, '$class'})):setAnimationInterface(This, get({This, destroyAnimationInterface}));
             false -> ok
         end,
-        case (not (fun(Target_N69602) -> (get({Target_N69602, '$class'})):isAlive(Target_N69602) end)((get({This, '$class'})):getHealthInterface(This))) of
+        case (not (fun(Target_N69627) -> (get({Target_N69627, '$class'})):isAlive(Target_N69627) end)((get({This, '$class'})):getHealthInterface(This))) of
             true ->
             case (get({This, '$class'})):isReadyForExplosion(This) of
                 true ->
@@ -154,7 +155,7 @@ processBuiltTick(This, AllBinaryLayerManager) ->
                 Size = ((get({get({This, destroyAnimationInterface}), '$class'})):getSize(get({This, destroyAnimationInterface})) - 1),
                 case ((CurrentFrame =:= Size) andalso (not (get({get({This, timeDelayHelper}), '$class'})):isTimeTNT(get({This, timeDelayHelper})))) of
                     true ->
-                    case (not (fun(Target_N70089) -> (get({Target_N70089, '$class'})):isAlive(Target_N70089) end)((get({This, '$class'})):getHealthInterface(This))) of
+                    case (not (fun(Target_N70114) -> (get({Target_N70114, '$class'})):isAlive(Target_N70114) end)((get({This, '$class'})):getHealthInterface(This))) of
                         true ->
                         (get({This, '$class'})):setDestroyed(This, true);
                         false -> ok
@@ -164,7 +165,7 @@ processBuiltTick(This, AllBinaryLayerManager) ->
                 end;
                 false ->
                 (get({This, '$class'})):setAnimationInterface(This, get({This, destroyAnimationInterface})),
-                (fun(Target_N69715) -> (get({Target_N69715, '$class'})):add(Target_N69715, 'ExplosionBasicSound':getInstance()) end)('SecondaryPlayerQueueFactory':getInstance()),
+                (fun(Target_N69740) -> (get({Target_N69740, '$class'})):add(Target_N69740, 'ExplosionBasicSound':getInstance()) end)('SecondaryPlayerQueueFactory':getInstance()),
                 (get({get({This, shakeListener}), '$class'})):onSmallShakeEvent(get({This, shakeListener})),
                 (get({get({This, vibration}), '$class'})):vibrate(get({This, vibration}), get({This, duration}), 0, 0),
                 (get({get({This, timeDelayHelper}), '$class'})):setStartTimeTNT(get({This, timeDelayHelper})),
@@ -179,29 +180,29 @@ calculateEfficiency(This) ->
         get({This, efficiencyPerLevel}).
 
 getCost(This) ->
-        Total = (fun(Target_N70313) -> (get({Target_N70313, '$class'})):getCostExponential(Target_N70313, trunc((((get({This, '$class'})):getLevel(This) * (get({This, '$class'})):getBuildingLevelCost(This))))) end)('RTSLayerUtil':getInstance()),
+        Total = (fun(Target_N70338) -> (get({Target_N70338, '$class'})):getCostExponential(Target_N70338, trunc((((get({This, '$class'})):getLevel(This) * (get({This, '$class'})):getBuildingLevelCost(This))))) end)('RTSLayerUtil':getInstance()),
         Total.
 
 getDowngradeCost(This) ->
-        DowngradeCost = (fun(Target_N70466) -> (get({Target_N70466, '$class'})):getCostExponential(Target_N70466, trunc((((((get({This, '$class'})):getLevel(This) - 1)) * (get({This, '$class'})):getBuildingLevelCost(This))))) end)('RTSLayerUtil':getInstance()),
+        DowngradeCost = (fun(Target_N70491) -> (get({Target_N70491, '$class'})):getCostExponential(Target_N70491, trunc((((((get({This, '$class'})):getLevel(This) - 1)) * (get({This, '$class'})):getBuildingLevelCost(This))))) end)('RTSLayerUtil':getInstance()),
         (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Cost: ", DowngradeCost]), This, "getDowngradeCost"),
         ((DowngradeCost * 9) div 10).
 
 getUpgradeCost(This) ->
-        UpgradeCost = (fun(Target_N70700) -> (get({Target_N70700, '$class'})):getCostExponential(Target_N70700, trunc((((((get({This, '$class'})):getLevel(This) + 1)) * (get({This, '$class'})):getBuildingLevelCost(This))))) end)('RTSLayerUtil':getInstance()),
+        UpgradeCost = (fun(Target_N70725) -> (get({Target_N70725, '$class'})):getCostExponential(Target_N70725, trunc((((((get({This, '$class'})):getLevel(This) + 1)) * (get({This, '$class'})):getBuildingLevelCost(This))))) end)('RTSLayerUtil':getInstance()),
         UpgradeCost.
 
 downgrade(This) ->
         'AdvancedRTSGameLayer':downgrade(This),
         (get({This, '$class'})):setProductivity(This, ((get({This, '$class'})):getProductivity(This) - 1)),
         (get({This, '$class'})):setEfficiency(This, ((get({This, '$class'})):getEfficiency(This) - (get({This, '$class'})):calculateEfficiency(This))),
-        (fun(Target_N70953) -> (get({Target_N70953, '$class'})):setMaxHealth(Target_N70953, ((fun(Target_N70977) -> (get({Target_N70977, '$class'})):getMaxHealth(Target_N70977) end)((get({This, '$class'})):getHealthInterface(This)) - (((((get({This, '$class'})):getLevel(This) + 1)) * 100)))) end)((get({This, '$class'})):getHealthInterface(This)).
+        (fun(Target_N70978) -> (get({Target_N70978, '$class'})):setMaxHealth(Target_N70978, ((fun(Target_N71002) -> (get({Target_N71002, '$class'})):getMaxHealth(Target_N71002) end)((get({This, '$class'})):getHealthInterface(This)) - (((((get({This, '$class'})):getLevel(This) + 1)) * 100)))) end)((get({This, '$class'})):getHealthInterface(This)).
 
 upgrade(This) ->
         'AdvancedRTSGameLayer':upgrade(This),
         (get({This, '$class'})):setProductivity(This, ((get({This, '$class'})):getProductivity(This) + 1)),
         (get({This, '$class'})):setEfficiency(This, ((get({This, '$class'})):getEfficiency(This) + (get({This, '$class'})):calculateEfficiency(This))),
-        (fun(Target_N71174) -> (get({Target_N71174, '$class'})):setMaxHealth(Target_N71174, ((fun(Target_N71198) -> (get({Target_N71198, '$class'})):getMaxHealth(Target_N71198) end)((get({This, '$class'})):getHealthInterface(This)) + (((get({This, '$class'})):getLevel(This) * 100)))) end)((get({This, '$class'})):getHealthInterface(This)).
+        (fun(Target_N71199) -> (get({Target_N71199, '$class'})):setMaxHealth(Target_N71199, ((fun(Target_N71223) -> (get({Target_N71223, '$class'})):getMaxHealth(Target_N71223) end)((get({This, '$class'})):getHealthInterface(This)) + (((get({This, '$class'})):getLevel(This) * 100)))) end)((get({This, '$class'})):getHealthInterface(This)).
 
 getBuildingLevelCost(This) ->
         get({This, buildingLevelCost}).
@@ -272,7 +273,7 @@ damage(This, Damage, DamageType) when is_integer(Damage), is_integer(DamageType)
         (get({get({This, damageFloaters}), '$class'})):add(get({This, damageFloaters}), Damage),
         case (Damage > 0) of
             true ->
-            (fun(Target_N73062) -> (get({Target_N73062, '$class'})):damage(Target_N73062, Damage) end)((get({This, '$class'})):getHealthInterface(This));
+            (fun(Target_N73087) -> (get({Target_N73087, '$class'})):damage(Target_N73087, Damage) end)((get({This, '$class'})):getHealthInterface(This));
             false -> ok
         end.
 
@@ -283,34 +284,34 @@ getDamage(This, DamageType) when is_integer(DamageType) ->
 addVisibility(This) ->
         GeographicMapCellPositionArea = get({This, geographicMapCellPositionAreaBase}),
         OccupyList = (get({GeographicMapCellPositionArea, '$class'})):getOccupyingGeographicMapCellPositionList(GeographicMapCellPositionArea),
-        (fun(Target_N73358) -> (get({Target_N73358, '$class'})):addStationaryCellPositions(Target_N73358, OccupyList) end)('VisibleCellPositionsSingleton':getInstance()),
+        (fun(Target_N73383) -> (get({Target_N73383, '$class'})):addStationaryCellPositions(Target_N73383, OccupyList) end)('VisibleCellPositionsSingleton':getInstance()),
         SurroundList = (get({GeographicMapCellPositionArea, '$class'})):getSurroundingGeographicMapCellPositionList(GeographicMapCellPositionArea),
-        (fun(Target_N73447) -> (get({Target_N73447, '$class'})):addStationaryCellPositions(Target_N73447, SurroundList) end)('VisibleCellPositionsSingleton':getInstance()).
+        (fun(Target_N73472) -> (get({Target_N73472, '$class'})):addStationaryCellPositions(Target_N73472, SurroundList) end)('VisibleCellPositionsSingleton':getInstance()).
 
 removeVisibility(This) ->
         OccupyList = (get({get({This, geographicMapCellPositionAreaBase}), '$class'})):getOccupyingGeographicMapCellPositionList(get({This, geographicMapCellPositionAreaBase})),
-        (fun(Target_N73564) -> (get({Target_N73564, '$class'})):removeStationaryCellPositions(Target_N73564, OccupyList) end)('VisibleCellPositionsSingleton':getInstance()),
+        (fun(Target_N73589) -> (get({Target_N73589, '$class'})):removeStationaryCellPositions(Target_N73589, OccupyList) end)('VisibleCellPositionsSingleton':getInstance()),
         SurroundList = (get({get({This, geographicMapCellPositionAreaBase}), '$class'})):getSurroundingGeographicMapCellPositionList(get({This, geographicMapCellPositionAreaBase})),
-        (fun(Target_N73656) -> (get({Target_N73656, '$class'})):removeStationaryCellPositions(Target_N73656, SurroundList) end)('VisibleCellPositionsSingleton':getInstance()).
+        (fun(Target_N73681) -> (get({Target_N73681, '$class'})):removeStationaryCellPositions(Target_N73681, SurroundList) end)('VisibleCellPositionsSingleton':getInstance()).
 
 % throws Exception
 setDestroyed(This, Destroyed) when is_boolean(Destroyed) ->
         'AdvancedRTSGameLayer':setDestroyed(This, Destroyed),
         case (get({This, '$class'})):isDestroyed(This) of
             true ->
-            (fun(Target_N73765) -> (get({Target_N73765, '$class'})):removeAll(Target_N73765, This) end)('DropCellPositionHistory':getInstance()),
-            (fun(Target_N73799) -> (get({Target_N73799, '$class'})):removeListener(Target_N73799, This) end)('TrackingEventHandler':getInstance()),
+            (fun(Target_N73790) -> (get({Target_N73790, '$class'})):removeAll(Target_N73790, This) end)('DropCellPositionHistory':getInstance()),
+            (fun(Target_N73824) -> (get({Target_N73824, '$class'})):removeListener(Target_N73824, This) end)('TrackingEventHandler':getInstance()),
             case get({This, local}) of
                 true ->
                 (get({This, '$class'})):removeVisibility(This);
                 false -> ok
             end,
-            case (not (fun(Target_N73874) -> (get({Target_N73874, '$class'})):isAlive(Target_N73874) end)((get({This, '$class'})):getHealthInterface(This))) of
+            case (not (fun(Target_N73899) -> (get({Target_N73899, '$class'})):isAlive(Target_N73899) end)((get({This, '$class'})):getHealthInterface(This))) of
                 true ->
-                Damage = (fun(Target_N73917) -> (get({Target_N73917, '$class'})):getMaxHealth(Target_N73917) end)((get({This, '$class'})):getHealthInterface(This)),
+                Damage = (fun(Target_N73942) -> (get({Target_N73942, '$class'})):getMaxHealth(Target_N73942) end)((get({This, '$class'})):getHealthInterface(This)),
                 case (Damage > 10) of
                     true ->
-                    (fun(Target_N73976) -> (get({Target_N73976, '$class'})):add(Target_N73976, 'ExplosionBasicSound':getInstance()) end)('SecondaryPlayerQueueFactory':getInstance()),
+                    (fun(Target_N74001) -> (get({Target_N74001, '$class'})):add(Target_N74001, 'ExplosionBasicSound':getInstance()) end)('SecondaryPlayerQueueFactory':getInstance()),
                     case (Damage < 100) of
                         true ->
                         (get({get({This, shakeListener}), '$class'})):onSmallShakeEvent(get({This, shakeListener})),
@@ -351,4 +352,10 @@ getType(This) ->
 
 getStaticType() ->
         2.
+
+getRotationAnimationInterface(This) ->
+        'AdvancedRTSGameLayer':getRotationAnimationInterface(This).
+
+setFrame(This, Index) when is_integer(Index) ->
+        'AdvancedRTSGameLayer':setFrame(This, Index).
 

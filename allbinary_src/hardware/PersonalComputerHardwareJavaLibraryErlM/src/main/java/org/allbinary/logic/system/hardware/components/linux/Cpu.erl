@@ -190,9 +190,9 @@ getCacheSize(This) ->
         (get({get({This, cpuHashMap}), '$class'})):get(get({This, cpuHashMap}), get({'CpuInfo', 'CACHESIZE'})).
 
 compareTo(This, CpuInterface) ->
-        true;
-compareTo(This, ComponentInterface) ->
-        true.
+        true
+% unreachable Java overload compareTo(HardwareComponentInterface componentInterface) has the same guards as an earlier clause
+.
 
 
 toString(This) ->

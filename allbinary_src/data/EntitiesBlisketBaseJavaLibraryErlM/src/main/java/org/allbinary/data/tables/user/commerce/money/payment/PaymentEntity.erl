@@ -203,3 +203,9 @@ createTable(This) ->
 drop(This) ->
         'AbSqlBean':dropTable(This).
 
+insert(This, Values) ->
+        'AbSqlBean':insert(This, Values).
+
+dropTable(This) ->
+        'AbSqlBean':dropTable(This).
+

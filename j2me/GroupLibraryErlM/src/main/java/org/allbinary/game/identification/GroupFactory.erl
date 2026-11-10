@@ -9,7 +9,7 @@
 % AllBinary or the root directory of AllBinary's AllBinary Platform repository.
 % 
 % Created By: Travis Berthelot
-%  
+%   
 % Generated Code Do Not Modify
 % package org.allbinary.game.identification
 % import org.allbinary.logic.communication.log.LogUtil
@@ -63,6 +63,7 @@ init(This, Groups, NameArray) when is_integer(Groups), (is_tuple(NameArray) orel
         (get({get({This, list}), '$class'})):clear(get({This, list})),
         put({This, index}, 0),
         put({local, size}, (get({get({This, list}), '$class'})):size(get({This, list}))),
+        put({local, name}, undefined),
         (fun Loop() -> case (get({local, size}) < Groups) of true ->
             put({local, name}, get({StringUtil, 'EMPTY_STRING'})),
             case (get({local, size}) < array:size(NameArray)) of
@@ -70,7 +71,7 @@ init(This, Groups, NameArray) when is_integer(Groups), (is_tuple(NameArray) orel
                 put({local, name}, array:get(get({local, size}), NameArray));
                 false ->
                 (get({StringMaker, '$class'})):delete(StringMaker, 0, (get({StringMaker, '$class'})):length(StringMaker)),
-                put({local, name}, (fun(Target_N66681) -> (get({Target_N66681, '$class'})):toString(Target_N66681) end)((fun(Target_N66688) -> (get({Target_N66688, '$class'})):appendint(Target_N66688, get({local, size})) end)((get({StringMaker, '$class'})):append(StringMaker, TEAM))))
+                put({local, name}, (fun(Target_N66713) -> (get({Target_N66713, '$class'})):toString(Target_N66713) end)((fun(Target_N66720) -> (get({Target_N66720, '$class'})):appendint(Target_N66720, get({local, size})) end)((get({StringMaker, '$class'})):append(StringMaker, TEAM))))
             end,
             (get({get({This, list}), '$class'})):add(get({This, list}), 'Group':new(get({local, name}), ((get({local, size}) + 3)))),
             put({local, size}, get({local, size}) + 1),

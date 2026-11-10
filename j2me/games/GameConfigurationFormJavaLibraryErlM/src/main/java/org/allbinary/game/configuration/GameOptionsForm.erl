@@ -148,7 +148,7 @@ save(This, AbeClientInformation) ->
         (fun(Target_N69280) -> (get({Target_N69280, '$class'})):updateCompetitionValue(Target_N69280) end)('GameConfigurationUtil':getInstance()),
         Hashtable = (fun(Target_N69323) -> (get({Target_N69323, '$class'})):createHashtable(Target_N69323) end)('StdUtil':getInstance()),
         SCALE = get({'GameConfigurationCentral':getInstance(), 'SCALE'}),
-        (get({Hashtable, '$class'})):put(Hashtable, (get({SCALE, '$class'})):getName(SCALE), (fun(Target_N69476) -> (get({Target_N69476, '$class'})):toString(Target_N69476) end)((get({SCALE, '$class'})):getValue(SCALE))),
+        (get({Hashtable, '$class'})):put(Hashtable, (get({SCALE, '$class'})):getName(SCALE), allbinary_java:to_string((fun(Target_N69493) -> (get({Target_N69493, '$class'})):intValue(Target_N69493) end)((get({SCALE, '$class'})):getValue(SCALE)))),
         KeyValuePersistance = 'GameConfigurationPersistanceSingleton':getInstance(),
         (get({KeyValuePersistance, '$class'})):clear(KeyValuePersistance),
         (get({KeyValuePersistance, '$class'})):loadAll(KeyValuePersistance, AbeClientInformation),

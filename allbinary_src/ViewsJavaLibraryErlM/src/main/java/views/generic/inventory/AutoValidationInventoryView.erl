@@ -49,3 +49,7 @@ toValidationInfoNode(This, Document) ->
 validationInfo(This) ->
         undefined.
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'InventoryView':getTransformInfoInterface(This).
+

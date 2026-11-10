@@ -155,3 +155,7 @@ validationInfo(This) ->
         "Unknown Error<br />"
         catch throw:{'$return', ReturnValue} -> ReturnValue end.
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'HttpStoreComponentView':getTransformInfoInterface(This).
+

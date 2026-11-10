@@ -100,8 +100,8 @@ fireRemoveEvent(This, EventObject) ->
                 put({local, eventListenerInterface}, (get({List, '$class'})):get(List, Index)),
                 put({local, geographicMapCellPositionEventListenerInterface}, (get({local, eventListenerInterface}))),
                 (get({get({local, geographicMapCellPositionEventListenerInterface}), '$class'})):onRemoveGeographicMapCellPositionEvent(get({local, geographicMapCellPositionEventListenerInterface}), EventObject)
-            catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E)
+            catch _:E_N67338 when E_N67338 =/= '$break', E_N67338 =/= '$continue', (not is_tuple(E_N67338) orelse element(1, E_N67338) =/= '$return') ->
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E_N67338)
             end
         end, lists:seq(0, Size - 1)).
 

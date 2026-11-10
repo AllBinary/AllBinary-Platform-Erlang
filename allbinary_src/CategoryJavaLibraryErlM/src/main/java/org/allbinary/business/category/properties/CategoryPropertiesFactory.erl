@@ -36,11 +36,6 @@ new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Node),
-    This;
-new(CategoryPropertiesHashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, CategoryPropertiesHashMap),
     This.
 
 '$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
@@ -48,10 +43,9 @@ new(CategoryPropertiesHashMap) ->
         put({This, categoryPropertiesInterface}, 'CategoryProperties':new(Name));
 '$init'(This, Node) ->
     init_fields(This),
-        put({This, categoryPropertiesInterface}, 'CategoryProperties':new(Node));
-'$init'(This, CategoryPropertiesHashMap) ->
-    init_fields(This),
-        put({This, categoryPropertiesInterface}, 'CategoryProperties':new(CategoryPropertiesHashMap)).
+        put({This, categoryPropertiesInterface}, 'CategoryProperties':new(Node))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 

@@ -25,7 +25,7 @@
 init_fields(This) ->
     put({This, rectPaintable}, 'NullPaintable':getInstance()),
     put({This, multipleScrollSelectionHorizontalFormTypeItemIndexPaintable}, 'ItemIndexPaintable':getInstance()),
-    put({This, backgroundColor}, (fun(Target_N67188) -> (get({Target_N67188, '$class'})):intValue(Target_N67188) end)(get({'BasicColorFactory':getInstance(), 'TRANSPARENT_GREY'}))),
+    put({This, backgroundColor}, (fun(Target_N67412) -> (get({Target_N67412, '$class'})):intValue(Target_N67412) end)(get({'BasicColorFactory':getInstance(), 'TRANSPARENT_GREY'}))),
     put({This, myFontProcessor}, 'UpdateMyFontProcessor':new(This)),
     put({This, logged}, false),
     put({This, fontHeight}, 0),
@@ -51,9 +51,7 @@ new(Title, Items, FormPaintableFactory, Border, BackgroundBasicColor, Foreground
             true ->
             ok;
             false ->
-            ok % Java nested type MPaintable: move it to its own module
-,
-            put({This, rectPaintable}, 'MPaintable':new())
+            put({This, rectPaintable}, 'MultipleScrollSelectionFormRectPaintable':new(This))
         end.
 
 fillRect(This, Graphics) ->
@@ -122,7 +120,7 @@ paint(This, Graphics) ->
                         ok;
                         false ->
                         put({This, logged}, true),
-                        'PreLogUtil':put((fun(Target_N69731) -> (get({Target_N69731, '$class'})):toString(Target_N69731) end)((fun(Target_N69738) -> (get({Target_N69738, '$class'})):appendint(Target_N69738, trunc((get({get({This, rectangle}), '$class'})):getMaxX(get({This, rectangle})))) end)((fun(Target_N69745) -> (get({Target_N69745, '$class'})):append(Target_N69745, "painting beyond maxx: ") end)('StringMaker':new()))), This, get({get({This, canvasStrings}), 'PAINT'}))
+                        'PreLogUtil':put((fun(Target_N69830) -> (get({Target_N69830, '$class'})):toString(Target_N69830) end)((fun(Target_N69837) -> (get({Target_N69837, '$class'})):appendint(Target_N69837, trunc((get({get({This, rectangle}), '$class'})):getMaxX(get({This, rectangle})))) end)((fun(Target_N69844) -> (get({Target_N69844, '$class'})):append(Target_N69844, "painting beyond maxx: ") end)('StringMaker':new()))), This, get({get({This, canvasStrings}), 'PAINT'}))
                     end;
                     false -> ok
                 end,
@@ -133,4 +131,5 @@ paint(This, Graphics) ->
         end.
 % Java nested class MultipleScrollSelectionFormHorizontalPaintable: move it to its own module 'MultipleScrollSelectionFormHorizontalPaintable'
 % Java nested class MultipleScrollSelectionFormVerticalPaintable: move it to its own module 'MultipleScrollSelectionFormVerticalPaintable'
+% Java nested class MultipleScrollSelectionFormRectPaintable: move it to its own module 'MultipleScrollSelectionFormRectPaintable'
 

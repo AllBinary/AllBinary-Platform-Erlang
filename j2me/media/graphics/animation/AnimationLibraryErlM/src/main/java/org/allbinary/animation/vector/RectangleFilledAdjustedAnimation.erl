@@ -55,3 +55,9 @@ setOffsetX(This, OffsetX) when is_integer(OffsetX) ->
 setOffsetY(This, OffsetY) when is_integer(OffsetY) ->
         put({This, offsetY}, OffsetY).
 
+getBasicColorP(This) ->
+        'RectangleFilledAnimation':getBasicColorP(This).
+
+setBasicColorP(This, BasicColor) ->
+        'RectangleFilledAnimation':setBasicColorP(This, BasicColor).
+

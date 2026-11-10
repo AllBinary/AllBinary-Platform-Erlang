@@ -57,21 +57,6 @@ new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Node),
-    This;
-new(StreetAddress) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, StreetAddress),
-    This;
-new(Request) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, Request),
-    This;
-new(Address) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, Address),
     This.
 
 '$init'(This, Node) ->
@@ -88,45 +73,13 @@ new(Address) ->
         put({This, code}, 'DomNodeHelper':getTextNodeValue(CodeNode)),
         CountryNode = 'DomSearchHelper':getNode(get({'StreetAddressData', 'COUNTRY'}), (get({Node, '$class'})):getChildNodes(Node)),
         put({This, country}, 'DomNodeHelper':getTextNodeValue(CountryNode)),
-        (get({This, '$class'})):log(This);
-'$init'(This, StreetAddress) ->
-    init_fields(This),
-        put({This, id}, (get({StreetAddress, '$class'})):getId(StreetAddress)),
-        put({This, name}, (get({StreetAddress, '$class'})):getName(StreetAddress)),
-        put({This, street}, (get({StreetAddress, '$class'})):getStreet(StreetAddress)),
-        put({This, city}, (get({StreetAddress, '$class'})):getCity(StreetAddress)),
-        put({This, state}, (get({StreetAddress, '$class'})):getState(StreetAddress)),
-        put({This, code}, (get({StreetAddress, '$class'})):getCode(StreetAddress)),
-        put({This, country}, (get({StreetAddress, '$class'})):getCountry(StreetAddress)),
-        put({This, isDefault}, (get({StreetAddress, '$class'})):isDefault(StreetAddress)),
-        (get({This, '$class'})):log(This);
-'$init'(This, Request) ->
-    init_fields(This),
-        (get({This, '$class'})):setId(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'ID'}))),
-        (get({This, '$class'})):setName(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'NAME'}))),
-        (get({This, '$class'})):setStreet(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'STREET'}))),
-        (get({This, '$class'})):setCity(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'CITY'}))),
-        (get({This, '$class'})):setState(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'STATE'}))),
-        (get({This, '$class'})):setCode(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'CODE'}))),
-        (get({This, '$class'})):setCountry(This, (get({Request, '$class'})):getParameter(Request, get({'StreetAddressData', 'COUNTRY'}))),
-        (get({This, '$class'})):log(This);
-'$init'(This, Address) ->
-    init_fields(This),
-        put({This, id}, (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'ID'}))),
-        put({This, name}, (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'NAME'}))),
-        put({This, street}, (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'STREET'}))),
-        put({This, city}, (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'CITY'}))),
-        put({This, state}, (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'STATE'}))),
-        put({This, code}, (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'CODE'}))),
-        put({This, country}, (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'COUNTRY'}))),
-        Def = (get({Address, '$class'})):get(Address, get({'StreetAddressData', 'DEFAULT'})),
-        case ((Def =/= undefined) andalso ((get({Def, '$class'})):compareTo(Def, get({'StreetAddressData', 'DEFAULT'})) =:= 0)) of
-            true ->
-            put({This, isDefault}, true);
-            false ->
-            put({This, isDefault}, false)
-        end,
-        (get({This, '$class'})):log(This).
+        (get({This, '$class'})):log(This)
+% unreachable Java constructor overload with the same guards as an earlier clause
+
+% unreachable Java constructor overload with the same guards as an earlier clause
+
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 

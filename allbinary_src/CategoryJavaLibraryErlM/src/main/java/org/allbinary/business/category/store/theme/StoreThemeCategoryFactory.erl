@@ -117,19 +117,9 @@ getInstance(This, Node, Level) when is_integer(Level) ->
                 false -> ok
             end,
             undefined
-        end;
-getInstance(This, CategoryPropertiesHashMap, Level) when is_integer(Level) ->
-        try
-            CategoryPropertiesFactoryInterface = 'CategoryPropertiesFactory':new(CategoryPropertiesHashMap),
-            'StoreThemeCategory':new(get({This, transformInfoInterface}), CategoryPropertiesFactoryInterface, Level)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'ENTITYFACTORYERROR'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "getInstance(HashMap)", E);
-                false -> ok
-            end,
-            undefined
-        end.
+        end
+% unreachable Java overload getInstance(HashMap categoryPropertiesHashMap, INT level) has the same guards as an earlier clause
+.
 
 getInstance(This, RootCategoryInterface, ParentCategoryInterface, CategoryPath) when (is_list(CategoryPath) orelse CategoryPath =:= undefined) ->
         try
@@ -154,19 +144,9 @@ getInstance(This, RootCategoryInterface, ParentCategoryInterface, Node) ->
                 false -> ok
             end,
             undefined
-        end;
-getInstance(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesHashMap) ->
-        try
-            CategoryPropertiesFactoryInterface = 'CategoryPropertiesFactory':new(CategoryPropertiesHashMap),
-            'StoreThemeCategory':new(get({This, transformInfoInterface}), RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'ENTITYFACTORYERROR'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "getInstance(CategoryInterface, CategoryInterface, HashMap)", E);
-                false -> ok
-            end,
-            undefined
-        end.
+        end
+% unreachable Java overload getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap categoryPropertiesHashMap) has the same guards as an earlier clause
+.
 
 
 

@@ -49,9 +49,8 @@ getInstance(NodeList) ->
                 false -> ok
             end
         end, lists:seq(0, (get({NodeList, '$class'})):getLength(NodeList) - 1)),
-        PropertiesVector;
-getInstance(HashMap) ->
-        Styles = 'BasicArrayListD':new(),
-        Styles.
+        PropertiesVector
+% unreachable Java overload getInstance(HashMap hashMap) has the same guards as an earlier clause
+.
 
 

@@ -55,13 +55,16 @@ paintXY(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
         (get({get({This, fontDebugFactory}), '$class'})):setFont(get({This, fontDebugFactory}), ExistingFont, Graphics).
 
 setScale(This, ScaleX, ScaleY) when is_number(ScaleX), is_number(ScaleY) ->
-        case (ScaleX =/= ScaleY) of
+        case (ScaleX /= ScaleY) of
             true ->
             erlang:error({'RuntimeException'});
             false -> ok
         end,
         put({This, hasChanged}, true),
         put({This, font}, 'Font':getFont(get({'Font', 'FACE_SYSTEM'}), get({'Font', 'STYLE_PLAIN'}), trunc(((float(get({This, fontSize})) * ScaleX))))).
+
+setTextWithOnMeasure(This, Text, TextChangeListener) when (is_list(Text) orelse Text =:= undefined) ->
+        'TextAnimation':setTextWithOnMeasure(This, Text, TextChangeListener).
 
 setText(This, Text) when (is_list(Text) orelse Text =:= undefined) ->
         case (get({This, lastText}) =/= Text) of

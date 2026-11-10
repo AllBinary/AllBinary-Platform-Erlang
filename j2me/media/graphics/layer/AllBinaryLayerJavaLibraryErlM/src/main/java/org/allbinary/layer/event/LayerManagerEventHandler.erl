@@ -95,16 +95,16 @@ fireDeleteEvent(This, EventObject) ->
         EventListenerInterfaceList = get({This, eventListenerInterfaceList}),
         put({local, eventListenerInterface}, undefined),
         put({local, layerManagerEventListenerInterface}, undefined),
-        put({local, index}, 0),
-        (fun Loop() -> case (get({local, index}) < (get({EventListenerInterfaceList, '$class'})):size(EventListenerInterfaceList)) of true ->
+        put({local, listenerIndex}, 0),
+        (fun Loop() -> case (get({local, listenerIndex}) < (get({EventListenerInterfaceList, '$class'})):size(EventListenerInterfaceList)) of true ->
             try
-                put({local, eventListenerInterface}, array:get(get({local, index}), get({EventListenerInterfaceList, objectArray}))),
+                put({local, eventListenerInterface}, array:get(get({local, listenerIndex}), get({EventListenerInterfaceList, objectArray}))),
                 put({local, layerManagerEventListenerInterface}, (get({local, eventListenerInterface}))),
                 (get({get({local, layerManagerEventListenerInterface}), '$class'})):onDeleteLayerManagerEvent(get({local, layerManagerEventListenerInterface}), EventObject)
-            catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E)
+            catch _:E_N67385 when E_N67385 =/= '$break', E_N67385 =/= '$continue', (not is_tuple(E_N67385) orelse element(1, E_N67385) =/= '$return') ->
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E_N67385)
             end,
-            put({local, index}, get({local, index}) + 1),
+            put({local, listenerIndex}, get({local, listenerIndex}) + 1),
             Loop();
         false -> ok end end)().
 

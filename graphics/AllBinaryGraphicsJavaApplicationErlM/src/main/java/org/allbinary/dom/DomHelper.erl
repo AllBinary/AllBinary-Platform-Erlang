@@ -159,21 +159,8 @@ searchNodeList(This, NodeName, NodeList) when (is_list(NodeName) orelse NodeName
             end
         end, lists:seq(0, NumberOfNodes - 1)),
         erlang:error({'Exception', lists:concat([NodeName, " Node Not Found in search"])})
-        catch throw:{'$return', ReturnValue} -> ReturnValue end;
-% throws Exception
-searchNodeList(This, NodeName, NodeList) when (is_list(NodeName) orelse NodeName =:= undefined) ->
-        try
-        NumberOfNodes = (get({NodeList, '$class'})):size(NodeList),
-        lists:foreach(fun(Index) ->
-            Node = (get({NodeList, '$class'})):get(NodeList, Index),
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["NodeName: ", (get({Node, '$class'})):getNodeName(Node)]), This, "searchNodeList"),
-            case ((fun(Target_N69110) -> (get({Target_N69110, '$class'})):compareTo(Target_N69110, NodeName) end)((get({Node, '$class'})):getNodeName(Node)) =:= 0) of
-                true ->
-                throw({'$return', Node});
-                false -> ok
-            end
-        end, lists:seq(0, NumberOfNodes - 1)),
-        erlang:error({'Exception', lists:concat([NodeName, " Node Not Found in search"])})
-        catch throw:{'$return', ReturnValue} -> ReturnValue end.
+        catch throw:{'$return', ReturnValue} -> ReturnValue end
+% unreachable Java overload searchNodeList(String nodeName, BasicArrayList nodeList) has the same guards as an earlier clause
+.
 
 

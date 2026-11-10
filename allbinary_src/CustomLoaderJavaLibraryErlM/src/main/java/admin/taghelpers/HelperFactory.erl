@@ -60,29 +60,9 @@ getInstance(AbeClientInformation, FactoryName, ClassName, HashMap, HttpServletRe
                 false -> ok
             end,
             erlang:error(E)
-        end;
-% throws LicensingException
-getInstance(AbeClientInformation, FactoryName, ClassName, HashMap, PageContext) when (is_list(FactoryName) orelse FactoryName =:= undefined), (is_list(ClassName) orelse ClassName =:= undefined) ->
-        LogUtil = 'LogUtil':getInstance(),
-        try
-            Params = array:new(2, {default, undefined}),
-            Classes = array:new(2, {default, undefined}),
-            AbeFactory = 'AbeFactory':getInstance(),
-            array:set(0, get({HashMap, '$class'}), Classes),
-            array:set(1, (get({AbeFactory, '$class'})):getClass(AbeFactory, AbeClientInformation, "javax.servlet.jsp.PageContext"), Classes),
-            array:set(0, HashMap, Params),
-            array:set(1, PageContext, Params),
-            AnyType = (get({AbeFactory, '$class'})):getInstance(AbeFactory, AbeClientInformation, ClassName, Classes, Params),
-            AnyType
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'TAGHELPERFACTORYERROR'})) of
-                true ->
-                Error = lists:concat([lists:concat([lists:concat(["Failed To Get Instance Args: HashMap=", (get({HashMap, '$class'})):toString(HashMap)]), " PageContext="]), PageContext]),
-                (get({LogUtil, '$class'})):put(LogUtil, Error, lists:concat([FactoryName, "->HelperFactory"]), "getInstance(String, String, HashMap, PageContext)", E);
-                false -> ok
-            end,
-            erlang:error(E)
-        end.
+        end
+% unreachable Java overload getInstance(AbeClientInformationInterface abeClientInformation, String factoryName, String className, HashMap hashMap, PageContext pageContext) has the same guards as an earlier clause
+.
 
 
 % throws LicensingException

@@ -387,15 +387,9 @@ onAdd(This, InputAutomationRobotChangeEvent) ->
             (fun(Target_N79181) -> (get({Target_N79181, '$class'})):add(Target_N79181, (fun(Target_N79206) -> (get({Target_N79206, '$class'})):getInputRobotInterface(Target_N79206) end)((get({InputAutomationRobotChangeEvent, '$class'})):getInputAutomationRobotInterfaceWrapper(InputAutomationRobotChangeEvent))) end)('InputRobotFactory':getInstance())
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
             (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "onAdd", E)
-        end;
-onAdd(This, InputAutomationConfigurationChangeEvent) ->
-        try
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, "onAdd"),
-            (get({get({This, inputAutomationModuleConfigurations}), '$class'})):add(get({This, inputAutomationModuleConfigurations}), (get({InputAutomationConfigurationChangeEvent, '$class'})):getInputAutomationModuleConfiguration(InputAutomationConfigurationChangeEvent)),
-            (get({This, '$class'})):init(This)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "onAdd", E)
-        end.
+        end
+% unreachable Java overload onAdd(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent) has the same guards as an earlier clause
+.
 
 onRemove(This, InputAutomationRobotChangeEvent) ->
         try
@@ -403,26 +397,9 @@ onRemove(This, InputAutomationRobotChangeEvent) ->
             (fun(Target_N79442) -> (get({Target_N79442, '$class'})):add(Target_N79442, (fun(Target_N79467) -> (get({Target_N79467, '$class'})):getInputRobotInterface(Target_N79467) end)((get({InputAutomationRobotChangeEvent, '$class'})):getInputAutomationRobotInterfaceWrapper(InputAutomationRobotChangeEvent))) end)('InputRobotFactory':getInstance())
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
             (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "onRemove", E)
-        end;
-onRemove(This, InputAutomationConfigurationChangeEvent) ->
-        try
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, "onRemove"),
-            InputAutomationConfiguration = get({'InputAutomationConfigurationFactory':getInstance(), inputAutomationConfiguration}),
-            InputAutomationModuleConfigurationList = (get({InputAutomationConfiguration, '$class'})):getInputAutomationModuleConfigurationList(InputAutomationConfiguration),
-            case (InputAutomationModuleConfigurationList =:= undefined) of
-                true ->
-                LogUtil = 'LogUtil':getInstance(),
-                CommonStrings = 'CommonStrings':getInstance(),
-                (get({LogUtil, '$class'})):putF(LogUtil, lists:concat(["inputAutomationModuleConfigurationList: ", InputAutomationModuleConfigurationList]), This, get({CommonStrings, 'INIT'})),
-                erlang:error({'Exception'});
-                false -> ok
-            end,
-            InputAutomationModuleConfigurations = 'InputAutomationModuleConfigurations':new((get({InputAutomationConfiguration, '$class'})):getInputAutomationModuleConfigurationList(InputAutomationConfiguration)),
-            (get({InputAutomationModuleConfigurations, '$class'})):remove(InputAutomationModuleConfigurations, (get({InputAutomationConfigurationChangeEvent, '$class'})):getInputAutomationModuleConfiguration(InputAutomationConfigurationChangeEvent)),
-            (get({This, '$class'})):init(This)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "onRemove", E)
-        end.
+        end
+% unreachable Java overload onRemove(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent) has the same guards as an earlier clause
+.
 
 
 

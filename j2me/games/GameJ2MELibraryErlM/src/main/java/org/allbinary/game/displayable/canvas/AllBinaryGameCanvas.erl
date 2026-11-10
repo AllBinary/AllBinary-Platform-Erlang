@@ -223,7 +223,7 @@ init_fields(This) ->
     put({This, openMenuPaintable}, 'NullPaintable':getInstance()),
     put({This, menuPaintable}, 'NullPaintable':getInstance()),
     put({This, currentTouchInputFactory}, 'NoButtonsTouchInputFactory':getInstance()),
-    put({This, colorFillPaintable}, (fun(Target_N72319) -> (get({Target_N72319, '$class'})):getInstance(Target_N72319, get({get({This, basicColorFactory}), 'BLACK'}), true) end)('ColorFillPaintableFactory':getInstance())),
+    put({This, colorFillPaintable}, (fun(Target_N72912) -> (get({Target_N72912, '$class'})):getInstance(Target_N72912, get({get({This, basicColorFactory}), 'BLACK'}), true) end)('ColorFillPaintableFactory':getInstance())),
     put({This, baseGameStatistics}, 'GameStatisticsFactory':getInstance()),
     put({This, primaryPlayerQueue}, 'PrimaryPlayerQueueFactory':getInstance()),
     put({This, secondaryPlayerQueue}, 'SecondaryPlayerQueueFactory':getInstance()),
@@ -257,7 +257,7 @@ new(CommandListener, GameLayerManager, HighScoresFactoryInterface, GameInitializ
         put({This, gameInitializationInterfaceFactoryInterface}, GameInitializationInterfaceFactoryInterface),
         (get({This, '$class'})):init(This, GameLayerManager, Buffered),
         put({This, highScoresFactoryInterface}, HighScoresFactoryInterface),
-        case (((fun(Target_N73101) -> (get({Target_N73101, '$class'})):getGameType(Target_N73101) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))) =:= get({get({This, gameTypeFactory}), 'BOT'})) orelse ((fun(Target_N73152) -> (get({Target_N73152, '$class'})):getGameType(Target_N73152) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))) =:= get({get({This, gameTypeFactory}), 'NONE'}))) of
+        case (((fun(Target_N73694) -> (get({Target_N73694, '$class'})):getGameType(Target_N73694) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))) =:= get({get({This, gameTypeFactory}), 'BOT'})) orelse ((fun(Target_N73745) -> (get({Target_N73745, '$class'})):getGameType(Target_N73745) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))) =:= get({get({This, gameTypeFactory}), 'NONE'}))) of
             true ->
             put({This, gameBehavior}, 'DemoGameBehavior':getInstance()),
             put({This, menuBehavior}, 'BaseMenuBehavior':getInstance());
@@ -268,12 +268,12 @@ new(CommandListener, GameLayerManager, HighScoresFactoryInterface, GameInitializ
         (get({This, '$class'})):initPopupMenu(This),
         (get({This, '$class'})):initMenu(This),
         (get({This, '$class'})):initSpecialPaint(This),
-        (fun(Target_N73402) -> (get({Target_N73402, '$class'})):addListenerInterface(Target_N73402, This) end)('DisplayChangeEventHandler':getInstance()).
+        (fun(Target_N73995) -> (get({Target_N73995, '$class'})):addListenerInterface(Target_N73995, This) end)('DisplayChangeEventHandler':getInstance()).
 
 updateMeasurement(This, Graphics) ->
         try
             Font = (get({Graphics, '$class'})):getFont(Graphics),
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N73666) -> (get({Target_N73666, '$class'})):toString(Target_N73666) end)((fun(Target_N73673) -> (get({Target_N73673, '$class'})):appendint(Target_N73673, trunc((get({Font, '$class'})):getHeight(Font))) end)((fun(Target_N73680) -> (get({Target_N73680, '$class'})):append(Target_N73680, get({get({This, canvasStrings}), 'FD_HEIGHT'})) end)((fun(Target_N73687) -> (get({Target_N73687, '$class'})):appendint(Target_N73687, trunc('MyFontProcessor':defaultCharWidth(Font))) end)((fun(Target_N73694) -> (get({Target_N73694, '$class'})):append(Target_N73694, get({get({This, canvasStrings}), 'FD_WIDTH'})) end)((fun(Target_N73701) -> (get({Target_N73701, '$class'})):append(Target_N73701, get({get({This, commonStrings}), 'START'})) end)('StringMaker':new())))))), This, get({get({This, canvasStrings}), 'UPDATE_MEASUREMENT'})),
+            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N74259) -> (get({Target_N74259, '$class'})):toString(Target_N74259) end)((fun(Target_N74266) -> (get({Target_N74266, '$class'})):appendint(Target_N74266, trunc((get({Font, '$class'})):getHeight(Font))) end)((fun(Target_N74273) -> (get({Target_N74273, '$class'})):append(Target_N74273, get({get({This, canvasStrings}), 'FD_HEIGHT'})) end)((fun(Target_N74280) -> (get({Target_N74280, '$class'})):appendint(Target_N74280, trunc('MyFontProcessor':defaultCharWidth(Font))) end)((fun(Target_N74287) -> (get({Target_N74287, '$class'})):append(Target_N74287, get({get({This, canvasStrings}), 'FD_WIDTH'})) end)((fun(Target_N74294) -> (get({Target_N74294, '$class'})):append(Target_N74294, get({get({This, commonStrings}), 'START'})) end)('StringMaker':new())))))), This, get({get({This, canvasStrings}), 'UPDATE_MEASUREMENT'})),
             put({This, fontHeightP}, (get({Font, '$class'})):getHeight(Font)),
             (get({get({This, myFormUtil}), '$class'})):updateMeasurement(get({This, myFormUtil}), Graphics),
             PopupMenuRectangle = (get({get({This, myFormUtil}), '$class'})):getPopupMenuRectangle(get({This, myFormUtil})),
@@ -306,7 +306,7 @@ onEvent(This, EventObject) ->
 
 onDisplayChangeEvent(This, DisplayChangeEvent) ->
         try
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N74722) -> (get({Target_N74722, '$class'})):toString(Target_N74722) end)((fun(Target_N74729) -> (get({Target_N74729, '$class'})):append(Target_N74729, (fun(Target_N74780) -> (get({Target_N74780, '$class'})):toString(Target_N74780) end)('DisplayInfoSingleton':getInstance())) end)((fun(Target_N74736) -> (get({Target_N74736, '$class'})):append(Target_N74736, get({get({This, commonStrings}), 'START'})) end)('StringMaker':new()))), This, get({get({This, canvasStrings}), 'UPDATE_MEASUREMENT'})),
+            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N75315) -> (get({Target_N75315, '$class'})):toString(Target_N75315) end)((fun(Target_N75322) -> (get({Target_N75322, '$class'})):append(Target_N75322, (fun(Target_N75373) -> (get({Target_N75373, '$class'})):toString(Target_N75373) end)('DisplayInfoSingleton':getInstance())) end)((fun(Target_N75329) -> (get({Target_N75329, '$class'})):append(Target_N75329, get({get({This, commonStrings}), 'START'})) end)('StringMaker':new()))), This, get({get({This, canvasStrings}), 'UPDATE_MEASUREMENT'})),
             put({This, myFontProcessor}, get({This, updateMyFontProcessor})),
             (get({get({This, menuBehavior}), '$class'})):onDisplayChangeEvent(get({This, menuBehavior}), This, DisplayChangeEvent)
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
@@ -315,7 +315,7 @@ onDisplayChangeEvent(This, DisplayChangeEvent) ->
 
 % throws Exception
 updateMenuFromEvent(This, DisplayChangeEvent) ->
-        FormType = (fun(Target_N75090) -> (get({Target_N75090, '$class'})):getFormType(Target_N75090) end)('FormTypeFactory':getInstance()),
+        FormType = (fun(Target_N75683) -> (get({Target_N75683, '$class'})):getFormType(Target_N75683) end)('FormTypeFactory':getInstance()),
         Rectangle = (get({get({This, formUtil}), '$class'})):createFormRectangle(get({This, formUtil})),
         (get({get({This, menuForm}), '$class'})):init(get({This, menuForm}), Rectangle, FormType),
         case (get({This, currentTouchInputFactory}) =/= 'NoButtonsTouchInputFactory':getInstance()) of
@@ -369,7 +369,7 @@ initMenu(This) ->
 % throws Exception
 initMenu2(This) ->
         (get({This, '$class'})):closeMenu(This),
-        FormType = (fun(Target_N76243) -> (get({Target_N76243, '$class'})):getFormType(Target_N76243) end)('FormTypeFactory':getInstance()),
+        FormType = (fun(Target_N76836) -> (get({Target_N76836, '$class'})):getFormType(Target_N76836) end)('FormTypeFactory':getInstance()),
         GameLimitedCommandTextItemArrayFactory = 'GameLimitedCommandTextItemArrayFactory':getInstance(),
         CommandTextItemArrayFactory = (get({GameLimitedCommandTextItemArrayFactory, '$class'})):getCommandTextItemArrayFactory(GameLimitedCommandTextItemArrayFactory),
         Items = (get({CommandTextItemArrayFactory, '$class'})):getInstance(CommandTextItemArrayFactory, (get({This, '$class'})):getCommandStack(This), (get({get({This, gameLayerManager}), '$class'})):getBackgroundBasicColor(get({This, gameLayerManager})), (get({get({This, gameLayerManager}), '$class'})):getForegroundBasicColor(get({This, gameLayerManager}))),
@@ -410,7 +410,7 @@ updateMenu2(This) ->
         lists:foreach(fun(Index) ->
             (get({ScrollSelectionForm, '$class'})):append(ScrollSelectionForm, array:get(Index, Items))
         end, lists:seq(0, Size - 1)),
-        FormType = (fun(Target_N77696) -> (get({Target_N77696, '$class'})):getFormType(Target_N77696) end)('FormTypeFactory':getInstance()),
+        FormType = (fun(Target_N78289) -> (get({Target_N78289, '$class'})):getFormType(Target_N78289) end)('FormTypeFactory':getInstance()),
         Rectangle = (get({get({This, formUtil}), '$class'})):createFormRectangle(get({This, formUtil})),
         (get({ScrollSelectionForm, '$class'})):init(ScrollSelectionForm, Rectangle, FormType).
 
@@ -418,7 +418,7 @@ pause(This) ->
         (get({get({This, gameBehavior}), '$class'})):pause(get({This, gameBehavior}), This),
         (get({This, '$class'})):closeMenu(This),
         'RunnableCanvas':pause(This),
-        (get({get({This, touchButtonFactory}), '$class'})):toggle(get({This, touchButtonFactory}), (get({This, '$class'})):isPaused(This), (fun(Target_N77961) -> (get({Target_N77961, '$class'})):getImmutableInstance(Target_N77961) end)('BasicArrayListUtil':getInstance())),
+        (get({get({This, touchButtonFactory}), '$class'})):toggle(get({This, touchButtonFactory}), (get({This, '$class'})):isPaused(This), (fun(Target_N78554) -> (get({Target_N78554, '$class'})):getImmutableInstance(Target_N78554) end)('BasicArrayListUtil':getInstance())),
         (get({get({This, tsUtil}), '$class'})):gc(get({This, tsUtil})).
 
 unPause(This) ->
@@ -426,12 +426,12 @@ unPause(This) ->
         (get({This, '$class'})):closeMenu(This),
         (get({get({This, tsUtil}), '$class'})):gc(get({This, tsUtil})),
         'RunnableCanvas':unPause(This),
-        (get({get({This, touchButtonFactory}), '$class'})):toggle(get({This, touchButtonFactory}), (get({This, '$class'})):isPaused(This), (fun(Target_N78209) -> (get({Target_N78209, '$class'})):getImmutableInstance(Target_N78209) end)('BasicArrayListUtil':getInstance())),
+        (get({get({This, touchButtonFactory}), '$class'})):toggle(get({This, touchButtonFactory}), (get({This, '$class'})):isPaused(This), (fun(Target_N78802) -> (get({Target_N78802, '$class'})):getImmutableInstance(Target_N78802) end)('BasicArrayListUtil':getInstance())),
         (get({get({This, gameBehavior}), '$class'})):unPause(get({This, gameBehavior}), This).
 
 isPausable(This) ->
         try
-        case ((fun(Target_N78312) -> (get({Target_N78312, '$class'})):getUsedRunnable(Target_N78312) end)('CurrentDisplayableFactory':getInstance()) =:= 'NullWaitGameRunnable':getInstance()) of
+        case ((fun(Target_N78905) -> (get({Target_N78905, '$class'})):getUsedRunnable(Target_N78905) end)('CurrentDisplayableFactory':getInstance()) =:= 'NullWaitGameRunnable':getInstance()) of
             true ->
             throw({'$return', true});
             false ->
@@ -528,7 +528,7 @@ init(This, GameLayerManager, Buffered) when is_boolean(Buffered) ->
         (get({This, '$class'})):setEndGameStatePaintable(This, 'EndGamePaintable':new(This)),
         (get({This, '$class'})):setEndGamePaintable(This, 'NullPaintable':getInstance()),
         (get({This, '$class'})):setIntermissionPaintable(This, 'NullPaintable':getInstance()),
-        (fun(Target_N80495) -> (get({Target_N80495, '$class'})):setListener(Target_N80495, This) end)((get({This, '$class'})):getStartIntermissionInterface(This)).
+        (fun(Target_N81088) -> (get({Target_N81088, '$class'})):setListener(Target_N81088, This) end)((get({This, '$class'})):getStartIntermissionInterface(This)).
 
 notifyIntermission(This, Enable) when is_boolean(Enable) ->
         case Enable of
@@ -552,13 +552,13 @@ mediaInit(This) ->
 initConfigurable(This, AbeClientInformation) ->
         ProgressCanvas = 'ProgressCanvasFactory':getInstance(),
         (get({ProgressCanvas, '$class'})):addNormalPortion(ProgressCanvas, 50, "Setting Configurables"),
-        (fun(Target_N80989) -> (get({Target_N80989, '$class'})):initGame(Target_N80989, AbeClientInformation, This, get({This, gameInitializationInterfaceFactoryInterface})) end)('GameInitializationUtil':getInstance()),
+        (fun(Target_N81582) -> (get({Target_N81582, '$class'})):initGame(Target_N81582, AbeClientInformation, This, get({This, gameInitializationInterfaceFactoryInterface})) end)('GameInitializationUtil':getInstance()),
         GameFeatureFactory = 'GameFeatureFactory':getInstance(),
         ChangedGameFeatureListener = 'ChangedGameFeatureListener':getInstance(),
         case (get({ChangedGameFeatureListener, '$class'})):isChangedFeature(ChangedGameFeatureListener, get({GameFeatureFactory, 'SOUND'})) of
             true ->
             Features = 'Features':getInstance(),
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N81255) -> (get({Target_N81255, '$class'})):toString(Target_N81255) end)((fun(Target_N81262) -> (get({Target_N81262, '$class'})):appendboolean(Target_N81262, (get({Features, '$class'})):isFeature(Features, get({GameFeatureFactory, 'SOUND'}))) end)((fun(Target_N81269) -> (get({Target_N81269, '$class'})):append(Target_N81269, "Sound Changing To: ") end)('StringMaker':new()))), This, "initConfigurable"),
+            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N81848) -> (get({Target_N81848, '$class'})):toString(Target_N81848) end)((fun(Target_N81855) -> (get({Target_N81855, '$class'})):appendboolean(Target_N81855, (get({Features, '$class'})):isFeature(Features, get({GameFeatureFactory, 'SOUND'}))) end)((fun(Target_N81862) -> (get({Target_N81862, '$class'})):append(Target_N81862, "Sound Changing To: ") end)('StringMaker':new()))), This, "initConfigurable"),
             (get({This, '$class'})):mediaInit(This),
             (get({ChangedGameFeatureListener, '$class'})):remove(ChangedGameFeatureListener, get({GameFeatureFactory, 'SOUND'}));
             false -> ok
@@ -587,7 +587,7 @@ initTouch(This) ->
         GameInitializedEvent = get({'GameInitializationUtil':getInstance(), 'EVENT'}),
         ResourceLoadingLevelFactory = 'ResourceLoadingLevelFactory':getInstance(),
         (get({GameInitializedEvent, '$class'})):setResourceLoadingLevel(GameInitializedEvent, get({ResourceLoadingLevelFactory, 'LOAD_TOUCH'})),
-        (fun(Target_N82198) -> (get({Target_N82198, '$class'})):fireEvent(Target_N82198, GameInitializedEvent) end)('GameInitializedEventHandler':getInstance()),
+        (fun(Target_N82791) -> (get({Target_N82791, '$class'})):fireEvent(Target_N82791, GameInitializedEvent) end)('GameInitializedEventHandler':getInstance()),
         (get({get({This, touchButtonFactory}), '$class'})):defaultList(get({This, touchButtonFactory})),
         (get({This, '$class'})):updateTouch(This),
         (get({This, '$class'})):postInitTouch(This).
@@ -611,7 +611,7 @@ updateTouch2(This) ->
         Features = 'Features':getInstance(),
         case (get({Features, '$class'})):isFeature(Features, get({get({This, touchFeatureFactory}), 'AUTO_HIDE_SHOW_SCREEN_BUTTONS'})) of
             true ->
-            case (((fun(Target_N82745) -> (get({Target_N82745, '$class'})):getCurrentLevel(Target_N82745) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))) - (get({This, '$class'})):getStartLevel(This)) =:= 1) of
+            case (((fun(Target_N83338) -> (get({Target_N83338, '$class'})):getCurrentLevel(Target_N83338) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))) - (get({This, '$class'})):getStartLevel(This)) =:= 1) of
                 true ->
                 (get({This, '$class'})):setTouchPaintableP(This, 'NullPaintable':getInstance());
                 false -> ok
@@ -640,7 +640,7 @@ addCommands(This) ->
         (get({This, '$class'})):addCommand(This, get({GameCommandsFactory, 'RESTART_COMMAND'})),
         (get({This, '$class'})):addCommand(This, get({MyCommandsFactory, 'PAUSE_COMMAND'})),
         (get({This, '$class'})):addCommand(This, get({GameCommandsFactory, 'QUIT_COMMAND'})),
-        IsOverScan = (fun(Target_N83391) -> (get({Target_N83391, '$class'})):isOverScan(Target_N83391) end)((fun(Target_N83398) -> (get({Target_N83398, '$class'})):getOperatingSystemInstance(Target_N83398) end)('OperatingSystemFactory':getInstance())),
+        IsOverScan = (fun(Target_N83984) -> (get({Target_N83984, '$class'})):isOverScan(Target_N83984) end)((fun(Target_N83991) -> (get({Target_N83991, '$class'})):getOperatingSystemInstance(Target_N83991) end)('OperatingSystemFactory':getInstance())),
         case 'J2MEUtil':isHTML() of
             true ->
             ok;
@@ -651,7 +651,7 @@ addCommands(This) ->
             false ->
             case (not IsOverScan) of
             true ->
-            case ((fun(Target_N83501) -> (get({Target_N83501, '$class'})):isTouch(Target_N83501) end)('TouchScreenFactory':getInstance()) andalso (fun(Target_N83525) -> (get({Target_N83525, '$class'})):isAny(Target_N83525) end)('InGameFeatures':new())) of
+            case ((fun(Target_N84094) -> (get({Target_N84094, '$class'})):isTouch(Target_N84094) end)('TouchScreenFactory':getInstance()) andalso (fun(Target_N84118) -> (get({Target_N84118, '$class'})):isAny(Target_N84118) end)('InGameFeatures':new())) of
                 true ->
                 (get({This, '$class'})):addCommand(This, get({'InGameOptionsForm', 'DISPLAY'}));
                 false -> ok
@@ -666,7 +666,7 @@ addCommands(This) ->
 itemStateChanged(This, Item) ->
         try
             ItemLabel = (get({Item, '$class'})):getLabel(Item),
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N83781) -> (get({Target_N83781, '$class'})):toString(Target_N83781) end)((fun(Target_N83788) -> (get({Target_N83788, '$class'})):append(Target_N83788, ItemLabel) end)((fun(Target_N83795) -> (get({Target_N83795, '$class'})):append(Target_N83795, get({get({This, commonLabels}), 'ITEM_LABEL'})) end)('StringMaker':new()))), This, "itemStateChanged"),
+            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N84374) -> (get({Target_N84374, '$class'})):toString(Target_N84374) end)((fun(Target_N84381) -> (get({Target_N84381, '$class'})):append(Target_N84381, ItemLabel) end)((fun(Target_N84388) -> (get({Target_N84388, '$class'})):append(Target_N84388, get({get({This, commonLabels}), 'ITEM_LABEL'})) end)('StringMaker':new()))), This, "itemStateChanged"),
             case allbinary_java:instance_of(Item, 'ChoiceGroup') of
                 true ->
                 GameFeatureUtil = 'GameFeatureUtil':getInstance(),
@@ -695,7 +695,7 @@ updateScreenButtonPaintable2(This) ->
         case (get({Features, '$class'})):isFeature(Features, get({get({This, touchFeatureFactory}), 'AUTO_HIDE_SHOW_SCREEN_BUTTONS'})) of
             true ->
             (get({This, '$class'})):setTouchPaintableP(This, (get({This, '$class'})):getTouchButtonsPaintable(This)),
-            (get({This, '$class'})):setStartLevel(This, (fun(Target_N84753) -> (get({Target_N84753, '$class'})):getCurrentLevel(Target_N84753) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))));
+            (get({This, '$class'})):setStartLevel(This, (fun(Target_N85346) -> (get({Target_N85346, '$class'})):getCurrentLevel(Target_N85346) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))));
             false ->
             case (get({Features, '$class'})):isFeature(Features, get({get({This, touchFeatureFactory}), 'SHOW_SCREEN_BUTTONS'})) of
             true ->
@@ -741,14 +741,14 @@ setHighScoreSubmitted(This, HighScoreSubmitted) when is_boolean(HighScoreSubmitt
             (get({get({This, highScoresHelper}), '$class'})):setSelectedHighScores(get({This, highScoresHelper}), 'NullHighScoresSingletonFactory':getInstance());
             false -> ok
         end,
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N85455) -> (get({Target_N85455, '$class'})):toString(Target_N85455) end)((fun(Target_N85462) -> (get({Target_N85462, '$class'})):appendboolean(Target_N85462, HighScoreSubmitted) end)((fun(Target_N85469) -> (get({Target_N85469, '$class'})):append(Target_N85469, "isHighScoreSubmitted: ") end)('StringMaker':new()))), This, "setHighScoreSubmitted").
+        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N86048) -> (get({Target_N86048, '$class'})):toString(Target_N86048) end)((fun(Target_N86055) -> (get({Target_N86055, '$class'})):appendboolean(Target_N86055, HighScoreSubmitted) end)((fun(Target_N86062) -> (get({Target_N86062, '$class'})):append(Target_N86062, "isHighScoreSubmitted: ") end)('StringMaker':new()))), This, "setHighScoreSubmitted").
 
 getGameState(This) ->
         get({This, gameState}).
 
 % throws Exception
 setGameState(This, GameState) ->
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N85661) -> (get({Target_N85661, '$class'})):toString(Target_N85661) end)((fun(Target_N85668) -> (get({Target_N85668, '$class'})):append(Target_N85668, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), GameState)) end)((fun(Target_N85675) -> (get({Target_N85675, '$class'})):append(Target_N85675, get({get({This, gameStrings}), 'GAME_STATE'})) end)('StringMaker':new()))), This, get({get({This, gameStrings}), 'SET_GAME_STATE'})),
+        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N86254) -> (get({Target_N86254, '$class'})):toString(Target_N86254) end)((fun(Target_N86261) -> (get({Target_N86261, '$class'})):append(Target_N86261, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), GameState)) end)((fun(Target_N86268) -> (get({Target_N86268, '$class'})):append(Target_N86268, get({get({This, gameStrings}), 'GAME_STATE'})) end)('StringMaker':new()))), This, get({get({This, gameStrings}), 'SET_GAME_STATE'})),
         put({This, gameState}, GameState),
         (get({get({This, gameStateTimeHelper}), '$class'})):setStartTimeTNT(get({This, gameStateTimeHelper})),
         (get({This, '$class'})):updateEndGameProcessor(This),
@@ -758,7 +758,7 @@ setGameState(This, GameState) ->
 % throws Exception
 updateGameState(This) ->
         GameAdState = (get({get({This, gameAdStateFactory}), '$class'})):getCurrentInstance(get({This, gameAdStateFactory})),
-        (get({GameAdState, '$class'})):processAdState(GameAdState, get({This, gameState}), (fun(Target_N86049) -> (get({Target_N86049, '$class'})):getGameType(Target_N86049) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager})))),
+        (get({GameAdState, '$class'})):processAdState(GameAdState, get({This, gameState}), (fun(Target_N86642) -> (get({Target_N86642, '$class'})):getGameType(Target_N86642) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager})))),
         case (get({This, gameState}) =/= get({get({This, gameStateFactory}), 'PLAYING_GAME_STATE'})) of
             true ->
             (get({GameAdState, '$class'})):processPageAdState(GameAdState);
@@ -814,19 +814,19 @@ cleanupGame(This) ->
         (get({ProgressCanvas, '$class'})):addNormalPortion(ProgressCanvas, 10, "Cleaning Up"),
         (get({get({This, primaryPlayerQueue}), '$class'})):clear(get({This, primaryPlayerQueue})),
         (get({get({This, secondaryPlayerQueue}), '$class'})):clear(get({This, secondaryPlayerQueue})),
-        (fun(Target_N87235) -> (get({Target_N87235, '$class'})):clear(Target_N87235) end)('GameLevelDisplayChangeEventListenersFactory':getInstance()).
+        (fun(Target_N87828) -> (get({Target_N87828, '$class'})):clear(Target_N87828) end)('GameLevelDisplayChangeEventListenersFactory':getInstance()).
 
 % throws Exception
 loadResourceLoadingLevel(This, ResourceLoadingLevel) ->
         GameInitializedEvent = get({'GameInitializationUtil':getInstance(), 'EVENT'}),
         (get({GameInitializedEvent, '$class'})):setResourceLoadingLevel(GameInitializedEvent, ResourceLoadingLevel),
-        (fun(Target_N87388) -> (get({Target_N87388, '$class'})):fireEvent(Target_N87388, GameInitializedEvent) end)('GameInitializedEventHandler':getInstance()).
+        (fun(Target_N87981) -> (get({Target_N87981, '$class'})):fireEvent(Target_N87981, GameInitializedEvent) end)('GameInitializedEventHandler':getInstance()).
 
 % throws Exception
 loadResources(This, Level) when is_integer(Level) ->
         GameInitializedEvent = get({'GameInitializationUtil':getInstance(), 'EVENT'}),
         (get({GameInitializedEvent, '$class'})):setLevel(GameInitializedEvent, Level),
-        (fun(Target_N87579) -> (get({Target_N87579, '$class'})):fireEvent(Target_N87579, GameInitializedEvent) end)('GameInitializedEventHandler':getInstance()).
+        (fun(Target_N88172) -> (get({Target_N88172, '$class'})):fireEvent(Target_N88172, GameInitializedEvent) end)('GameInitializedEventHandler':getInstance()).
 
 % throws Exception
 updateColor(This) ->
@@ -846,12 +846,12 @@ buildGame(This, Portion) when is_integer(Portion) ->
         (get({get({This, highScoresFactoryInterface}), '$class'})):fetchHighScores(get({This, highScoresFactoryInterface}), (get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager})), get({This, highScoresHelper})),
         (get({This, '$class'})):setHighScoresPaintable(This, 'NullPaintable':getInstance()),
         (get({ProgressCanvas, '$class'})):addNormalPortion(ProgressCanvas, Portion, "Finishing."),
-        (fun(Target_N88080) -> (get({Target_N88080, '$class'})):update(Target_N88080, (fun(Target_N88100) -> (get({Target_N88100, '$class'})):getGameInfo(Target_N88100) end)((get({This, '$class'})):getLayerManager(This)), This) end)((get({This, '$class'})):getEndGameInfoP(This)),
+        (fun(Target_N88673) -> (get({Target_N88673, '$class'})):update(Target_N88673, (fun(Target_N88693) -> (get({Target_N88693, '$class'})):getGameInfo(Target_N88693) end)((get({This, '$class'})):getLayerManager(This)), This) end)((get({This, '$class'})):getEndGameInfoP(This)),
         put({This, isSingleKeyRepeatableProcessing}, (get({Features, '$class'})):isFeature(Features, get({'InputFeatureFactory':getInstance(), 'SINGLE_KEY_REPEAT_PRESS'}))),
         (get({This, '$class'})):setGameOver(This, false),
         (get({ProgressCanvas, '$class'})):addNormalPortion(ProgressCanvas, Portion, "Finishing.."),
         (get({This, '$class'})):updateColor(This),
-        (fun(Target_N88267) -> (get({Target_N88267, '$class'})):update(Target_N88267) end)((get({This, '$class'})):getStartIntermissionPaintable(This)),
+        (fun(Target_N88860) -> (get({Target_N88860, '$class'})):update(Target_N88860) end)((get({This, '$class'})):getStartIntermissionPaintable(This)),
         case (not (get({This, '$class'})):isRunningInAnotherThread(This)) of
             true ->
             throw({'$return', ok});
@@ -885,17 +885,17 @@ buildGame(This, Portion) when is_integer(Portion) ->
         catch throw:{'$return', ReturnValue} -> ReturnValue end.
 
 buildGame2(This) ->
-        'PreLogUtil':put((fun(Target_N88870) -> (get({Target_N88870, '$class'})):toString(Target_N88870) end)((fun(Target_N88877) -> (get({Target_N88877, '$class'})):appendint(Target_N88877, (get({get({This, localPlayerGameInputList}), '$class'})):size(get({This, localPlayerGameInputList}))) end)((fun(Target_N88884) -> (get({Target_N88884, '$class'})):append(Target_N88884, get({get({This, gameInputStrings}), 'ENABLE_PLAYER_GAME_INPUTS'})) end)('StringMaker':new()))), This, get({This, 'BUILD_GAME'})),
+        'PreLogUtil':put((fun(Target_N89463) -> (get({Target_N89463, '$class'})):toString(Target_N89463) end)((fun(Target_N89470) -> (get({Target_N89470, '$class'})):appendint(Target_N89470, (get({get({This, localPlayerGameInputList}), '$class'})):size(get({This, localPlayerGameInputList}))) end)((fun(Target_N89477) -> (get({Target_N89477, '$class'})):append(Target_N89477, get({get({This, gameInputStrings}), 'ENABLE_PLAYER_GAME_INPUTS'})) end)('StringMaker':new()))), This, get({This, 'BUILD_GAME'})),
         put({local, playerGameInput}, undefined),
         lists:foreach(fun(Index) ->
             put({local, playerGameInput}, (get({get({This, localPlayerGameInputList}), '$class'})):get(get({This, localPlayerGameInputList}), Index)),
-            'PreLogUtil':put((fun(Target_N89085) -> (get({Target_N89085, '$class'})):toString(Target_N89085) end)((fun(Target_N89092) -> (get({Target_N89092, '$class'})):append(Target_N89092, (get({get({local, playerGameInput}), '$class'})):toString(get({local, playerGameInput}))) end)((fun(Target_N89099) -> (get({Target_N89099, '$class'})):append(Target_N89099, get({get({This, gameInputStrings}), 'ENABLE_PLAYER_GAME_INPUT'})) end)('StringMaker':new()))), This, get({This, 'BUILD_GAME'})),
+            'PreLogUtil':put((fun(Target_N89678) -> (get({Target_N89678, '$class'})):toString(Target_N89678) end)((fun(Target_N89685) -> (get({Target_N89685, '$class'})):append(Target_N89685, (get({get({local, playerGameInput}), '$class'})):toString(get({local, playerGameInput}))) end)((fun(Target_N89692) -> (get({Target_N89692, '$class'})):append(Target_N89692, get({get({This, gameInputStrings}), 'ENABLE_PLAYER_GAME_INPUT'})) end)('StringMaker':new()))), This, get({This, 'BUILD_GAME'})),
             (get({get({local, playerGameInput}), '$class'})):removeNonAIInputGameKeyEvents(get({local, playerGameInput})),
             (get({This, '$class'})):addKeyInputListener(This, get({local, playerGameInput}))
         end, lists:seq(((get({get({This, localPlayerGameInputList}), '$class'})):size(get({This, localPlayerGameInputList})) - 1), 0, -1)).
 
 addKeyInputListener(This, PlayerGameInput) ->
-        (fun(Target_N89339) -> (get({Target_N89339, '$class'})):addListenerForPlayer(Target_N89339, PlayerGameInput, (get({PlayerGameInput, '$class'})):getPlayerInputId(PlayerGameInput)) end)('GameKeyEventHandler':getInstance()).
+        (fun(Target_N89932) -> (get({Target_N89932, '$class'})):addListenerForPlayer(Target_N89932, PlayerGameInput, (get({PlayerGameInput, '$class'})):getPlayerInputId(PlayerGameInput)) end)('GameKeyEventHandler':getInstance()).
 
 setGameCanvasStartListener(This, GameCanvasStartListener) ->
         put({This, gameCanvasStartListener}, GameCanvasStartListener).
@@ -907,7 +907,7 @@ loadState(This) ->
         case ((Hashtable =/= undefined) andalso ((get({Hashtable, '$class'})):size(Hashtable) > 0)) of
             true ->
             LevelAsString = (get({Hashtable, '$class'})):get(Hashtable, get({'GameInfo', 'LEVEL_NAME'})),
-            Level = (fun(Target_N89851) -> (get({Target_N89851, '$class'})):intValue(Target_N89851) end)(allbinary_java:to_string(LevelAsString)),
+            Level = (fun(Target_N90444) -> (get({Target_N90444, '$class'})):intValue(Target_N90444) end)(allbinary_java:to_string(LevelAsString)),
             GameInfo = (get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager})),
             (get({GameInfo, '$class'})):setCurrentLevel(GameInfo, Level);
             false -> ok
@@ -915,18 +915,18 @@ loadState(This) ->
 
 % throws Exception
 getLoadStateHashtable(This) ->
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N90044) -> (get({Target_N90044, '$class'})):toString(Target_N90044) end)((fun(Target_N90051) -> (get({Target_N90051, '$class'})):append(Target_N90051, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), get({This, hashtable}))) end)((fun(Target_N90058) -> (get({Target_N90058, '$class'})):append(Target_N90058, get({get({This, commonLabels}), 'START_LABEL'})) end)('StringMaker':new()))), This, "getLoadStateHashtable"),
+        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N90637) -> (get({Target_N90637, '$class'})):toString(Target_N90637) end)((fun(Target_N90644) -> (get({Target_N90644, '$class'})):append(Target_N90644, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), get({This, hashtable}))) end)((fun(Target_N90651) -> (get({Target_N90651, '$class'})):append(Target_N90651, get({get({This, commonLabels}), 'START_LABEL'})) end)('StringMaker':new()))), This, "getLoadStateHashtable"),
         get({This, hashtable}).
 
 setLoadStateHashtable(This, Hashtable) ->
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N90257) -> (get({Target_N90257, '$class'})):toString(Target_N90257) end)((fun(Target_N90264) -> (get({Target_N90264, '$class'})):append(Target_N90264, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), Hashtable)) end)((fun(Target_N90271) -> (get({Target_N90271, '$class'})):append(Target_N90271, get({get({This, commonLabels}), 'START_LABEL'})) end)('StringMaker':new()))), This, "setLoadStateHashtable"),
+        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N90850) -> (get({Target_N90850, '$class'})):toString(Target_N90850) end)((fun(Target_N90857) -> (get({Target_N90857, '$class'})):append(Target_N90857, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), Hashtable)) end)((fun(Target_N90864) -> (get({Target_N90864, '$class'})):append(Target_N90864, get({get({This, commonLabels}), 'START_LABEL'})) end)('StringMaker':new()))), This, "setLoadStateHashtable"),
         put({This, hashtable}, Hashtable).
 
 getCurrentStateHashtable(This) ->
         Hashtable = (get({get({This, stdUtil}), '$class'})):createHashtable(get({This, stdUtil})),
-        Level = (fun(Target_N90558) -> (get({Target_N90558, '$class'})):getCurrentLevel(Target_N90558) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))),
+        Level = (fun(Target_N91151) -> (get({Target_N91151, '$class'})):getCurrentLevel(Target_N91151) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))),
         (get({Hashtable, '$class'})):put(Hashtable, (get({get({'GameInfo', 'LEVEL_NAME'}), '$class'})):toString(get({'GameInfo', 'LEVEL_NAME'})), allbinary_java:to_string(Level)),
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N90694) -> (get({Target_N90694, '$class'})):toString(Target_N90694) end)((fun(Target_N90701) -> (get({Target_N90701, '$class'})):append(Target_N90701, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), Hashtable)) end)((fun(Target_N90708) -> (get({Target_N90708, '$class'})):append(Target_N90708, "End: ") end)('StringMaker':new()))), This, "getCurrentStateHashtable"),
+        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N91287) -> (get({Target_N91287, '$class'})):toString(Target_N91287) end)((fun(Target_N91294) -> (get({Target_N91294, '$class'})):append(Target_N91294, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), Hashtable)) end)((fun(Target_N91301) -> (get({Target_N91301, '$class'})):append(Target_N91301, "End: ") end)('StringMaker':new()))), This, "getCurrentStateHashtable"),
         Hashtable.
 
 paintGameOver(This, Graphics) ->
@@ -996,7 +996,7 @@ endProgress(This, IsProgress) when is_boolean(IsProgress) ->
             MyCommandsFactory = 'MyCommandsFactory':getInstance(),
             ProgressCanvas = 'ProgressCanvasFactory':getInstance(),
             (get({ProgressCanvas, '$class'})):start(ProgressCanvas),
-            (fun(Target_N92796) -> (get({Target_N92796, '$class'})):commandAction(Target_N92796, get({MyCommandsFactory, 'SET_DISPLAYABLE'}), ProgressCanvas) end)((get({This, '$class'})):getCustomCommandListener(This)),
+            (fun(Target_N93389) -> (get({Target_N93389, '$class'})):commandAction(Target_N93389, get({MyCommandsFactory, 'SET_DISPLAYABLE'}), ProgressCanvas) end)((get({This, '$class'})):getCustomCommandListener(This)),
             put({local, portion}, 4);
             false -> ok
         end,
@@ -1005,7 +1005,7 @@ endProgress(This, IsProgress) when is_boolean(IsProgress) ->
 % throws Exception
 processPlayingGame(This) ->
         (get({get({This, cheatProcessor}), '$class'})):update(get({This, cheatProcessor})),
-        (fun(Target_N92955) -> (get({Target_N92955, '$class'})):update(Target_N92955) end)((get({get({This, sensorGameUpdateProcessor}), '$class'})):getInputSensor(get({This, sensorGameUpdateProcessor}))),
+        (fun(Target_N93548) -> (get({Target_N93548, '$class'})):update(Target_N93548) end)((get({get({This, sensorGameUpdateProcessor}), '$class'})):getInputSensor(get({This, sensorGameUpdateProcessor}))),
         (get({get({This, gameInputProcessor}), '$class'})):process(get({This, gameInputProcessor})),
         (get({get({This, gameLayerManager}), '$class'})):process(get({This, gameLayerManager})),
         (get({get({This, startIntermissionProcessor}), '$class'})):process(get({This, startIntermissionProcessor})).
@@ -1106,12 +1106,12 @@ run2(This) ->
             CurrentDisplayableFactory = 'CurrentDisplayableFactory':getInstance(),
             (get({CurrentDisplayableFactory, '$class'})):setRunnable(CurrentDisplayableFactory, get({This, gameRunnable})),
             (get({CurrentDisplayableFactory, '$class'})):setDisplayable(CurrentDisplayableFactory, This),
-            (fun(Target_N95284) -> (get({Target_N95284, '$class'})):onResume(Target_N95284) end)('OpenGLThreadUtil':getInstance());
+            (fun(Target_N95877) -> (get({Target_N95877, '$class'})):onResume(Target_N95877) end)('OpenGLThreadUtil':getInstance());
             false ->
             case (get({Features, '$class'})):isDefault(Features, get({get({This, openGLFeatureFactory}), 'OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS'})) of
             true ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({get({get({This, openGLFeatureFactory}), 'OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS'}), '$class'})):getName(get({get({This, openGLFeatureFactory}), 'OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS'})), This, get({get({This, commonStrings}), 'RUN'})),
-            (fun(Target_N94863) -> (get({Target_N94863, '$class'})):onResume(Target_N94863) end)('OpenGLThreadUtil':getInstance()),
+            (fun(Target_N95456) -> (get({Target_N95456, '$class'})):onResume(Target_N95456) end)('OpenGLThreadUtil':getInstance()),
             (fun Loop() -> case (get({This, '$class'})):isRunning(This) of true ->
                 (get({This, '$class'})):run3(This),
                 Loop();
@@ -1144,7 +1144,7 @@ setRunning(This, Running) when is_boolean(Running) ->
                 false ->
                 case ((get({Features, '$class'})):isDefault(Features, get({get({This, openGLFeatureFactory}), 'OPENGL'})) orelse get({'SWTUtil', isSWT})) of
                     true ->
-                    case ((fun(Target_N95664) -> (get({Target_N95664, '$class'})):getGameType(Target_N95664) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))) =/= get({get({This, gameTypeFactory}), 'BOT'})) of
+                    case ((fun(Target_N96257) -> (get({Target_N96257, '$class'})):getGameType(Target_N96257) end)((get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager}))) =/= get({get({This, gameTypeFactory}), 'BOT'})) of
                         true ->
                         CurrentDisplayableFactory = 'CurrentDisplayableFactory':getInstance(),
                         (get({CurrentDisplayableFactory, '$class'})):clearRunnable(CurrentDisplayableFactory);
@@ -1161,7 +1161,7 @@ setRunning(This, Running) when is_boolean(Running) ->
 % throws Exception
 'end'(This) ->
         (get({get({This, screenCapture}), '$class'})):endRecording(get({This, screenCapture})),
-        (get({get({This, baseGameStatistics}), '$class'})):add(get({This, baseGameStatistics}), (fun(Target_N96020) -> (get({Target_N96020, '$class'})):toString(Target_N96020) end)((fun(Target_N96027) -> (get({Target_N96027, '$class'})):append(Target_N96027, get({'CommonSeps':getInstance(), 'NEW_LINE'})) end)((fun(Target_N96034) -> (get({Target_N96034, '$class'})):append(Target_N96034, (get({get({This, baseGameStatistics}), '$class'})):toString(get({This, baseGameStatistics}))) end)('StringMaker':new())))),
+        (get({get({This, baseGameStatistics}), '$class'})):add(get({This, baseGameStatistics}), (fun(Target_N96613) -> (get({Target_N96613, '$class'})):toString(Target_N96613) end)((fun(Target_N96620) -> (get({Target_N96620, '$class'})):append(Target_N96620, get({'CommonSeps':getInstance(), 'NEW_LINE'})) end)((fun(Target_N96627) -> (get({Target_N96627, '$class'})):append(Target_N96627, (get({get({This, baseGameStatistics}), '$class'})):toString(get({This, baseGameStatistics}))) end)('StringMaker':new())))),
         (get({get({This, baseGameStatistics}), '$class'})):init(get({This, baseGameStatistics})),
         (get({get({This, gameKeyEventHandler}), '$class'})):removeListener(get({This, gameKeyEventHandler}), get({This, cheatProcessor})),
         (get({This, '$class'})):close(This),
@@ -1170,8 +1170,8 @@ setRunning(This, Running) when is_boolean(Running) ->
 
 % throws Exception
 endGameThread(This) ->
-        (fun(Target_N96252) -> (get({Target_N96252, '$class'})):removeListener(Target_N96252, This) end)('DisplayChangeEventHandler':getInstance()),
-        (fun(Target_N96286) -> (get({Target_N96286, '$class'})):clear(Target_N96286) end)('GameLevelDisplayChangeEventListenersFactory':getInstance()),
+        (fun(Target_N96845) -> (get({Target_N96845, '$class'})):removeListener(Target_N96845, This) end)('DisplayChangeEventHandler':getInstance()),
+        (fun(Target_N96879) -> (get({Target_N96879, '$class'})):clear(Target_N96879) end)('GameLevelDisplayChangeEventListenersFactory':getInstance()),
         GameAdState = (get({get({This, gameAdStateFactory}), '$class'})):getCurrentInstance(get({This, gameAdStateFactory})),
         (get({GameAdState, '$class'})):notPlayingAdState(GameAdState).
 
@@ -1189,14 +1189,12 @@ setHighScore2(This, AbeClientInformation, Name, Score, AutoSubmit, IsLast) when 
         TextBox = 'HighScoreTextBox':new(get({This, highScoresFactoryInterface}), get({This, highScoresHelper}), AbeClientInformation, (get({get({This, gameLayerManager}), '$class'})):getGameInfo(get({This, gameLayerManager})), (get({This, '$class'})):getCustomCommandListener(This), Name, HighScore, (get({get({This, gameLayerManager}), '$class'})):getBackgroundBasicColor(get({This, gameLayerManager})), (get({get({This, gameLayerManager}), '$class'})):getForegroundBasicColor(get({This, gameLayerManager}))),
         case IsLast of
             true ->
-            (fun(Target_N97092) -> (get({Target_N97092, '$class'})):commandAction(Target_N97092, get({'GameCommandsFactory':getInstance(), 'SET_MENU_DISPLAYABLE'}), TextBox) end)((get({This, '$class'})):getCustomCommandListener(This));
+            (fun(Target_N97685) -> (get({Target_N97685, '$class'})):commandAction(Target_N97685, get({'GameCommandsFactory':getInstance(), 'SET_MENU_DISPLAYABLE'}), TextBox) end)((get({This, '$class'})):getCustomCommandListener(This));
             false -> ok
         end,
         case AutoSubmit of
             true ->
-            ok % Java nested type SaveHighScoreRunnable: move it to its own module
-,
-            (fun(Target_N97571) -> (get({Target_N97571, '$class'})):runTask(Target_N97571, 'SaveHighScoreRunnable':new()) end)('SecondaryThreadPool':getInstance());
+            (fun(Target_N97762) -> (get({Target_N97762, '$class'})):runTask(Target_N97762, 'SaveHighScoreRunnable':new(IsLast, TextBox)) end)('SecondaryThreadPool':getInstance());
             false -> ok
         end.
 
@@ -1374,7 +1372,7 @@ getGameSpecificPaintableP(This) ->
         get({This, gameSpecificPaintable}).
 
 isSingleThread(This) ->
-        ((fun(Target_N101420) -> (get({Target_N101420, '$class'})):isAnyThreed(Target_N101420) end)('OpenGLFeatureUtil':getInstance()) orelse get({'SWTUtil', isSWT})).
+        ((fun(Target_N101630) -> (get({Target_N101630, '$class'})):isAnyThreed(Target_N101630) end)('OpenGLFeatureUtil':getInstance()) orelse get({'SWTUtil', isSWT})).
 
 isRunningInAnotherThread(This) ->
         try
@@ -1390,4 +1388,11 @@ isRunningInAnotherThread(This) ->
 
 getType(This) ->
         get({'AllBinaryGameCanvas', 'TYPE'}).
+
+getTitle(This) ->
+        'RunnableCanvas':getTitle(This).
+
+isPaused(This) ->
+        'RunnableCanvas':isPaused(This).
+% Java nested class SaveHighScoreRunnable: move it to its own module 'SaveHighScoreRunnable'
 

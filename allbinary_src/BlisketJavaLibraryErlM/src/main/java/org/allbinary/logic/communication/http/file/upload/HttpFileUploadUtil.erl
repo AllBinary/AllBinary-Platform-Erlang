@@ -83,28 +83,8 @@ log(FileItem) ->
             true ->
             (get({LogUtil, '$class'})):putF(LogUtil, (get({StringBuffer, '$class'})):toString(StringBuffer), getInstance(), "log()");
             false -> ok
-        end;
-log(FileItem) ->
-        LogUtil = 'LogUtil':getInstance(),
-        StringBuffer = 'StringMaker':new(),
-        CommonSeps = 'CommonSeps':getInstance(),
-        (get({StringBuffer, '$class'})):append(StringBuffer, "FileItem Log:"),
-        (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'NEW_LINE'})),
-        (get({StringBuffer, '$class'})):append(StringBuffer, "Content Type:"),
-        (get({StringBuffer, '$class'})):append(StringBuffer, (get({FileItem, '$class'})):getContentType(FileItem)),
-        (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'NEW_LINE'})),
-        (get({StringBuffer, '$class'})):append(StringBuffer, "Field Name:"),
-        (get({StringBuffer, '$class'})):append(StringBuffer, (get({FileItem, '$class'})):getFieldName(FileItem)),
-        (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'NEW_LINE'})),
-        (get({StringBuffer, '$class'})):append(StringBuffer, "Name:"),
-        (get({StringBuffer, '$class'})):append(StringBuffer, (get({FileItem, '$class'})):getName(FileItem)),
-        (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'NEW_LINE'})),
-        (get({StringBuffer, '$class'})):append(StringBuffer, "Size:"),
-        (get({StringBuffer, '$class'})):appendlong(StringBuffer, trunc((get({FileItem, '$class'})):getSize(FileItem))),
-        case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'HTTPREQUEST'})) of
-            true ->
-            (get({LogUtil, '$class'})):putF(LogUtil, (get({StringBuffer, '$class'})):toString(StringBuffer), getInstance(), "log()");
-            false -> ok
-        end.
+        end
+% unreachable Java overload log(FileItem fileItem) has the same guards as an earlier clause
+.
 
 

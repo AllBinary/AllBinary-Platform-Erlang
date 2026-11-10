@@ -80,8 +80,8 @@ saveWithImageIO(This, File, BufferedImage) ->
             (get({Iwp, '$class'})):setCompressionQuality(Iwp, 0.95),
             (get({get({local, writer}), '$class'})):write(get({local, writer}), undefined, 'IIOImage':new(BufferedImage, undefined, undefined), Iwp),
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Wrote Image: ", (get({File, '$class'})):getAbsolutePath(File)]), This, get({get({This, commonStrings}), 'SAVE'}))
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({get({This, commonStrings}), 'SAVE'}), E)
+        catch _:E_N67776 when E_N67776 =/= '$break', E_N67776 =/= '$continue', (not is_tuple(E_N67776) orelse element(1, E_N67776) =/= '$return') ->
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({get({This, commonStrings}), 'SAVE'}), E_N67776)
         after
             try
                 case (get({local, ios}) =/= undefined) of

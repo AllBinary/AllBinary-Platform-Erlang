@@ -109,20 +109,9 @@ get(This, CategoryInterface) ->
                 false -> ok
             end,
             undefined
-        end;
-get(This, Document) ->
-        try
-            CategoryNode = 'DomSearchHelper':getNode(get({'CategoryData':getInstance(), 'NAME'}), (get({Document, '$class'})):getChildNodes(Document)),
-            LoadedCategoryInterface = (get({get({This, categoryFactoryInterface}), '$class'})):getRootInstanceFromNode(get({This, categoryFactoryInterface}), CategoryNode),
-            (get({This, '$class'})):addProperties(This, LoadedCategoryInterface, (get({CategoryNode, '$class'})):getChildNodes(CategoryNode))
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'SQLLOGGING'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'FAILURE'}), This, get({get({This, commonStrings}), 'GET'}), E);
-                false -> ok
-            end,
-            undefined
-        end.
+        end
+% unreachable Java overload get(Document document) has the same guards as an earlier clause
+.
 
 
 getAll(This, CategoryInterface) ->
@@ -136,20 +125,9 @@ getAll(This, CategoryInterface) ->
                 false -> ok
             end,
             undefined
-        end;
-getAll(This, Document) ->
-        try
-            CategoryNode = 'DomSearchHelper':getNode(get({'CategoryData':getInstance(), 'NAME'}), (get({Document, '$class'})):getChildNodes(Document)),
-            LoadedCategoryInterface = (get({get({This, categoryFactoryInterface}), '$class'})):getRootInstanceFromNode(get({This, categoryFactoryInterface}), CategoryNode),
-            (get({This, '$class'})):addProperties(This, LoadedCategoryInterface, (get({CategoryNode, '$class'})):getChildNodes(CategoryNode))
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'SQLLOGGING'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'FAILURE'}), This, get({get({This, commonStrings}), 'GET'}), E);
-                false -> ok
-            end,
-            undefined
-        end.
+        end
+% unreachable Java overload getAll(Document document) has the same guards as an earlier clause
+.
 
 
 getAll(This, ParentCategoryInterface, CategoryNodeList) ->

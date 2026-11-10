@@ -16,6 +16,7 @@
 % import java.io.File
 % import java.io.OutputStream
 % import java.io.StringBufferInputStream
+% import javax.xml.transform.Templates
 % import javax.xml.transform.Transformer
 % import javax.xml.transform.TransformerFactory
 % import javax.xml.transform.URIResolver
@@ -58,15 +59,9 @@ translate(This, XsltStreamSource, XmlStreamSource, StreamResult) ->
             (get({StreamResult, '$class'})):getOutputStream(StreamResult)
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
             erlang:error(E)
-        end;
-% throws Exception
-translate(This, Resolver, XsltStreamSource, XmlStreamSource) ->
-        try
-            OutputStream = 'ByteArrayOutputStream':new(),
-            (fun(Target_N67391) -> (get({Target_N67391, '$class'})):toString(Target_N67391) end)((get({This, '$class'})):translate(This, Resolver, XsltStreamSource, XmlStreamSource, 'StreamResult':new(OutputStream)))
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            erlang:error(E)
-        end.
+        end
+% unreachable Java overload translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource) has the same guards as an earlier clause
+.
 
 % throws Exception
 translate(This, Resolver, XsltStreamSource, XmlStreamSource, StreamResult) ->
@@ -81,21 +76,26 @@ translate(This, Resolver, XsltStreamSource, XmlStreamSource, StreamResult) ->
         end.
 
 % throws Exception
-translate(This, XsltStreamSource, XmlDocument) ->
+translateTemplate(This, Templates, XmlStreamSource) ->
         try
             OutputStream = 'ByteArrayOutputStream':new(),
-            (fun(Target_N66828) -> (get({Target_N66828, '$class'})):toString(Target_N66828) end)((get({This, '$class'})):translate(This, XsltStreamSource, 'StreamSource':new('StringBufferInputStream':new('XmlDocumentHelper':toString(XmlDocument))), 'StreamResult':new(OutputStream)))
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            erlang:error(E)
-        end;
-% throws Exception
-translate(This, XsltStreamSource, XmlStreamSource) ->
-        try
-            OutputStream = 'ByteArrayOutputStream':new(),
-            (fun(Target_N67134) -> (get({Target_N67134, '$class'})):toString(Target_N67134) end)((get({This, '$class'})):translate(This, XsltStreamSource, XmlStreamSource, 'StreamResult':new(OutputStream)))
+            StreamResult = 'StreamResult':new(OutputStream),
+            (fun(Target_N66910) -> (get({Target_N66910, '$class'})):transform(Target_N66910, XmlStreamSource, StreamResult) end)((get({Templates, '$class'})):newTransformer(Templates)),
+            (fun(Target_N66957) -> (get({Target_N66957, '$class'})):toString(Target_N66957) end)((get({StreamResult, '$class'})):getOutputStream(StreamResult))
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
             erlang:error(E)
         end.
+
+% throws Exception
+translate(This, XsltStreamSource, XmlDocument) ->
+        try
+            OutputStream = 'ByteArrayOutputStream':new(),
+            (fun(Target_N67177) -> (get({Target_N67177, '$class'})):toString(Target_N67177) end)((get({This, '$class'})):translate(This, XsltStreamSource, 'StreamSource':new('StringBufferInputStream':new('XmlDocumentHelper':toString(XmlDocument))), 'StreamResult':new(OutputStream)))
+        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+            erlang:error(E)
+        end
+% unreachable Java overload translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource) has the same guards as an earlier clause
+.
 
 
 

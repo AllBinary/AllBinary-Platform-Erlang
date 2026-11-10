@@ -62,11 +62,6 @@ new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Node),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Node) ->
@@ -74,12 +69,9 @@ new(HashMap) ->
     init_fields(This),
         put({This, isFile}, false),
         put({This, logoAbPath}, 'AbPath':new((fun(Target_N66451) -> (get({Target_N66451, '$class'})):getNodeValue(Target_N66451) end)('DomSearchHelper':getNode(get({'LogoData':getInstance(), 'IMAGEPATH'}), (get({Node, '$class'})):getChildNodes(Node))), get({'StringUtil':getInstance(), 'EMPTY_STRING'}))),
-        put({This, logoFile}, (fun(Target_N66564) -> (get({Target_N66564, '$class'})):getNodeValue(Target_N66564) end)('DomSearchHelper':getNode(get({'LogoData':getInstance(), 'IMAGEFILENAME'}), (get({Node, '$class'})):getChildNodes(Node))));
-'$init'(This, HashMap) ->
-    'Validation':'$init'(This),
-    init_fields(This),
-        put({This, isFile}, true),
-        (get({This, '$class'})):getFormData(This, HashMap).
+        put({This, logoFile}, (fun(Target_N66564) -> (get({Target_N66564, '$class'})):getNodeValue(Target_N66564) end)('DomSearchHelper':getNode(get({'LogoData':getInstance(), 'IMAGEFILENAME'}), (get({Node, '$class'})):getChildNodes(Node))))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception

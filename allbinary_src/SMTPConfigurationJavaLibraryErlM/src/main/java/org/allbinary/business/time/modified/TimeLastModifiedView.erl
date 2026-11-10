@@ -32,19 +32,13 @@ new(TimeLastModified) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, TimeLastModified),
-    This;
-new(Node) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, Node),
     This.
 
 '$init'(This, TimeLastModified) ->
     init_fields(This),
-        (get({This, '$class'})):setTimeLastModified(This, TimeLastModified);
-'$init'(This, Node) ->
-    init_fields(This),
-        (get({This, '$class'})):setTimeLastModified(This, 'TimeLastModified':new('DomNodeHelper':getTextNodeValue(Node))).
+        (get({This, '$class'})):setTimeLastModified(This, TimeLastModified)
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception

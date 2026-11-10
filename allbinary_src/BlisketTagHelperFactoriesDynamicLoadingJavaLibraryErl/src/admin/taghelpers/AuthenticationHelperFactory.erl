@@ -43,9 +43,8 @@ new() ->
 
 % throws LicensingException
 getInstance(This, HashMap, PageContext) ->
-        'HelperFactory':getInstance(get({'AuthenticationHelperFactory', 'FACTORYNAME'}), get({'AuthenticationHelperFactory', 'CLASSNAME'}), HashMap, PageContext);
-% throws LicensingException
-getInstance(This, HashMap, HttpServletRequest) ->
-        'HelperFactory':getInstance(get({'AuthenticationHelperFactory', 'FACTORYNAME'}), get({'AuthenticationHelperFactory', 'CLASSNAME'}), HashMap, HttpServletRequest).
+        'HelperFactory':getInstance(get({'AuthenticationHelperFactory', 'FACTORYNAME'}), get({'AuthenticationHelperFactory', 'CLASSNAME'}), HashMap, PageContext)
+% unreachable Java overload getInstance(HashMap hashMap, HttpServletRequest httpServletRequest) has the same guards as an earlier clause
+.
 
 

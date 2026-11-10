@@ -63,21 +63,9 @@ isCollisionWithAvoidRectangles(This, Rectangle) ->
                 false -> ok
             end
         end, lists:seq(0, Size - 1)),
-        get({local, isCollsionWithAvoidRectangles});
-isCollisionWithAvoidRectangles(This, Point) ->
-        put({local, isCollsionWithAvoidRectangles}, false),
-        AvoidVector = (get({This, '$class'})):getAvoidVector(This),
-        Size = (get({AvoidVector, '$class'})):size(AvoidVector),
-        lists:foreach(fun(Index) ->
-            AvoidRectangle = (get({AvoidVector, '$class'})):get(AvoidVector, Index),
-            case 'RectangleCollisionUtil':isCollision(AvoidRectangle, Point) of
-                true ->
-                put({local, isCollsionWithAvoidRectangles}, true),
-                throw('$break');
-                false -> ok
-            end
-        end, lists:seq(0, Size - 1)),
-        get({local, isCollsionWithAvoidRectangles}).
+        get({local, isCollsionWithAvoidRectangles})
+% unreachable Java overload isCollisionWithAvoidRectangles(GPoint point) has the same guards as an earlier clause
+.
 
 
 setAvoidVector(This, AvoidVector) ->

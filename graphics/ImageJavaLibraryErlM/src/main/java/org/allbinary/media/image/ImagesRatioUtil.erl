@@ -54,7 +54,7 @@ isEqual(This, BufferedImageArray, TotalImages) when (is_tuple(BufferedImageArray
         end,
         Ratio = ((float((fun(Target_N66042) -> (get({Target_N66042, '$class'})):getWidth(Target_N66042) end)(array:get(0, BufferedImageArray))) / (fun(Target_N66071) -> (get({Target_N66071, '$class'})):getHeight(Target_N66071) end)(array:get(0, BufferedImageArray)))),
         lists:foreach(fun(Index) ->
-            case (Ratio =/= ((float((fun(Target_N66142) -> (get({Target_N66142, '$class'})):getWidth(Target_N66142) end)(array:get(Index, BufferedImageArray))) / (fun(Target_N66175) -> (get({Target_N66175, '$class'})):getHeight(Target_N66175) end)(array:get(Index, BufferedImageArray))))) of
+            case (Ratio /= ((float((fun(Target_N66142) -> (get({Target_N66142, '$class'})):getWidth(Target_N66142) end)(array:get(Index, BufferedImageArray))) / (fun(Target_N66175) -> (get({Target_N66175, '$class'})):getHeight(Target_N66175) end)(array:get(Index, BufferedImageArray))))) of
                 true ->
                 throw({'$return', false});
                 false -> ok

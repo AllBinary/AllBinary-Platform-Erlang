@@ -27,9 +27,9 @@ getInstance() ->
         get({'FixedPoint', instance}).
 
 toFixed(This, Val) when is_number(Val) ->
-        trunc(((Val * 65536.0)));
-toFixed(This, Val) when is_number(Val) ->
-        trunc(((Val * 65536.0))).
+        trunc(((Val * 65536.0)))
+% unreachable Java overload toFixed(FLOAT val) has the same guards as an earlier clause
+.
 
 
 mul(This, A, B) when is_integer(A), is_integer(B) ->

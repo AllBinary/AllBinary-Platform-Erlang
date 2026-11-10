@@ -89,7 +89,7 @@ toString(This) ->
         CommonSeps = 'CommonSeps':getInstance(),
         CommonLabels = 'CommonLabels':getInstance(),
         StringBuffer = 'StringMaker':new(),
-        (get({StringBuffer, '$class'})):append(StringBuffer, '':toString(This)),
+        (get({StringBuffer, '$class'})):append(StringBuffer, lists:flatten(io_lib:format("~s@~.16b", [get({This, '$class'}), erlang:phash2(This)]))),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonLabels, 'HEIGHT_LABEL'})),
         (get({StringBuffer, '$class'})):appendint(StringBuffer, trunc((get({get({This, image}), '$class'})):getHeight(get({This, image})))),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'SPACE'})),

@@ -63,33 +63,9 @@ getInstance(This, AbeClientInformation, TransformInfoInterface, ObjectConfigFile
                 false -> ok
             end,
             erlang:error(E)
-        end;
-% throws Exception
-getInstance(This, AbeClientInformation, TransformInfoInterface, Document) ->
-        try
-        try
-            StringValidationUtil = 'StringValidationUtil':getInstance(),
-            case ((TransformInfoInterface =/= undefined) andalso (not (get({StringValidationUtil, '$class'})):isEmpty(StringValidationUtil, (get({TransformInfoInterface, '$class'})):getStoreName(TransformInfoInterface)))) of
-                true ->
-                throw({'$return', 'GenericStoreTransformInfoObjectConfig':new(AbeClientInformation, TransformInfoInterface, Document)});
-                false ->
-                throw({'$return', 'TransformInfoObjectConfig':new(TransformInfoInterface, Document)})
-            end
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            put({local, error}, "Failed To Get Instance: "),
-            case (TransformInfoInterface =/= undefined) of
-                true ->
-                put({local, error}, lists:concat([get({local, error}), (get({TransformInfoInterface, '$class'})):getName(TransformInfoInterface)]));
-                false -> ok
-            end,
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'TAGHELPERFACTORYERROR'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), getInstance(), "getInstance(document)", E);
-                false -> ok
-            end,
-            erlang:error(E)
         end
-        catch throw:{'$return', ReturnValue} -> ReturnValue end.
+% unreachable Java overload getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Document document) has the same guards as an earlier clause
+.
 
 % throws Exception
 getInstance(This, AbeClientInformation, TransformInfoInterface) ->

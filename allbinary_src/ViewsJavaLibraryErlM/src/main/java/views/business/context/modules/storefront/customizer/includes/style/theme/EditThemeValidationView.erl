@@ -100,3 +100,7 @@ toValidationInfoDoc(This) ->
 toValidationInfoNode(This, Document) ->
         undefined.
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'ThemeCustomizerView':getTransformInfoInterface(This).
+

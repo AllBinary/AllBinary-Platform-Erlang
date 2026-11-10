@@ -36,10 +36,11 @@ new() ->
 
 
 getInstance(GroupInterface) ->
-        array:get(trunc((get({GroupInterface, '$class'})):getGroupId(GroupInterface)), get({'WaypointEventHandlerFactory', eventHandlerArray})).
+        GroupId = trunc((get({GroupInterface, '$class'})):getGroupId(GroupInterface)),
+        array:get(GroupId, get({'WaypointEventHandlerFactory', eventHandlerArray})).
 
 removeAll() ->
         lists:foreach(fun(Index) ->
-            (fun(Target_N65929) -> (get({Target_N65929, '$class'})):removeAllListeners(Target_N65929) end)(array:get(Index, get({'WaypointEventHandlerFactory', eventHandlerArray})))
+            (fun(Target_N65967) -> (get({Target_N65967, '$class'})):removeAllListeners(Target_N65967) end)(array:get(Index, get({'WaypointEventHandlerFactory', eventHandlerArray})))
         end, lists:seq((array:size(get({'WaypointEventHandlerFactory', eventHandlerArray})) - 1), 0, -1)).
 

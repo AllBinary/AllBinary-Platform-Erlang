@@ -244,3 +244,6 @@ createTableStatement(This) ->
 createTable(This) ->
         'AbSqlBean':createTable(This, (get({This, '$class'})):createTableStatement(This)).
 
+dropTable(This) ->
+        'AbSqlBean':dropTable(This).
+

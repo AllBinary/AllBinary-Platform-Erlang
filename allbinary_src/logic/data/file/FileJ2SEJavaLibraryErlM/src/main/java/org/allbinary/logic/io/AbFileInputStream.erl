@@ -37,19 +37,14 @@ new(File) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, File),
-    This;
-new(File) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, File),
     This.
 
 '$init'(This, Name) when (is_list(Name) orelse Name =:= undefined) ->
         'FileInputStream':'$init'(This, Name);
 '$init'(This, File) ->
-        'FileInputStream':'$init'(This, 'AbFileNativeUtil':get(File));
-'$init'(This, File) ->
-        'FileInputStream':'$init'(This, File).
+        'FileInputStream':'$init'(This, 'AbFileNativeUtil':get(File))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 

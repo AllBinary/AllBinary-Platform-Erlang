@@ -43,25 +43,12 @@ new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, HashMap, PageContext),
-    This;
-new(HashMap, HttpServletRequest) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap, HttpServletRequest),
     This.
 
 '$init'(This, HashMap, PageContext) ->
-        '$init'(This, HashMap, (get({PageContext, '$class'})):getRequest(PageContext));
-'$init'(This, HashMap, HttpServletRequest) ->
-    init_fields(This),
-        PropertiesHashMap = HashMap,
-        Request = HttpServletRequest,
-        put({This, session}, (get({Request, '$class'})):getSession(Request, true)),
-        case ((get({This, '$class'})):getStoreName(This) =:= undefined) of
-            true ->
-            (get({This, '$class'})):setStoreName(This, (get({PropertiesHashMap, '$class'})):get(PropertiesHashMap, get({'StoreFrontData':getInstance(), 'NAME'})));
-            false -> ok
-        end.
+        '$init'(This, HashMap, (get({PageContext, '$class'})):getRequest(PageContext))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 getId(This) ->

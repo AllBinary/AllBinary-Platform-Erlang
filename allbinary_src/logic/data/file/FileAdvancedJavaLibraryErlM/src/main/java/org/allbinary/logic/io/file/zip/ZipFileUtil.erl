@@ -97,8 +97,8 @@ create(This, OutFilename, FileBasicArrayList) when (is_list(OutFilename) orelse 
                 put({local, current}, get({local, current}) + 1)
             end, lists:seq(0, Size - 1)),
             (get({StreamUtil, '$class'})):close(StreamUtil, OutputStream)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "create", E)
+        catch _:E_N67408 when E_N67408 =/= '$break', E_N67408 =/= '$continue', (not is_tuple(E_N67408) orelse element(1, E_N67408) =/= '$return') ->
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "create", E_N67408)
         end.
 
 % throws Exception

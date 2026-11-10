@@ -31,6 +31,10 @@
         <erlang.home>C:/Erlang_OTP</erlang.home>
         <!-- Set to false to continue the Maven build when the generated Erlang does not compile -->
         <erlang.fail.on.error>true</erlang.fail.on.error>
+        <!-- The sources are Erlang so the Java compile of the jar lifecycle is skipped -->
+        <maven.main.skip>true</maven.main.skip>
+        <!-- There are no Java tests so the Java test compile and run are skipped -->
+        <maven.test.skip>true</maven.test.skip>
     </properties>
 
     <dependencies>
@@ -144,14 +148,14 @@
         
         <dependency>
             <groupId>org.microemu</groupId>
-            <artifactId>microemu-midpErl</artifactId>
+            <artifactId>microemu-midp-for-polyglotErl</artifactId>
             <version>2.0.4</version>
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.microemu</groupId>
-            <artifactId>microemu-jsr-135Erl</artifactId>
+            <artifactId>microemu-jsr-135-for-polyglotErl</artifactId>
             <version>2.0.4</version>
             <optional>true</optional>
             <exclusions>
@@ -160,7 +164,7 @@
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>microemu-midpErl</artifactId>
+                    <artifactId>microemu-midp-for-polyglotErl</artifactId>
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
@@ -173,7 +177,7 @@
         Public microemu
         <dependency>
             <groupId>org.microemu</groupId>
-            <artifactId>microemu-jsr-135Erl</artifactId>
+            <artifactId>microemu-jsr-135-for-polyglotErl</artifactId>
             <version>2.0.4</version>
             <optional>true</optional>
             <exclusions>
@@ -182,7 +186,7 @@
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>microemu-midpErl</artifactId>
+                    <artifactId>microemu-midp-for-polyglotErl</artifactId>
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
@@ -194,7 +198,7 @@
         Custom microemu
         <dependency>
             <groupId>org.microemu</groupId>
-            <artifactId>microemu-jsr-135Erl</artifactId>
+            <artifactId>microemu-jsr-135-for-polyglotErl</artifactId>
             <version>3.0.0-SNAPSHOT</version>
             <optional>true</optional>
             <exclusions>
@@ -203,7 +207,7 @@
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>microemu-midpErl</artifactId>
+                    <artifactId>microemu-midp-for-polyglotErl</artifactId>
                     <groupId>org.microemu</groupId>
                 </exclusion>
                 <exclusion>

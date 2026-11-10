@@ -52,21 +52,14 @@ new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Document),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Document) ->
     'Validation':'$init'(This),
     init_fields(This),
-        NodeList = (get({Document, '$class'})):getElementsByTagName(Document, get({'StylesData':getInstance(), 'NAME'}));
-'$init'(This, HashMap) ->
-    'Validation':'$init'(This),
-    init_fields(This),
-        (get({This, '$class'})):getFormData(This, HashMap).
+        NodeList = (get({Document, '$class'})):getElementsByTagName(Document, get({'StylesData':getInstance(), 'NAME'}))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception

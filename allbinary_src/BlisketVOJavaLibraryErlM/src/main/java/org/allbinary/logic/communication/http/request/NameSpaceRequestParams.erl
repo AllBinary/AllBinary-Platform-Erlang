@@ -62,11 +62,6 @@ new(HttpServletRequest) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, HttpServletRequest),
-    This;
-new(PageContext) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, PageContext),
     This.
 
 '$init'(This, HttpServletRequest) ->
@@ -76,15 +71,9 @@ new(PageContext) ->
             true ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Constructing from HttpServletRequest", This, get({get({This, commonStrings}), 'CONSTRUCTOR'}));
             false -> ok
-        end;
-'$init'(This, PageContext) ->
-        'RequestParams':'$init'(This, PageContext),
-        init_fields(This),
-        case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'HTTPREQUEST'})) of
-            true ->
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Constructing from PageContext", This, get({get({This, commonStrings}), 'CONSTRUCTOR'}));
-            false -> ok
-        end.
+        end
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception

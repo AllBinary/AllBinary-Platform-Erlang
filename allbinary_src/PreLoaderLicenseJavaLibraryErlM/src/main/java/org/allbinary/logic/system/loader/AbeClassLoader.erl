@@ -102,11 +102,11 @@ loadClass(This, Name, Resolve) when (is_list(Name) orelse Name =:= undefined), i
             end,
             (get({This, '$class'})):resolveClass(This, get({local, myClass})),
             get({local, myClass})
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+        catch _:E_N67797 when E_N67797 =/= '$break', E_N67797 =/= '$continue', (not is_tuple(E_N67797) orelse element(1, E_N67797) =/= '$return') ->
             case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'LOADERERROR'})) of
                 true ->
                 (get({LogBuffer, '$class'})):logAll(LogBuffer),
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), lists:concat([lists:concat([lists:concat(["Failure loading: ", Name]), "\nwith: "]), get({local, loadedWith})]), This, get({This, 'LOAD_CLASS'}), E);
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), lists:concat([lists:concat([lists:concat(["Failure loading: ", Name]), "\nwith: "]), get({local, loadedWith})]), This, get({This, 'LOAD_CLASS'}), E_N67797);
                 false -> ok
             end,
             undefined
@@ -177,10 +177,10 @@ oldLoadClass(This, Name, Resolve) when (is_list(Name) orelse Name =:= undefined)
             end,
             (get({This, '$class'})):resolveClass(This, get({local, myClass})),
             get({local, myClass})
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+        catch _:E_N71309 when E_N71309 =/= '$break', E_N71309 =/= '$continue', (not is_tuple(E_N71309) orelse element(1, E_N71309) =/= '$return') ->
             case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'LOADERERROR'})) of
                 true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), lists:concat(["Failure loading: ", Name]), "AbeClassLoader", get({This, 'LOAD_CLASS'}), E);
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), lists:concat(["Failure loading: ", Name]), "AbeClassLoader", get({This, 'LOAD_CLASS'}), E_N71309);
                 false -> ok
             end,
             undefined

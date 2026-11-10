@@ -64,7 +64,7 @@ createImage(This, Image, Width, Height, ScaleWidth, ScaleHeight) when is_integer
             true ->
             put({local, scaleX}, ((float(ScaleWidth)) / (float(Width)))),
             put({local, scaleY}, ((float(ScaleHeight)) / (float(Height)))),
-            case ((((get({local, scaleX}) =:= 1.0) andalso (get({local, scaleY}) =:= 1.0))) orelse (((get({local, scaleX}) =:= 0.0) orelse (get({local, scaleY}) =:= 0.0)))) of
+            case ((((get({local, scaleX}) == 1.0) andalso (get({local, scaleY}) == 1.0))) orelse (((get({local, scaleX}) == 0.0) orelse (get({local, scaleY}) == 0.0)))) of
                 true ->
                 put({local, scaledImage}, (get({get({This, openGLUtil}), '$class'})):addImage(get({This, openGLUtil}), Image)),
                 put({local, sprite}, (get({SpriteFactory, '$class'})):createSprite(SpriteFactory, get({local, scaledImage}), Width, Height));

@@ -34,18 +34,17 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         ok.
 
 % throws LicensingException
 getInstance(This, HashMap, PageContext) ->
-        'HelperFactory':getInstance(get({'AuthenticationRequestHelperFactory', 'FACTORYNAME'}), get({'AuthenticationRequestHelperFactory', 'CLASSNAME'}), HashMap, PageContext).
+        'HelperFactory':getInstance(get({'AuthenticationRequestHelperFactory', 'FACTORYNAME'}), get({'AuthenticationRequestHelperFactory', 'CLASSNAME'}), HashMap, PageContext)
+% unreachable Java overload getInstance(HashMap hashMap, HttpServletRequest httpServletRequest) has the same guards as an earlier clause
+.
 
-% throws LicensingException
-getInstance(This, HashMap, HttpServletRequest) ->
-        'HelperFactory':getInstance(get({'AuthenticationRequestHelperFactory', 'FACTORYNAME'}), get({'AuthenticationRequestHelperFactory', 'CLASSNAME'}), HashMap, HttpServletRequest).
 

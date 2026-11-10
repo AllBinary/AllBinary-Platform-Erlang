@@ -205,3 +205,6 @@ update(This, UpdatedValues) ->
 dropTable(This) ->
         'AbSqlBean':dropTable(This).
 
+deleteWhere(This, Key, Value) when (is_list(Key) orelse Key =:= undefined), (is_list(Value) orelse Value =:= undefined) ->
+        'AbSqlBean':deleteWhere(This, Key, Value).
+

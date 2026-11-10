@@ -37,9 +37,8 @@ new() ->
 
 % throws MoneyException
 getInstance(HashMap) ->
-        'Item':new(HashMap);
-% throws Exception, MoneyException
-getInstance(Request) ->
-        'Item':new((fun(Target_N65902) -> (get({Target_N65902, '$class'})):toHashMap(Target_N65902) end)('RequestParams':new(Request))).
+        'Item':new(HashMap)
+% unreachable Java overload getInstance(HttpServletRequest request) has the same guards as an earlier clause
+.
 
 

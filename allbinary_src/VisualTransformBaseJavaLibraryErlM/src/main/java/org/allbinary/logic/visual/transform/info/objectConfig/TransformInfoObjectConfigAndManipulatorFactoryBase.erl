@@ -38,10 +38,9 @@ new() ->
 
 % throws Exception
 getInstance(This, AbeClientInformation, TransformInfoInterface, ObjectConfigFileAbPath) ->
-        erlang:error({'RuntimeException'});
-% throws Exception
-getInstance(This, AbeClientInformation, TransformInfoInterface, Document) ->
-        erlang:error({'RuntimeException'}).
+        erlang:error({'RuntimeException'})
+% unreachable Java overload getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Document document) has the same guards as an earlier clause
+.
 
 % throws Exception
 getInstance(This, AbeClientInformation, TransformInfoInterface) ->

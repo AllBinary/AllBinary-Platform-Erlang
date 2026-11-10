@@ -51,21 +51,14 @@ new(Request) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Request),
-    This;
-new(PageContext) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, PageContext),
     This.
 
 '$init'(This, Request) ->
     init_fields(This),
         put({This, map}, (get({Request, '$class'})):getParameterMap(Request)),
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["RequestParams Size: ", (fun(Target_N66186) -> (get({Target_N66186, '$class'})):size(Target_N66186) end)((fun(Target_N66193) -> (get({Target_N66193, '$class'})):keySet(Target_N66193) end)((get({This, '$class'})):getMap(This)))]), This, get({get({This, commonStrings}), 'CONSTRUCTOR'}));
-'$init'(This, PageContext) ->
-    init_fields(This),
-        put({This, map}, (fun(Target_N66299) -> (get({Target_N66299, '$class'})):getParameterMap(Target_N66299) end)((get({PageContext, '$class'})):getRequest(PageContext))),
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Request Params Size: ", (fun(Target_N66356) -> (get({Target_N66356, '$class'})):size(Target_N66356) end)((fun(Target_N66363) -> (get({Target_N66363, '$class'})):keySet(Target_N66363) end)((get({This, '$class'})):getMap(This)))]), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})).
+        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["RequestParams Size: ", (fun(Target_N66186) -> (get({Target_N66186, '$class'})):size(Target_N66186) end)((fun(Target_N66193) -> (get({Target_N66193, '$class'})):keySet(Target_N66193) end)((get({This, '$class'})):getMap(This)))]), This, get({get({This, commonStrings}), 'CONSTRUCTOR'}))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 setMap(This, Map) ->

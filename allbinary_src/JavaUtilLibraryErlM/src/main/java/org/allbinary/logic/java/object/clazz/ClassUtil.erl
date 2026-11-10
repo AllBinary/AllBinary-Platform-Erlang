@@ -42,37 +42,8 @@ viewAll(AnyType, LineBreak) when (is_list(LineBreak) orelse LineBreak =:= undefi
             false ->
             "Object Null"
         end
-        catch throw:{'$return', ReturnValue} -> ReturnValue end;
-viewAll(MyClass, LineBreak) when (is_list(LineBreak) orelse LineBreak =:= undefined) ->
-        try
-        case (MyClass =/= undefined) of
-            true ->
-            StringBuffer = 'StringMaker':new(),
-            Classes = (get({MyClass, '$class'})):getClasses(MyClass),
-            (get({StringBuffer, '$class'})):append(StringBuffer, LineBreak),
-            (get({StringBuffer, '$class'})):append(StringBuffer, "Class: "),
-            (get({StringBuffer, '$class'})):append(StringBuffer, (get({MyClass, '$class'})):getName(MyClass)),
-            (get({StringBuffer, '$class'})):append(StringBuffer, " uses "),
-            (get({StringBuffer, '$class'})):appendint(StringBuffer, array:size(Classes)),
-            (get({StringBuffer, '$class'})):append(StringBuffer, " other classes"),
-            (get({StringBuffer, '$class'})):append(StringBuffer, LineBreak),
-            (get({StringBuffer, '$class'})):append(StringBuffer, LineBreak),
-            (get({StringBuffer, '$class'})):append(StringBuffer, "Classes: "),
-            (get({StringBuffer, '$class'})):append(StringBuffer, LineBreak),
-            lists:foreach(fun(Index) ->
-                (get({StringBuffer, '$class'})):append(StringBuffer, "Class: "),
-                (get({StringBuffer, '$class'})):append(StringBuffer, (fun(Target_N66395) -> (get({Target_N66395, '$class'})):getName(Target_N66395) end)(array:get(Index, Classes))),
-                (get({StringBuffer, '$class'})):append(StringBuffer, LineBreak)
-            end, lists:seq(0, array:size(Classes) - 1)),
-            (get({StringBuffer, '$class'})):append(StringBuffer, 'InterfaceUtil':viewAll(MyClass, LineBreak)),
-            (get({StringBuffer, '$class'})):append(StringBuffer, LineBreak),
-            (get({StringBuffer, '$class'})):append(StringBuffer, 'ConstructorUtil':viewAll(MyClass, LineBreak)),
-            (get({StringBuffer, '$class'})):append(StringBuffer, LineBreak),
-            (get({StringBuffer, '$class'})):append(StringBuffer, 'MethodUtil':viewAll(MyClass, LineBreak)),
-            throw({'$return', (get({StringBuffer, '$class'})):toString(StringBuffer)});
-            false ->
-            "Class Null"
-        end
-        catch throw:{'$return', ReturnValue} -> ReturnValue end.
+        catch throw:{'$return', ReturnValue} -> ReturnValue end
+% unreachable Java overload viewAll(Class myClass, String lineBreak) has the same guards as an earlier clause
+.
 
 

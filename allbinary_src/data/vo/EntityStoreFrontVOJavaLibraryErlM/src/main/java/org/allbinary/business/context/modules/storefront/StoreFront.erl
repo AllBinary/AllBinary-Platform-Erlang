@@ -113,11 +113,6 @@ new(Request) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Request),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Request) ->
@@ -128,17 +123,9 @@ new(HashMap) ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "TWB- needs update for adding and updating context configuration - currently defaults to admin context config", This, "StoreFront");
             false -> ok
         end,
-        (get({This, '$class'})):setContextConfigurationInterface(This, (fun(Target_N68908) -> (get({Target_N68908, '$class'})):getInstance(Target_N68908, "Admin") end)('ContextConfigurationInterfaceFactory':getInstance()));
-'$init'(This, HashMap) ->
-    init_fields(This),
-        (get({This, '$class'})):getFormData(This, HashMap),
-        DomDocumentString = (get({HashMap, '$class'})):get(HashMap, get({'StoreFrontData':getInstance(), 'CONFIGURATION'})),
-        case (DomDocumentString =:= undefined) of
-            true ->
-            Document = 'DomDocumentHelper':create(DomDocumentString),
-            (get({This, '$class'})):setContextConfigurationInterface(This, (fun(Target_N69221) -> (get({Target_N69221, '$class'})):getInstance(Target_N69221, Document) end)('ContextConfigurationInterfaceFactory':getInstance()));
-            false -> ok
-        end.
+        (get({This, '$class'})):setContextConfigurationInterface(This, (fun(Target_N68908) -> (get({Target_N68908, '$class'})):getInstance(Target_N68908, "Admin") end)('ContextConfigurationInterfaceFactory':getInstance()))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 isColumn(This, ColumnName) when (is_list(ColumnName) orelse ColumnName =:= undefined) ->

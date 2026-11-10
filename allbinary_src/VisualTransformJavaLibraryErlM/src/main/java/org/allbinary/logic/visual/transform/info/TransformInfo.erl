@@ -401,10 +401,10 @@ getData(This) ->
                     false -> ok
                 end
             end
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+        catch _:E_N76539 when E_N76539 =/= '$break', E_N76539 =/= '$continue', (not is_tuple(E_N76539) orelse element(1, E_N76539) =/= '$return') ->
             case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEWERROR'})) of
                 true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), lists:concat(["Could Not Preview Data: ", get({This, data})]), This, "getData()", E);
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), lists:concat(["Could Not Preview Data: ", get({This, data})]), This, "getData()", E_N76539);
                 false -> ok
             end
         end,

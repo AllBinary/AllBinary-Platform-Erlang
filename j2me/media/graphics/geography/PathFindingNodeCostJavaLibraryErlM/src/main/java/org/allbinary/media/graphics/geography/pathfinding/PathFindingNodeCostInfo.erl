@@ -61,7 +61,19 @@ addCostFromStart(This, Cost) when is_integer(Cost) ->
         put({This, costFromStartP}, (get({This, costFromStartP}) + Cost)).
 
 compareTo(This, PathFindingNodeCostInfo) ->
-        (get({get({get({'java', lang}), 'Long'}), '$class'})):compare(get({get({'java', lang}), 'Long'}), get({This, totalCostP}), get({PathFindingNodeCostInfo, totalCostP})).
+        try
+        case (get({This, totalCostP}) < get({PathFindingNodeCostInfo, totalCostP})) of
+            true ->
+            throw({'$return', (-1)});
+            false ->
+            case (get({This, totalCostP}) > get({PathFindingNodeCostInfo, totalCostP})) of
+            true ->
+            throw({'$return', 1});
+            false -> ok
+        end
+        end,
+        0
+        catch throw:{'$return', ReturnValue} -> ReturnValue end.
 
 toString(This) ->
         StringBuffer = 'StringMaker':new(),

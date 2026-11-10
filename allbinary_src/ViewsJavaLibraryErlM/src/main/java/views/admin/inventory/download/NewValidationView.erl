@@ -59,3 +59,7 @@ toValidationInfoNode(This, Document) ->
 validationInfo(This) ->
         "Error Creating New Downloadable Item".
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'DownloadableInventoryItemView':getTransformInfoInterface(This).
+

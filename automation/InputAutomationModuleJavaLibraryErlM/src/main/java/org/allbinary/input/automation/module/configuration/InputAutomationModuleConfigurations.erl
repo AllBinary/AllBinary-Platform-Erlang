@@ -38,11 +38,6 @@ new(AbeClientInformation, File) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, AbeClientInformation, File),
-    This;
-new(AbeClientInformation, Document) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, AbeClientInformation, Document),
     This.
 
 '$init'(This, AbeClientInformation, File) ->
@@ -64,16 +59,9 @@ new(AbeClientInformation, Document) ->
                 (get({This, '$class'})):add(This, 'InputAutomationModuleConfiguration':new(AbeClientInformation, Node))
             end, lists:seq(0, (get({NameNodeList, '$class'})):getLength(NameNodeList) - 1));
             false -> ok
-        end;
-'$init'(This, AbeClientInformation, Document) ->
-    init_fields(This),
-        (get({This, '$class'})):setHashMap(This, 'HashMap':new()),
-        NameNodeList = (get({Document, '$class'})):getElementsByTagName(Document, get({'InputAutomationModuleData', 'NAME'})),
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Number Of Module(s) Specified: ", (get({NameNodeList, '$class'})):getLength(NameNodeList)]), This, "Contructor"),
-        lists:foreach(fun(Index) ->
-            Node = (get({NameNodeList, '$class'})):item(NameNodeList, Index),
-            (get({This, '$class'})):add(This, 'InputAutomationModuleConfiguration':new(AbeClientInformation, Node))
-        end, lists:seq(0, (get({NameNodeList, '$class'})):getLength(NameNodeList) - 1)).
+        end
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 new(InputAutomationModuleConfigurationList) ->

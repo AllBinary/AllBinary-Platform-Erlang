@@ -33,9 +33,9 @@ getRootInstanceFromNode(This, Node) ->
 getInstance(This, RootCategoryInterface, ParentCategoryInterface, Name) when (is_list(Name) orelse Name =:= undefined) ->
     erlang:error({abstract_method, getInstance});
 getInstance(This, RootCategoryInterface, ParentCategoryInterface, Node) ->
-    erlang:error({abstract_method, getInstance});
-getInstance(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesHashMap) ->
-    erlang:error({abstract_method, getInstance}).
+    erlang:error({abstract_method, getInstance})
+% unreachable Java overload getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap categoryPropertiesHashMap) has the same guards as an earlier clause
+.
 
 
 

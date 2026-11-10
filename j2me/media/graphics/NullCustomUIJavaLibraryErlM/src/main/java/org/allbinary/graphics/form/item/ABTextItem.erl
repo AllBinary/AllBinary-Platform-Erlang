@@ -32,3 +32,15 @@ paintUnselected(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
 getLabelStringComponent(This) ->
         get({'ABStringComponent', 'NULL_STRING_COMPONENT'}).
 
+getMinimumWidth(This) ->
+        'CustomCustomItem':getMinimumWidth(This).
+
+getMinimumHeight(This) ->
+        'CustomCustomItem':getMinimumHeight(This).
+
+getLabel(This) ->
+        'CustomCustomItem':getLabel(This).
+
+paintXY(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
+        'CustomCustomItem':paintXY(This, Graphics, X, Y).
+

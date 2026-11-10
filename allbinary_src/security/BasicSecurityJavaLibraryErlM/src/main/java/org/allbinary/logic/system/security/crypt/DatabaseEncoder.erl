@@ -62,20 +62,12 @@ decode(Value) when (is_list(Value) orelse Value =:= undefined) ->
         try
             Tokenizer = 'Tokenizer':new(get({'CommonSeps':getInstance(), 'SPACE'})),
             Vector = (get({Tokenizer, '$class'})):getTokensFromString(Tokenizer, Value, 'BasicArrayListD':new()),
-            ByteVector = 'BasicArrayListD':new(),
             Size = (get({Vector, '$class'})):size(Vector),
+            Decode = array:new(Size, {default, 0}),
             put({local, byteOfData}, undefined),
             lists:foreach(fun(Index) ->
                 put({local, byteOfData}, array:get(Index, get({Vector, objectArray}))),
-                (get({ByteVector, '$class'})):add(ByteVector, get({local, byteOfData}))
-            end, lists:seq(0, Size - 1)),
-            Decode = array:new((get({ByteVector, '$class'})):size(ByteVector), {default, 0}),
-            put({local, decodeIndex}, 0),
-            put({local, aByte}, undefined),
-            lists:foreach(fun(Index) ->
-                put({local, aByte}, array:get(Index, get({ByteVector, objectArray}))),
-                array:set(get({local, decodeIndex}), (get({get({local, aByte}), '$class'})):byteValue(get({local, aByte})), Decode),
-                put({local, decodeIndex}, get({local, decodeIndex}) + 1)
+                array:set(Index, 'Byte':parseByte(get({local, byteOfData})), Decode)
             end, lists:seq(0, Size - 1)),
             Decode
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->

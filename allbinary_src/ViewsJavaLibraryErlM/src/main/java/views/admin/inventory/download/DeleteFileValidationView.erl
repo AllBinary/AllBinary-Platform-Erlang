@@ -128,3 +128,7 @@ validationInfo(This) ->
             "Unkown Validation Error.<br />"
         end.
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'DownloadableInventoryItemView':getTransformInfoInterface(This).
+

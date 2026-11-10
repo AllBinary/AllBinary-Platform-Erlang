@@ -105,3 +105,7 @@ validationInfo(This) ->
         end,
         (get({StringBuffer, '$class'})):toString(StringBuffer).
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'InventoryItemView':getTransformInfoInterface(This).
+

@@ -83,16 +83,9 @@ write(This, FilePath, String) when (is_list(FilePath) orelse FilePath =:= undefi
 % throws Exception
 write(This, InputStream, File) ->
         DataOutputStream = (fun(Target_N66622) -> (get({Target_N66622, '$class'})):getInstanceForAbFile(Target_N66622, File) end)('DataOutputStreamFactory':getInstance()),
-        (get({This, '$class'})):write(This, InputStream, DataOutputStream);
-% throws Exception
-write(This, InputStream, DataOutputStream) ->
-        put({local, dataOutputStream}, DataOutputStream),
-        try
-            put({local, dataOutputStream}, (fun(Target_N66856) -> (get({Target_N66856, '$class'})):get(Target_N66856, InputStream, get({local, dataOutputStream}), array:new(16384, {default, 0})) end)('StreamUtil':getInstance())),
-            (get({get({local, dataOutputStream}), '$class'})):flush(get({local, dataOutputStream}))
-        after
-            (fun(Target_N66795) -> (get({Target_N66795, '$class'})):close(Target_N66795, get({local, dataOutputStream})) end)('StreamUtil':getInstance())
-        end.
+        (get({This, '$class'})):write(This, InputStream, DataOutputStream)
+% unreachable Java overload write(InputStream inputStream, AbDataOutputStream dataOutputStream) has the same guards as an earlier clause
+.
 
 
 % throws Exception
@@ -114,126 +107,9 @@ copy(This, DataInputStream, DataOutputStream) ->
         after
             (fun(Target_N67284) -> (get({Target_N67284, '$class'})):close(Target_N67284, get({local, dataOutputStream})) end)('StreamUtil':getInstance()),
             (fun(Target_N67323) -> (get({Target_N67323, '$class'})):close(Target_N67323, DataInputStream) end)('StreamUtil':getInstance())
-        end;
-% throws Exception
-copy(This, FromAbPath, To) ->
-        COPY = "copy",
-        try
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({get({This, logConfigTypeFactory}), 'FILE'})) of
-                true ->
-                put({local, stringBuffer}, 'StringMaker':new()),
-                (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), "Copying AbPaths from: "),
-                (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), (get({FromAbPath, '$class'})):toString(FromAbPath)),
-                (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), " to: "),
-                (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), (get({To, '$class'})):toString(To)),
-                (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({get({local, stringBuffer}), '$class'})):toString(get({local, stringBuffer})), getInstance(), COPY);
-                false -> ok
-            end,
-            case (FromAbPath =:= undefined) of
-                true ->
-                erlang:error({'Exception', "Cannot Copy From A Null Location"});
-                false -> ok
-            end,
-            case (To =:= undefined) of
-                true ->
-                erlang:error({'Exception', "Cannot Copy To A Null Location"});
-                false -> ok
-            end,
-            FromLocationFile = 'AbFile':createAbFileFromAbPath(FromAbPath),
-            ToLocationFile = 'AbFile':createAbFileFromAbPath(To),
-            case (get({FromLocationFile, '$class'})):isFile(FromLocationFile) of
-                true ->
-                case (get({ToLocationFile, '$class'})):isDirectory(ToLocationFile) of
-                    true ->
-                    put({local, file}, 'AbFile':createAbFileWithChild(ToLocationFile, (get({FromLocationFile, '$class'})):getName(FromLocationFile))),
-                    (get({This, '$class'})):copyFile(This, FromLocationFile, get({local, file})),
-                    case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({get({This, logConfigTypeFactory}), 'FILE'})) of
-                        true ->
-                        put({local, stringBuffer}, 'StringMaker':new()),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), "Copied file="),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), (get({FromLocationFile, '$class'})):getName(FromLocationFile)),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), " from: "),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), (get({FromLocationFile, '$class'})):getPath(FromLocationFile)),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), " to: "),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), (get({ToLocationFile, '$class'})):getPath(ToLocationFile)),
-                        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({get({local, stringBuffer}), '$class'})):toString(get({local, stringBuffer})), getInstance(), COPY);
-                        false -> ok
-                    end;
-                    false ->
-                    (get({This, '$class'})):copyFile(This, FromLocationFile, ToLocationFile),
-                    case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({get({This, logConfigTypeFactory}), 'FILE'})) of
-                        true ->
-                        put({local, stringBuffer}, 'StringMaker':new()),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), "Copied file with new name "),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), " from: "),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), (get({FromLocationFile, '$class'})):getPath(FromLocationFile)),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), " to: "),
-                        (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), (get({ToLocationFile, '$class'})):getPath(ToLocationFile)),
-                        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({get({local, stringBuffer}), '$class'})):toString(get({local, stringBuffer})), getInstance(), COPY);
-                        false -> ok
-                    end
-                end;
-                false ->
-                case ((get({FromLocationFile, '$class'})):isDirectory(FromLocationFile) andalso (get({ToLocationFile, '$class'})):isDirectory(ToLocationFile)) of
-                true ->
-                case ((fun(Target_N78543) -> (get({Target_N78543, '$class'})):charAt(Target_N78543, ((fun(Target_N78572) -> (get({Target_N78572, '$class'})):length(Target_N78572) end)((get({FromAbPath, '$class'})):toFileSystemString(FromAbPath)) - 1)) end)((get({FromAbPath, '$class'})):toFileSystemString(FromAbPath)) =:= get({get({get({'java', io}), 'File'}), separatorChar})) of
-                    true ->
-                    case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({get({This, logConfigTypeFactory}), 'FILE'})) of
-                        true ->
-                        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Copying subdirectories", getInstance(), COPY);
-                        false -> ok
-                    end,
-                    FileArray = 'FileWrapperUtil':wrapFiles((get({FromLocationFile, '$class'})):listFiles(FromLocationFile)),
-                    lists:foreach(fun(Index) ->
-                        put({local, file}, array:get(Index, FileArray)),
-                        case (get({get({local, file}), '$class'})):isFile(get({local, file})) of
-                            true ->
-                            AFile = 'AbFile':createAbFileWithChild(ToLocationFile, (get({get({local, file}), '$class'})):getName(get({local, file}))),
-                            (get({This, '$class'})):copyFile(This, get({local, file}), AFile);
-                            false ->
-                            case (get({get({local, file}), '$class'})):isDirectory(get({local, file})) of
-                            true ->
-                            (get({This, '$class'})):copyDirectory(This, get({local, file}), ToLocationFile);
-                            false ->
-                            erlang:error({'Exception', "File Copy Error"})
-                        end
-                        end
-                    end, lists:seq(0, array:size(FileArray) - 1)),
-                    case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({get({This, logConfigTypeFactory}), 'FILE'})) of
-                        true ->
-                        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Copied subdirectories", getInstance(), COPY);
-                        false -> ok
-                    end;
-                    false ->
-                    case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({get({This, logConfigTypeFactory}), 'FILE'})) of
-                        true ->
-                        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Copyinhg directory", getInstance(), COPY);
-                        false -> ok
-                    end,
-                    (get({This, '$class'})):copyDirectory(This, FromLocationFile, ToLocationFile),
-                    case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({get({This, logConfigTypeFactory}), 'FILE'})) of
-                        true ->
-                        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Copied directory", getInstance(), COPY);
-                        false -> ok
-                    end
-                end;
-                false -> ok
-            end
-            end,
-            true
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({get({This, logConfigTypeFactory}), 'FILEERROR'})) of
-                true ->
-                put({local, stringBuffer}, 'StringMaker':new()),
-                (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), "Error Copying fromAbPath: "),
-                (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), (get({FromAbPath, '$class'})):toString(FromAbPath)),
-                (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), " to: "),
-                (get({get({local, stringBuffer}), '$class'})):append(get({local, stringBuffer}), (get({To, '$class'})):toString(To)),
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), (get({get({local, stringBuffer}), '$class'})):toString(get({local, stringBuffer})), getInstance(), COPY, E);
-                false -> ok
-            end,
-            erlang:error(E)
-        end.
+        end
+% unreachable Java overload copy(AbPath fromAbPath, AbPath to) has the same guards as an earlier clause
+.
 
 % throws Exception
 fixPath(This, File, Path, RealPath, Cloud) when (is_list(Cloud) orelse Cloud =:= undefined) ->

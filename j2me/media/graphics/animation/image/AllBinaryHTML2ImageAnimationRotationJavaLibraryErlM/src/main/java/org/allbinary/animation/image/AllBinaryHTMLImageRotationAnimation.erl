@@ -65,13 +65,14 @@ getCanvasSurface(This, Image) ->
         HtmlImage = Image,
         CanvasImage = (get({HtmlImage, '$class'})):getImage(HtmlImage),
         PlayN = 'PlayN':getInstance(),
-        Canvas = (fun(Target_N66981) -> (get({Target_N66981, '$class'})):get(Target_N66981, CanvasImage) end)(((get({PlayN, '$class'})):graphics(PlayN))),
+        HtmlGraphics = (get({PlayN, '$class'})):graphics(PlayN),
+        Canvas = (get({HtmlGraphics, '$class'})):get(HtmlGraphics, CanvasImage),
         (get({Canvas, '$class'})):translate(Canvas, ((get({get({This, originalImage}), '$class'})):getWidth(get({This, originalImage})) / 2), ((get({get({This, originalImage}), '$class'})):getHeight(get({This, originalImage})) / 2)),
         Canvas.
 
 setBasicColorP(This, BasicColor) ->
         put({local, changed}, false),
-        case (((get({This, '$class'})):getBasicColorP(This) =:= undefined) orelse ((fun(Target_N67265) -> (get({Target_N67265, '$class'})):intValue(Target_N67265) end)((get({This, '$class'})):getBasicColorP(This)) =/= (get({BasicColor, '$class'})):intValue(BasicColor))) of
+        case (((get({This, '$class'})):getBasicColorP(This) =:= undefined) orelse ((fun(Target_N67303) -> (get({Target_N67303, '$class'})):intValue(Target_N67303) end)((get({This, '$class'})):getBasicColorP(This)) =/= (get({BasicColor, '$class'})):intValue(BasicColor))) of
             true ->
             put({local, changed}, true);
             false -> ok

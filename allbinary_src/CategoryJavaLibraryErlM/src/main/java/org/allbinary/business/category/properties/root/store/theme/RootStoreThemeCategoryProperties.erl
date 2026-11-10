@@ -50,24 +50,14 @@ new(TransformInfoInterface, AbPath) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, TransformInfoInterface, AbPath),
-    This;
-new(TransformInfoInterface, Node) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, TransformInfoInterface, Node),
-    This;
-new(TransformInfoInterface, CategoryPropertiesHashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, TransformInfoInterface, CategoryPropertiesHashMap),
     This.
 
 '$init'(This, TransformInfoInterface, AbPath) ->
-        'RootStoreCategoryProperties':'$init'(This, TransformInfoInterface, AbPath);
-'$init'(This, TransformInfoInterface, Node) ->
-        'RootStoreCategoryProperties':'$init'(This, TransformInfoInterface, Node);
-'$init'(This, TransformInfoInterface, CategoryPropertiesHashMap) ->
-        'RootStoreCategoryProperties':'$init'(This, TransformInfoInterface, CategoryPropertiesHashMap).
+        'RootStoreCategoryProperties':'$init'(This, TransformInfoInterface, AbPath)
+% unreachable Java constructor overload with the same guards as an earlier clause
+
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 

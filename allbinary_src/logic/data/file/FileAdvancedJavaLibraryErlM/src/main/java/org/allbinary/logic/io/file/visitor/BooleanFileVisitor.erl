@@ -40,22 +40,9 @@ new(FilterStringBasicArrayList) ->
         'PreLogUtil':put(lists:concat(["Filter BasicArrayList: ", (fun(Target_N65905) -> (get({Target_N65905, '$class'})):toString(Target_N65905) end)((get({This, '$class'})):getFilterStringBasicArrayList(This))]), This, get({get({This, commonStrings}), 'CONSTRUCTOR'})).
 
 visit(This, AnyType) ->
-        (get({This, '$class'})):visit(This, AnyType);
-visit(This, File) ->
-        try
-        List = (get({This, '$class'})):getFilterStringBasicArrayList(This),
-        Size = (get({List, '$class'})):size(List),
-        put({local, nextFileFilterString}, undefined),
-        lists:foreach(fun(Index) ->
-            put({local, nextFileFilterString}, (get({List, '$class'})):get(List, Index)),
-            case (fun(Target_N66288) -> (get({Target_N66288, '$class'})):booleanValue(Target_N66288) end)((get({This, '$class'})):visit(This, File, get({local, nextFileFilterString}))) of
-                true ->
-                throw({'$return', true});
-                false -> ok
-            end
-        end, lists:seq(0, Size - 1)),
-        false
-        catch throw:{'$return', ReturnValue} -> ReturnValue end.
+        (get({This, '$class'})):visit(This, AnyType)
+% unreachable Java overload visit(AbFile file) has the same guards as an earlier clause
+.
 
 
 getFilterStringBasicArrayList(This) ->

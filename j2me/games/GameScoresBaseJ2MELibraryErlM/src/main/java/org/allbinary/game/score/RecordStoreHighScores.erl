@@ -106,8 +106,8 @@ addHighScore(This, NewHighScore) ->
             HighScoreBytes = (get({NewHighScore, '$class'})):getAsBytes(NewHighScore),
             RecordId = (get({get({local, recordStore}), '$class'})):addRecord(get({local, recordStore}), HighScoreBytes, 0, array:size(HighScoreBytes)),
             (get({This, '$class'})):load(This)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({get({This, commonStrings}), 'ADD'}), E)
+        catch _:E_N68404 when E_N68404 =/= '$break', E_N68404 =/= '$continue', (not is_tuple(E_N68404) orelse element(1, E_N68404) =/= '$return') ->
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({get({This, commonStrings}), 'ADD'}), E_N68404)
         after
             try
                 case (get({local, recordStore}) =/= undefined) of
@@ -156,8 +156,8 @@ removeLowestHighScore(This) ->
                 (get({get({local, recordStore}), '$class'})):deleteRecord(get({local, recordStore}), (get({get({local, bestHighScore}), '$class'})):getId(get({local, bestHighScore})));
                 false -> ok
             end
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "removeLowestHighScore", E)
+        catch _:E_N70146 when E_N70146 =/= '$break', E_N70146 =/= '$continue', (not is_tuple(E_N70146) orelse element(1, E_N70146) =/= '$return') ->
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "removeLowestHighScore", E_N70146)
         after
             try
                 case (get({local, recordStore}) =/= undefined) of
@@ -204,16 +204,16 @@ load(This) ->
                             end
                         end, lists:seq(0, Size - 1)),
                         (get({List, '$class'})):addAt(List, get({local, lastIndex}), NewHighScore)
-                    catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-                        (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "EOF", This, get({get({This, commonStrings}), 'LOAD'}), E),
-                        erlang:error(E)
+                    catch _:E_N71746 when E_N71746 =/= '$break', E_N71746 =/= '$continue', (not is_tuple(E_N71746) orelse element(1, E_N71746) =/= '$return') ->
+                        (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "EOF", This, get({get({This, commonStrings}), 'LOAD'}), E_N71746),
+                        erlang:error(E_N71746)
                     end;
                     false -> ok
                 end,
                 Loop();
             false -> ok end end)()
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "No High Scores", This, get({get({This, commonStrings}), 'LOAD'}), E)
+        catch _:E_N71878 when E_N71878 =/= '$break', E_N71878 =/= '$continue', (not is_tuple(E_N71878) orelse element(1, E_N71878) =/= '$return') ->
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "No High Scores", This, get({get({This, commonStrings}), 'LOAD'}), E_N71878)
         after
             try
                 case (get({local, recordStore}) =/= undefined) of

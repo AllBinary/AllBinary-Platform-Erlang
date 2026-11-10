@@ -102,3 +102,9 @@ setPoints(This, CurrentPoints) when (is_tuple(CurrentPoints) orelse CurrentPoint
         put({This, currentPoints}, CurrentPoints),
         put({This, circularIndexUtil}, 'CircularIndexUtil':createInstance(array:size(get({This, currentPoints})))).
 
+getBasicColorP(This) ->
+        'RotationAnimation':getBasicColorP(This).
+
+setBasicColorP(This, BasicColor) ->
+        'RotationAnimation':setBasicColorP(This, BasicColor).
+

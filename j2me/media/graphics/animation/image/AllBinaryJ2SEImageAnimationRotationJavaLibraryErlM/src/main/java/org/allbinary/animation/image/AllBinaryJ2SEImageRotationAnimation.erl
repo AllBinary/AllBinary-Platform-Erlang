@@ -113,7 +113,7 @@ setAlpha(This, Alpha) when is_integer(Alpha) ->
 setScale(This, ScaleX, ScaleY) when is_number(ScaleX), is_number(ScaleY) ->
         put({This, scaleX}, ScaleX),
         put({This, scaleY}, ScaleY),
-        case ((get({This, scaleX}) =/= get({This, lastScaleX})) orelse (get({This, scaleY}) =/= get({This, lastScaleY}))) of
+        case ((get({This, scaleX}) /= get({This, lastScaleX})) orelse (get({This, scaleY}) /= get({This, lastScaleY}))) of
             true ->
             (get({get({This, scaleProcessor}), '$class'})):update(get({This, scaleProcessor}), get({This, realOriginalImage}), get({This, originalImageArray}), get({This, twoImages}), get({This, bufferedImageIndex}), get({This, scaleX}), get({This, scaleY}), get({This, maxScaleX}), get({This, maxScaleY})),
             (get({This, '$class'})):updateImage(This);

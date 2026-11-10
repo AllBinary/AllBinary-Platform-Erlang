@@ -74,9 +74,8 @@ generate(This, AbeClientInformation, TransformInfoInterface, OwnerTransformInfoI
                 false -> ok
             end,
             erlang:error(E)
-        end;
-% throws Exception
-generate(This, AbeClientInformation, TransformInfoDomNode, OwnerTransformInfoInterface) ->
-        (get({This, '$class'})):generate(This, AbeClientInformation, (get({TransformInfoDomNode, '$class'})):getTransformInfoInterface(TransformInfoDomNode), OwnerTransformInfoInterface).
+        end
+% unreachable Java overload generate(AbeClientInformationInterface abeClientInformation, TransformInfoDomNode transformInfoDomNode, TransformInfoInterface ownerTransformInfoInterface) has the same guards as an earlier clause
+.
 
 

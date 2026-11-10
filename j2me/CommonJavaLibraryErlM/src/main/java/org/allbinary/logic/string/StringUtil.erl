@@ -30,6 +30,7 @@ init_fields(This) ->
     put({This, 'NULL_STRING'}, "null"),
     put({This, 'EMPTY_STRING'}, ""),
     put({This, 'ONE_EMPTY_STRING_ARRAY'}, array:from_list([get({This, 'EMPTY_STRING'})])),
+    put({This, 'ONE_EMPTY_STRING_ARRAY_OF_ARRAYS'}, array:new(0, {default, array:new(0, {default, undefined})})),
     put({This, stringArray}, array:new(0, {default, undefined})),
     ok.
 

@@ -130,9 +130,9 @@ load(This, AbeClientInformation, GameInfo) ->
                 false -> ok end end)();
                 false -> ok
             end
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+        catch _:E_N68830 when E_N68830 =/= '$break', E_N68830 =/= '$continue', (not is_tuple(E_N68830) orelse element(1, E_N68830) =/= '$return') ->
             (get({This, '$class'})):save(This, AbeClientInformation, GameInfo, get({This, name})),
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N68906) -> (get({Target_N68906, '$class'})):toString(Target_N68906) end)((fun(Target_N68913) -> (get({Target_N68913, '$class'})):append(Target_N68913, (fun(Target_N68964) -> (get({Target_N68964, '$class'})):getStackTrace(Target_N68964, E) end)('ExceptionUtil':getInstance())) end)((fun(Target_N68920) -> (get({Target_N68920, '$class'})):append(Target_N68920, get({get({This, commonStrings}), 'EXCEPTION_LABEL'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'LOAD'}))
+            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N68906) -> (get({Target_N68906, '$class'})):toString(Target_N68906) end)((fun(Target_N68913) -> (get({Target_N68913, '$class'})):append(Target_N68913, (fun(Target_N68964) -> (get({Target_N68964, '$class'})):getStackTrace(Target_N68964, E_N68830) end)('ExceptionUtil':getInstance())) end)((fun(Target_N68920) -> (get({Target_N68920, '$class'})):append(Target_N68920, get({get({This, commonStrings}), 'EXCEPTION_LABEL'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'LOAD'}))
         after
             try
                 case (get({local, recordStore}) =/= undefined) of
@@ -158,8 +158,8 @@ save(This, AbeClientInformation, GameInfo, Name) when (is_list(Name) orelse Name
             SavedGameBytes = (get({ByteArrayOutputStream, '$class'})):toByteArray(ByteArrayOutputStream),
             (get({get({local, recordStore}), '$class'})):addRecord(get({local, recordStore}), SavedGameBytes, 0, array:size(SavedGameBytes)),
             put({This, name}, Name)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({get({This, commonStrings}), 'SAVE'}), E)
+        catch _:E_N69852 when E_N69852 =/= '$break', E_N69852 =/= '$continue', (not is_tuple(E_N69852) orelse element(1, E_N69852) =/= '$return') ->
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({get({This, commonStrings}), 'SAVE'}), E_N69852)
         after
             try
                 case (get({local, recordStore}) =/= undefined) of

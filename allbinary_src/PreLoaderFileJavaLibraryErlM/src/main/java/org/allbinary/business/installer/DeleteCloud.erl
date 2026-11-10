@@ -87,8 +87,8 @@ delete(This, PrePath, Current, Total) when (is_list(PrePath) orelse PrePath =:= 
                 false -> ok
             end,
             true
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "Unable to copy installer files into cloud", This, "initialize()", E),
+        catch _:E_N67294 when E_N67294 =/= '$break', E_N67294 =/= '$continue', (not is_tuple(E_N67294) orelse element(1, E_N67294) =/= '$return') ->
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "Unable to copy installer files into cloud", This, "initialize()", E_N67294),
             false
         end.
 

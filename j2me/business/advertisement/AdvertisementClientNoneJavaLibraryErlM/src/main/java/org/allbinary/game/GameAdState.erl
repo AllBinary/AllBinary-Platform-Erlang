@@ -17,6 +17,7 @@
 % import org.allbinary.input.event.VirtualKeyboardEvent
 % import org.allbinary.input.event.VirtualKeyboardEventHandler
 % import org.allbinary.input.event.VirtualKeyboardEventListenerInterface
+% import org.allbinary.logic.util.event.AllBinaryEventObject
 
 -module('GameAdState').
 -compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
@@ -37,9 +38,12 @@ new(AdConfiguration) ->
 
 '$init'(This, AdConfiguration) ->
         'GameAdStateBase':'$init'(This, AdConfiguration),
-        (fun(Target_N65777) -> (get({Target_N65777, '$class'})):addListenerInterface(Target_N65777, This) end)('VirtualKeyboardEventHandler':getInstance()).
+        (fun(Target_N65812) -> (get({Target_N65812, '$class'})):addListenerInterface(Target_N65812, This) end)('VirtualKeyboardEventHandler':getInstance()).
 
 % throws Exception
 onVirtualKeyboardEvent(This, VirtualKeyboardEvent) ->
         ok.
+
+onEvent(This, EventObject) ->
+        'GameAdStateBase':onEvent(This, EventObject).
 

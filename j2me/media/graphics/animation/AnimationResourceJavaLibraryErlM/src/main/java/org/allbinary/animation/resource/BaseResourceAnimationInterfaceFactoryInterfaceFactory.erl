@@ -104,7 +104,16 @@ addRectangle(This, Resource, Rectangle) when (is_list(Resource) orelse Resource 
 
 % throws Exception
 getRectangleArrayOfArrays(This, Resource) when (is_list(Resource) orelse Resource =:= undefined) ->
-        (get({get({This, rectangleArrayOfArraysHashtable}), '$class'})):get(get({This, rectangleArrayOfArraysHashtable}), Resource).
+        try
+        ValueCanBeNull = (get({get({This, rectangleArrayOfArraysHashtable}), '$class'})):get(get({This, rectangleArrayOfArraysHashtable}), Resource),
+        case (ValueCanBeNull =/= undefined) of
+            true ->
+            RectangleArrayOfArrays = ValueCanBeNull,
+            throw({'$return', RectangleArrayOfArrays});
+            false ->
+            throw({'$return', get({'RectangleFactory', 'ARRAY_OF_ARRAYS'})})
+        end
+        catch throw:{'$return', ReturnValue} -> ReturnValue end.
 
 % throws Exception
 addRectangleArrayOfArrays(This, Resource, RectangleArrayOfArrays) when (is_list(Resource) orelse Resource =:= undefined), (is_tuple(RectangleArrayOfArrays) orelse RectangleArrayOfArrays =:= undefined) ->
@@ -125,7 +134,7 @@ isLoadingLevel(This, Level) when is_integer(Level) ->
         catch throw:{'$return', ReturnValue} -> ReturnValue end.
 
 toString(This) ->
-        (fun(Target_N68215) -> (get({Target_N68215, '$class'})):toString(Target_N68215) end)((fun(Target_N68222) -> (get({Target_N68222, '$class'})):append(Target_N68222, get({This, name})) end)((fun(Target_N68229) -> (get({Target_N68229, '$class'})):append(Target_N68229, get({'CommonSeps':getInstance(), 'SPACE'})) end)((fun(Target_N68236) -> (get({Target_N68236, '$class'})):append(Target_N68236, get({'CommonSeps':getInstance(), 'SEMICOLON'})) end)((fun(Target_N68243) -> (get({Target_N68243, '$class'})):append(Target_N68243, atom_to_list(get({This, '$class'}))) end)('StringMaker':new()))))).
+        (fun(Target_N68356) -> (get({Target_N68356, '$class'})):toString(Target_N68356) end)((fun(Target_N68363) -> (get({Target_N68363, '$class'})):append(Target_N68363, get({This, name})) end)((fun(Target_N68370) -> (get({Target_N68370, '$class'})):append(Target_N68370, get({'CommonSeps':getInstance(), 'SPACE'})) end)((fun(Target_N68377) -> (get({Target_N68377, '$class'})):append(Target_N68377, get({'CommonSeps':getInstance(), 'SEMICOLON'})) end)((fun(Target_N68384) -> (get({Target_N68384, '$class'})):append(Target_N68384, atom_to_list(get({This, '$class'}))) end)('StringMaker':new()))))).
 
 getHashtable(This) ->
         get({This, hashtable}).

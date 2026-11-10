@@ -95,7 +95,7 @@ new(Name, BufferedImage, BufferedImage2, FrameOne, FrameTwo, Tolerance) when (is
         end.
 
 getMatchingPercent(This) ->
-        case (get({This, matchingPercent}) =:= float((-1))) of
+        case (get({This, matchingPercent}) == float((-1))) of
             true ->
             put({This, matchingPercent}, (float(get({This, pixelsThatMatch})) / float(((get({This, imageWidth}) * get({This, imageHeight}))))));
             false -> ok

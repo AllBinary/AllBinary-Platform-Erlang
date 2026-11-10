@@ -225,9 +225,9 @@ initCapabilities(This, Gl) ->
             (get({Gl, '$class'})):glGetIntegerv(Gl, get({get({'OpenGLCapabilities', 'GL10'}), 'GL_MAX_TEXTURE_SIZE'}), MaxTextureSizeArray, 0),
             put({This, maxTextureSize}, array:get(0, MaxTextureSizeArray)),
             put({This, initialized}, true)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+        catch _:E_N70630 when E_N70630 =/= '$break', E_N70630 =/= '$continue', (not is_tuple(E_N70630) orelse element(1, E_N70630) =/= '$return') ->
             put({local, commonStrings}, 'CommonStrings':getInstance()),
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({local, commonStrings}), 'EXCEPTION'}), This, METHOD_NAME, E)
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({local, commonStrings}), 'EXCEPTION'}), This, METHOD_NAME, E_N70630)
         end.
 
 isExtension(This, GameFeature) ->

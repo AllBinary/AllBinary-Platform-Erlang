@@ -47,9 +47,7 @@ init_fields(This) ->
     put({This, inputTimeHelper}, 'TimeDelayHelper':new(650)),
     put({This, playerGameInput}, undefined),
     put({This, lockedIndex}, 0),
-    put({This, abRunnable}, 'ABRunnable':new() % Java anonymous class body: implement it as a module
-%         ok % run
-),
+    put({This, abRunnable}, 'MapSelectionRunnable':new(This)),
     ok.
 
 
@@ -70,7 +68,7 @@ new(GameCanvas, RaceTrackGeographicMapInterfaceFactoryInterface, MapSelectorPain
 
 % throws Exception
 process(This) ->
-        (fun(Target_N67339) -> (get({Target_N67339, '$class'})):update(Target_N67339) end)((get({This, '$class'})):getPlayerGameInput(This)).
+        (fun(Target_N67524) -> (get({Target_N67524, '$class'})):update(Target_N67524) end)((get({This, '$class'})):getPlayerGameInput(This)).
 
 % throws Exception
 onInput(This, List) ->
@@ -82,26 +80,26 @@ onInput(This, List) ->
                 true ->
                 case (get({get({This, inputTimeHelper}), '$class'})):isTimeTNT(get({This, inputTimeHelper})) of
                     true ->
-                    (fun(Target_N68037) -> (get({Target_N68037, '$class'})):add(Target_N68037, 'SelectSound':getInstance()) end)('SecondaryPlayerQueueFactory':getInstance()),
-                    (fun(Target_N68084) -> (get({Target_N68084, '$class'})):processInputKey(Target_N68084, Key) end)((get({get({This, preGameSelectorPaintable}), '$class'})):getPreGameSelectionForm(get({This, preGameSelectorPaintable}))),
+                    (fun(Target_N68222) -> (get({Target_N68222, '$class'})):add(Target_N68222, 'SelectSound':getInstance()) end)('SecondaryPlayerQueueFactory':getInstance()),
+                    (fun(Target_N68269) -> (get({Target_N68269, '$class'})):processInputKey(Target_N68269, Key) end)((get({get({This, preGameSelectorPaintable}), '$class'})):getPreGameSelectionForm(get({This, preGameSelectorPaintable}))),
                     throw('$break');
                     false -> ok
                 end;
                 false ->
                 case (Key =:= get({'Canvas', 'KEY_NUM0'})) of
                 true ->
-                SelectedIndex = (fun(Target_N67747) -> (get({Target_N67747, '$class'})):getSelectedIndex(Target_N67747) end)((get({get({This, preGameSelectorPaintable}), '$class'})):getPreGameSelectionForm(get({This, preGameSelectorPaintable}))),
-                case ((SelectedIndex < get({This, lockedIndex})) orelse (not (fun(Target_N67821) -> (get({Target_N67821, '$class'})):isLocked(Target_N67821) end)('LockedUtil':getInstance()))) of
+                SelectedIndex = (fun(Target_N67932) -> (get({Target_N67932, '$class'})):getSelectedIndex(Target_N67932) end)((get({get({This, preGameSelectorPaintable}), '$class'})):getPreGameSelectionForm(get({This, preGameSelectorPaintable}))),
+                case ((SelectedIndex < get({This, lockedIndex})) orelse (not (fun(Target_N68006) -> (get({Target_N68006, '$class'})):isLocked(Target_N68006) end)('LockedUtil':getInstance()))) of
                     true ->
                     case (not (get({get({This, abRunnable}), '$class'})):isRunning(get({This, abRunnable}))) of
                         true ->
                         (get({get({This, abRunnable}), '$class'})):setRunning(get({This, abRunnable}), true),
-                        (fun(Target_N67946) -> (get({Target_N67946, '$class'})):processThread(Target_N67946, get({This, abRunnable})) end)('ThreadObjectUtil':getInstance());
+                        (fun(Target_N68131) -> (get({Target_N68131, '$class'})):processThread(Target_N68131, get({This, abRunnable})) end)('ThreadObjectUtil':getInstance());
                         false -> ok
                     end,
                     throw('$break');
                     false ->
-                    (fun(Target_N67855) -> (get({Target_N67855, '$class'})):fire(Target_N67855) end)('LockedFeatureNotificationUtil':getInstance())
+                    (fun(Target_N68040) -> (get({Target_N68040, '$class'})):fire(Target_N68040) end)('LockedFeatureNotificationUtil':getInstance())
                 end;
                 false -> ok
             end
@@ -121,4 +119,5 @@ getName(This) ->
 
 getPlayerGameInput(This) ->
         get({This, playerGameInput}).
+% Java nested class MapSelectionRunnable: move it to its own module 'MapSelectionRunnable'
 

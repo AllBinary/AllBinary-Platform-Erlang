@@ -44,8 +44,6 @@ new() ->
     init_fields(This),
         try
             BasicHudFactory = 'BasicHudFactory':getInstance(),
-            ok % Java nested type NoGameGameNotificationHud: move it to its own module
-,
             put({This, gameNotificationHud}, 'NoGameGameNotificationHud':new())
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
             CommonStrings = 'CommonStrings':getInstance(),
@@ -54,4 +52,5 @@ new() ->
 
 getGameNotificationHud(This) ->
         get({This, gameNotificationHud}).
+% Java nested class NoGameGameNotificationHud: move it to its own module 'NoGameGameNotificationHud'
 

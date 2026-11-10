@@ -38,8 +38,8 @@ new(Before, Type, Name, Value, After) when (is_list(Before) orelse Before =:= un
         init_fields(This).
 
 setMaxLength(This, Length) ->
-        array:size(This) = allbinary_java:to_string(Length),
-        (get({This, '$class'})):addAttribute(This, get({This, 'MAXLENGTH'}), array:size(This)).
+        put({This, length}, allbinary_java:to_string(Length)),
+        (get({This, '$class'})):addAttribute(This, get({This, 'MAXLENGTH'}), get({This, length})).
 
 setSize(This, Size) ->
         put({This, size}, allbinary_java:to_string(Size)),

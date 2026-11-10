@@ -25,9 +25,9 @@ getMaxNonMatchingPixelDeltas(This) ->
     erlang:error({abstract_method, getMaxNonMatchingPixelDeltas}).
 
 isCollisionWithAvoidRectangles(This, Rectangle) ->
-    erlang:error({abstract_method, isCollisionWithAvoidRectangles});
-isCollisionWithAvoidRectangles(This, Point) ->
-    erlang:error({abstract_method, isCollisionWithAvoidRectangles}).
+    erlang:error({abstract_method, isCollisionWithAvoidRectangles})
+% unreachable Java overload isCollisionWithAvoidRectangles(GPoint point) has the same guards as an earlier clause
+.
 
 
 isColorAllowed(This, Frame, Point, Color) when is_integer(Frame) ->

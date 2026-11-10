@@ -51,18 +51,8 @@ getInstance(This, HashMap, PageContext) ->
                 false -> ok
             end,
             undefined
-        end;
-% throws LicensingException
-getInstance(This, HashMap, HttpServletRequest) ->
-        try
-            'AuthenticationHelper':new(HashMap, HttpServletRequest)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'TAGHELPERFACTORYERROR'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({get({This, commonStrings}), 'GET_INSTANCE'}), E);
-                false -> ok
-            end,
-            undefined
-        end.
+        end
+% unreachable Java overload getInstance(HashMap hashMap, HttpServletRequest httpServletRequest) has the same guards as an earlier clause
+.
 
 

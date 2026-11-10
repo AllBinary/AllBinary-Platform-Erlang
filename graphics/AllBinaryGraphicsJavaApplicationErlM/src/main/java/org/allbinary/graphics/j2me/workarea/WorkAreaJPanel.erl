@@ -230,10 +230,9 @@ duplicate(This, TreeNode) ->
             CanvasJPanel = (get({get({This, canvasJPanelList}), '$class'})):get(get({This, canvasJPanelList}), (get({FrameInteger, '$class'})):intValue(FrameInteger)),
             (get({This, '$class'})):initDuplicate(This, (get({CanvasJPanel, '$class'})):duplicate(CanvasJPanel));
             false -> ok
-        end;
-% throws Exception
-duplicate(This, Evt) ->
-        (get({This, '$class'})):duplicate(This, (get({Evt, '$class'})):getTreeNode(Evt)).
+        end
+% unreachable Java overload duplicate(MyCanvasEvent evt) has the same guards as an earlier clause
+.
 
 % throws Exception
 autoRotate(This, Increments, TotalAngle) when is_integer(Increments), is_integer(TotalAngle) ->
@@ -288,10 +287,9 @@ select(This, TreeNode) ->
             true ->
             (get({This, '$class'})):select(This, (get({FrameInteger, '$class'})):intValue(FrameInteger));
             false -> ok
-        end;
-select(This, Evt) ->
-        (get({This, '$class'})):select(This, (get({Evt, '$class'})):getTreeNode(Evt)),
-        (fun(Target_N74915) -> (get({Target_N74915, '$class'})):setStatus(Target_N74915, "Frame Selected") end)('StatusFactory':getInstance()).
+        end
+% unreachable Java overload select(MyCanvasEvent evt) has the same guards as an earlier clause
+.
 
 
 getDocument() ->

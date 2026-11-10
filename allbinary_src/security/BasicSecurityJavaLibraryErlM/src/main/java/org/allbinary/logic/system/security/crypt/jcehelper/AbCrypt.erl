@@ -59,8 +59,8 @@ init(This, KeyAsString) when (is_list(KeyAsString) orelse KeyAsString =:= undefi
             SecretKey = (get({KeyFactory, '$class'})):generateSecret(KeyFactory, KeySpec),
             Cipher = 'Cipher':getInstance(get({This, algorithm})),
             put({This, secretComposite}, 'SecretComposite':new(SecretKey, Cipher, Key))
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            'PreLogUtil':putOE("init Failed", This, get({CommonStrings, 'INIT'}), E)
+        catch _:E_N66701 when E_N66701 =/= '$break', E_N66701 =/= '$continue', (not is_tuple(E_N66701) orelse element(1, E_N66701) =/= '$return') ->
+            'PreLogUtil':putOE("init Failed", This, get({CommonStrings, 'INIT'}), E_N66701)
         end.
 
 encrypt(This, Array) when (is_tuple(Array) orelse Array =:= undefined) ->

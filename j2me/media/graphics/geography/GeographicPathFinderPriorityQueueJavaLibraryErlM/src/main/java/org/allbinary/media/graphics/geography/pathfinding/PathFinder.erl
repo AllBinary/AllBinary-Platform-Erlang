@@ -12,8 +12,6 @@
 %  
 % Generated Code Do Not Modify
 % package org.allbinary.media.graphics.geography.pathfinding
-% import java.util.HashSet
-% import java.util.PriorityQueue
 % import org.allbinary.game.layer.AllBinaryTiledLayer
 % import org.allbinary.logic.NullUtil
 % import org.allbinary.logic.communication.log.LogUtil
@@ -24,6 +22,8 @@
 % import org.allbinary.media.graphics.geography.map.GeographicMapCellPosition
 % import org.allbinary.media.graphics.geography.map.GeographicMapCellType
 % import org.allbinary.media.graphics.geography.map.racetrack.RaceTrackGeographicMapCellType
+% import org.allbinary.util.ABHashSet
+% import org.allbinary.util.ABPriorityQueue
 % import org.allbinary.util.BasicArrayList
 % import org.allbinary.util.BasicArrayListD
 % import org.allbinary.util.BasicArrayListUtil
@@ -38,8 +38,8 @@ init_fields(This) ->
     put({This, logUtil}, 'LogUtil':getInstance()),
     put({This, basicArrayListUtil}, 'BasicArrayListUtil':getInstance()),
     put({This, mathUtil}, 'MathUtil':getInstance()),
-    put({This, openPriorityQueue}, 'PriorityQueue':new()),
-    put({This, closedSet}, 'HashSet':new()),
+    put({This, openPriorityQueue}, 'ABPriorityQueue':new()),
+    put({This, closedSet}, 'ABHashSet':new()),
     put({This, geographicMapInterface}, get({'NullUtil':getInstance(), 'NULL_OBJECT'})),
     put({This, costArray}, get({'PathFindingNodeCost', 'NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY'})),
     ok.

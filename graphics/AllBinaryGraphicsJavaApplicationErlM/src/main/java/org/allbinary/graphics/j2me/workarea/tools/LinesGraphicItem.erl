@@ -167,12 +167,9 @@ addPoint(This, PointNodes) ->
         YTextNode = (get({YNode, '$class'})):getFirstChild(YNode),
         YInteger = (get({YTextNode, '$class'})):getNodeValue(YTextNode),
         Point = (fun(Target_N69566) -> (get({Target_N69566, '$class'})):createXY(Target_N69566, (get({XInteger, '$class'})):intValue(XInteger), (get({YInteger, '$class'})):intValue(YInteger)) end)('PointFactory':getInstance()),
-        (get({This, '$class'})):addPoint(This, Point);
-addPoint(This, Point) ->
-        (fun(Target_N69730) -> (get({Target_N69730, '$class'})):add(Target_N69730, Point) end)((get({get({This, points}), '$class'})):getPoints(get({This, points}))),
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({Point, '$class'})):toString(Point), This, "addPoint"),
-        (get({get({This, pointTreeNodeVector}), '$class'})):add(get({This, pointTreeNodeVector}), 'DefaultMutableTreeNode':new((get({Point, '$class'})):toString(Point))),
-        (get({get({This, treeNode}), '$class'})):add(get({This, treeNode}), (get({get({This, pointTreeNodeVector}), '$class'})):get(get({This, pointTreeNodeVector}), ((get({get({This, pointTreeNodeVector}), '$class'})):size(get({This, pointTreeNodeVector})) - 1))).
+        (get({This, '$class'})):addPoint(This, Point)
+% unreachable Java overload addPoint(GPoint point) has the same guards as an earlier clause
+.
 
 
 removePoint(This) ->

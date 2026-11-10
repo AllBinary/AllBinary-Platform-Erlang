@@ -31,7 +31,6 @@
 % import org.allbinary.game.input.form.NullRTSFormInputFactory
 % import org.allbinary.game.input.form.RTSFormInput
 % import org.allbinary.game.layer.building.event.BuildingEventHandler
-% import org.allbinary.game.layer.unit.UnitLayer
 % import org.allbinary.game.layer.waypoint.Waypoint2LogHelper
 % import org.allbinary.game.layer.waypoint.Waypoint2SelectedLogHelper
 % import org.allbinary.game.layer.waypoint.WaypointBase
@@ -98,7 +97,7 @@ new(RemoteInfo, ParentLayer, AdvancedRTSProperties, GroupInterface, RootName, Na
 % throws Exception
 updateWaypointBehavior(This, GeographicMapInterface) ->
         'RTSLayer':updateWaypointBehavior(This, GeographicMapInterface),
-        (fun(Target_N68428) -> (get({Target_N68428, '$class'})):setAllBinaryGameLayerManager(Target_N68428, get({This, allBinaryGameLayerManagerP})) end)((fun(Target_N68435) -> (get({Target_N68435, '$class'})):getWaypoint(Target_N68435) end)((get({This, '$class'})):getWaypointBehavior(This))).
+        (fun(Target_N68393) -> (get({Target_N68393, '$class'})):setAllBinaryGameLayerManager(Target_N68393, get({This, allBinaryGameLayerManagerP})) end)((fun(Target_N68400) -> (get({Target_N68400, '$class'})):getWaypoint(Target_N68400) end)((get({This, '$class'})):getWaypointBehavior(This))).
 
 initVisibility(This, RtsPlayerLayerInterface) ->
         AdvancedRTSPlayerLayerInterface = RtsPlayerLayerInterface,
@@ -113,17 +112,17 @@ initVisibility(This, RtsPlayerLayerInterface) ->
 construct(This, RtsPlayerLayerInterface) ->
         'RTSLayer':construct(This, RtsPlayerLayerInterface),
         (get({This, '$class'})):initVisibility(This, RtsPlayerLayerInterface),
-        (fun(Target_N68823) -> (get({Target_N68823, '$class'})):addListenerInterface(Target_N68823, (fun(Target_N68848) -> (get({Target_N68848, '$class'})):getWaypoint(Target_N68848) end)((get({This, '$class'})):getWaypointBehavior(This))) end)('BuildingEventHandler':getInstance()).
+        (fun(Target_N68788) -> (get({Target_N68788, '$class'})):addListenerInterface(Target_N68788, (fun(Target_N68813) -> (get({Target_N68813, '$class'})):getWaypoint(Target_N68813) end)((get({This, '$class'})):getWaypointBehavior(This))) end)('BuildingEventHandler':getInstance()).
 
 % throws Exception
 setDestroyed(This, Destroyed) when is_boolean(Destroyed) ->
         'RTSLayer':setDestroyed(This, Destroyed),
         case (get({This, '$class'})):isDestroyed(This) of
             true ->
-            (fun(Target_N68985) -> (get({Target_N68985, '$class'})):removeListener(Target_N68985, (fun(Target_N69010) -> (get({Target_N69010, '$class'})):getWaypoint(Target_N69010) end)((get({This, '$class'})):getWaypointBehavior(This))) end)('BuildingEventHandler':getInstance()),
-            (fun(Target_N69035) -> (get({Target_N69035, '$class'})):removeListener(Target_N69035, This) end)('BuildingEventHandler':getInstance()),
-            (fun(Target_N69069) -> (get({Target_N69069, '$class'})):addListener(Target_N69069, This) end)('DestroyedEventHandler':getInstance()),
-            (fun(Target_N69103) -> (get({Target_N69103, '$class'})):destroyAndClear(Target_N69103, (fun(Target_N69128) -> (get({Target_N69128, '$class'})):getOwnedWaypointList(Target_N69128) end)((get({This, '$class'})):getWaypointBehavior(This))) end)('RTSLayerUtil':getInstance());
+            (fun(Target_N68950) -> (get({Target_N68950, '$class'})):removeListener(Target_N68950, (fun(Target_N68975) -> (get({Target_N68975, '$class'})):getWaypoint(Target_N68975) end)((get({This, '$class'})):getWaypointBehavior(This))) end)('BuildingEventHandler':getInstance()),
+            (fun(Target_N69000) -> (get({Target_N69000, '$class'})):removeListener(Target_N69000, This) end)('BuildingEventHandler':getInstance()),
+            (fun(Target_N69034) -> (get({Target_N69034, '$class'})):addListener(Target_N69034, This) end)('DestroyedEventHandler':getInstance()),
+            (fun(Target_N69068) -> (get({Target_N69068, '$class'})):destroyAndClear(Target_N69068, (fun(Target_N69093) -> (get({Target_N69093, '$class'})):getOwnedWaypointList(Target_N69093) end)((get({This, '$class'})):getWaypointBehavior(This))) end)('RTSLayerUtil':getInstance());
             false -> ok
         end.
 
@@ -153,7 +152,7 @@ shouldAddWaypointFromBuilding(This) ->
         case (get({This, parentLayer}) =/= get({'NullPathFindingLayer', 'NULL_PATH_FINDING_LAYER'})) of
             true ->
             ParentAdvancedRTSGameLayer = get({This, parentLayer}),
-            case ((get({ParentAdvancedRTSGameLayer, '$class'})):getType(ParentAdvancedRTSGameLayer) =/= 'UnitLayer':getStaticType()) of
+            case ((get({ParentAdvancedRTSGameLayer, '$class'})):getType(ParentAdvancedRTSGameLayer) =/= 1) of
                 true ->
                 throw({'$return', true});
                 false -> ok
@@ -165,7 +164,7 @@ shouldAddWaypointFromBuilding(This) ->
 
 isWaypointListEmptyOrOnlyTargets(This) ->
         try
-        case ((get({This, '$class'})):getType(This) =/= 'UnitLayer':getStaticType()) of
+        case ((get({This, '$class'})):getType(This) =/= 1) of
             true ->
             throw({'$return', true});
             false -> ok
@@ -177,9 +176,9 @@ isWaypointListEmptyOrOnlyTargets(This) ->
 buildingChase(This, AllbinaryLayer, CellPosition) ->
         try
         GeographicMapCellPosition = (get({This, '$class'})):getCurrentGeographicMapCellPosition(This),
-        BuildingDirection = (fun(Target_N70022) -> (get({Target_N70022, '$class'})):getDirectionFromCellPositionToAdjacentCellPosition(Target_N70022, GeographicMapCellPosition, CellPosition) end)('GeographicMapDirectionUtil':getInstance()),
-        AngleInfo = (fun(Target_N70103) -> (get({Target_N70103, '$class'})):getAngleInfoP(Target_N70103) end)((get({This, '$class'})):getRotationAnimationInterface(This)),
-        Angle = (fun(Target_N70156) -> (get({Target_N70156, '$class'})):adjustAngleToFrameAngle(Target_N70156, ((get({AngleInfo, '$class'})):getAngle(AngleInfo) + 90)) end)('FrameUtil':getInstance()),
+        BuildingDirection = (fun(Target_N69963) -> (get({Target_N69963, '$class'})):getDirectionFromCellPositionToAdjacentCellPosition(Target_N69963, GeographicMapCellPosition, CellPosition) end)('GeographicMapDirectionUtil':getInstance()),
+        AngleInfo = (fun(Target_N70044) -> (get({Target_N70044, '$class'})):getAngleInfoP(Target_N70044) end)((get({This, '$class'})):getRotationAnimationInterface(This)),
+        Angle = (fun(Target_N70097) -> (get({Target_N70097, '$class'})):adjustAngleToFrameAngle(Target_N70097, ((get({AngleInfo, '$class'})):getAngle(AngleInfo) + 90)) end)('FrameUtil':getInstance()),
         GameKeyEventFactory = 'GameKeyEventFactory':getInstance(),
         case (BuildingDirection =:= get({'DirectionFactory':getInstance(), 'UP'})) of
             true ->
@@ -187,7 +186,7 @@ buildingChase(This, AllbinaryLayer, CellPosition) ->
             case ((Angle > 180) andalso (Angle < 360)) of
                 true ->
                 (get({get({This, rtsLayer2LogHelper}), '$class'})):buildingChaseLeft(get({This, rtsLayer2LogHelper}), This, Angle),
-                (fun(Target_N71876) -> (get({Target_N71876, '$class'})):add(Target_N71876, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'LEFT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
+                (fun(Target_N71817) -> (get({Target_N71817, '$class'})):add(Target_N71817, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'LEFT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
                 case (Angle =< 190) of
                     true ->
                     throw({'$return', true});
@@ -195,7 +194,7 @@ buildingChase(This, AllbinaryLayer, CellPosition) ->
                 end;
                 false ->
                 (get({get({This, rtsLayer2LogHelper}), '$class'})):buildingChaseRight(get({This, rtsLayer2LogHelper}), This, Angle),
-                (fun(Target_N71728) -> (get({Target_N71728, '$class'})):add(Target_N71728, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'RIGHT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
+                (fun(Target_N71669) -> (get({Target_N71669, '$class'})):add(Target_N71669, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'RIGHT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
                 case (Angle >= 170) of
                     true ->
                     throw({'$return', true});
@@ -209,7 +208,7 @@ buildingChase(This, AllbinaryLayer, CellPosition) ->
             case ((Angle > 180) andalso (Angle < 360)) of
                 true ->
                 (get({get({This, rtsLayer2LogHelper}), '$class'})):buildingChaseLeft(get({This, rtsLayer2LogHelper}), This, Angle),
-                (fun(Target_N71492) -> (get({Target_N71492, '$class'})):add(Target_N71492, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'RIGHT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
+                (fun(Target_N71433) -> (get({Target_N71433, '$class'})):add(Target_N71433, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'RIGHT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
                 case (Angle > 315) of
                     true ->
                     throw({'$return', true});
@@ -217,7 +216,7 @@ buildingChase(This, AllbinaryLayer, CellPosition) ->
                 end;
                 false ->
                 (get({get({This, rtsLayer2LogHelper}), '$class'})):buildingChaseRight(get({This, rtsLayer2LogHelper}), This, Angle),
-                (fun(Target_N71344) -> (get({Target_N71344, '$class'})):add(Target_N71344, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'LEFT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
+                (fun(Target_N71285) -> (get({Target_N71285, '$class'})):add(Target_N71285, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'LEFT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
                 case (Angle < 45) of
                     true ->
                     throw({'$return', true});
@@ -231,7 +230,7 @@ buildingChase(This, AllbinaryLayer, CellPosition) ->
             case ((Angle > 90) andalso (Angle < 270)) of
                 true ->
                 (get({get({This, rtsLayer2LogHelper}), '$class'})):buildingChaseDown(get({This, rtsLayer2LogHelper}), This, Angle),
-                (fun(Target_N71112) -> (get({Target_N71112, '$class'})):add(Target_N71112, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'LEFT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
+                (fun(Target_N71053) -> (get({Target_N71053, '$class'})):add(Target_N71053, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'LEFT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
                 case (Angle < 135) of
                     true ->
                     throw({'$return', true});
@@ -239,7 +238,7 @@ buildingChase(This, AllbinaryLayer, CellPosition) ->
                 end;
                 false ->
                 (get({get({This, rtsLayer2LogHelper}), '$class'})):buildingChaseUp(get({This, rtsLayer2LogHelper}), This, Angle),
-                (fun(Target_N70964) -> (get({Target_N70964, '$class'})):add(Target_N70964, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'RIGHT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
+                (fun(Target_N70905) -> (get({Target_N70905, '$class'})):add(Target_N70905, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'RIGHT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
                 case (Angle > 45) of
                     true ->
                     throw({'$return', true});
@@ -253,7 +252,7 @@ buildingChase(This, AllbinaryLayer, CellPosition) ->
             case ((Angle > 90) andalso (Angle < 270)) of
                 true ->
                 (get({get({This, rtsLayer2LogHelper}), '$class'})):buildingChaseDown(get({This, rtsLayer2LogHelper}), This, Angle),
-                (fun(Target_N70734) -> (get({Target_N70734, '$class'})):add(Target_N70734, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'RIGHT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
+                (fun(Target_N70675) -> (get({Target_N70675, '$class'})):add(Target_N70675, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'RIGHT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
                 case (Angle > 225) of
                     true ->
                     throw({'$return', true});
@@ -261,7 +260,7 @@ buildingChase(This, AllbinaryLayer, CellPosition) ->
                 end;
                 false ->
                 (get({get({This, rtsLayer2LogHelper}), '$class'})):buildingChaseUp(get({This, rtsLayer2LogHelper}), This, Angle),
-                (fun(Target_N70564) -> (get({Target_N70564, '$class'})):add(Target_N70564, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'LEFT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
+                (fun(Target_N70505) -> (get({Target_N70505, '$class'})):add(Target_N70505, (get({GameKeyEventFactory, '$class'})):getInstanceForKey(GameKeyEventFactory, This, get({'Canvas', 'LEFT'}))) end)((get({This, '$class'})):getGameKeyEventList(This)),
                 case ((Angle < 315) andalso (Angle > 180)) of
                     true ->
                     throw({'$return', true});
@@ -306,8 +305,8 @@ onDestroyed(This, DestroyedEvent) ->
             LayerInterface = (get({DestroyedEvent, '$class'})):getLayerInterface(DestroyedEvent),
             case (LayerInterface =:= This) of
                 true ->
-                (fun(Target_N72738) -> (get({Target_N72738, '$class'})):removeListener(Target_N72738, This) end)('DestroyedEventHandler':getInstance()),
-                Waypoint = (fun(Target_N72783) -> (get({Target_N72783, '$class'})):getWaypoint(Target_N72783) end)((get({This, '$class'})):getWaypointBehavior(This)),
+                (fun(Target_N72679) -> (get({Target_N72679, '$class'})):removeListener(Target_N72679, This) end)('DestroyedEventHandler':getInstance()),
+                Waypoint = (fun(Target_N72724) -> (get({Target_N72724, '$class'})):getWaypoint(Target_N72724) end)((get({This, '$class'})):getWaypointBehavior(This)),
                 (get({Waypoint, '$class'})):reset(Waypoint);
                 false -> ok
             end

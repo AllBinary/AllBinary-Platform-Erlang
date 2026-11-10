@@ -833,3 +833,9 @@ getGameInitializationInterfaceFactoryInterface(This) ->
 getType(This) ->
         get({'DemoCanvas', 'TYPE'}).
 
+getTitle(This) ->
+        'RunnableCanvas':getTitle(This).
+
+isPaused(This) ->
+        'RunnableCanvas':isPaused(This).
+

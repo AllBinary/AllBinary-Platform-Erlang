@@ -16,6 +16,7 @@
 % import org.allbinary.game.layer.resources.GameGraphicsResourceUtil
 % import org.allbinary.AndroidUtil
 % import org.allbinary.game.configuration.feature.GraphicsFeatureFactory
+% import org.allbinary.logic.NullUtil
 
 -module('Unit2DecalGameResources').
 -compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
@@ -25,12 +26,20 @@
     apply('BasicGameResources', Function, Arguments).
 
 static_init() ->
-    put({?MODULE, instance}, 'Unit2DecalGameResources':new()),
+    put({?MODULE, instance}, get({'NullUtil':getInstance(), 'NULL_OBJECT'})),
     ok.
 
 init_fields(This) ->
     ok.
 
+
+getInstance() ->
+        case (get({'Unit2DecalGameResources', instance}) =:= get({'NullUtil':getInstance(), 'NULL_OBJECT'})) of
+            true ->
+            put({'Unit2DecalGameResources', instance}, 'Unit2DecalGameResources':new());
+            false -> ok
+        end,
+        get({'Unit2DecalGameResources', instance}).
 
 new() ->
     This = make_ref(),
@@ -59,12 +68,9 @@ getString(This) ->
         try
         case 'AndroidUtil':isAndroid() of
             true ->
-            throw({'$return', (fun(Target_N66335) -> (get({Target_N66335, '$class'})):getStringForFeature(Target_N66335, get({'GraphicsFeatureFactory':getInstance(), 'SPRITE_QUARTER_ROTATION_GRAPHICS'})) end)('GameGraphicsResourceUtil':getInstance())});
+            throw({'$return', (fun(Target_N66527) -> (get({Target_N66527, '$class'})):getStringForFeature(Target_N66527, get({'GraphicsFeatureFactory':getInstance(), 'SPRITE_QUARTER_ROTATION_GRAPHICS'})) end)('GameGraphicsResourceUtil':getInstance())});
             false ->
             throw({'$return', 'BasicGameResources':getString(This)})
         end
         catch throw:{'$return', ReturnValue} -> ReturnValue end.
-
-getInstance() ->
-        get({'Unit2DecalGameResources', instance}).
 

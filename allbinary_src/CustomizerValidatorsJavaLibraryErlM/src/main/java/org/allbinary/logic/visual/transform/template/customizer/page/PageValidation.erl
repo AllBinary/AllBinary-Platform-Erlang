@@ -52,22 +52,15 @@ new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Document),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Document) ->
     'Validation':'$init'(This),
     init_fields(This),
         Node = 'DomSearchHelper':getNode(get({'TitleData':getInstance(), 'NAME'}), (get({Document, '$class'})):getElementsByTagName(Document, get({'PageData':getInstance(), 'NAME'}))),
-        put({This, title}, 'TitleValidation':new(Node));
-'$init'(This, HashMap) ->
-    'Validation':'$init'(This),
-    init_fields(This),
-        (get({This, '$class'})):getFormData(This, HashMap).
+        put({This, title}, 'TitleValidation':new(Node))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 getFormData(This, HashMap) ->

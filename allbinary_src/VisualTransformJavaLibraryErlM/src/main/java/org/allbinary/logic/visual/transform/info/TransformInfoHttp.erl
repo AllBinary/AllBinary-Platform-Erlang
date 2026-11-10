@@ -49,11 +49,6 @@ new(Request, PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Request, PropertiesHashMap, PageContext),
-    This;
-new(DatabaseHashMap, PropertiesHashMap, PageContext) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, DatabaseHashMap, PropertiesHashMap, PageContext),
     This.
 
 '$init'(This, PropertiesHashMap, PageContext, Crud) when is_boolean(Crud) ->
@@ -76,17 +71,9 @@ new(DatabaseHashMap, PropertiesHashMap, PageContext) ->
             false -> ok
         end,
         (get({This, '$class'})):set(This, (fun(Target_N66864) -> (get({Target_N66864, '$class'})):toHashMap(Target_N66864) end)('RequestParams':new(Request))),
-        (get({This, '$class'})):override(This, PropertiesHashMap);
-'$init'(This, DatabaseHashMap, PropertiesHashMap, PageContext) ->
-        'TransformInfo':'$init'(This),
-        init_fields(This),
-        put({This, abContext}, 'AbContext':new(PropertiesHashMap, PageContext)),
-        case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
-            true ->
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Properties HashMap: ", (get({PropertiesHashMap, '$class'})):toString(PropertiesHashMap)]), This, "Constructor(HashMap, HashMap, PageContext)");
-            false -> ok
-        end,
-        (get({This, '$class'})):set(This, DatabaseHashMap).
+        (get({This, '$class'})):override(This, PropertiesHashMap)
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 

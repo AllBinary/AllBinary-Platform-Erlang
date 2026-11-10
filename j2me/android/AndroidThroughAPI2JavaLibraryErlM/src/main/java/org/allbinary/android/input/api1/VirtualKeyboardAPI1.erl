@@ -15,6 +15,8 @@
 % import org.allbinary.android.input.VirtualKeyboard
 % import org.allbinary.input.event.VirtualKeyboardEventListenerInterface
 % import android.app.Activity
+% import org.allbinary.input.event.VirtualKeyboardEvent
+% import org.allbinary.logic.util.event.AllBinaryEventObject
 
 -module('VirtualKeyboardAPI1').
 -compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
@@ -43,4 +45,10 @@ new(Activity) ->
     'VirtualKeyboard':'$init'(This),
     init_fields(This),
         ok.
+
+onVirtualKeyboardEvent(This, VirtualKeyboardEvent) ->
+        'VirtualKeyboard':onVirtualKeyboardEvent(This, VirtualKeyboardEvent).
+
+onEvent(This, EventObject) ->
+        'VirtualKeyboard':onEvent(This, EventObject).
 

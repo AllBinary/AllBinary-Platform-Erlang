@@ -57,33 +57,11 @@ getInstance(This, HttpServletRequest) ->
                 false -> ok
             end,
             erlang:error(E)
-        end;
-% throws Exception
-getInstance(This, PaymentType) ->
-        HashMap = (fun(Target_N66639) -> (get({Target_N66639, '$class'})):createHashMap(Target_N66639) end)('StdUtil':getInstance()),
-        (get({HashMap, '$class'})):put(HashMap, (get({get({'PaymentGatewayData', 'NAME'}), '$class'})):toString(get({'PaymentGatewayData', 'NAME'})), (get({PaymentType, '$class'})):getName(PaymentType)),
-        (get({This, '$class'})):getInstance(This, HashMap);
-% throws Exception
-getInstance(This, HashMap) ->
-        CommonStrings = 'CommonStrings':getInstance(),
-        try
-            GatewayName = (get({HashMap, '$class'})):get(HashMap, (get({get({'PaymentGatewayData', 'NAME'}), '$class'})):toString(get({'PaymentGatewayData', 'NAME'}))),
-            PaymentType = (fun(Target_N66980) -> (get({Target_N66980, '$class'})):get(Target_N66980, GatewayName) end)('BasicPaymentTypeUtil':getInstance()),
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'PAYMENT'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat([lists:concat([lists:concat(["Getting PaymentGatewayInterface for PaymentType: ", (get({PaymentType, '$class'})):getName(PaymentType)]), " with: "]), HashMap]), This, get({CommonStrings, 'GET_INSTANCE'}));
-                false -> ok
-            end,
-            PaymentGatewayInterfaceFactoryInterface = (get({PaymentType, '$class'})):getPaymentGatewayInterfaceFactoryInterface(PaymentType),
-            (get({PaymentGatewayInterfaceFactoryInterface, '$class'})):getInstance(PaymentGatewayInterfaceFactoryInterface, HashMap)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'PAYMENTERROR'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({CommonStrings, 'EXCEPTION'}), This, get({CommonStrings, 'GET_INSTANCE'}), E);
-                false -> ok
-            end,
-            erlang:error(E)
-        end.
+        end
+% unreachable Java overload getInstance(BasicPaymentType paymentType) has the same guards as an earlier clause
+
+% unreachable Java overload getInstance(HashMap hashMap) has the same guards as an earlier clause
+.
 
 
 

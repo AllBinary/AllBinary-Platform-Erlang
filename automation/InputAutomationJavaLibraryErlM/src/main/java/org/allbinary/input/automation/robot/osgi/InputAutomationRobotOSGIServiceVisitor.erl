@@ -41,20 +41,8 @@ new() ->
         ok.
 
 visit(This, AnyType) ->
-        (get({This, '$class'})):visit(This, AnyType);
-visit(This, OsgiServiceInterface) ->
-        try
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, "visit"),
-            InputAutomationRobotServiceInterface = OsgiServiceInterface,
-            InputRobotInterfaceArray = (get({InputAutomationRobotServiceInterface, '$class'})):getInputRobotInterfaceArray(InputAutomationRobotServiceInterface),
-            lists:foreach(fun(Index) ->
-                (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Adding: ", (fun(Target_N66243) -> (get({Target_N66243, '$class'})):getName(Target_N66243) end)(array:get(Index, InputRobotInterfaceArray))]), This, "visit"),
-                (fun(Target_N66285) -> (get({Target_N66285, '$class'})):add(Target_N66285, array:get(Index, InputRobotInterfaceArray)) end)('InputRobotFactory':getInstance())
-            end, lists:seq(0, array:size(InputRobotInterfaceArray) - 1)),
-            true
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "visit", E),
-            false
-        end.
+        (get({This, '$class'})):visit(This, AnyType)
+% unreachable Java overload visit(OSGIServiceInterface osgiServiceInterface) has the same guards as an earlier clause
+.
 
 

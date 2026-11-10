@@ -69,3 +69,6 @@ paintXY(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
 paintUnselected(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
         ok.
 
+getLabel(This) ->
+        'ABCustomItem':getLabel(This).
+

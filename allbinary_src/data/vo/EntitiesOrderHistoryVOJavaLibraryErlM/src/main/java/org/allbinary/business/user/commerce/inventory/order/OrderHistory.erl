@@ -71,11 +71,6 @@ new(BasketInterface, OrderHistory) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, BasketInterface, OrderHistory),
-    This;
-new(BasketInterface, OrderHistoryHashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, BasketInterface, OrderHistoryHashMap),
     This.
 
 '$init'(This, BasketInterface, OrderHistory) ->
@@ -97,27 +92,9 @@ new(BasketInterface, OrderHistoryHashMap) ->
         'Order':setUserComments(This, (get({OrderHistory, '$class'})):getUserComments(OrderHistory)),
         'Order':setUserCancelComments(This, (get({OrderHistory, '$class'})):getUserCancelComments(OrderHistory)),
         'Order':setStoreComments(This, (get({OrderHistory, '$class'})):getStoreComments(OrderHistory)),
-        'Order':setStoreCancelComments(This, (get({OrderHistory, '$class'})):getStoreCancelComments(OrderHistory));
-'$init'(This, BasketInterface, OrderHistoryHashMap) ->
-        'Order':'$init'(This, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'StoreFrontData':getInstance(), 'NAME'})), BasketInterface, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderData', 'ID'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingMethodData', 'NAME'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'EntryData':getInstance(), 'SPECIAL'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'PaymentData', 'METHOD'}))),
-        init_fields(This),
-        put({This, shippingAddress}, 'StreetAddress':new((get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'NAME'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'STREET'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'CITY'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'STATE'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'CODE'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'ShippingAddressData', 'COUNTRY'})))),
-        put({This, billingAddress}, 'StreetAddress':new((get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'NAME'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'STREET'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'CITY'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'STATE'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'CODE'})), (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'BillingAddressData', 'COUNTRY'})))),
-        put({This, payment}, 'Payment':new(OrderHistoryHashMap)),
-        put({This, userName}, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'UserData', 'USERNAME'}))),
-        put({This, orderDate}, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderHistoryData', 'ORDERDATE'}))),
-        put({This, shipDate}, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderHistoryData', 'SHIPPEDDATE'}))),
-        put({This, transDate}, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderHistoryData', 'TRANSDATE'}))),
-        put({This, cancelDate}, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderHistoryData', 'CANCELDATE'}))),
-        put({This, status}, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderHistoryData', 'STATUS'}))),
-        put({This, subTotal}, 'Money':new((get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderHistoryData', 'SUBTOTAL'})))),
-        put({This, total}, 'Money':new((get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderHistoryData', 'TOTAL'})))),
-        put({This, shippingCost}, 'Money':new((get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderHistoryData', 'SHIPPINGCOST'})))),
-        put({This, taxes}, 'Money':new((get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderHistoryData', 'TAX'})))),
-        'Order':setUserComments(This, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderData', 'CUSTOMERCOMMENT'}))),
-        'Order':setUserCancelComments(This, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderData', 'CUSTOMERCANCELCOMMENT'}))),
-        'Order':setStoreComments(This, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderData', 'STORECOMMENT'}))),
-        'Order':setStoreCancelComments(This, (get({OrderHistoryHashMap, '$class'})):get(OrderHistoryHashMap, get({'OrderData', 'STORECANCELCOMMENT'}))).
+        'Order':setStoreCancelComments(This, (get({OrderHistory, '$class'})):getStoreCancelComments(OrderHistory))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 setUserName(This, Value) when (is_list(Value) orelse Value =:= undefined) ->
@@ -238,4 +215,7 @@ toXmlNode(This, Document) ->
             (get({Node, '$class'})):appendChild(Node, 'ModDomHelper':createNameValueNodes(Document, Name, get({local, value})))
         end, lists:seq(0, Size - 1)),
         Node.
+
+getPaymentMethod(This) ->
+        'Order':getPaymentMethod(This).
 

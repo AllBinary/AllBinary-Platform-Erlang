@@ -33,8 +33,8 @@ makeByteBuffer(This, Bmp, Flip) when is_boolean(Flip) ->
         erlang:error({'RuntimeException'}).
 
 texImage2D(This, Gl, GlVersion, Target, Level, GenerateMipMap, OpenGLESImage, Border, Flip) when (is_list(GlVersion) orelse GlVersion =:= undefined), is_integer(Target), is_integer(Level), is_boolean(GenerateMipMap), is_integer(Border), is_boolean(Flip) ->
-        erlang:error({'RuntimeException'});
-texImage2D(This, Gl, GlVersion, Target, Level, GenerateMipMap, Bitmap, Border, Flip) when (is_list(GlVersion) orelse GlVersion =:= undefined), is_integer(Target), is_integer(Level), is_boolean(GenerateMipMap), is_integer(Border), is_boolean(Flip) ->
-        erlang:error({'RuntimeException'}).
+        erlang:error({'RuntimeException'})
+% unreachable Java overload texImage2D(GL10 gl, String glVersion, INT target, INT level, BOOLEAN generateMipMap, OpenGLBitmap bitmap, INT border, BOOLEAN flip) has the same guards as an earlier clause
+.
 
 

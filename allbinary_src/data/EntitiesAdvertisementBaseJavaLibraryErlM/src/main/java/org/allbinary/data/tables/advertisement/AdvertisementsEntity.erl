@@ -103,3 +103,6 @@ update(This, UpdatedValues) ->
 dropTable(This) ->
         'AbSqlBean':dropTable(This).
 
+insert(This, Values) ->
+        'AbSqlBean':insert(This, Values).
+

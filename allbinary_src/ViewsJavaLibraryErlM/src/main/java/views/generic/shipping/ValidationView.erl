@@ -48,3 +48,7 @@ toValidationInfoNode(This, Document) ->
 validationInfo(This) ->
         get({get({'ValidationView', 'MESSAGES'}), 'CONTACTADMIN'}).
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'ShippingMethodsView':getTransformInfoInterface(This).
+

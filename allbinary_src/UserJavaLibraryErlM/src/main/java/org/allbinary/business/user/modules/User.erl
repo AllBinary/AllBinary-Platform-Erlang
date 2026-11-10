@@ -88,21 +88,14 @@ new(Request) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Request),
-    This;
-new(UserHashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, UserHashMap),
     This.
 
 '$init'(This, Request) ->
     init_fields(This),
         (get({This, '$class'})):getFormData(This, (fun(Target_N67393) -> (get({Target_N67393, '$class'})):toHashMap(Target_N67393) end)('RequestParams':new(Request))),
-        put({This, userConfigurationInterface}, 'UserConfigurationInterfaceFactory':getInstance((get({This, '$class'})):getRole(This)));
-'$init'(This, UserHashMap) ->
-    init_fields(This),
-        (get({This, '$class'})):getFormData(This, UserHashMap),
-        put({This, userConfigurationInterface}, 'UserConfigurationInterfaceFactory':getInstance((get({This, '$class'})):getRole(This))).
+        put({This, userConfigurationInterface}, 'UserConfigurationInterfaceFactory':getInstance((get({This, '$class'})):getRole(This)))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception

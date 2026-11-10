@@ -66,10 +66,9 @@ getExtension(This, FilePath) when (is_list(FilePath) orelse FilePath =:= undefin
         Extension;
 % throws Exception
 getExtension(This, AbFilePath) ->
-        (get({This, '$class'})):getExtension(This, (get({AbFilePath, '$class'})):toString(AbFilePath));
-% throws Exception
-getExtension(This, AbPath) ->
-        (get({This, '$class'})):getExtension(This, (get({AbPath, '$class'})):toString(AbPath)).
+        (get({This, '$class'})):getExtension(This, (get({AbFilePath, '$class'})):toString(AbFilePath))
+% unreachable Java overload getExtension(AbPath abPath) has the same guards as an earlier clause
+.
 
 
 
@@ -90,10 +89,9 @@ getWithoutExtension(This, FilePath) when (is_list(FilePath) orelse FilePath =:= 
         PathWithoutExtension;
 % throws Exception
 getWithoutExtension(This, AbFilePath) ->
-        (get({This, '$class'})):getWithoutExtension(This, (get({AbFilePath, '$class'})):toString(AbFilePath));
-% throws Exception
-getWithoutExtension(This, AbPath) ->
-        (get({This, '$class'})):getWithoutExtension(This, (get({AbPath, '$class'})):toString(AbPath)).
+        (get({This, '$class'})):getWithoutExtension(This, (get({AbFilePath, '$class'})):toString(AbFilePath))
+% unreachable Java overload getWithoutExtension(AbPath abPath) has the same guards as an earlier clause
+.
 
 
 

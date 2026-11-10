@@ -71,20 +71,8 @@ update(This, Gl) ->
             end, lists:seq(0, Size - 1));
             false -> ok
         end,
-        (get({ChoiceGroupFactory, '$class'})):init(ChoiceGroupFactory, ImageArray);
-update(This, Graphics) ->
-        Features = 'Features':getInstance(),
-        ChoiceGroupFactory = 'ChoiceGroupImageFactory':getInstance(),
-        ImageArray = (get({ChoiceGroupFactory, '$class'})):getImageArray(ChoiceGroupFactory),
-        case (get({Features, '$class'})):isDefault(Features, get({'OpenGLFeatureFactory':getInstance(), 'OPENGL'})) of
-            true ->
-            PreResourceImageUtil = 'PreResourceImageUtil':getInstance(),
-            Size = array:size(ImageArray),
-            lists:foreach(fun(Index) ->
-                (get({PreResourceImageUtil, '$class'})):update(PreResourceImageUtil, Graphics, array:get(Index, ImageArray))
-            end, lists:seq(0, Size - 1));
-            false -> ok
-        end,
-        (get({ChoiceGroupFactory, '$class'})):init(ChoiceGroupFactory, ImageArray).
+        (get({ChoiceGroupFactory, '$class'})):init(ChoiceGroupFactory, ImageArray)
+% unreachable Java overload update(Graphics graphics) has the same guards as an earlier clause
+.
 
 

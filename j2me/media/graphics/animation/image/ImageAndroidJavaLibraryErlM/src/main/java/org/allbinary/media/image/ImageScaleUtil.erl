@@ -82,7 +82,7 @@ createImage(This, ImageCache, OriginalImage, ScaleX, ScaleY, Cached) when is_num
             ScaleX2 = (get({ScaleX2Float, '$class'})):floatValue(ScaleX2Float),
             ScaleY2Float = (get({get({This, scaleYBasicArrayList}), '$class'})):get(get({This, scaleYBasicArrayList}), Index),
             ScaleY2 = (get({ScaleY2Float, '$class'})):floatValue(ScaleY2Float),
-            case ((ScaleX2 =:= ScaleX) andalso (ScaleY2 =:= ScaleY)) of
+            case ((ScaleX2 == ScaleX) andalso (ScaleY2 == ScaleY)) of
                 true ->
                 put({local, alreadyAvailable}, true);
                 false -> ok

@@ -56,11 +56,6 @@ new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Document),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Document) ->
@@ -71,11 +66,9 @@ new(HashMap) ->
             ABodyNode = (get({NodeList, '$class'})):item(NodeList, Index),
             ABodyValueNode = 'DomSearchHelper':getNode(get({'DomData', 'VALUE'}), (get({ABodyNode, '$class'})):getChildNodes(ABodyNode)),
             put({This, body}, 'DomNodeHelper':getTextNodeValue(ABodyValueNode))
-        end, lists:seq(0, (get({NodeList, '$class'})):getLength(NodeList) - 1));
-'$init'(This, HashMap) ->
-    'Validation':'$init'(This),
-    init_fields(This),
-        (get({This, '$class'})):getFormData(This, HashMap).
+        end, lists:seq(0, (get({NodeList, '$class'})):getLength(NodeList) - 1))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception

@@ -245,3 +245,7 @@ validationInfo(This, StringBuffer, FileName, FileItemFieldName, Size) when (is_l
             false -> ok
         end.
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'InventoryItemView':getTransformInfoInterface(This).
+

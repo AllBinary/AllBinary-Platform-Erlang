@@ -125,3 +125,7 @@ toValidationInfoDoc(This) ->
 toValidationInfoNode(This, Document) ->
         undefined.
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'UserView':getTransformInfoInterface(This).
+

@@ -55,21 +55,14 @@ new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Document),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Document) ->
     'Validation':'$init'(This),
     init_fields(This),
-        put({This, cssStyleElementVector}, (fun(Target_N66240) -> (get({Target_N66240, '$class'})):getInstance(Target_N66240, Document) end)('StylesValidationFactory':getInstance()));
-'$init'(This, HashMap) ->
-    'Validation':'$init'(This),
-    init_fields(This),
-        put({This, cssStyleElementVector}, 'StylesValidationFactory':getInstance(HashMap)).
+        put({This, cssStyleElementVector}, (fun(Target_N66240) -> (get({Target_N66240, '$class'})):getInstance(Target_N66240, Document) end)('StylesValidationFactory':getInstance()))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 isValid(This) ->

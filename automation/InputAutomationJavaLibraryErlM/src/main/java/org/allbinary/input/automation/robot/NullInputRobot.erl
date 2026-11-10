@@ -101,3 +101,14 @@ toString(This) ->
 waitForIdle(This) ->
         ok.
 
+mouseMove(This, Point) ->
+        'AbstractInputRobot':mouseMove(This, Point).
+
+% throws Exception
+mouseMoveToTarget(This, Rectangle) ->
+        'AbstractInputRobot':mouseMoveToTarget(This, Rectangle).
+
+% throws Exception
+mouseMoveToTarget(This, Rectangle, X, Y) ->
+        'AbstractInputRobot':mouseMoveToTarget(This, Rectangle, X, Y).
+

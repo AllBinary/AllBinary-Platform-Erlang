@@ -639,3 +639,12 @@ isRunningInAnotherThread(This) ->
 getGameInitializationInterfaceFactoryInterface(This) ->
         get({This, gameInitializationInterfaceFactoryInterface}).
 
+getTitle(This) ->
+        'RunnableCanvas':getTitle(This).
+
+isPaused(This) ->
+        'RunnableCanvas':isPaused(This).
+
+getType(This) ->
+        'RunnableCanvas':getType(This).
+

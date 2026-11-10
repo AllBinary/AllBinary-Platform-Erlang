@@ -74,6 +74,6 @@ scale(This, Image, Width, Height) when is_integer(Width), is_integer(Height) ->
         HtmlImage = ScaledImage,
         ScaledPlayNImage = (get({HtmlImage, '$class'})):getImage(HtmlImage),
         Canvas = (fun(Target_N66810) -> (get({Target_N66810, '$class'})):get(Target_N66810, ScaledPlayNImage) end)(((fun(Target_N66823) -> (get({Target_N66823, '$class'})):graphics(Target_N66823) end)('PlayN':getInstance()))),
-        (get({(get({local, originalPlayNImage})), '$class'})):draw((get({local, originalPlayNImage})), (get({Canvas, '$class'})):gc(Canvas), 0, 0, (get({ScaledImage, '$class'})):getWidth(ScaledImage), (get({ScaledImage, '$class'})):getHeight(ScaledImage), 0, 0, (get({Image, '$class'})):getWidth(Image), (get({Image, '$class'})):getHeight(Image)),
+        (get({Canvas, '$class'})):drawScale(Canvas, get({local, originalPlayNImage}), 0, 0, (get({ScaledImage, '$class'})):getWidth(ScaledImage), (get({ScaledImage, '$class'})):getHeight(ScaledImage), 0, 0, (get({Image, '$class'})):getWidth(Image), (get({Image, '$class'})):getHeight(Image)),
         ScaledImage.
 

@@ -52,3 +52,9 @@ paintXY(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
         (get({get({This, basicSetColorUtil}), '$class'})):setBasicColorP3(get({This, basicSetColorUtil}), Graphics, (get({This, '$class'})):getBasicColorP(This), (get({This, '$class'})):getColor(This)),
         (get({Graphics, '$class'})):drawArc(Graphics, X, Y, get({This, width}), get({This, height}), 0, get({This, 'TOTAL_ANGLE'})).
 
+getBasicColorP(This) ->
+        'Animation':getBasicColorP(This).
+
+setBasicColorP(This, BasicColor) ->
+        'Animation':setBasicColorP(This, BasicColor).
+

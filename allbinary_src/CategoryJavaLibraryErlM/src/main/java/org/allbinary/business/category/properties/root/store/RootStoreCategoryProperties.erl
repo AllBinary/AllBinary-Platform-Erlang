@@ -72,16 +72,6 @@ new(TransformInfoInterface, CategoryAbPath) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, TransformInfoInterface, CategoryAbPath),
-    This;
-new(TransformInfoInterface, Node) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, TransformInfoInterface, Node),
-    This;
-new(TransformInfoInterface, CategoryPropertiesHashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, TransformInfoInterface, CategoryPropertiesHashMap),
     This.
 
 '$init'(This, TransformInfoInterface, CategoryAbPath) ->
@@ -96,35 +86,11 @@ new(TransformInfoInterface, CategoryPropertiesHashMap) ->
             false -> ok
         end,
         (get({This, '$class'})):initPath(This),
-        (get({This, '$class'})):log(This);
-'$init'(This, TransformInfoInterface, Node) ->
-    init_fields(This),
-        put({This, transformInfoInterface}, TransformInfoInterface),
-        CategoryPath = 'CategoryUtil':getNameFromNode(Node),
-        put({This, abPath}, 'AbPath':new(CategoryPath, get({'StringUtil':getInstance(), 'EMPTY_STRING'}))),
-        put({This, category}, (get({get({This, pathData}), '$class'})):getNameFromPath(get({This, pathData}), CategoryPath)),
-        case (fun(Target_N67409) -> (get({Target_N67409, '$class'})):isEmpty(Target_N67409, get({This, category})) end)('StringValidationUtil':getInstance()) of
-            true ->
-            put({This, isRealRoot}, true),
-            put({This, category}, get({'CategoryData':getInstance(), 'ROOTCATEGORY'}));
-            false -> ok
-        end,
-        (get({This, '$class'})):initPath(This),
-        (get({This, '$class'})):log(This);
-'$init'(This, TransformInfoInterface, CategoryPropertiesHashMap) ->
-    init_fields(This),
-        put({This, transformInfoInterface}, TransformInfoInterface),
-        CategoryPath = allbinary_java:to_string((get({CategoryPropertiesHashMap, '$class'})):get(CategoryPropertiesHashMap, get({'CategoryData':getInstance(), 'NAME'}))),
-        put({This, abPath}, 'AbPath':new(CategoryPath, get({'StringUtil':getInstance(), 'EMPTY_STRING'}))),
-        put({This, category}, (get({get({This, pathData}), '$class'})):getNameFromPath(get({This, pathData}), CategoryPath)),
-        case (fun(Target_N67889) -> (get({Target_N67889, '$class'})):isEmpty(Target_N67889, get({This, category})) end)('StringValidationUtil':getInstance()) of
-            true ->
-            put({This, isRealRoot}, true),
-            put({This, category}, get({'CategoryData':getInstance(), 'ROOTCATEGORY'}));
-            false -> ok
-        end,
-        (get({This, '$class'})):initPath(This),
-        (get({This, '$class'})):log(This).
+        (get({This, '$class'})):log(This)
+% unreachable Java constructor overload with the same guards as an earlier clause
+
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 

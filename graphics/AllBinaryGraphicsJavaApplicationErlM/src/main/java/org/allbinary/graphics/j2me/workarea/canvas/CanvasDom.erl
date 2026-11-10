@@ -57,11 +57,6 @@ new(CanvasNode) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, CanvasNode),
-    This;
-new(CanvasJPanel) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, CanvasJPanel),
     This.
 
 '$init'(This, CanvasNode) ->
@@ -111,14 +106,9 @@ new(CanvasJPanel) ->
             end;
             false ->
             erlang:error({'Exception', lists:concat(["Frame Element Not Found but Found: ", Name])})
-        end;
-'$init'(This, CanvasJPanel) ->
-    init_fields(This),
-        put({This, angle}, (get({CanvasJPanel, '$class'})):getAngle(CanvasJPanel)),
-        put({This, graphicItemHashMap}, (get({CanvasJPanel, '$class'})):getGraphicItemHashMap(CanvasJPanel)),
-        put({This, dimension}, (get({CanvasJPanel, '$class'})):getCanvasDimension(CanvasJPanel)),
-        put({This, grid}, 'Grid':new((get({CanvasJPanel, '$class'})):getGrid(CanvasJPanel))),
-        put({This, angle}, (get({CanvasJPanel, '$class'})):getAngle(CanvasJPanel)).
+        end
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 getAngle(This) ->

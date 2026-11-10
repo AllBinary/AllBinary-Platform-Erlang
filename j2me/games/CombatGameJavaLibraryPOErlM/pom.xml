@@ -111,20 +111,20 @@
         <module>../../../../work/j2me/games/strategy/rts/RTSGameJavaLibraryP</module>
         -->
 
-        <module>../../media/graphics/OtherGraphicsMediaLibraryP</module>
+        <module>../../media/graphics/OtherGraphicsMediaLibraryErlP</module>
 
         <module>../../input/NoTouchButtonResourceAnimationJavaLibraryErlM</module>
         <module>../../input/TouchButtonResourceAnimationJavaLibraryErlM</module>
         <module>../../input/TouchButtonResourceOpenGLESAnimationJavaLibraryErlM</module>
 
         <module>../../input/TrackingEventJavaLibraryErlM</module>
-        <module>../../../game/behavior/BehaviorLibraryP</module>
+        <module>../../../game/behavior/BehaviorLibraryErlP</module>
 
-        <module>../../media/sound/OtherSoundMediaLibraryP</module>
+        <module>../../media/sound/OtherSoundMediaLibraryErlP</module>
 
         <module>../../../allbinary_src/licensing/ApplicationConfigurationJavaLibraryErlM</module>
         <module>../../../allbinary_src/licensing/ApplicationConfigurationNoFSJavaLibraryErlM</module>
-        <module>../../input/AllBinaryMagneticFieldSensorJavaLibraryErlM</module>
+<!--        <module>../../input/AllBinaryMagneticFieldSensorJavaLibraryErlM</module>-->
         <module>../../android/VirtualKeyboardJavaLibraryErlM</module>
 
     </modules>

@@ -212,3 +212,28 @@ getGeographicMapCellPositionFactoryInterface(This) ->
 getGeographicMapCellTypeFactory(This) ->
         get({This, geographicMapCellTypeFactory}).
 
+getId(This) ->
+        'SimpleGeographicMap':getId(This).
+
+getName(This) ->
+        'SimpleGeographicMap':getName(This).
+
+reset(This) ->
+        'SimpleGeographicMap':reset(This).
+
+getAllBinaryTiledLayer(This) ->
+        'SimpleGeographicMap':getAllBinaryTiledLayer(This).
+
+getCellTypeFromMapCellTypeInt(This, CellTypeId) when is_integer(CellTypeId) ->
+        'SimpleGeographicMap':getCellTypeFromMapCellTypeInt(This, CellTypeId).
+
+% throws Exception
+getCellTypeAt(This, CellPosition) ->
+        'SimpleGeographicMap':getCellTypeAt(This, CellPosition).
+
+getForegroundBasicColor(This) ->
+        'SimpleGeographicMap':getForegroundBasicColor(This).
+
+getBackgroundBasicColor(This) ->
+        'SimpleGeographicMap':getBackgroundBasicColor(This).
+

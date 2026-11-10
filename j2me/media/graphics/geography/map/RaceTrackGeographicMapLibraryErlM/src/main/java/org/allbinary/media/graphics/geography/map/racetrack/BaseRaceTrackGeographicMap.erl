@@ -20,6 +20,9 @@
 % import org.allbinary.media.graphics.geography.map.GeographicMapCellPositionBaseFactory
 % import org.allbinary.media.graphics.geography.map.GeographicMapCellPositionFactoryInterface
 % import org.allbinary.media.graphics.geography.map.GeographicMapCellTypeFactory
+% import org.allbinary.graphics.color.BasicColor
+% import org.allbinary.media.graphics.geography.map.GeographicMapCellPosition
+% import org.allbinary.media.graphics.geography.map.GeographicMapCellType
 
 -module('BaseRaceTrackGeographicMap').
 -compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
@@ -49,15 +52,15 @@ new(RaceTrackInfo, RaceTrackData, TiledLayer, MiniGeographicMap, GeographicMapCe
         put({This, raceTrackData}, RaceTrackData),
         put({This, miniGeographicMap}, MiniGeographicMap),
         MiniTiledLayer = (get({get({This, miniGeographicMap}), '$class'})):getAllBinaryTiledLayer(get({This, miniGeographicMap})),
-        case ((get({MiniTiledLayer, '$class'})):getColumns(MiniTiledLayer) =/= (fun(Target_N66325) -> (get({Target_N66325, '$class'})):getColumns(Target_N66325) end)((get({This, '$class'})):getGeographicMapCellPositionFactory(This))) of
+        case ((get({MiniTiledLayer, '$class'})):getColumns(MiniTiledLayer) =/= (fun(Target_N66435) -> (get({Target_N66435, '$class'})):getColumns(Target_N66435) end)((get({This, '$class'})):getGeographicMapCellPositionFactory(This))) of
             true ->
-            put({local, error}, (fun(Target_N66368) -> (get({Target_N66368, '$class'})):toString(Target_N66368) end)((fun(Target_N66375) -> (get({Target_N66375, '$class'})):appendint(Target_N66375, trunc((fun(Target_N66453) -> (get({Target_N66453, '$class'})):getColumns(Target_N66453) end)((get({This, '$class'})):getGeographicMapCellPositionFactory(This)))) end)((fun(Target_N66382) -> (get({Target_N66382, '$class'})):append(Target_N66382, " != ") end)((fun(Target_N66389) -> (get({Target_N66389, '$class'})):appendint(Target_N66389, trunc((get({MiniTiledLayer, '$class'})):getColumns(MiniTiledLayer))) end)((fun(Target_N66396) -> (get({Target_N66396, '$class'})):append(Target_N66396, "RaceTrackMap has incorrect Mini Map columns: ") end)('StringMaker':new())))))),
+            put({local, error}, (fun(Target_N66478) -> (get({Target_N66478, '$class'})):toString(Target_N66478) end)((fun(Target_N66485) -> (get({Target_N66485, '$class'})):appendint(Target_N66485, trunc((fun(Target_N66563) -> (get({Target_N66563, '$class'})):getColumns(Target_N66563) end)((get({This, '$class'})):getGeographicMapCellPositionFactory(This)))) end)((fun(Target_N66492) -> (get({Target_N66492, '$class'})):append(Target_N66492, " != ") end)((fun(Target_N66499) -> (get({Target_N66499, '$class'})):appendint(Target_N66499, trunc((get({MiniTiledLayer, '$class'})):getColumns(MiniTiledLayer))) end)((fun(Target_N66506) -> (get({Target_N66506, '$class'})):append(Target_N66506, "RaceTrackMap has incorrect Mini Map columns: ") end)('StringMaker':new())))))),
             put({local, commonStrings}, 'CommonStrings':getInstance()),
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({local, commonStrings}), 'EXCEPTION'}), This, get({get({local, commonStrings}), 'CONSTRUCTOR'})),
             erlang:error({'Exception', get({local, error})});
             false -> ok
         end,
-        case ((get({MiniTiledLayer, '$class'})):getRows(MiniTiledLayer) =/= (fun(Target_N66655) -> (get({Target_N66655, '$class'})):getRows(Target_N66655) end)((get({This, '$class'})):getGeographicMapCellPositionFactory(This))) of
+        case ((get({MiniTiledLayer, '$class'})):getRows(MiniTiledLayer) =/= (fun(Target_N66765) -> (get({Target_N66765, '$class'})):getRows(Target_N66765) end)((get({This, '$class'})):getGeographicMapCellPositionFactory(This))) of
             true ->
             put({local, error}, "RaceTrackMap has incorrect Mini Map rows"),
             put({local, commonStrings}, 'CommonStrings':getInstance()),
@@ -83,4 +86,29 @@ getRaceTrackData(This) ->
 
 setRaceTrackData(This, RaceTrackData) ->
         put({This, raceTrackData}, RaceTrackData).
+
+getId(This) ->
+        'BasicGeographicMap':getId(This).
+
+getName(This) ->
+        'BasicGeographicMap':getName(This).
+
+reset(This) ->
+        'BasicGeographicMap':reset(This).
+
+getAllBinaryTiledLayer(This) ->
+        'BasicGeographicMap':getAllBinaryTiledLayer(This).
+
+getCellTypeFromMapCellTypeInt(This, CellTypeId) when is_integer(CellTypeId) ->
+        'BasicGeographicMap':getCellTypeFromMapCellTypeInt(This, CellTypeId).
+
+% throws Exception
+getCellTypeAt(This, CellPosition) ->
+        'BasicGeographicMap':getCellTypeAt(This, CellPosition).
+
+getForegroundBasicColor(This) ->
+        'BasicGeographicMap':getForegroundBasicColor(This).
+
+getBackgroundBasicColor(This) ->
+        'BasicGeographicMap':getBackgroundBasicColor(This).
 

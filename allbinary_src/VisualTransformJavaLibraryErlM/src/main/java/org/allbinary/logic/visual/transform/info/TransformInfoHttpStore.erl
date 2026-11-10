@@ -54,11 +54,6 @@ new(DatabaseHashMap, PropertiesHashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, DatabaseHashMap, PropertiesHashMap, PageContext),
-    This;
-new(StoreFrontInterface, PropertiesHashMap, PageContext) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, StoreFrontInterface, PropertiesHashMap, PageContext),
     This.
 
 '$init'(This, DatabaseHashMap, PropertiesHashMap, PageContext) ->
@@ -74,16 +69,9 @@ new(StoreFrontInterface, PropertiesHashMap, PageContext) ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({StringBuffer, '$class'})):toString(StringBuffer), This, "Constructor(HashMap, HashMap , PageContext)");
             false -> ok
         end,
-        (get({This, '$class'})):setStoreName(This, (get({DatabaseHashMap, '$class'})):get(DatabaseHashMap, get({'StoreFrontData':getInstance(), 'NAME'})));
-'$init'(This, StoreFrontInterface, PropertiesHashMap, PageContext) ->
-        'TransformInfoHttp':'$init'(This, PropertiesHashMap, PageContext),
-        init_fields(This),
-        case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
-            true ->
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Properties HashMap: ", (get({PropertiesHashMap, '$class'})):toString(PropertiesHashMap)]), This, get({get({This, commonStrings}), 'CONSTRUCTOR'}));
-            false -> ok
-        end,
-        (get({This, '$class'})):setStoreName(This, (get({StoreFrontInterface, '$class'})):getName(StoreFrontInterface)).
+        (get({This, '$class'})):setStoreName(This, (get({DatabaseHashMap, '$class'})):get(DatabaseHashMap, get({'StoreFrontData':getInstance(), 'NAME'})))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception
@@ -106,4 +94,10 @@ getObjectConfigFilePath(This) ->
 % throws Exception
 getDataFilePath(This) ->
         'AbPath':new((get({This, '$class'})):getPath(This), (get({This, '$class'})):getDataFile(This)).
+
+setStoreName(This, Value) when (is_list(Value) orelse Value =:= undefined) ->
+        'TransformInfoHttp':setStoreName(This, Value).
+
+getStoreName(This) ->
+        'TransformInfoHttp':getStoreName(This).
 

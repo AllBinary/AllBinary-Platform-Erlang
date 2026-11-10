@@ -203,10 +203,10 @@ isValid(This) ->
                 false -> ok
             end,
             true
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+        catch _:E_N71115 when E_N71115 =/= '$break', E_N71115 =/= '$continue', (not is_tuple(E_N71115) orelse element(1, E_N71115) =/= '$return') ->
             case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEWERROR'})) of
                 true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "Exception in validation", This, get({get({This, commonStrings}), 'IS_VALID'}), E);
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "Exception in validation", This, get({get({This, commonStrings}), 'IS_VALID'}), E_N71115);
                 false -> ok
             end,
             false
@@ -400,4 +400,8 @@ validationInfo(This, StringBuffer, FileName, Size) when (is_list(FileName) orels
             end;
             false -> ok
         end.
+
+% throws Exception
+getTransformInfoInterface(This) ->
+        'DownloadableInventoryItemView':getTransformInfoInterface(This).
 

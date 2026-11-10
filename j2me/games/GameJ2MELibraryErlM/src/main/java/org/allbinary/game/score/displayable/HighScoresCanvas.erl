@@ -85,8 +85,8 @@ new(CommandListener, AllBinaryGameLayerManager, GameInfo, Paintable, HighScoresF
         put({This, highScoresCanvasInputProcessor}, (get({HighScoresCanvasInputProcessorFactoryInterface, '$class'})):getInstance(HighScoresCanvasInputProcessorFactoryInterface, This)),
         put({This, gameInfo}, GameInfo),
         (get({get({This, waitPaintable}), '$class'})):setBasicColorP(get({This, waitPaintable}), (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)),
-        (fun(Target_N67313) -> (get({Target_N67313, '$class'})):setBasicColorP(Target_N67313, (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)) end)((get({This, '$class'})):getHighScoresPaintable(This)),
-        put({This, colorFillPaintable}, (fun(Target_N67370) -> (get({Target_N67370, '$class'})):getInstance(Target_N67370, (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), false) end)('ColorFillPaintableFactory':getInstance())),
+        (fun(Target_N68332) -> (get({Target_N68332, '$class'})):setBasicColorP(Target_N68332, (get({AllBinaryGameLayerManager, '$class'})):getForegroundBasicColor(AllBinaryGameLayerManager)) end)((get({This, '$class'})):getHighScoresPaintable(This)),
+        put({This, colorFillPaintable}, (fun(Target_N68389) -> (get({Target_N68389, '$class'})):getInstance(Target_N68389, (get({AllBinaryGameLayerManager, '$class'})):getBackgroundBasicColor(AllBinaryGameLayerManager), false) end)('ColorFillPaintableFactory':getInstance())),
         case ((get({get({This, highScoresHelper}), '$class'})):getHighScoresArray(get({This, highScoresHelper})) =:= get({'NoHighScoresFactory':getInstance(), 'NO_HIGH_SCORES'})) of
             true ->
             (get({This, '$class'})):setPaintable(This, get({This, waitPaintable}));
@@ -95,9 +95,7 @@ new(CommandListener, AllBinaryGameLayerManager, GameInfo, Paintable, HighScoresF
             (get({This, '$class'})):updateCommand(This, get({This, currentCommand})),
             (get({This, '$class'})):setPaintable(This, (get({This, '$class'})):getHighScoresPaintable(This))
         end,
-        ok % Java nested type HighScoreRunnable: move it to its own module
-,
-        (fun(Target_N68653) -> (get({Target_N68653, '$class'})):runTask(Target_N68653, 'HighScoreRunnable':new(This)) end)('SecondaryThreadPool':getInstance()).
+        (fun(Target_N68646) -> (get({Target_N68646, '$class'})):runTask(Target_N68646, 'HighScoreRunnable':new(This)) end)('SecondaryThreadPool':getInstance()).
 
 initCommands(This, CmdListener) ->
         (get({This, '$class'})):removeAllCommands(This),
@@ -138,7 +136,7 @@ setHighScoresArray(This, HighScoresArray) when (is_tuple(HighScoresArray) orelse
         try
             case (HighScoresArray =/= undefined) of
                 true ->
-                (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N69768) -> (get({Target_N69768, '$class'})):toString(Target_N69768) end)((fun(Target_N69775) -> (get({Target_N69775, '$class'})):appendint(Target_N69775, array:size(HighScoresArray)) end)((fun(Target_N69782) -> (get({Target_N69782, '$class'})):append(Target_N69782, get({get({This, commonStrings}), 'START'})) end)('StringMaker':new()))), This, "setHighScoresArray");
+                (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N69761) -> (get({Target_N69761, '$class'})):toString(Target_N69761) end)((fun(Target_N69768) -> (get({Target_N69768, '$class'})):appendint(Target_N69768, array:size(HighScoresArray)) end)((fun(Target_N69775) -> (get({Target_N69775, '$class'})):append(Target_N69775, get({get({This, commonStrings}), 'START'})) end)('StringMaker':new()))), This, "setHighScoresArray");
                 false ->
                 (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, "setHighScoresArray")
             end,
@@ -151,7 +149,7 @@ setHighScoresArray(This, HighScoresArray) when (is_tuple(HighScoresArray) orelse
 
 % throws Exception
 updateCommand(This, Command) ->
-        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N70150) -> (get({Target_N70150, '$class'})):toString(Target_N70150) end)((fun(Target_N70157) -> (get({Target_N70157, '$class'})):append(Target_N70157, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), Command)) end)((fun(Target_N70164) -> (get({Target_N70164, '$class'})):append(Target_N70164, get({get({This, commonStrings}), 'START'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'UPDATE'})),
+        (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (fun(Target_N70143) -> (get({Target_N70143, '$class'})):toString(Target_N70143) end)((fun(Target_N70150) -> (get({Target_N70150, '$class'})):append(Target_N70150, (get({get({This, stringUtil}), '$class'})):toString(get({This, stringUtil}), Command)) end)((fun(Target_N70157) -> (get({Target_N70157, '$class'})):append(Target_N70157, get({get({This, commonStrings}), 'START'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'UPDATE'})),
         GameCommandsFactory = 'GameCommandsFactory':getInstance(),
         case (get({get({This, highScoreCommandsFactory}), '$class'})):isHighScoreCommand(get({This, highScoreCommandsFactory}), Command) of
             true ->
@@ -165,9 +163,9 @@ updateCommand(This, Command) ->
             end,
             case (array:size(HighScoresArray) > 0) of
                 true ->
-                (fun(Target_N70662) -> (get({Target_N70662, '$class'})):setHighScores(Target_N70662, array:get(Index, HighScoresArray)) end)((get({This, '$class'})):getHighScoresPaintable(This));
+                (fun(Target_N70655) -> (get({Target_N70655, '$class'})):setHighScores(Target_N70655, array:get(Index, HighScoresArray)) end)((get({This, '$class'})):getHighScoresPaintable(This));
                 false ->
-                (fun(Target_N70613) -> (get({Target_N70613, '$class'})):setHighScores(Target_N70613, 'NullHighScoresSingletonFactory':getInstance()) end)((get({This, '$class'})):getHighScoresPaintable(This))
+                (fun(Target_N70606) -> (get({Target_N70606, '$class'})):setHighScores(Target_N70606, 'NullHighScoresSingletonFactory':getInstance()) end)((get({This, '$class'})):getHighScoresPaintable(This))
             end,
             case (Index =/= get({local, nextIndex})) of
                 true ->
@@ -190,4 +188,5 @@ getGameInfo(This) ->
 setPaintable(This, Paintable) ->
         put({This, paintable}, Paintable),
         (get({get({This, repaintBehavior}), '$class'})):onChangeRepaint(get({This, repaintBehavior}), This).
+% Java nested class HighScoreRunnable: move it to its own module 'HighScoreRunnable'
 

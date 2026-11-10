@@ -86,7 +86,7 @@ new(BufferedImage, BufferedImage2, Tolerance) when is_integer(Tolerance) ->
         end.
 
 getMatchingPercent(This) ->
-        case (get({This, matchingPercent}) =:= float((-1))) of
+        case (get({This, matchingPercent}) == float((-1))) of
             true ->
             put({This, matchingPercent}, (float(get({This, pixelsThatMatch})) / float(((get({This, imageWidth}) * get({This, imageHeight}))))));
             false -> ok

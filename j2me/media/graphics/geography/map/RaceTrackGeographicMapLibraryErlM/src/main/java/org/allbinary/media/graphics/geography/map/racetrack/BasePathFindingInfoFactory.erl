@@ -45,7 +45,7 @@ new() ->
 init(This, GeographicMapInterface, PathFindingInfo, MapArray) when (is_tuple(MapArray) orelse MapArray =:= undefined) ->
         ok % Java nested type RaceTrackGeographicMapCellPositionFactoryInitVisitor: move it to its own module
 ,
-        (fun(Target_N67582) -> (get({Target_N67582, '$class'})):visit(Target_N67582, 'RaceTrackGeographicMapCellPositionFactoryInitVisitor':new()) end)((get({GeographicMapInterface, '$class'})):getGeographicMapCellPositionFactory(GeographicMapInterface)).
+        (fun(Target_N67691) -> (get({Target_N67691, '$class'})):visit(Target_N67691, 'RaceTrackGeographicMapCellPositionFactoryInitVisitor':new(This)) end)((get({GeographicMapInterface, '$class'})):getGeographicMapCellPositionFactory(GeographicMapInterface)).
 
 % throws Exception
 addStartPathFindingNode(This, PathFindingInfo, StartGeographicMapCellPosition) ->

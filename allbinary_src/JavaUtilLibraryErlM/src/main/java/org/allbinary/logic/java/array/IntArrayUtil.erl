@@ -41,56 +41,11 @@ toString(Array) when (is_tuple(Array) orelse Array =:= undefined) ->
                 false -> ok
             end
         end, lists:seq(0, array:size(Array) - 1)),
-        (get({StringBuffer, '$class'})):toString(StringBuffer);
-toString(Array) when (is_tuple(Array) orelse Array =:= undefined) ->
-        StringBuffer = 'StringMaker':new(),
-        lists:foreach(fun(Index) ->
-            (get({StringBuffer, '$class'})):append(StringBuffer, "{"),
-            lists:foreach(fun(Index2) ->
-                (get({StringBuffer, '$class'})):appendint(StringBuffer, trunc(array:get(Index2, array:get(Index, Array)))),
-                case (Index2 < (array:size(array:get(Index, Array)) - 1)) of
-                    true ->
-                    (get({StringBuffer, '$class'})):append(StringBuffer, ", ");
-                    false -> ok
-                end
-            end, lists:seq(0, array:size(array:get(Index, Array)) - 1)),
-            (get({StringBuffer, '$class'})):append(StringBuffer, "}"),
-            case (Index < (array:size(Array) - 1)) of
-                true ->
-                (get({StringBuffer, '$class'})):append(StringBuffer, ", \n");
-                false -> ok
-            end
-        end, lists:seq(0, array:size(Array) - 1)),
-        (get({StringBuffer, '$class'})):toString(StringBuffer);
-toString(Array) when (is_tuple(Array) orelse Array =:= undefined) ->
-        StringBuffer = 'StringMaker':new(),
-        lists:foreach(fun(Index) ->
-            (get({StringBuffer, '$class'})):append(StringBuffer, "{"),
-            lists:foreach(fun(Index2) ->
-                (get({StringBuffer, '$class'})):append(StringBuffer, "{"),
-                lists:foreach(fun(Index3) ->
-                    (get({StringBuffer, '$class'})):appendint(StringBuffer, trunc(array:get(Index3, array:get(Index2, array:get(Index, Array))))),
-                    case (Index3 < (array:size(array:get(Index2, array:get(Index, Array))) - 1)) of
-                        true ->
-                        (get({StringBuffer, '$class'})):append(StringBuffer, ", ");
-                        false -> ok
-                    end
-                end, lists:seq(0, array:size(array:get(Index2, array:get(Index, Array))) - 1)),
-                (get({StringBuffer, '$class'})):append(StringBuffer, "}"),
-                case (Index2 < (array:size(array:get(Index, Array)) - 1)) of
-                    true ->
-                    (get({StringBuffer, '$class'})):append(StringBuffer, ", ");
-                    false -> ok
-                end
-            end, lists:seq(0, array:size(array:get(Index, Array)) - 1)),
-            (get({StringBuffer, '$class'})):append(StringBuffer, "}"),
-            case (Index < (array:size(Array) - 1)) of
-                true ->
-                (get({StringBuffer, '$class'})):append(StringBuffer, ", \n");
-                false -> ok
-            end
-        end, lists:seq(0, array:size(Array) - 1)),
-        (get({StringBuffer, '$class'})):toString(StringBuffer).
+        (get({StringBuffer, '$class'})):toString(StringBuffer)
+% unreachable Java overload toString(ArrayType array) has the same guards as an earlier clause
+
+% unreachable Java overload toString(ArrayType array) has the same guards as an earlier clause
+.
 
 
 

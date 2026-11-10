@@ -39,18 +39,14 @@
 
 -module('UnitWaypointBehavior').
 -compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
--on_load(static_init/0).
 % implements WaypointEventListenerInterface
 
 '$handle_undefined_function'(Function, Arguments) ->
     apply('WaypointBehaviorBase', Function, Arguments).
 
-static_init() ->
-    put({?MODULE, 'PATHING'}, "Pathing"),
-    ok.
-
 init_fields(This) ->
     put({This, commonSeps}, 'CommonSeps':getInstance()),
+    put({This, unitWaypointStrings}, 'UnitWaypointStrings':getInstance()),
     put({This, longWeaponRange}, 0),
     put({This, sensorAction}, get({'SensorActionFactory':getInstance(), 'ATTACK'})),
     put({This, completeTimeDelayHelper}, undefined),
@@ -63,7 +59,7 @@ init_fields(This) ->
     put({This, associatedAdvancedRTSGameLayer}, undefined),
     put({This, moving}, false),
     put({This, movingFromStopped}, false),
-    put({This, waypointPathsListP}, (fun(Target_N66913) -> (get({Target_N66913, '$class'})):getImmutableInstance(Target_N66913) end)('BasicArrayListUtil':getInstance())),
+    put({This, waypointPathsListP}, (fun(Target_N66925) -> (get({Target_N66925, '$class'})):getImmutableInstance(Target_N66925) end)('BasicArrayListUtil':getInstance())),
     put({This, currentTargetDistance}, get({'Integer', 'MAX_VALUE'})),
     put({This, currentTargetLayerInterfaceP}, 'CollidableDestroyableDamageableLayer':getNullInstance()),
     put({This, trackingWaypoint}, false),
@@ -84,7 +80,7 @@ new(AssociatedAdvancedRTSGameLayer, FakeWaypoint) ->
         put({This, completeTimeDelayHelper}, 'TimeDelayHelper':new(30000)),
         put({This, targetList}, 'BasicArrayListD':new()),
         put({This, possibleTargetList}, 'BasicArrayListD':new()),
-        (get({This, '$class'})):setWaypointPathsList(This, (fun(Target_N67220) -> (get({Target_N67220, '$class'})):getImmutableInstance(Target_N67220) end)('BasicArrayListUtil':getInstance())),
+        (get({This, '$class'})):setWaypointPathsList(This, (fun(Target_N67232) -> (get({Target_N67232, '$class'})):getImmutableInstance(Target_N67232) end)('BasicArrayListUtil':getInstance())),
         put({This, currentGeographicMapCellHistoryP}, 'GeographicMapCellHistory':new()),
         put({This, 'FAKE_WAYPOINT_LAYER'}, FakeWaypoint).
 
@@ -115,7 +111,7 @@ addWaypointFromUser(This, AdvancedRTSGameLayer) ->
 
 % throws Exception
 addWaypointFromBuilding(This, AdvancedRTSGameLayer) ->
-        case ((AdvancedRTSGameLayer =:= (fun(Target_N67955) -> (get({Target_N67955, '$class'})):getWaypointLayer(Target_N67955) end)('PrimaryWaypointHelper':getInstance())) orelse ((get({AdvancedRTSGameLayer, '$class'})):getParentLayer(AdvancedRTSGameLayer) =:= (get({get({This, associatedAdvancedRTSGameLayer}), '$class'})):getParentLayer(get({This, associatedAdvancedRTSGameLayer})))) of
+        case ((AdvancedRTSGameLayer =:= (fun(Target_N67967) -> (get({Target_N67967, '$class'})):getWaypointLayer(Target_N67967) end)('PrimaryWaypointHelper':getInstance())) orelse ((get({AdvancedRTSGameLayer, '$class'})):getParentLayer(AdvancedRTSGameLayer) =:= (get({get({This, associatedAdvancedRTSGameLayer}), '$class'})):getParentLayer(get({This, associatedAdvancedRTSGameLayer})))) of
             true ->
             case (not (get({get({This, targetList}), '$class'})):contains(get({This, targetList}), AdvancedRTSGameLayer)) of
                 true ->
@@ -169,7 +165,7 @@ setRandomGeographicMapCellHistory(This, PathsList) ->
         (get({get({get({This, associatedAdvancedRTSGameLayer}), waypointLogHelperP}), '$class'})):setRandomGeographicMapCellHistoryList(get({get({This, associatedAdvancedRTSGameLayer}), waypointLogHelperP}), get({This, associatedAdvancedRTSGameLayer}), PathsList),
         case (Size > 0) of
             true ->
-            GeographicMapCellPositionBasicArrayList = (fun(Target_N69063) -> (get({Target_N69063, '$class'})):getRandom(Target_N69063, PathsList) end)('BasicArrayListUtil':getInstance()),
+            GeographicMapCellPositionBasicArrayList = (fun(Target_N69075) -> (get({Target_N69075, '$class'})):getRandom(Target_N69075, PathsList) end)('BasicArrayListUtil':getInstance()),
             (get({This, '$class'})):setGeographicMapCellHistoryPath(This, GeographicMapCellPositionBasicArrayList);
             false -> ok
         end.
@@ -179,13 +175,13 @@ setGeographicMapCellHistoryPath(This, GeographicMapCellPositionBasicArrayList) -
         put({This, lastPathGeographicMapCellPosition}, get({'SimpleGeographicMapCellPositionFactory', 'NULL_GEOGRAPHIC_MAP_CELL_POSITION'})),
         case get({get({This, associatedAdvancedRTSGameLayer}), showMoreCaptionStates}) of
             true ->
-            (fun(Target_N69281) -> (get({Target_N69281, '$class'})):update(Target_N69281, get({'UnitWaypointBehavior', 'PATHING'}), get({'BasicColorFactory':getInstance(), 'GREEN'})) end)((get({get({This, associatedAdvancedRTSGameLayer}), '$class'})):getCaptionAnimationHelper(get({This, associatedAdvancedRTSGameLayer})));
+            (fun(Target_N69293) -> (get({Target_N69293, '$class'})):update(Target_N69293, get({get({This, unitWaypointStrings}), 'PATHING'}), get({'BasicColorFactory':getInstance(), 'GREEN'})) end)((get({get({This, associatedAdvancedRTSGameLayer}), '$class'})):getCaptionAnimationHelper(get({This, associatedAdvancedRTSGameLayer})));
             false -> ok
         end,
         (get({get({This, currentGeographicMapCellHistoryP}), '$class'})):init(get({This, currentGeographicMapCellHistoryP})),
         (get({get({This, associatedAdvancedRTSGameLayer}), '$class'})):init(get({This, associatedAdvancedRTSGameLayer}), get({This, currentGeographicMapCellHistoryP}), GeographicMapCellPositionBasicArrayList),
         (get({This, '$class'})):setTrackingWaypoint(This, true),
-        (fun(Target_N69448) -> (get({Target_N69448, '$class'})):setStartTimeTNT(Target_N69448) end)((get({This, '$class'})):getCompleteTimeDelayHelper(This)).
+        (fun(Target_N69463) -> (get({Target_N69463, '$class'})):setStartTimeTNT(Target_N69463) end)((get({This, '$class'})):getCompleteTimeDelayHelper(This)).
 
 canInsertWaypoint(This, Index, RtsLayer) when is_integer(Index) ->
         try
@@ -249,7 +245,7 @@ getMovementLogicAsString(This) ->
         (get({StringBuffer, '$class'})):append(StringBuffer, " sensorAction: "),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({get({This, sensorAction}), name})),
         (get({StringBuffer, '$class'})):append(StringBuffer, " getCurrentTargetLayerInterface: "),
-        (get({StringBuffer, '$class'})):append(StringBuffer, (fun(Target_N70909) -> (get({Target_N70909, '$class'})):toString(Target_N70909, get({This, currentTargetLayerInterfaceP})) end)('StringUtil':getInstance())),
+        (get({StringBuffer, '$class'})):append(StringBuffer, (fun(Target_N70924) -> (get({Target_N70924, '$class'})):toString(Target_N70924, get({This, currentTargetLayerInterfaceP})) end)('StringUtil':getInstance())),
         case (get({This, currentTargetLayerInterfaceP}) =/= 'CollidableDestroyableDamageableLayer':getNullInstance()) of
             true ->
             (get({StringBuffer, '$class'})):append(StringBuffer, " Target Range: "),

@@ -71,3 +71,9 @@ paintXY(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
 nextFrame(This) ->
         ok.
 
+getBasicColorP(This) ->
+        'Animation':getBasicColorP(This).
+
+setBasicColorP(This, BasicColor) ->
+        'Animation':setBasicColorP(This, BasicColor).
+

@@ -124,3 +124,7 @@ view(This) ->
             erlang:error(E)
         end.
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'TransformInfoHttpComposite':getTransformInfoInterface(This).
+

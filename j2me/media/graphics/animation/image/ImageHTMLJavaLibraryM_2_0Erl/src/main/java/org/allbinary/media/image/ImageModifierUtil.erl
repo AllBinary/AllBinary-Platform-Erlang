@@ -105,10 +105,7 @@ handleImage(This, ImageArray, Index, Image) when (is_tuple(ImageArray) orelse Im
                 true ->
                 (get({This, '$class'})):copy(This, ImageArray, Index, Image, Image3);
                 false ->
-                Callback = 'Callback':new() % Java anonymous class body: implement it as a module
-%                     ok % onSuccess
-%                     ok % onFailure
-,
+                Callback = 'ImageCopyCallback':new(This, ImageArray, Index, Image, Image3),
                 (get({Image3, '$class'})):addCallback(Image3, Callback)
             end;
             false ->
@@ -130,4 +127,5 @@ reset(This) ->
         lists:foreach(fun(Index) ->
             put({This, alphaArray}, array:set(Index, true, get({This, alphaArray})))
         end, lists:seq(0, Size - 1)).
+% Java nested class ImageCopyCallback: move it to its own module 'ImageCopyCallback'
 

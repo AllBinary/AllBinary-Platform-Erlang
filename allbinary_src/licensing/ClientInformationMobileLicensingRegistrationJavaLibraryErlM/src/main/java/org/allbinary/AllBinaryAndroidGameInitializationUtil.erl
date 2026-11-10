@@ -37,5 +37,6 @@ init() ->
         AndroidResources = 'AndroidResources':getInstance(),
         LicenseInitInfoUtil = 'LicenseInitInfoUtil':getInstance(),
         (get({ResourceUtil, '$class'})):addResource(ResourceUtil, get({LicenseInitInfoUtil, 'INITFILENAME'}), allbinary_java:to_string(get({get({AndroidResources, raw}), licenseinitdata}))),
-        (get({ResourceUtil, '$class'})):addResource(ResourceUtil, get({'PartnerIdentifierFileUtil':getInstance(), 'FILE_NAME'}), allbinary_java:to_string(get({get({AndroidResources, raw}), partner}))).
+        (get({ResourceUtil, '$class'})):addResource(ResourceUtil, get({'PartnerIdentifierFileUtil':getInstance(), 'FILE_NAME'}), allbinary_java:to_string(get({get({AndroidResources, raw}), partner}))),
+        (get({ResourceUtil, '$class'})):addResource(ResourceUtil, get({LicenseInitInfoUtil, 'ABOUT'}), allbinary_java:to_string(get({get({AndroidResources, raw}), about}))).
 

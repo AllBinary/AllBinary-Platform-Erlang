@@ -97,31 +97,11 @@ getLock(This, File) ->
             undefined
         after
             ok
-        end;
-% throws Exception
-getLock(This, FileOutputStream) ->
-        try
-            FileLock = (get({This, '$class'})):getLock(This, (get({FileOutputStream, '$class'})):getChannel(FileOutputStream)),
-            FileLock
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "Exception returns null", This, "getLock", E),
-            undefined
-        after
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Finally - Closing FileOutputStream", This, "getLock"),
-            (fun(Target_N67154) -> (get({Target_N67154, '$class'})):close(Target_N67154, FileOutputStream) end)('StreamUtil':getInstance())
-        end;
-% throws Exception
-getLock(This, FileChannel) ->
-        try
-            FileLock = (get({FileChannel, '$class'})):tryLock(FileChannel),
-            FileLock
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "Exception returns null", This, "getLock", E),
-            undefined
-        after
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Finally - Closing FileChannel", This, "getLock"),
-            (get({FileChannel, '$class'})):close(FileChannel)
-        end.
+        end
+% unreachable Java overload getLock(AbFileOutputStream fileOutputStream) has the same guards as an earlier clause
+
+% unreachable Java overload getLock(FileChannel fileChannel) has the same guards as an earlier clause
+.
 
 
 

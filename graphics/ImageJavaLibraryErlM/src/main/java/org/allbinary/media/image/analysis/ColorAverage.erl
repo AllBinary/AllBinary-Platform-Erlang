@@ -28,10 +28,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This),
         (get({This, '$class'})):setAvgRed(This, 0),
         (get({This, '$class'})):setAvgGreen(This, 0),
@@ -53,18 +53,18 @@ toString(This) ->
 getAvgRed(This) ->
         get({This, avgRed}).
 
-setAvgRed(This, AvgRed) ->
+setAvgRed(This, AvgRed) when is_number(AvgRed) ->
         put({This, avgRed}, AvgRed).
 
 getAvgGreen(This) ->
         get({This, avgGreen}).
 
-setAvgGreen(This, AvgGreen) ->
+setAvgGreen(This, AvgGreen) when is_number(AvgGreen) ->
         put({This, avgGreen}, AvgGreen).
 
 getAvgBlue(This) ->
         get({This, avgBlue}).
 
-setAvgBlue(This, AvgBlue) ->
+setAvgBlue(This, AvgBlue) when is_number(AvgBlue) ->
         put({This, avgBlue}, AvgBlue).
 

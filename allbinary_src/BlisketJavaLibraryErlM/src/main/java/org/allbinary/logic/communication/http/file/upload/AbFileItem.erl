@@ -89,10 +89,9 @@ getString(This) ->
 
 % throws Exception
 write(This, File) ->
-        erlang:error({'Exception', get({get({This, commonStrings}), 'NOT_IMPLEMENTED'})});
-% throws Exception
-write(This, File) ->
-        erlang:error({'Exception', get({get({This, commonStrings}), 'NOT_IMPLEMENTED'})}).
+        erlang:error({'Exception', get({get({This, commonStrings}), 'NOT_IMPLEMENTED'})})
+% unreachable Java overload write(AbFile file) has the same guards as an earlier clause
+.
 
 
 delete(This) ->

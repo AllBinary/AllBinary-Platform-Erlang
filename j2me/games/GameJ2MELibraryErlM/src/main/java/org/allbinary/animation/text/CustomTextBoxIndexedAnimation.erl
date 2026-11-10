@@ -89,3 +89,6 @@ paintXY(This, Graphics, X, Y) when is_integer(X), is_integer(Y) ->
 paintThreedXYZ(This, Graphics, X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
         ok.
 
+getWidth(This) ->
+        'IndexedAnimation':getWidth(This).
+

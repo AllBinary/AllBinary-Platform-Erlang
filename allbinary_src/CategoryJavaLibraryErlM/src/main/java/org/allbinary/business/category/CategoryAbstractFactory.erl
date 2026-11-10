@@ -117,24 +117,9 @@ getInstance(This, RootCategoryInterface, ParentCategoryInterface, Node) ->
                 false -> ok
             end,
             undefined
-        end;
-getInstance(This, RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesHashMap) ->
-        try
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'CATEGORY'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, "getInstance(CategoryInterface, CategoryInterface, HashMap)");
-                false -> ok
-            end,
-            CategoryPropertiesFactoryInterface = 'CategoryPropertiesFactory':new(CategoryPropertiesHashMap),
-            'Category':new(RootCategoryInterface, ParentCategoryInterface, CategoryPropertiesFactoryInterface)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'CATEGORYERROR'})) of
-                true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, "getInstance(CategoryInterface, CategoryInterface, HashMap)", E);
-                false -> ok
-            end,
-            undefined
-        end.
+        end
+% unreachable Java overload getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap categoryPropertiesHashMap) has the same guards as an earlier clause
+.
 
 
 

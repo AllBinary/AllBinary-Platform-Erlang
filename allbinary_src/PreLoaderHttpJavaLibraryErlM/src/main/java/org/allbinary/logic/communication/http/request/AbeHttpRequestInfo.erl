@@ -42,11 +42,6 @@ new(HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, HashMap),
-    This;
-new(HttpServletRequest) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HttpServletRequest),
     This.
 
 '$init'(This, HashMap) ->
@@ -57,27 +52,9 @@ new(HttpServletRequest) ->
         put({This, remoteHost}, (get({StringUtil, '$class'})):getNonNull(StringUtil, (get({HashMap, '$class'})):get(HashMap, get({get({This, abeHttpRequestInfoData}), 'REMOTE_HOST'})))),
         put({This, remoteHostByAddr}, (get({StringUtil, '$class'})):getNonNull(StringUtil, (get({HashMap, '$class'})):get(HashMap, get({get({This, abeHttpRequestInfoData}), 'REMOTE_HOST_BY_ADDRESS'})))),
         put({This, remotePort}, (get({StringUtil, '$class'})):getNonNull(StringUtil, (get({HashMap, '$class'})):get(HashMap, get({get({This, abeHttpRequestInfoData}), 'REMOTE_PORT'})))),
-        put({This, requestedFilePath}, (get({StringUtil, '$class'})):getNonNull(StringUtil, (get({HashMap, '$class'})):get(HashMap, get({get({This, abeHttpRequestInfoData}), 'REQUEST_FILE_PATH'}))));
-'$init'(This, HttpServletRequest) ->
-    init_fields(This),
-        StringUtil = 'StringUtil':getInstance(),
-        put({This, httpUserAgent}, get({StringUtil, 'EMPTY_STRING'})),
-        Enumuration = (get({HttpServletRequest, '$class'})):getHeaderNames(HttpServletRequest),
-        (fun Loop() -> case (get({Enumuration, '$class'})):hasMoreElements(Enumuration) of true ->
-            Key = (get({Enumuration, '$class'})):nextElement(Enumuration),
-            Value = (get({HttpServletRequest, '$class'})):getHeader(HttpServletRequest, Key),
-            case (allbinary_java:index_of(Key, "user") >= 0) of
-                true ->
-                put({This, httpUserAgent}, lists:concat([lists:concat([lists:concat(["key: ", Key]), " value: "]), Value]));
-                false -> ok
-            end,
-            Loop();
-        false -> ok end end)(),
-        put({This, remoteHostByAddr}, get({StringUtil, 'EMPTY_STRING'})),
-        put({This, remoteAddress}, (get({HttpServletRequest, '$class'})):getRemoteAddr(HttpServletRequest)),
-        put({This, remoteHost}, (get({HttpServletRequest, '$class'})):getRemoteHost(HttpServletRequest)),
-        put({This, requestedFilePath}, (get({HttpServletRequest, '$class'})):getServletPath(HttpServletRequest)),
-        put({This, remotePort}, allbinary_java:to_string((get({HttpServletRequest, '$class'})):getRemotePort(HttpServletRequest))).
+        put({This, requestedFilePath}, (get({StringUtil, '$class'})):getNonNull(StringUtil, (get({HashMap, '$class'})):get(HashMap, get({get({This, abeHttpRequestInfoData}), 'REQUEST_FILE_PATH'}))))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 toHashMap(This) ->

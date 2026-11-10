@@ -208,10 +208,10 @@ validationInfo(This) ->
                 false -> ok
             end,
             (get({StringBuffer, '$class'})):toString(StringBuffer)
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
+        catch _:E_N71270 when E_N71270 =/= '$break', E_N71270 =/= '$continue', (not is_tuple(E_N71270) orelse element(1, E_N71270) =/= '$return') ->
             case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEWERROR'})) of
                 true ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "Failed to generate validation error info", This, "validationInfo()", E);
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), "Failed to generate validation error info", This, "validationInfo()", E_N71270);
                 false -> ok
             end,
             "Error Getting Validation Info"
@@ -312,4 +312,8 @@ validationInfo(This, StringBuffer, FileName, FileItemFieldName, Size) when (is_l
             (get({StringBuffer, '$class'})):appendint(StringBuffer, trunc(get({FileData, 'MAXIMAGEFILESIZE'}))),
             (get({StringBuffer, '$class'})):append(StringBuffer, "<br/>")
         end.
+
+% throws Exception
+getTransformInfoInterface(This) ->
+        'InventoryItemView':getTransformInfoInterface(This).
 

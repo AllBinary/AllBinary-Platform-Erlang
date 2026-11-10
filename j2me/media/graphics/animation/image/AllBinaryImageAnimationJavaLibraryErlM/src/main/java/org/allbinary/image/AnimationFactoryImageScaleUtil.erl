@@ -54,7 +54,7 @@ createImage(This, Image, Width, Height, ScaleWidth, ScaleHeight) when is_integer
             true ->
             ScaleX = ((float(ScaleWidth)) / (float(Width))),
             ScaleY = ((float(ScaleHeight)) / (float(Height))),
-            case ((((ScaleX =:= 1.0) andalso (ScaleY =:= 1.0))) orelse (((ScaleX =:= 0.0) orelse (ScaleY =:= 0.0)))) of
+            case ((((ScaleX == 1.0) andalso (ScaleY == 1.0))) orelse (((ScaleX == 0.0) orelse (ScaleY == 0.0)))) of
                 true ->
                 put({local, scaledImage}, Image);
                 false ->
@@ -75,7 +75,7 @@ processAdjust(This, BaseImageAnimationFactory) ->
             AnimationFactoryInitializationVisitor = (get({BaseImageAnimationFactory, '$class'})):getAnimationFactoryInitializationVisitorP(BaseImageAnimationFactory),
             ScaleX = ((float(get({ScaleProperties, scaleWidth}))) / (float(get({AnimationFactoryInitializationVisitor, width})))),
             ScaleY = ((float(get({ScaleProperties, scaleHeight}))) / (float(get({AnimationFactoryInitializationVisitor, height})))),
-            case ((((ScaleX =:= 1.0) andalso (ScaleY =:= 1.0))) orelse (((ScaleX =:= 0.0) orelse (ScaleY =:= 0.0)))) of
+            case ((((ScaleX == 1.0) andalso (ScaleY == 1.0))) orelse (((ScaleX == 0.0) orelse (ScaleY == 0.0)))) of
                 true ->
                 ok;
                 false ->

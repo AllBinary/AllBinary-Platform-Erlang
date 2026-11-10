@@ -22,6 +22,7 @@
 % import org.allbinary.logic.system.security.licensing.client.XmlRpcAbeLicenseRetrievalClient
 % import org.allbinary.globals.PATH_GLOBALS
 % import org.allbinary.util.BasicArrayList
+% import org.allbinary.string.CommonStrings
 
 -module('LicenseClientAndServerTest').
 -compile([export_all, nowarn_export_all, nowarn_unused_vars, nowarn_shadow_vars]).
@@ -40,7 +41,7 @@ new(Options) when (is_tuple(Options) orelse Options =:= undefined) ->
 
 '$init'(This, Options) when (is_tuple(Options) orelse Options =:= undefined) ->
     init_fields(This),
-        (fun(Target_N65976) -> (get({Target_N65976, '$class'})):setFilePath(Target_N65976, (get({'PrintLicenseInitInfo', 'PATH'}) + get({(get({get({'LicenseClientAndServerTest', 'PATH_GLOBALS'}), '$class'})):getInstance(get({'LicenseClientAndServerTest', 'PATH_GLOBALS'})), 'INIT_PATH'}))) end)('LicenseInitInfoUtil':getInstance()),
+        (fun(Target_N66001) -> (get({Target_N66001, '$class'})):setFilePath(Target_N66001, (get({'PrintLicenseInitInfo', 'PATH'}) + get({(get({get({'LicenseClientAndServerTest', 'PATH_GLOBALS'}), '$class'})):getInstance(get({'LicenseClientAndServerTest', 'PATH_GLOBALS'})), 'INIT_PATH'}))) end)('LicenseInitInfoUtil':getInstance()),
         lists:foreach(fun(Index) ->
             (get({get({This, vector}), '$class'})):add(get({This, vector}), array:get(Index, Options))
         end, lists:seq(1, array:size(Options) - 1)),
@@ -77,7 +78,7 @@ test(This) ->
                 try
                     LicenseInitInfo = 'LicenseInitInfo':new(),
                     (get({LicenseInitInfo, '$class'})):addServer(LicenseInitInfo, ServerName),
-                    (fun(Target_N67047) -> (get({Target_N67047, '$class'})):write(Target_N67047, LicenseInitInfo) end)('LicenseInitInfoUtil':getInstance()),
+                    (fun(Target_N67072) -> (get({Target_N67072, '$class'})):write(Target_N67072, LicenseInitInfo) end)('LicenseInitInfoUtil':getInstance()),
                     AbeClientInformation = 'AbeClientInformationInterfaceFactory':getInstance(),
                     XmlRpcAbeLicenseClient = 'XmlRpcAbeLicenseRetrievalClient':new(AbeClientInformation),
                     AbeLicenseInterface = (get({XmlRpcAbeLicenseClient, '$class'})):get(XmlRpcAbeLicenseClient, undefined),
@@ -96,8 +97,8 @@ test(This) ->
                 end
             end, lists:seq(0, Size - 1)),
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat([lists:concat([lists:concat(["Total Servers Failed: ", (get({List, '$class'})):size(List)]), " Failed Servers: "]), (get({List, '$class'})):toString(List)]), This, "test")
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), lists:concat(["Test Error: ", (get({StringBuffer, '$class'})):toString(StringBuffer)]), This, "test", E)
+        catch _:E_N67788 when E_N67788 =/= '$break', E_N67788 =/= '$continue', (not is_tuple(E_N67788) orelse element(1, E_N67788) =/= '$return') ->
+            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), lists:concat(["Test Error: ", (get({StringBuffer, '$class'})):toString(StringBuffer)]), This, "test", E_N67788)
         end.
 
 main(Args) when (is_tuple(Args) orelse Args =:= undefined) ->
@@ -106,6 +107,6 @@ main(Args) when (is_tuple(Args) orelse Args =:= undefined) ->
             (get({LicensingTest, '$class'})):test(LicensingTest)
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
             LogUtil = 'LogUtil':getInstance(),
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), "main()", "main()", E)
+            (get({LogUtil, '$class'})):put(LogUtil, get({'CommonStrings':getInstance(), 'EXCEPTION'}), "main()", "main()", E)
         end.
 

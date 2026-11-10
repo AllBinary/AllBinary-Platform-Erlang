@@ -48,8 +48,8 @@ init_fields(This) ->
     put({This, width}, 0),
     put({This, height}, 0),
     put({This, name}, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
-    put({This, animationInterface}, (fun(Target_N66519) -> (get({Target_N66519, '$class'})):getInstance(Target_N66519, 0) end)('NullAnimationFactory':getFactoryInstance())),
-    put({This, backgroundColor}, (fun(Target_N66584) -> (get({Target_N66584, '$class'})):intValue(Target_N66584) end)(get({'BasicColorFactory':getInstance(), 'GREY'}))),
+    put({This, animationInterface}, (fun(Target_N66522) -> (get({Target_N66522, '$class'})):getInstance(Target_N66522, 0) end)('NullAnimationFactory':getFactoryInstance())),
+    put({This, backgroundColor}, (fun(Target_N66587) -> (get({Target_N66587, '$class'})):intValue(Target_N66587) end)(get({'BasicColorFactory':getInstance(), 'GREY'}))),
     ok.
 
 

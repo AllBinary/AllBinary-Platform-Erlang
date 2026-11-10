@@ -57,3 +57,7 @@ toValidationInfoNode(This, Document) ->
 validationInfo(This) ->
         "Error Creating New Item".
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'InventoryItemView':getTransformInfoInterface(This).
+

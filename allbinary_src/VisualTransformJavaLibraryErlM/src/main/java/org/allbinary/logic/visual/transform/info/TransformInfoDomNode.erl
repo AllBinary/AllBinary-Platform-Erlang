@@ -35,11 +35,6 @@ new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Node),
-    This;
-new(TransformInfoInterface) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, TransformInfoInterface),
     This.
 
 '$init'(This, Node) ->
@@ -96,11 +91,9 @@ new(TransformInfoInterface) ->
             put({This, mappedName}, (get({TemplateAttrNode, '$class'})):getValue(TemplateAttrNode));
             false ->
             put({This, mappedName}, (fun(Target_N68051) -> (get({Target_N68051, '$class'})):getName(Target_N68051) end)((get({This, '$class'})):getTransformInfoInterface(This)))
-        end;
-'$init'(This, TransformInfoInterface) ->
-    init_fields(This),
-        put({This, transformInfoInterface}, TransformInfoInterface),
-        put({This, mappedName}, (get({TransformInfoInterface, '$class'})):getName(TransformInfoInterface)).
+        end
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 new(Name, MappedName) when (is_list(Name) orelse Name =:= undefined), (is_list(MappedName) orelse MappedName =:= undefined) ->

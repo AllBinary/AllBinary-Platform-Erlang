@@ -29,7 +29,7 @@ init_fields(This) ->
     put({This, gameTickTimeDelayHelper}, 'GameTickTimeDelayHelperFactory':getInstance()),
     put({This, playerStateUtil}, 'PlayerStateUtil':getInstance()),
     put({This, timeDelayHelper}, 'TimeDelayHelper':new(0)),
-    put({This, playerListener}, 'MusicManagerPlayerListener':new()),
+    put({This, playerListener}, 'MusicManagerPlayerListener':new(This)),
     put({This, 'PLAY'}, "Play "),
     put({This, 'SONG'}, " for: "),
     put({This, 'NEXT_SONG'}, lists:concat([get({'CommonLabels':getInstance(), 'NEXT'}), " Song: "])),
@@ -67,7 +67,7 @@ startNewSong(This) ->
         (get({This, '$class'})):process(This).
 
 nextSong(This, NextSongSound, LeftVolume, RightVolume) when is_integer(LeftVolume), is_integer(RightVolume) ->
-        'PreLogUtil':put((fun(Target_N67602) -> (get({Target_N67602, '$class'})):toString(Target_N67602) end)((fun(Target_N67609) -> (get({Target_N67609, '$class'})):append(Target_N67609, (get({NextSongSound, '$class'})):getResource(NextSongSound)) end)((fun(Target_N67616) -> (get({Target_N67616, '$class'})):append(Target_N67616, get({This, 'NEXT_SONG'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'PROCESS'})),
+        'PreLogUtil':put((fun(Target_N67734) -> (get({Target_N67734, '$class'})):toString(Target_N67734) end)((fun(Target_N67741) -> (get({Target_N67741, '$class'})):append(Target_N67741, (get({NextSongSound, '$class'})):getResource(NextSongSound)) end)((fun(Target_N67748) -> (get({Target_N67748, '$class'})):append(Target_N67748, get({This, 'NEXT_SONG'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'PROCESS'})),
         put({This, nextSongSound}, NextSongSound),
         (get({This, '$class'})):reset(This),
         put({This, stopped}, false).
@@ -97,7 +97,7 @@ process(This) ->
                 put({This, nextSongSound}, 'NoSound':getInstance()),
                 case (NextSongSound =:= 'NoSound':getInstance()) of
                     true ->
-                    put({This, currentSongSound}, (fun(Target_N68333) -> (get({Target_N68333, '$class'})):getRandom(Target_N68333, get({This, songList})) end)('BasicArrayListUtil':getInstance()));
+                    put({This, currentSongSound}, (fun(Target_N68465) -> (get({Target_N68465, '$class'})):getRandom(Target_N68465, get({This, songList})) end)('BasicArrayListUtil':getInstance()));
                     false ->
                     put({This, currentSongSound}, NextSongSound)
                 end,
@@ -107,39 +107,39 @@ process(This) ->
                 case (Duration =< 0) of
                     true ->
                     NO_DURATION_FOR = "No Duration for: ",
-                    'PreLogUtil':put((fun(Target_N68622) -> (get({Target_N68622, '$class'})):toString(Target_N68622) end)((fun(Target_N68629) -> (get({Target_N68629, '$class'})):append(Target_N68629, (get({get({This, currentSongSound}), '$class'})):getResource(get({This, currentSongSound}))) end)((fun(Target_N68636) -> (get({Target_N68636, '$class'})):append(Target_N68636, NO_DURATION_FOR) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'PROCESS'})),
-                    (fun(Target_N68723) -> (get({Target_N68723, '$class'})):addPlayerListener(Target_N68723, get({This, playerListener})) end)((get({get({This, currentSongSound}), '$class'})):getPlayerP(get({This, currentSongSound}))),
+                    'PreLogUtil':put((fun(Target_N68754) -> (get({Target_N68754, '$class'})):toString(Target_N68754) end)((fun(Target_N68761) -> (get({Target_N68761, '$class'})):append(Target_N68761, (get({get({This, currentSongSound}), '$class'})):getResource(get({This, currentSongSound}))) end)((fun(Target_N68768) -> (get({Target_N68768, '$class'})):append(Target_N68768, NO_DURATION_FOR) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'PROCESS'})),
+                    (fun(Target_N68855) -> (get({Target_N68855, '$class'})):addPlayerListener(Target_N68855, get({This, playerListener})) end)((get({get({This, currentSongSound}), '$class'})):getPlayerP(get({This, currentSongSound}))),
                     put({This, noDuration}, true);
                     false -> ok
                 end,
                 case (EndingCurrentSongSound =/= 'NoSound':getInstance()) of
                     true ->
-                    case ((EndingCurrentSongSound =:= StartingCurrentSongSound) andalso ((fun(Target_N69058) -> (get({Target_N69058, '$class'})):getState(Target_N69058) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)) =:= get({'Player', 'STARTED'}))) of
+                    case ((EndingCurrentSongSound =:= StartingCurrentSongSound) andalso ((fun(Target_N69190) -> (get({Target_N69190, '$class'})):getState(Target_N69190) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)) =:= get({'Player', 'STARTED'}))) of
                         true ->
-                        'PreLogUtil':put((fun(Target_N69663) -> (get({Target_N69663, '$class'})):toString(Target_N69663) end)((fun(Target_N69670) -> (get({Target_N69670, '$class'})):append(Target_N69670, (get({EndingCurrentSongSound, '$class'})):getResource(EndingCurrentSongSound)) end)((fun(Target_N69677) -> (get({Target_N69677, '$class'})):append(Target_N69677, get({This, 'ALREADY_PLAYING'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'PROCESS'})),
-                        'PreLogUtil':put((fun(Target_N69777) -> (get({Target_N69777, '$class'})):toString(Target_N69777) end)((fun(Target_N69784) -> (get({Target_N69784, '$class'})):appendlong(Target_N69784, Duration) end)((fun(Target_N69791) -> (get({Target_N69791, '$class'})):append(Target_N69791, get({This, 'SONG'})) end)((fun(Target_N69798) -> (get({Target_N69798, '$class'})):append(Target_N69798, (get({EndingCurrentSongSound, '$class'})):getResource(EndingCurrentSongSound)) end)((fun(Target_N69805) -> (get({Target_N69805, '$class'})):append(Target_N69805, get({This, 'STOPPING'})) end)('StringMaker':new()))))), This, get({get({This, commonStrings}), 'PROCESS'})),
-                        (fun(Target_N69919) -> (get({Target_N69919, '$class'})):stop(Target_N69919) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)),
+                        'PreLogUtil':put((fun(Target_N69795) -> (get({Target_N69795, '$class'})):toString(Target_N69795) end)((fun(Target_N69802) -> (get({Target_N69802, '$class'})):append(Target_N69802, (get({EndingCurrentSongSound, '$class'})):getResource(EndingCurrentSongSound)) end)((fun(Target_N69809) -> (get({Target_N69809, '$class'})):append(Target_N69809, get({This, 'ALREADY_PLAYING'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'PROCESS'})),
+                        'PreLogUtil':put((fun(Target_N69909) -> (get({Target_N69909, '$class'})):toString(Target_N69909) end)((fun(Target_N69916) -> (get({Target_N69916, '$class'})):appendlong(Target_N69916, Duration) end)((fun(Target_N69923) -> (get({Target_N69923, '$class'})):append(Target_N69923, get({This, 'SONG'})) end)((fun(Target_N69930) -> (get({Target_N69930, '$class'})):append(Target_N69930, (get({EndingCurrentSongSound, '$class'})):getResource(EndingCurrentSongSound)) end)((fun(Target_N69937) -> (get({Target_N69937, '$class'})):append(Target_N69937, get({This, 'STOPPING'})) end)('StringMaker':new()))))), This, get({get({This, commonStrings}), 'PROCESS'})),
+                        (fun(Target_N70051) -> (get({Target_N70051, '$class'})):stop(Target_N70051) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)),
                         (get({This, '$class'})):waitForStateChange(This, EndingCurrentSongSound, StartingCurrentSongSound);
                         false ->
-                        case ((fun(Target_N69112) -> (get({Target_N69112, '$class'})):getState(Target_N69112) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)) =:= get({'Player', 'STARTED'})) of
+                        case ((fun(Target_N69244) -> (get({Target_N69244, '$class'})):getState(Target_N69244) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)) =:= get({'Player', 'STARTED'})) of
                             true ->
-                            'PreLogUtil':put((fun(Target_N69432) -> (get({Target_N69432, '$class'})):toString(Target_N69432) end)((fun(Target_N69439) -> (get({Target_N69439, '$class'})):appendlong(Target_N69439, Duration) end)((fun(Target_N69446) -> (get({Target_N69446, '$class'})):append(Target_N69446, get({This, 'SONG'})) end)((fun(Target_N69453) -> (get({Target_N69453, '$class'})):append(Target_N69453, (get({EndingCurrentSongSound, '$class'})):getResource(EndingCurrentSongSound)) end)((fun(Target_N69460) -> (get({Target_N69460, '$class'})):append(Target_N69460, get({This, 'STOPPING'})) end)('StringMaker':new()))))), This, get({get({This, commonStrings}), 'PROCESS'})),
-                            (fun(Target_N69570) -> (get({Target_N69570, '$class'})):stop(Target_N69570) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)),
+                            'PreLogUtil':put((fun(Target_N69564) -> (get({Target_N69564, '$class'})):toString(Target_N69564) end)((fun(Target_N69571) -> (get({Target_N69571, '$class'})):appendlong(Target_N69571, Duration) end)((fun(Target_N69578) -> (get({Target_N69578, '$class'})):append(Target_N69578, get({This, 'SONG'})) end)((fun(Target_N69585) -> (get({Target_N69585, '$class'})):append(Target_N69585, (get({EndingCurrentSongSound, '$class'})):getResource(EndingCurrentSongSound)) end)((fun(Target_N69592) -> (get({Target_N69592, '$class'})):append(Target_N69592, get({This, 'STOPPING'})) end)('StringMaker':new()))))), This, get({get({This, commonStrings}), 'PROCESS'})),
+                            (fun(Target_N69702) -> (get({Target_N69702, '$class'})):stop(Target_N69702) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)),
                             (get({This, '$class'})):waitForStateChange(This, EndingCurrentSongSound, StartingCurrentSongSound);
                             false ->
-                            'PreLogUtil':put((fun(Target_N69178) -> (get({Target_N69178, '$class'})):toString(Target_N69178) end)((fun(Target_N69185) -> (get({Target_N69185, '$class'})):append(Target_N69185, (get({StartingCurrentSongSound, '$class'})):getResource(StartingCurrentSongSound)) end)((fun(Target_N69192) -> (get({Target_N69192, '$class'})):append(Target_N69192, get({This, 'PLAY'})) end)((fun(Target_N69199) -> (get({Target_N69199, '$class'})):append(Target_N69199, get({This, 'ALREADY_ENDED'})) end)('StringMaker':new())))), This, get({get({This, commonStrings}), 'PROCESS'})),
+                            'PreLogUtil':put((fun(Target_N69310) -> (get({Target_N69310, '$class'})):toString(Target_N69310) end)((fun(Target_N69317) -> (get({Target_N69317, '$class'})):append(Target_N69317, (get({StartingCurrentSongSound, '$class'})):getResource(StartingCurrentSongSound)) end)((fun(Target_N69324) -> (get({Target_N69324, '$class'})):append(Target_N69324, get({This, 'PLAY'})) end)((fun(Target_N69331) -> (get({Target_N69331, '$class'})):append(Target_N69331, get({This, 'ALREADY_ENDED'})) end)('StringMaker':new())))), This, get({get({This, commonStrings}), 'PROCESS'})),
                             case 'AvianUtil':isAvian() of
                                 true ->
-                                (fun(Target_N69321) -> (get({Target_N69321, '$class'})):stop(Target_N69321) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)),
-                                (fun(Target_N69349) -> (get({Target_N69349, '$class'})):stop(Target_N69349) end)((get({StartingCurrentSongSound, '$class'})):getPlayerP(StartingCurrentSongSound));
+                                (fun(Target_N69453) -> (get({Target_N69453, '$class'})):stop(Target_N69453) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)),
+                                (fun(Target_N69481) -> (get({Target_N69481, '$class'})):stop(Target_N69481) end)((get({StartingCurrentSongSound, '$class'})):getPlayerP(StartingCurrentSongSound));
                                 false -> ok
                             end,
-                            (fun(Target_N69380) -> (get({Target_N69380, '$class'})):start(Target_N69380) end)((get({StartingCurrentSongSound, '$class'})):getPlayerP(StartingCurrentSongSound))
+                            (fun(Target_N69512) -> (get({Target_N69512, '$class'})):start(Target_N69512) end)((get({StartingCurrentSongSound, '$class'})):getPlayerP(StartingCurrentSongSound))
                         end
                     end;
                     false ->
-                    'PreLogUtil':put((fun(Target_N68846) -> (get({Target_N68846, '$class'})):toString(Target_N68846) end)((fun(Target_N68853) -> (get({Target_N68853, '$class'})):appendlong(Target_N68853, Duration) end)((fun(Target_N68860) -> (get({Target_N68860, '$class'})):append(Target_N68860, get({This, 'SONG'})) end)((fun(Target_N68867) -> (get({Target_N68867, '$class'})):append(Target_N68867, (get({get({This, currentSongSound}), '$class'})):getResource(get({This, currentSongSound}))) end)((fun(Target_N68874) -> (get({Target_N68874, '$class'})):append(Target_N68874, get({This, 'PLAY'})) end)('StringMaker':new()))))), This, get({get({This, commonStrings}), 'PROCESS'})),
-                    (fun(Target_N68987) -> (get({Target_N68987, '$class'})):start(Target_N68987) end)((get({get({This, currentSongSound}), '$class'})):getPlayerP(get({This, currentSongSound})))
+                    'PreLogUtil':put((fun(Target_N68978) -> (get({Target_N68978, '$class'})):toString(Target_N68978) end)((fun(Target_N68985) -> (get({Target_N68985, '$class'})):appendlong(Target_N68985, Duration) end)((fun(Target_N68992) -> (get({Target_N68992, '$class'})):append(Target_N68992, get({This, 'SONG'})) end)((fun(Target_N68999) -> (get({Target_N68999, '$class'})):append(Target_N68999, (get({get({This, currentSongSound}), '$class'})):getResource(get({This, currentSongSound}))) end)((fun(Target_N69006) -> (get({Target_N69006, '$class'})):append(Target_N69006, get({This, 'PLAY'})) end)('StringMaker':new()))))), This, get({get({This, commonStrings}), 'PROCESS'})),
+                    (fun(Target_N69119) -> (get({Target_N69119, '$class'})):start(Target_N69119) end)((get({get({This, currentSongSound}), '$class'})):getPlayerP(get({This, currentSongSound})))
                 end;
                 false -> ok
             end
@@ -156,13 +156,13 @@ process(This) ->
 
 % throws Exception
 waitForStateChange(This, EndingCurrentSongSound, StartingCurrentSongSound) ->
-        (fun Loop() -> case ((fun(Target_N70366) -> (get({Target_N70366, '$class'})):getState(Target_N70366) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)) =:= get({'Player', 'STARTED'})) of true ->
+        (fun Loop() -> case ((fun(Target_N70498) -> (get({Target_N70498, '$class'})):getState(Target_N70498) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)) =:= get({'Player', 'STARTED'})) of true ->
             'PreLogUtil':put(get({This, 'WAITING_FOR_MEDIA_TO_END'}), This, get({get({This, commonStrings}), 'PROCESS'})),
             timer:sleep(100),
             Loop();
         false -> ok end end)(),
-        'PreLogUtil':put((fun(Target_N70428) -> (get({Target_N70428, '$class'})):toString(Target_N70428) end)((fun(Target_N70435) -> (get({Target_N70435, '$class'})):append(Target_N70435, (get({StartingCurrentSongSound, '$class'})):getResource(StartingCurrentSongSound)) end)((fun(Target_N70442) -> (get({Target_N70442, '$class'})):append(Target_N70442, get({This, 'PLAY'})) end)((fun(Target_N70449) -> (get({Target_N70449, '$class'})):append(Target_N70449, get({get({This, commonSeps}), 'SPACE'})) end)((fun(Target_N70456) -> (get({Target_N70456, '$class'})):append(Target_N70456, (get({get({This, playerStateUtil}), '$class'})):convert(get({This, playerStateUtil}), (fun(Target_N70497) -> (get({Target_N70497, '$class'})):getState(Target_N70497) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)))) end)('StringMaker':new()))))), This, get({get({This, commonStrings}), 'PROCESS'})),
-        (fun(Target_N70612) -> (get({Target_N70612, '$class'})):start(Target_N70612) end)((get({StartingCurrentSongSound, '$class'})):getPlayerP(StartingCurrentSongSound)).
+        'PreLogUtil':put((fun(Target_N70560) -> (get({Target_N70560, '$class'})):toString(Target_N70560) end)((fun(Target_N70567) -> (get({Target_N70567, '$class'})):append(Target_N70567, (get({StartingCurrentSongSound, '$class'})):getResource(StartingCurrentSongSound)) end)((fun(Target_N70574) -> (get({Target_N70574, '$class'})):append(Target_N70574, get({This, 'PLAY'})) end)((fun(Target_N70581) -> (get({Target_N70581, '$class'})):append(Target_N70581, get({get({This, commonSeps}), 'SPACE'})) end)((fun(Target_N70588) -> (get({Target_N70588, '$class'})):append(Target_N70588, (get({get({This, playerStateUtil}), '$class'})):convert(get({This, playerStateUtil}), (fun(Target_N70629) -> (get({Target_N70629, '$class'})):getState(Target_N70629) end)((get({EndingCurrentSongSound, '$class'})):getPlayerP(EndingCurrentSongSound)))) end)('StringMaker':new()))))), This, get({get({This, commonStrings}), 'PROCESS'})),
+        (fun(Target_N70744) -> (get({Target_N70744, '$class'})):start(Target_N70744) end)((get({StartingCurrentSongSound, '$class'})):getPlayerP(StartingCurrentSongSound)).
 
 % throws Exception
 stop(This) ->
@@ -171,17 +171,17 @@ stop(This) ->
             case (CurrentSongSound =/= 'NoSound':getInstance()) of
                 true ->
                 put({This, stopped}, true),
-                'PreLogUtil':put((fun(Target_N70862) -> (get({Target_N70862, '$class'})):toString(Target_N70862) end)((fun(Target_N70869) -> (get({Target_N70869, '$class'})):append(Target_N70869, (get({CurrentSongSound, '$class'})):getResource(CurrentSongSound)) end)((fun(Target_N70876) -> (get({Target_N70876, '$class'})):append(Target_N70876, get({This, 'ENDING'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'PROCESS'})),
-                (fun(Target_N70963) -> (get({Target_N70963, '$class'})):stop(Target_N70963) end)((get({CurrentSongSound, '$class'})):getPlayerP(CurrentSongSound));
+                'PreLogUtil':put((fun(Target_N70994) -> (get({Target_N70994, '$class'})):toString(Target_N70994) end)((fun(Target_N71001) -> (get({Target_N71001, '$class'})):append(Target_N71001, (get({CurrentSongSound, '$class'})):getResource(CurrentSongSound)) end)((fun(Target_N71008) -> (get({Target_N71008, '$class'})):append(Target_N71008, get({This, 'ENDING'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'PROCESS'})),
+                (fun(Target_N71095) -> (get({Target_N71095, '$class'})):stop(Target_N71095) end)((get({CurrentSongSound, '$class'})):getPlayerP(CurrentSongSound));
                 false -> ok
             end,
             (get({get({This, timeDelayHelper}), '$class'})):setStartTime(get({This, timeDelayHelper}), 0),
-            'PreLogUtil':put((fun(Target_N71041) -> (get({Target_N71041, '$class'})):toString(Target_N71041) end)((fun(Target_N71048) -> (get({Target_N71048, '$class'})):append(Target_N71048, (fun(Target_N71099) -> (get({Target_N71099, '$class'})):toString(Target_N71099, CurrentSongSound) end)('StringUtil':getInstance())) end)((fun(Target_N71055) -> (get({Target_N71055, '$class'})):append(Target_N71055, get({get({This, commonStrings}), 'END'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'END'}))
+            'PreLogUtil':put((fun(Target_N71173) -> (get({Target_N71173, '$class'})):toString(Target_N71173) end)((fun(Target_N71180) -> (get({Target_N71180, '$class'})):append(Target_N71180, (fun(Target_N71231) -> (get({Target_N71231, '$class'})):toString(Target_N71231, CurrentSongSound) end)('StringUtil':getInstance())) end)((fun(Target_N71187) -> (get({Target_N71187, '$class'})):append(Target_N71187, get({get({This, commonStrings}), 'END'})) end)('StringMaker':new()))), This, get({get({This, commonStrings}), 'END'}))
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
             put({local, resource}, get({'StringUtil':getInstance(), 'EMPTY_STRING'})),
-            case (CurrentSongSound =/= 'NoSound':getInstance()) of
+            case (get({This, currentSongSound}) =/= 'NoSound':getInstance()) of
                 true ->
-                put({local, resource}, (get({CurrentSongSound, '$class'})):getResource(CurrentSongSound));
+                put({local, resource}, (get({get({This, currentSongSound}), '$class'})):getResource(get({This, currentSongSound})));
                 false -> ok
             end,
             'PreLogUtil':putOE(lists:concat([get({get({This, commonStrings}), 'EXCEPTION_LABEL'}), get({local, resource})]), This, get({get({This, commonStrings}), 'END'}), E)

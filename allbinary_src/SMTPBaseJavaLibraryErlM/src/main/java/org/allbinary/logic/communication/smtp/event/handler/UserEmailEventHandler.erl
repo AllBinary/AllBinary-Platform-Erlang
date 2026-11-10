@@ -51,9 +51,9 @@ addListener(This, Vector) ->
         lists:foreach(fun(Index) ->
             UserEmailEventListenerInterface = (get({Vector, '$class'})):get(Vector, Index),
             (get({This, '$class'})):addListener(This, UserEmailEventListenerInterface)
-        end, lists:seq(0, Size - 1));
-addListener(This, EmailEventListenerInterface) ->
-        (get({get({This, emailVector}), '$class'})):add(get({This, emailVector}), EmailEventListenerInterface).
+        end, lists:seq(0, Size - 1))
+% unreachable Java overload addListener(UserEmailEventListenerInterface emailEventListenerInterface) has the same guards as an earlier clause
+.
 
 
 removeListener(This, EmailEventListenerInterface) ->

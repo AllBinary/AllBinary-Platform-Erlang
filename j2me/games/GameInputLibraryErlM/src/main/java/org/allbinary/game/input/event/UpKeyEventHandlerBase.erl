@@ -85,8 +85,8 @@ fireEventForInteger(This, EventObject) ->
             try
                 put({local, eventListenerInterface}, (get({get({This, eventListenerInterfaceList}), '$class'})):get(get({This, eventListenerInterfaceList}), get({local, index}))),
                 (get({This, '$class'})):processForInteger(This, EventObject, get({local, eventListenerInterface}))
-            catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E)
+            catch _:E_N66787 when E_N66787 =/= '$break', E_N66787 =/= '$continue', (not is_tuple(E_N66787) orelse element(1, E_N66787) =/= '$return') ->
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E_N66787)
             end,
             put({local, index}, get({local, index}) + 1),
             Loop();

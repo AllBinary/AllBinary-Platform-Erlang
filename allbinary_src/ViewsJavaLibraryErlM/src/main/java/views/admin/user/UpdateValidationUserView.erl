@@ -114,3 +114,7 @@ toValidationInfoNode(This, Document) ->
 view(This) ->
         (fun(Target_N67693) -> (get({Target_N67693, '$class'})):view(Target_N67693, This) end)((get({get({get({This, views}), 'ValidationOnlyTempUtil'}), '$class'})):getInstance(get({get({This, views}), 'ValidationOnlyTempUtil'}))).
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'HttpContextView':getTransformInfoInterface(This).
+

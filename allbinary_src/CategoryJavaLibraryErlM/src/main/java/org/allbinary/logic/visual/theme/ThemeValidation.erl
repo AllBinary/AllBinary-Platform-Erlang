@@ -85,11 +85,6 @@ new(TransformInfoInterface, HashMap) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, TransformInfoInterface, HashMap),
-    This;
-new(StoreThemeCategoryInterface, Node) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, StoreThemeCategoryInterface, Node),
     This.
 
 '$init'(This, TransformInfoInterface, HashMap) ->
@@ -112,19 +107,9 @@ new(StoreThemeCategoryInterface, Node) ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), "Http Request Constructor", This, (get({StringBuffer, '$class'})):toString(StringBuffer));
             false -> ok
         end,
-        (get({This, '$class'})):init(This);
-'$init'(This, StoreThemeCategoryInterface, Node) ->
-    init_fields(This),
-        put({This, transformInfoInterface}, (get({StoreThemeCategoryInterface, '$class'})):getTransformInfoInterface(StoreThemeCategoryInterface)),
-        put({This, categoryAbPath}, (get({StoreThemeCategoryInterface, '$class'})):getPath(StoreThemeCategoryInterface)),
-        ThemeNameNode = 'DomSearchHelper':getNode(get({'ThemeData':getInstance(), 'NAME'}), (get({Node, '$class'})):getChildNodes(Node)),
-        ValueNode = 'DomSearchHelper':getNode(get({'DomData', 'VALUE'}), (get({ThemeNameNode, '$class'})):getChildNodes(ThemeNameNode)),
-        put({This, themeName}, 'DomNodeHelper':getTextNodeValue(ValueNode)),
-        PreviewImageNameNode = 'DomSearchHelper':getNode(get({'ThemeData':getInstance(), 'PREVIEW_IMAGE_NAME'}), (get({Node, '$class'})):getChildNodes(Node)),
-        PreviewImageNameValueNode = 'DomSearchHelper':getNode(get({'DomData', 'VALUE'}), (get({PreviewImageNameNode, '$class'})):getChildNodes(PreviewImageNameNode)),
-        put({This, themePreviewImageName}, 'DomNodeHelper':getTextNodeValue(PreviewImageNameValueNode)),
-        put({This, webAppAbPath}, (get({StoreThemeCategoryInterface, '$class'})):getWebAppPath(StoreThemeCategoryInterface)),
-        (get({This, '$class'})):init(This, StoreThemeCategoryInterface).
+        (get({This, '$class'})):init(This)
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception

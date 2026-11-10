@@ -67,11 +67,6 @@ new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Document),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Document) ->
@@ -98,16 +93,9 @@ new(HashMap) ->
                 end;
                 false -> ok
             end
-        end, lists:seq(0, (get({NodeList, '$class'})):getLength(NodeList) - 1));
-'$init'(This, HashMap) ->
-    'Validation':'$init'(This),
-    init_fields(This),
-        case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
-            true ->
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), get({get({This, commonStrings}), 'START'}), This, "Constructor(hashmap)");
-            false -> ok
-        end,
-        (get({This, '$class'})):getFormData(This, HashMap).
+        end, lists:seq(0, (get({NodeList, '$class'})):getLength(NodeList) - 1))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception

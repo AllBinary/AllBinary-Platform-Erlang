@@ -12,6 +12,7 @@
 %  
 % Generated Code Do Not Modify
 % package org.allbinary.util
+% import jsinterop.annotations.JsType
 % import org.allbinary.logic.communication.log.ForcedLogUtil
 
 -module('ImmutableBasicArrayList').

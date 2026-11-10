@@ -167,3 +167,6 @@ setPoints(This, CurrentPoints) when (is_tuple(CurrentPoints) orelse CurrentPoint
         put({This, currentPoints}, CurrentPoints),
         put({This, circularIndexUtil}, 'CircularIndexUtil':createInstance(array:size(CurrentPoints))).
 
+getBasicColorP(This) ->
+        'IndexedAnimation':getBasicColorP(This).
+

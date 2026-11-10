@@ -53,11 +53,6 @@ new(Payment) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Payment),
-    This;
-new(Request) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, Request),
     This.
 
 '$init'(This, Payment) ->
@@ -84,23 +79,9 @@ new(Request) ->
         put({This, checkNumber}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'CHECKNUMBER'}))),
         put({This, checkType}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'CHECKTYPE'}))),
         put({This, driversLicense}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'DRIVERSLICENSE'}))),
-        put({This, magneticInkCheckReader}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'MAGNETICINKCHECKREADER'})));
-'$init'(This, Request) ->
-    init_fields(This),
-        put({This, name}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'NAME'}))),
-        put({This, type}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'TYPE'}))),
-        put({This, expiration}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'EXPIRATION'}))),
-        put({This, number}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'NUMBER'}))),
-        put({This, tenderType}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'TENDERTYPE'}))),
-        put({This, transactionType}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'TRANSACTIONTYPE'}))),
-        put({This, aba}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'ABA'}))),
-        put({This, account}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'ACCOUNT'}))),
-        put({This, accountType}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'ACCOUNTTYPE'}))),
-        put({This, authorizationCode}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'AUTHORIZATIONCODE'}))),
-        put({This, checkNumber}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'CHECKNUMBER'}))),
-        put({This, checkType}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'CHECKTYPE'}))),
-        put({This, driversLicense}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'DRIVERSLICENSE'}))),
-        put({This, magneticInkCheckReader}, (get({Request, '$class'})):getParameter(Request, get({'PaymentData', 'MAGNETICINKCHECKREADER'}))).
+        put({This, magneticInkCheckReader}, (get({Payment, '$class'})):get(Payment, get({'PaymentData', 'MAGNETICINKCHECKREADER'})))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 new() ->

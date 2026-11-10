@@ -55,11 +55,6 @@ new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Node),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Node) ->
@@ -76,15 +71,9 @@ new(HashMap) ->
             true ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["Title: ", (get({This, '$class'})):getTitle(This)]), This, "Consructor()");
             false -> ok
-        end;
-'$init'(This, HashMap) ->
-    init_fields(This),
-        case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'VIEW'})) of
-            true ->
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat(["HashMap: ", (get({HashMap, '$class'})):toString(HashMap)]), This, get({get({This, commonStrings}), 'CONSTRUCTOR'}));
-            false -> ok
-        end,
-        (get({This, '$class'})):getFormData(This, HashMap).
+        end
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 getTitle(This) ->

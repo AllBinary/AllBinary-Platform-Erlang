@@ -19,8 +19,7 @@
 -on_load(static_init/0).
 
 static_init() ->
-    put({?MODULE, capitalEventHandlerArray}, undefined),
-        put({'CapitalEventHandlerFactory', capitalEventHandlerArray}, array:new(10, {default, undefined})),
+    put({?MODULE, capitalEventHandlerArray}, array:new(10, {default, undefined})),
         lists:foreach(fun(Index) ->
             put({'CapitalEventHandlerFactory', capitalEventHandlerArray}, array:set(Index, 'CapitalEventHandler':new(), get({'CapitalEventHandlerFactory', capitalEventHandlerArray})))
         end, lists:seq((array:size(get({'CapitalEventHandlerFactory', capitalEventHandlerArray})) - 1), 0, -1)),
@@ -41,10 +40,11 @@ new() ->
 
 
 getInstance(GroupInterface) ->
-        array:get(trunc((get({GroupInterface, '$class'})):getGroupId(GroupInterface)), get({'CapitalEventHandlerFactory', capitalEventHandlerArray})).
+        GroupId = trunc((get({GroupInterface, '$class'})):getGroupId(GroupInterface)),
+        array:get(GroupId, get({'CapitalEventHandlerFactory', capitalEventHandlerArray})).
 
 removeAll() ->
         lists:foreach(fun(Index) ->
-            (fun(Target_N65995) -> (get({Target_N65995, '$class'})):removeAllListeners(Target_N65995) end)(array:get(Index, get({'CapitalEventHandlerFactory', capitalEventHandlerArray})))
+            (fun(Target_N66016) -> (get({Target_N66016, '$class'})):removeAllListeners(Target_N66016) end)(array:get(Index, get({'CapitalEventHandlerFactory', capitalEventHandlerArray})))
         end, lists:seq((array:size(get({'CapitalEventHandlerFactory', capitalEventHandlerArray})) - 1), 0, -1)).
 

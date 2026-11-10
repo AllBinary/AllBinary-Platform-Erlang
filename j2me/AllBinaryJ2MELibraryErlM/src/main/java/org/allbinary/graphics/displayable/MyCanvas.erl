@@ -66,6 +66,12 @@ new(Name, ChildNameList) when (is_list(Name) orelse Name =:= undefined) ->
         put({This, childNameList}, ChildNameList),
         put({This, commandStack}, (fun(Target_N66668) -> (get({Target_N66668, '$class'})):createStack(Target_N66668) end)('StdUtil':getInstance())).
 
+getWidth(This) ->
+        'Canvas':getWidth(This).
+
+getHeight(This) ->
+        'Canvas':getHeight(This).
+
 setFullScreenMode(This, Mode) when is_boolean(Mode) ->
         'Canvas':setFullScreenMode(This, Mode),
         (get({get({This, displayInfo}), '$class'})):update(get({This, displayInfo}), This, get({get({This, canvasStrings}), 'SET_FULL_SCREEN_MODE'})).

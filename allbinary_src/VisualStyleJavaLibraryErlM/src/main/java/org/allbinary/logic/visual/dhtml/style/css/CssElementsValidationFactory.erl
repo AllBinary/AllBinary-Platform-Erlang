@@ -47,9 +47,8 @@ getInstance(CssElementStyleNodeList) ->
             put({local, cssValidationInterface}, 'CssElementValidationFactory':getInstance(get({local, cssElementStyleNode}))),
             (get({Styles, '$class'})):add(Styles, get({local, cssValidationInterface}))
         end, lists:seq(0, Size - 1)),
-        Styles;
-getInstance(HashMap) ->
-        Styles = 'BasicArrayListD':new(),
-        Styles.
+        Styles
+% unreachable Java overload getInstance(HashMap hashMap) has the same guards as an earlier clause
+.
 
 

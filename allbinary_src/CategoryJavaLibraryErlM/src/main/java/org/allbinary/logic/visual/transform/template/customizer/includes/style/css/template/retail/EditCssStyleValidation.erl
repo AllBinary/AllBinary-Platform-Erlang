@@ -48,17 +48,12 @@ new(Document) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Document),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Document) ->
-        'CssStyleValidation':'$init'(This, Document);
-'$init'(This, HashMap) ->
-        'CssStyleValidation':'$init'(This, HashMap).
+        'CssStyleValidation':'$init'(This, Document)
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 isValid(This) ->

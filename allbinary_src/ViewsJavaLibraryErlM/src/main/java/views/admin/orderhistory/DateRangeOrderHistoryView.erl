@@ -350,3 +350,7 @@ validationInfo(This) ->
             "Error Getting Validation Info"
         end.
 
+% throws Exception
+getTransformInfoInterface(This) ->
+        'HttpStoreComponentView':getTransformInfoInterface(This).
+

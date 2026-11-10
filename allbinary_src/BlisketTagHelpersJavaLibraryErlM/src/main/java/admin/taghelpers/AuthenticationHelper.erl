@@ -54,25 +54,12 @@ new(HashMap, PageContext) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, HashMap, PageContext),
-    This;
-new(HashMap, HttpServletRequest) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap, HttpServletRequest),
     This.
 
 '$init'(This, HashMap, PageContext) ->
-        '$init'(This, HashMap, (get({PageContext, '$class'})):getRequest(PageContext));
-'$init'(This, HashMap, HttpServletRequest) ->
-    'TagHelper':'$init'(This),
-    init_fields(This),
-        put({This, weblisketSession}, 'WeblisketSession':new(HashMap, HttpServletRequest)),
-        (get({This, '$class'})):getFormData(This),
-        case (get({get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), '$class'})):contains(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypes'}), 'LOGGING'}), get({(get({get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'}), '$class'})):getInstance(get({get({get({get({get({get({get({'org', allbinary}), logic}), communication}), log}), config}), type}), 'LogConfigTypeFactory'})), 'AUTHENTICATION'})) of
-            true ->
-            (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({This, '$class'})):outputSessionInfo(This), This, get({get({This, commonStrings}), 'CONSTRUCTOR'}));
-            false -> ok
-        end.
+        '$init'(This, HashMap, (get({PageContext, '$class'})):getRequest(PageContext))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception

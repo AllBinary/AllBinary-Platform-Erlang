@@ -866,7 +866,7 @@ getHudPaintable(This) ->
         RtsLayerHudPaintable.
 
 getType(This) ->
-        'UnitLayer':getStaticType().
+        1.
 
 getStaticType() ->
         1.

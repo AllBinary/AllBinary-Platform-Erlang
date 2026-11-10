@@ -40,9 +40,9 @@ isCollision(Rectangle, Point) ->
             false ->
             throw({'$return', true})
         end
-        catch throw:{'$return', ReturnValue} -> ReturnValue end;
-isCollision(Rectangle1, Rectangle2) ->
-        'RectangleCollisionUtil':isCollision(get({Rectangle1, x}), get({Rectangle1, y}), (get({Rectangle1, x}) + get({Rectangle1, width})), (get({Rectangle1, y}) + get({Rectangle1, height})), get({Rectangle2, x}), get({Rectangle2, y}), (get({Rectangle2, x}) + get({Rectangle2, width})), (get({Rectangle2, y}) + get({Rectangle2, height}))).
+        catch throw:{'$return', ReturnValue} -> ReturnValue end
+% unreachable Java overload isCollision(Rectangle rectangle1, Rectangle rectangle2) has the same guards as an earlier clause
+.
 
 
 isCollision(RectX1, RectY1, RectX2, RectY2, Rect2X1, Rect2Y1, Rect2X2, Rect2Y2) when is_integer(RectX1), is_integer(RectY1), is_integer(RectX2), is_integer(RectY2), is_integer(Rect2X1), is_integer(Rect2Y1), is_integer(Rect2X2), is_integer(Rect2Y2) ->

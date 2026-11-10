@@ -13,14 +13,15 @@
 % Generated Code Do Not Modify
 % package org.allbinary.logic.io.file
 % import java.io.ByteArrayOutputStream
-% import java.io.IOException
 % import java.io.InputStream
 % import java.io.OutputStream
 % import java.io.Reader
 % import java.io.Writer
-% import java.nio.CharBuffer
 % import org.allbinary.logic.NullUtil
 % import org.allbinary.logic.communication.log.LogUtil
+% import org.allbinary.logic.io.NullOutputStream
+% import org.allbinary.logic.io.NullReader
+% import org.allbinary.logic.io.NullWriter
 % import org.allbinary.logic.io.StreamUtil
 % import org.allbinary.logic.string.StringMaker
 % import org.allbinary.string.CommonStrings
@@ -58,35 +59,13 @@ getInstance() ->
         get({'SimpleFileUtil', instance}).
 
 nullOutputStream() ->
-        'OutputStream':new() % Java anonymous class body: implement it as a module
-%             ok % write
-%             ok % write
-%             ok % close
-.
+        get({'NullOutputStream', 'NULL_OUTPUT_STREAM'}).
 
 nullWriter() ->
-        'Writer':new() % Java anonymous class body: implement it as a module
-%             put({This, closed}, false)
-%             ok % append
-%             ok % append
-%             ok % append
-%             ok % write
-%             ok % write
-%             ok % write
-%             ok % write
-%             ok % flush
-%             ok % close
-.
+        get({'NullWriter', 'NULL_WRITER'}).
 
 nullReader() ->
-        'Reader':new() % Java anonymous class body: implement it as a module
-%             ok % read
-%             ok % read
-%             ok % read
-%             ok % ready
-%             ok % skip
-%             ok % close
-.
+        get({'NullReader', 'NULL_READER'}).
 
 loadFileAsList(This, InputStream, Max, ByteArray1) when is_integer(Max), (is_tuple(ByteArray1) orelse ByteArray1 =:= undefined) ->
         (get({This, '$class'})):loadFileAsListReturnLine(This, InputStream, Max, ByteArray1, 0).

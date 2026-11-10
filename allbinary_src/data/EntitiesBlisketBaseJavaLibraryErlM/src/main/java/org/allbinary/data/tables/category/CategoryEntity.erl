@@ -77,7 +77,9 @@ insert(This, Category) ->
                 (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'FAILURE'}), This, get({'CategoryEntity', 'INSERT'}), E);
                 false -> ok
             end
-        end.
+        end
+% unreachable Java overload insert(BasicArrayList values) has the same guards as an earlier clause
+.
 
 delete(This, Value) when (is_list(Value) orelse Value =:= undefined) ->
         try
@@ -117,4 +119,5 @@ update(This, UpdatedValues) ->
 
 dropTable(This) ->
         'AbSqlBean':dropTable(This).
+
 

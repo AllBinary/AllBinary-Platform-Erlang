@@ -19,13 +19,13 @@
 % import javax.xml.parsers.DocumentBuilderFactory
 % import javax.xml.transform.OutputKeys
 % import javax.xml.transform.Transformer
+% import javax.xml.transform.TransformerConfigurationException
 % import javax.xml.transform.TransformerFactory
 % import javax.xml.transform.dom.DOMSource
 % import javax.xml.transform.stream.StreamResult
 % import org.allbinary.logic.communication.log.LogUtil
 % import org.allbinary.logic.java.bool.BooleanFactory
 % import org.allbinary.logic.java.characters.CharacterSetData
-% import org.allbinary.string.CommonStrings
 % import org.w3c.dom.Document
 % import org.xml.sax.InputSource
 
@@ -40,7 +40,8 @@ static_init() ->
 init_fields(This) ->
     put({This, logUtil}, 'LogUtil':getInstance()),
     put({This, 'INDENT_NUMBER'}, "indent-number"),
-    put({This, transformer}, undefined),
+    put({This, indent}, 0),
+    put({This, ignoreDeclaration}, false),
     ok.
 
 
@@ -58,25 +59,40 @@ new() ->
         (get({This, '$class'})):init(This, 4, true).
 
 init(This, Indent, IgnoreDeclaration) when is_integer(Indent), is_boolean(IgnoreDeclaration) ->
-        try
-            BooleanFactory = 'BooleanFactory':getInstance(),
-            TransformerFactory = 'TransformerFactory':newInstance(),
-            (get({TransformerFactory, '$class'})):setAttribute(TransformerFactory, get({This, 'INDENT_NUMBER'}), Indent),
-            put({This, transformer}, (get({TransformerFactory, '$class'})):newTransformer(TransformerFactory)),
-            (get({get({This, transformer}), '$class'})):setOutputProperty(get({This, transformer}), get({'OutputKeys', 'ENCODING'}), get({'CharacterSetData':getInstance(), 'UTF_8'})),
-            (get({get({This, transformer}), '$class'})):setOutputProperty(get({This, transformer}), get({'OutputKeys', 'OMIT_XML_DECLARATION'}), case IgnoreDeclaration of true -> get({BooleanFactory, 'YES'}); false -> get({BooleanFactory, 'NO'}) end),
-            (get({get({This, transformer}), '$class'})):setOutputProperty(get({This, transformer}), get({'OutputKeys', 'INDENT'}), get({BooleanFactory, 'YES'}))
-        catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-            CommonStrings = 'CommonStrings':getInstance(),
-            (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({CommonStrings, 'EXCEPTION'}), This, get({CommonStrings, 'INIT'}), E)
-        end.
+        put({This, indent}, Indent),
+        put({This, ignoreDeclaration}, IgnoreDeclaration).
+
+% throws TransformerConfigurationException
+createTransformer(This, Indent, IgnoreDeclaration) when is_integer(Indent), is_boolean(IgnoreDeclaration) ->
+        BooleanFactory = 'BooleanFactory':getInstance(),
+        TransformerFactory = 'TransformerFactory':newInstance(),
+        (get({TransformerFactory, '$class'})):setAttribute(TransformerFactory, get({This, 'INDENT_NUMBER'}), Indent),
+        Transformer = (get({TransformerFactory, '$class'})):newTransformer(TransformerFactory),
+        (get({Transformer, '$class'})):setOutputProperty(Transformer, get({'OutputKeys', 'ENCODING'}), get({'CharacterSetData':getInstance(), 'UTF_8'})),
+        (get({Transformer, '$class'})):setOutputProperty(Transformer, get({'OutputKeys', 'OMIT_XML_DECLARATION'}), case IgnoreDeclaration of true -> get({BooleanFactory, 'YES'}); false -> get({BooleanFactory, 'NO'}) end),
+        (get({Transformer, '$class'})):setOutputProperty(Transformer, get({'OutputKeys', 'INDENT'}), get({BooleanFactory, 'YES'})),
+        Transformer.
+
+% throws TransformerConfigurationException
+createTransformer(This) ->
+        put({local, currentIndent}, 0),
+        put({local, currentIgnoreDeclaration}, false),
+        begin % synchronized
+            put({local, currentIndent}, get({This, indent})),
+            put({local, currentIgnoreDeclaration}, get({This, ignoreDeclaration}))
+        end,
+        (get({This, '$class'})):createTransformer(This, get({local, currentIndent}), get({local, currentIgnoreDeclaration})).
 
 % throws Exception
 format(This, XmlString) when (is_list(XmlString) orelse XmlString =:= undefined) ->
+        (get({This, '$class'})):formatWithTransformer(This, XmlString, (get({This, '$class'})):createTransformer(This)).
+
+% throws Exception
+formatWithTransformer(This, XmlString, Transformer) when (is_list(XmlString) orelse XmlString =:= undefined) ->
         Src = 'InputSource':new('StringReader':new(XmlString)),
-        Document = (fun(Target_N67006) -> (get({Target_N67006, '$class'})):parse(Target_N67006, Src) end)((fun(Target_N67013) -> (get({Target_N67013, '$class'})):newDocumentBuilder(Target_N67013) end)('DocumentBuilderFactory':newInstance())),
+        Document = (fun(Target_N67338) -> (get({Target_N67338, '$class'})):parse(Target_N67338, Src) end)((fun(Target_N67345) -> (get({Target_N67345, '$class'})):newDocumentBuilder(Target_N67345) end)('DocumentBuilderFactory':newInstance())),
         Out = 'StringWriter':new(),
-        (get({get({This, transformer}), '$class'})):transform(get({This, transformer}), 'DOMSource':new(Document), 'StreamResult':new(Out)),
+        (get({Transformer, '$class'})):transform(Transformer, 'DOMSource':new(Document), 'StreamResult':new(Out)),
         (get({Out, '$class'})):toString(Out).
 
 % throws Exception

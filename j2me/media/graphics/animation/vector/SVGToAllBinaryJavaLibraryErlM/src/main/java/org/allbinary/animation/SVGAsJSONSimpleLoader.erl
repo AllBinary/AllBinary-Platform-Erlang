@@ -12,7 +12,6 @@
 %  
 % Generated Code Do Not Modify
 % package org.allbinary.animation
-% import java.util.Enumeration
 % import org.allbinary.graphics.GraphicsStrings
 % import org.allbinary.logic.math.PrimitiveIntUtil
 % import org.allbinary.logic.string.StringMaker
@@ -80,9 +79,10 @@ load(This, SvgAsJson) when (is_list(SvgAsJson) orelse SvgAsJson =:= undefined) -
             SvgValue = (get({Root, '$class'})):opt(Root, get({This, 'KEY_SVG'})),
             Svg = case (SvgValue =:= undefined) of true -> Root; false -> (get({This, '$class'})):asObject(This, SvgValue, get({This, 'KEY_SVG'})) end,
             PointVector = 'BasicArrayListD':new(),
-            Keys = (get({Svg, '$class'})):keys(Svg),
-            (fun Loop() -> case (get({Keys, '$class'})):hasMoreElements(Keys) of true ->
-                Key = (get({Keys, '$class'})):nextElement(Keys),
+            ObjectArray = (get({Svg, '$class'})):keysAsArray(Svg),
+            Size = array:size(ObjectArray),
+            lists:foreach(fun(Index) ->
+                Key = array:get(Index, ObjectArray),
                 Value = (get({Svg, '$class'})):opt(Svg, Key),
                 case (get({get({get({This, shapeTypeFactory}), 'KEY_LINE'}), '$class'})):equals(get({get({This, shapeTypeFactory}), 'KEY_LINE'}), Key) of
                     true ->
@@ -98,9 +98,8 @@ load(This, SvgAsJson) when (is_list(SvgAsJson) orelse SvgAsJson =:= undefined) -
                     false -> ok
                 end
                 end
-                end,
-                Loop();
-            false -> ok end end)(),
+                end
+            end, lists:seq(0, Size - 1)),
             (get({This, '$class'})):toPoints(This, PointVector)
         catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
             erlang:error({'IllegalArgumentException', get({This, 'ERROR_PARSE_SVG_JSON'}), E})
@@ -241,7 +240,7 @@ toPoints(This, PointVector) ->
 % throws Exception
 main(Args) when (is_tuple(Args) orelse Args =:= undefined) ->
         SvgAsJson = lists:concat([lists:concat([lists:concat([lists:concat([lists:concat([lists:concat([lists:concat([lists:concat([lists:concat(["{\"svg\": {\n", "    \"rect\": {\n"]), "        \"width\": 20,\n"]), "        \"fill\": \"#008c00\",\n"]), "        \"height\": 20\n"]), "    },\n"]), "    \"xmlns\": \"http://www.w3.org/2000/svg\",\n"]), "    \"width\": 20,\n"]), "    \"height\": 20\n"]), "}}\n"]),
-        Points = (fun(Target_N72111) -> (get({Target_N72111, '$class'})):load(Target_N72111, SvgAsJson) end)('SVGAsJSONSimpleLoader':getInstance()),
+        Points = (fun(Target_N72193) -> (get({Target_N72193, '$class'})):load(Target_N72193, SvgAsJson) end)('SVGAsJSONSimpleLoader':getInstance()),
         StringBuilder = 'StringMaker':new(),
         Size = array:size(Points),
         lists:foreach(fun(Index) ->

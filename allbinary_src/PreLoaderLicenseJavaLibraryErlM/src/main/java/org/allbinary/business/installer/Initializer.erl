@@ -81,11 +81,6 @@ new(Map) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Map),
-    This;
-new(InitHashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, InitHashMap),
     This.
 
 '$init'(This, Map) ->
@@ -106,10 +101,9 @@ new(InitHashMap) ->
             (get({StringBuffer, '$class'})):append(StringBuffer, array:get(0, Values)),
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), (get({StringBuffer, '$class'})):toString(StringBuffer), This, "getFormData()")
         end, lists:seq(0, Size - 1)),
-        (get({This, '$class'})):getFormData(This, HashMap);
-'$init'(This, InitHashMap) ->
-    init_fields(This),
-        (get({This, '$class'})):getFormData(This, InitHashMap).
+        (get({This, '$class'})):getFormData(This, HashMap)
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 getFormData(This, HashMap) ->

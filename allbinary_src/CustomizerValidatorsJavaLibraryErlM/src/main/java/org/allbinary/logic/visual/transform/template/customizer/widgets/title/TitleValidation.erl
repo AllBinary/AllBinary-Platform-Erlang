@@ -46,19 +46,13 @@ new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Node),
-    This;
-new(HashMap) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, HashMap),
     This.
 
 '$init'(This, Node) ->
         'TitleView':'$init'(This, Node),
-        init_fields(This);
-'$init'(This, HashMap) ->
-        'TitleView':'$init'(This, HashMap),
-        init_fields(This).
+        init_fields(This)
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 isValid(This) ->

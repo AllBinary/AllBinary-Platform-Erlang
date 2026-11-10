@@ -39,11 +39,6 @@ new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Node),
-    This;
-new(UserEmailEventsConfigurationInterface) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, UserEmailEventsConfigurationInterface),
     This.
 
 '$init'(This, Node) ->
@@ -56,10 +51,9 @@ new(UserEmailEventsConfigurationInterface) ->
             UserEmailConfigurationNode = (get({EmailEventConfigurationNodeVector, '$class'})):get(EmailEventConfigurationNodeVector, Index),
             UserEmailEventConfigurationView = 'UserEmailEventConfigurationView':new(UserEmailConfigurationNode),
             (get({get({This, userEmailEventsConfigurationInterface}), '$class'})):addUserEmailEventConfiguration(get({This, userEmailEventsConfigurationInterface}), (get({UserEmailEventConfigurationView, '$class'})):getUserEmailEventConfigurationInterface(UserEmailEventConfigurationView))
-        end, lists:seq(0, Size - 1));
-'$init'(This, UserEmailEventsConfigurationInterface) ->
-    init_fields(This),
-        put({This, userEmailEventsConfigurationInterface}, UserEmailEventsConfigurationInterface).
+        end, lists:seq(0, Size - 1))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 getUserEmailEventsConfigurationInterface(This) ->

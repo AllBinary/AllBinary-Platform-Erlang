@@ -74,6 +74,36 @@ new(Name, Rectangle, ViewPosition) when (is_list(Name) orelse Name =:= undefined
         put({This, viewPosition}, ViewPosition),
         (get({get({This, viewPosition}), '$class'})):setAllbinaryLayer(get({This, viewPosition}), This).
 
+setPosition(This, X, Y, Z) when is_integer(X), is_integer(Y), is_integer(Z) ->
+        'Layer':setPosition(This, X, Y, Z).
+
+moveDXYZ(This, Dx, Dy, Dz) when is_integer(Dx), is_integer(Dy), is_integer(Dz) ->
+        'Layer':moveDXYZ(This, Dx, Dy, Dz).
+
+getXP(This) ->
+        'Layer':getXP(This).
+
+getYP(This) ->
+        'Layer':getYP(This).
+
+getZP(This) ->
+        'Layer':getZP(This).
+
+getWidth(This) ->
+        'Layer':getWidth(This).
+
+getHeight(This) ->
+        'Layer':getHeight(This).
+
+setVisible(This, Visible) when is_boolean(Visible) ->
+        'Layer':setVisible(This, Visible).
+
+isVisible(This) ->
+        'Layer':isVisible(This).
+
+paint(This, Graphics) ->
+        'Layer':paint(This, Graphics).
+
 % throws Exception
 onChangeEvent(This, LayerManagerEvent) ->
         ok.
@@ -130,7 +160,7 @@ implmentsCollidableInterface(This) ->
         false.
 
 implementsThreedInterface(This) ->
-        (fun(Target_N68064) -> (get({Target_N68064, '$class'})):isAnyThreed(Target_N68064) end)('OpenGLFeatureUtil':getInstance()).
+        (fun(Target_N68872) -> (get({Target_N68872, '$class'})):isAnyThreed(Target_N68872) end)('OpenGLFeatureUtil':getInstance()).
 
 getType(This) ->
         (-1).
@@ -148,19 +178,19 @@ toStringAppend(This, StringBuffer) ->
         (get({StringBuffer, '$class'})):appendint(StringBuffer, (get({This, '$class'})):getType(This)),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'SPACE'})),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({PositionStrings, 'X_LABEL'})),
-        (get({StringBuffer, '$class'})):appendint(StringBuffer, trunc((get({This, '$class'})):getXP(This))),
+        (get({StringBuffer, '$class'})):appendint(StringBuffer, (get({This, '$class'})):getXP(This)),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'SPACE'})),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({PositionStrings, 'Y_LABEL'})),
-        (get({StringBuffer, '$class'})):appendint(StringBuffer, trunc((get({This, '$class'})):getYP(This))),
+        (get({StringBuffer, '$class'})):appendint(StringBuffer, (get({This, '$class'})):getYP(This)),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'SPACE'})),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({PositionStrings, 'Z_LABEL'})),
-        (get({StringBuffer, '$class'})):appendint(StringBuffer, trunc((get({This, '$class'})):getZP(This))),
+        (get({StringBuffer, '$class'})):appendint(StringBuffer, (get({This, '$class'})):getZP(This)),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'SPACE'})),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonLabels, 'WIDTH_LABEL'})),
-        (get({StringBuffer, '$class'})):appendint(StringBuffer, trunc((get({This, '$class'})):getWidth(This))),
+        (get({StringBuffer, '$class'})):appendint(StringBuffer, (get({This, '$class'})):getWidth(This)),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonSeps, 'SPACE'})),
         (get({StringBuffer, '$class'})):append(StringBuffer, get({CommonLabels, 'HEIGHT_LABEL'})),
-        (get({StringBuffer, '$class'})):appendint(StringBuffer, trunc((get({This, '$class'})):getHeight(This))).
+        (get({StringBuffer, '$class'})):appendint(StringBuffer, (get({This, '$class'})):getHeight(This)).
 
 toString(This) ->
         StringBuffer = 'StringMaker':new(),

@@ -85,8 +85,8 @@ fireEventI(This, EventObject) ->
             try
                 put({local, eventListenerInterface}, (get({get({This, eventListenerInterfaceList}), '$class'})):get(get({This, eventListenerInterfaceList}), get({local, index}))),
                 (get({This, '$class'})):processI(This, EventObject, get({local, eventListenerInterface}))
-            catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E)
+            catch _:E_N66809 when E_N66809 =/= '$break', E_N66809 =/= '$continue', (not is_tuple(E_N66809) orelse element(1, E_N66809) =/= '$return') ->
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E_N66809)
             end,
             put({local, index}, get({local, index}) + 1),
             Loop();
@@ -111,8 +111,8 @@ fireEventForGameKeyEvent(This, EventObject) ->
             try
                 put({local, eventListenerInterface}, (get({get({This, eventListenerInterfaceList}), '$class'})):get(get({This, eventListenerInterfaceList}), get({local, index}))),
                 (get({This, '$class'})):processEvent(This, EventObject, get({local, eventListenerInterface}))
-            catch _:E when E =/= '$break', E =/= '$continue', (not is_tuple(E) orelse element(1, E) =/= '$return') ->
-                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E)
+            catch _:E_N67544 when E_N67544 =/= '$break', E_N67544 =/= '$continue', (not is_tuple(E_N67544) orelse element(1, E_N67544) =/= '$return') ->
+                (get({get({This, logUtil}), '$class'})):put(get({This, logUtil}), get({get({This, commonStrings}), 'EXCEPTION'}), This, get({'EventStrings':getInstance(), 'FIRE_EVENT'}), E_N67544)
             end,
             put({local, index}, get({local, index}) + 1),
             Loop();

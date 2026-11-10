@@ -40,9 +40,8 @@ new(BooleanVisitorInterface) ->
 accept(This, File) ->
         AbFile = 'FileWrapperUtil':wrapFile(File),
         IsFileAcceptable = (fun(Target_N65926) -> (get({Target_N65926, '$class'})):booleanValue(Target_N65926) end)(((get({get({This, booleanVisitorInterface}), '$class'})):visit(get({This, booleanVisitorInterface}), AbFile))),
-        (IsFileAcceptable orelse (get({File, '$class'})):isDirectory(File));
-accept(This, File) ->
-        IsFileAcceptable = (fun(Target_N66086) -> (get({Target_N66086, '$class'})):booleanValue(Target_N66086) end)(((get({get({This, booleanVisitorInterface}), '$class'})):visit(get({This, booleanVisitorInterface}), File))),
-        (IsFileAcceptable orelse (get({File, '$class'})):isDirectory(File)).
+        (IsFileAcceptable orelse (get({File, '$class'})):isDirectory(File))
+% unreachable Java overload accept(AbFile file) has the same guards as an earlier clause
+.
 
 

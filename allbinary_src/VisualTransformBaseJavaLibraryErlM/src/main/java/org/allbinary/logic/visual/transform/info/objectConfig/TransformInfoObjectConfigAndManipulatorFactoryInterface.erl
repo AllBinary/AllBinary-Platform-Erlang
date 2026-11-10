@@ -24,10 +24,9 @@
 
 % throws Exception
 getInstance(This, AbeClientInformation, TransformInfoInterface, ObjectConfigFileAbPath) ->
-    erlang:error({abstract_method, getInstance});
-% throws Exception
-getInstance(This, AbeClientInformation, TransformInfoInterface, Document) ->
-    erlang:error({abstract_method, getInstance}).
+    erlang:error({abstract_method, getInstance})
+% unreachable Java overload getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Document document) has the same guards as an earlier clause
+.
 
 % throws Exception
 getInstance(This, AbeClientInformation, TransformInfoInterface) ->

@@ -34,10 +34,10 @@ init_fields(This) ->
 new() ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
-    init(This),
+    '$init'(This),
     This.
 
-init(This) ->
+'$init'(This) ->
     init_fields(This).
 
 
@@ -45,7 +45,7 @@ getInstance() ->
         get({'ImageArrayRotationUtil', instance}).
 
 % throws IOException
-process(This, ImageProcessorInput, Input, Visitor) ->
+process(This, ImageProcessorInput, Input, Visitor) when (is_list(Input) orelse Input =:= undefined) ->
         put({local, totalAngle}, undefined),
         case (Input =:= get({get({This, commonStrings}), 'UP'})) of
             true ->
@@ -62,7 +62,7 @@ process(This, ImageProcessorInput, Input, Visitor) ->
         BufferedImageArray = (get({ImageProcessorInput, '$class'})):getBufferedImageArray(ImageProcessorInput),
         lists:foreach(fun(Index) ->
             (get({get({This, logUtil}), '$class'})):putF(get({This, logUtil}), lists:concat([get({This, 'TOTAL_ANGLE'}), get({local, totalAngle})]), This, get({get({This, commonStrings}), 'RUN'})),
-            put({local, generatedBufferedImage}, (get({'ImageJ2SERotationUtil':getInstance(), '$class'})):getRotatedImage('ImageJ2SERotationUtil':getInstance(), array:get(Index, BufferedImageArray), (get({get({local, totalAngle}), '$class'})):intValue(get({local, totalAngle})))),
+            put({local, generatedBufferedImage}, (fun(Target_N66372) -> (get({Target_N66372, '$class'})):getRotatedImage(Target_N66372, array:get(Index, BufferedImageArray), (get({get({local, totalAngle}), '$class'})):intValue(get({local, totalAngle}))) end)('ImageJ2SERotationUtil':getInstance())),
             (get({Visitor, '$class'})):visit(Visitor, get({local, generatedBufferedImage}), Input, Index)
         end, lists:seq(0, array:size(BufferedImageArray) - 1)).
 

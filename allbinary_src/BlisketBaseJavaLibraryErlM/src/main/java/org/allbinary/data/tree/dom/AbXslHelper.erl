@@ -52,10 +52,9 @@ translate(This, XsltFilePath, XmlFilePath) when (is_list(XsltFilePath) orelse Xs
         end;
 % throws Exception
 translate(This, XslFile, XmlFile) ->
-        (get({This, '$class'})):translate(This, (get({XslFile, '$class'})):getAbsolutePath(XslFile), (get({XmlFile, '$class'})):getAbsolutePath(XmlFile));
-% throws Exception
-translate(This, XslPath, XmlPath) ->
-        (get({This, '$class'})):translate(This, (get({XslPath, '$class'})):getPath(XslPath), (get({XmlPath, '$class'})):getPath(XmlPath)).
+        (get({This, '$class'})):translate(This, (get({XslFile, '$class'})):getAbsolutePath(XslFile), (get({XmlFile, '$class'})):getAbsolutePath(XmlFile))
+% unreachable Java overload translate(AbPath xslPath, AbPath xmlPath) has the same guards as an earlier clause
+.
 
 
 

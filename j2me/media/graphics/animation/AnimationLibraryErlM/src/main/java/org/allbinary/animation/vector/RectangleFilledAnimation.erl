@@ -56,3 +56,9 @@ setWidth(This, Width) when is_integer(Width) ->
 setHeight(This, Height) when is_integer(Height) ->
         put({This, heightP}, Height).
 
+getBasicColorP(This) ->
+        'Animation':getBasicColorP(This).
+
+setBasicColorP(This, BasicColor) ->
+        'Animation':setBasicColorP(This, BasicColor).
+

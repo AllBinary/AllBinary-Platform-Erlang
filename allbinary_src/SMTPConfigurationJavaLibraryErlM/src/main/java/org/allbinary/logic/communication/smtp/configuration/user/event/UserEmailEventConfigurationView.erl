@@ -34,11 +34,6 @@ new(Node) ->
     This = make_ref(),
     put({This, '$class'}, ?MODULE),
     '$init'(This, Node),
-    This;
-new(UserEmailEventConfigurationInterface) ->
-    This = make_ref(),
-    put({This, '$class'}, ?MODULE),
-    '$init'(This, UserEmailEventConfigurationInterface),
     This.
 
 '$init'(This, Node) ->
@@ -49,10 +44,9 @@ new(UserEmailEventConfigurationInterface) ->
         (get({HashMap, '$class'})):put(HashMap, get({'UserEmailEventConfigurationData', 'NAME'}), Name),
         EventListenerClassPath = 'DomNodeHelper':getTextNodeValue(get({'UserEmailEventConfigurationData', 'LISTENER_CLASSPATH'}), ChildNodeList),
         (get({HashMap, '$class'})):put(HashMap, get({'UserEmailEventConfigurationData', 'LISTENER_CLASSPATH'}), EventListenerClassPath),
-        (get({This, '$class'})):setUserEmailEventConfigurationInterface(This, 'UserEmailEventConfiguration':new(HashMap));
-'$init'(This, UserEmailEventConfigurationInterface) ->
-    init_fields(This),
-        (get({This, '$class'})):setUserEmailEventConfigurationInterface(This, UserEmailEventConfigurationInterface).
+        (get({This, '$class'})):setUserEmailEventConfigurationInterface(This, 'UserEmailEventConfiguration':new(HashMap))
+% unreachable Java constructor overload with the same guards as an earlier clause
+.
 
 
 % throws Exception
